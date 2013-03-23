@@ -53,8 +53,10 @@ NeoBundleLazy 'Shougo/vimshell',{
             \       'mappings' : [ '<Plug>(vimshell_switch)' ]
             \     }
             \ }
-" [Mudox-vim]
-NeoBundle 'Mudox/mudox-vim'
+" [Mudox-vim-scripts]
+NeoBundle 'Mudox/mudox-vim-scripts'
+" [delimitMate]
+NeoBundle 'Raimondi/delimitMate', { 'name' : 'delimitmate' }
 " [Easytags]
 NeoBundle 'xolox/vim-easytags', { 'name' : 'easytags' }
 " [Vim-textobj-syntax]
