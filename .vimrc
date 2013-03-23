@@ -1,155 +1,71 @@
 " .vimrc for [G]Vim on Linux
 
-" VUNDLE {{{1
-set nocompatible               " be iMproved
-filetype off                   " required!
+" NEOBUNDLE {{{1
+set nocompatible                " Recommend
 
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has('vim_starting')
+    set runtimepath+=~/.vim/neobundle/neobundle
+endif
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
+" Use https protocol over proxy.
+" let g:neobundle#types#git#default_protocol = 'https'
+
+call neobundle#rc(expand('~/.vim/neobundle'))
+
+" Let neobundle manage neobundle
+NeoBundleFetch 'Shougo/neobundle.vim', { 'name' : 'neobundle' }
+
+" Use neobundle standard recipes.
+NeoBundle 'Shougo/neobundle-vim-scripts'
 
 " My Bundles here: {{{2
-
-" plugins from github repos " {{{3
-
-" ----------------------  
-" [mudox-vim]
-Bundle 'Mudox/mudox-vim'
-" ----------------------  
-
-" [easytags]
-Bundle 'xolox/vim-easytags'
-" [vim-textobj-syntax]
-Bundle 'kana/vim-textobj-syntax'
-" [vim-textobj-function]
-Bundle 'kana/vim-textobj-function'
-" [vim-textobj-entire]
-Bundle 'kana/vim-textobj-entire'
-" [vim-textobj-indent]
-Bundle 'kana/vim-textobj-indent'
-" [vim-textobj-line]
-Bundle 'kana/vim-textobj-line'
-" [vim-textobj-user]
-Bundle 'kana/vim-textobj-user'
-" [nrrwrgn]
-Bundle 'chrisbra/NrrwRgn'
-" [repeat]
-Bundle 'tpope/vim-repeat'
-" [unimpaired]
-Bundle 'tpope/vim-unimpaired'
-" [abolish]
-Bundle 'tpope/vim-abolish'
-" [textobj-word-column]
-Bundle 'coderifous/textobj-word-column.vim'
-" [zoomwintab]
-Bundle 'troydm/zoomwintab.vim'
-" [singlecompile]
-Bundle 'xuhdev/SingleCompile'
-" [hardmode]
-Bundle 'wikitopian/hardmode'
-" [clang_complete]
-Bundle 'Rip-Rip/clang_complete'
-" [delimitmate]
-Bundle 'Raimondi/delimitMate'
 " [vimproc]
-Bundle 'Shougo/vimproc'
-" [yankring]
-Bundle 'vim-scripts/YankRing.vim'
-" [python-mode]
-Bundle 'klen/python-mode'
-" [vimwiki]
-Bundle 'vim-scripts/vimwiki'
-" [flake8]
-Bundle 'nvie/vim-flake8'
-" [bufexplorer]
-Bundle 'vim-scripts/bufexplorer.zip'
-" [rainbow_parentheses]
-Bundle 'kien/rainbow_parentheses.vim'
-" [YouCompleteMe]
-Bundle 'Valloric/YouCompleteMe'
-" [Syntastic]
-Bundle 'scrooloose/syntastic' 
-" [MatchTagAlways]
-Bundle 'Valloric/MatchTagAlways' 
-" [VimShell]
-Bundle 'Shougo/vimshell' 
-" [NeoComplCache]
-" Bundle 'Shougo/neocomplcache' 
-" [SuperTab]
-" Bundle 'ervandew/supertab' 
-" [jedi]-vim
-Bundle 'davidhalter/jedi-vim'
-" [FSwitch]
-Bundle 'vim-scripts/FSwitch'
-" [ColorV] related
-Bundle 'mattn/webapi-vim' 
-Bundle 'Rykka/colorv.vim'
-Bundle 'Rykka/galaxy.vim'
-" [Powerline]
-Bundle 'Lokaltog/vim-powerline'
-" [NerdCommenter]
-Bundle 'scrooloose/nerdcommenter' 
-" [NerdTree]
-Bundle 'scrooloose/nerdtree' 
-" [vim]-signature
-Bundle 'kshenoy/vim-signature' 
-" [UltiSnips]
-Bundle 'SirVer/ultisnips'
-" [AutoAlign]
-" Bundle 'vim-scripts/AutoAlign'
-" [EasyMotion]
-Bundle 'Lokaltog/vim-easymotion'      
-" [AutoPairs]
-" Bundle 'jiangmiao/auto-pairs'         
-" [Mathit]
-Bundle 'vim-scripts/matchit.zip'      
-" [Unite]
-Bundle 'vim-scripts/unite.vim'        
-" [Vim-Indent-Guides]
-Bundle 'mutewinter/vim-indent-guides' 
-" [TagList]
-Bundle 'vim-scripts/taglist.vim'        
-" [TagBar]
-Bundle 'majutsushi/tagbar'            
-" [SrcExpl]
-Bundle 'wesleyche/SrcExpl'            
-" [BufExplorer]
-Bundle 'vim-scripts/bufexplorer.zip'  
-" [Fugitive]
-Bundle 'tpope/vim-fugitive'           
-" [OmniCppComplete]
-" Bundle 'vim-scripts/OmniCppComplete'  
-" [AutoComplPop]
-" Bundle 'vim-scripts/AutoComplPop'     
-" [Surround]
-Bundle 'tpope/vim-surround'
-" [Align]
-Bundle 'vim-scripts/Align'
-"}}}3
-
-" plugins from non github repos {{{3
-" Bundle 'git://git.wincent.com/command-t.git'
-"}}}3
-
-" vim-scripts repos {{{3
-" Bundle 'FuzzyFinder'
-"}}}3
-
+NeoBundle 'Shougo/vimproc', {
+            \ 'build' : {
+            \        'windows' : 'make -f make_mingw32.mak',
+            \        'cygwin'  : 'make -f make_cygwin.mak',
+            \        'mac'     : 'make -f make_mac.mak',
+            \        'unix'    : 'make -f make_unix.mak',
+            \    },
+            \ }
+" [vimfiler]
+NeoBundle 'Shougo/vimfiler', { 'depends' : 'Shougo/unite.vim' }
+" [unite]
+NeoBundle 'Shougo/unite.vim', { 'name' : 'unite' }
+" [clang_complete]
+NeoBundleLazy 'Rip-Rip/clang_complete', {
+            \   'autoload' : {
+            \       'filetypes' : ['c', 'cpp'],
+            \   },
+            \ }
+" [vimshell]
+NeoBundleLazy 'Shougo/vimshell',{
+            \     'depends' : 'Shougo/vimproc',
+            \     'autoload' : {
+            \       'commands' : [
+            \           { 
+            \               'name' : 'VimShell',
+            \               'complete' : 'customlist,vimshell#complete'
+            \           },
+            \           'VimShellExecute', 'VimShellInteractive',
+            \           'VimShellTerminal', 'VimShellPop'
+            \       ],
+            \       'mappings' : [ '<Plug>(vimshell_switch)' ]
+            \     }
+            \ }
+" [mudox-vim]
+NeoBundle 'Mudox/mudox-vim'
 "}}}2
 
-filetype plugin indent on     " required!
+filetype plugin indent on       " Required!
 
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+" Installation check.
+NeoBundleCheck
+
+if !has('vim_starting')
+    " Call on_source hook when reloading .vimrc.
+    call neobundle#call_hook('on_source')
+endif
 "}}}1
 
 " FROM SAMPLE FILE {{{1
