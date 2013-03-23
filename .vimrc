@@ -19,7 +19,7 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'name' : 'neobundle' }
 NeoBundle 'Shougo/neobundle-vim-scripts'
 
 " My Bundles here: {{{2
-" [vimproc]
+" [Vimproc]
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
             \        'windows' : 'make -f make_mingw32.mak',
@@ -28,9 +28,9 @@ NeoBundle 'Shougo/vimproc', {
             \        'unix'    : 'make -f make_unix.mak',
             \    },
             \ }
-" [vimfiler]
+" [Vimfiler]
 NeoBundle 'Shougo/vimfiler', { 'depends' : 'Shougo/unite.vim' }
-" [unite]
+" [Unite]
 NeoBundle 'Shougo/unite.vim', { 'name' : 'unite' }
 " [clang_complete]
 NeoBundleLazy 'Rip-Rip/clang_complete', {
@@ -38,7 +38,7 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
             \       'filetypes' : ['c', 'cpp'],
             \   },
             \ }
-" [vimshell]
+" [Vimshell]
 NeoBundleLazy 'Shougo/vimshell',{
             \     'depends' : 'Shougo/vimproc',
             \     'autoload' : {
@@ -53,8 +53,107 @@ NeoBundleLazy 'Shougo/vimshell',{
             \       'mappings' : [ '<Plug>(vimshell_switch)' ]
             \     }
             \ }
-" [mudox-vim]
+" [Mudox-vim]
 NeoBundle 'Mudox/mudox-vim'
+" [Easytags]
+NeoBundle 'xolox/vim-easytags', { 'name' : 'easytags' }
+" [Vim-textobj-syntax]
+NeoBundle 'kana/vim-textobj-syntax', { 'name' : 'text-ojbect-syntax' }
+" [Vim-textobj-function]
+NeoBundle 'kana/vim-textobj-function', { 'name' : 'textobj-function' }
+" [Vim-textobj-entire]
+NeoBundle 'kana/vim-textobj-entire', { 'name' : 'textobj-entire' }
+" [Vim-textobj-indent]
+NeoBundle 'kana/vim-textobj-indent', { 'name' : 'textobj-indent' }
+" [Vim-textobj-line]
+NeoBundle 'kana/vim-textobj-line', { 'name' : 'textobj-line' }
+" [Vim-textobj-user]
+NeoBundle 'kana/vim-textobj-user', { 'name' : 'textobj-user' }
+" [Nrrwrgn]
+NeoBundle 'chrisbra/NrrwRgn', { 'name' : 'nrrwrgn' }
+" [Repeat]
+NeoBundle 'tpope/vim-repeat', { 'name' : 'repeat' }
+" [Unimpaired]
+NeoBundle 'tpope/vim-unimpaired', { 'name' : 'unimpaired' }
+" [Abolish]
+NeoBundle 'tpope/vim-abolish', { 'name' : 'abolish' }
+" [Textobj-word-column]
+NeoBundle 'coderifous/textobj-word-column.vim'
+" [Zoomwintab]
+NeoBundle 'troydm/zoomwintab.vim'
+" [singlecompile]
+NeoBundle 'xuhdev/SingleCompile', { 'name' : 'singlecompile' }
+" [hardmode]
+NeoBundle 'wikitopian/hardmode'
+" [yankring]
+NeoBundle 'vim-scripts/YankRing.vim', { 'name' : 'yankring' }
+" [python-mode]
+NeoBundle 'klen/python-mode'
+" [vimwiki]
+NeoBundle 'vim-scripts/vimwiki'
+" [flake8]
+NeoBundle 'nvie/vim-flake8', { 'name' : 'flake8' }
+" [rainbow_parentheses]
+NeoBundle 'kien/rainbow_parentheses.vim'
+" [YouCompleteMe]
+NeoBundle 'Valloric/YouCompleteMe', {
+            \   'name' : 'youcompleteme',
+            \   'build': {
+            \        'unix' : './install.sh --clang-completer'
+            \   }
+            \ }
+" [Syntastic]
+NeoBundle 'scrooloose/syntastic' 
+" [MatchTagAlways]
+NeoBundle 'Valloric/MatchTagAlways', { 'name' : 'matchtagsalways' }
+" [jedi]-vim
+NeoBundle 'davidhalter/jedi-vim'
+" [FSwitch]
+NeoBundle 'vim-scripts/FSwitch', { 'name' : 'fswitch' }
+" [ColorV] related
+NeoBundle 'mattn/webapi-vim' 
+NeoBundle 'Rykka/colorv.vim'
+NeoBundle 'Rykka/galaxy.vim'
+" [Powerline]
+NeoBundle 'Lokaltog/vim-powerline', { 'name' : 'powerline' }
+" [NerdCommenter]
+NeoBundle 'scrooloose/nerdcommenter' 
+" [NerdTree]
+NeoBundle 'scrooloose/nerdtree' 
+" [vim]-signature
+NeoBundle 'kshenoy/vim-signature', { 'name' : 'signature' }
+" [UltiSnips]
+NeoBundle 'SirVer/ultisnips'
+" [EasyMotion]
+NeoBundle 'Lokaltog/vim-easymotion', { 'name' : 'easymotion' }
+" [Vim-Indent-Guides]
+NeoBundle 'mutewinter/vim-indent-guides', { 'name' : 'indent-guides' }
+" [TagList]
+NeoBundle 'vim-scripts/taglist.vim'        
+" [TagBar]
+NeoBundle 'majutsushi/tagbar'            
+" [SrcExpl]
+NeoBundle 'wesleyche/SrcExpl', { 'name' : 'srcexpl' }
+" [BufExplorer]
+NeoBundle 'vim-scripts/bufexplorer.zip', { 'name' : 'bufexplorer' }
+" [Fugitive]
+NeoBundle 'tpope/vim-fugitive', { 'name' : 'fugitive' }
+" [Surround]
+NeoBundle 'tpope/vim-surround', { 'name' : 'surround' }
+" [Align]
+NeoBundle 'vim-scripts/Align', { 'name' : 'align' }
+" [NeoComplCache]
+" NeoBundle 'Shougo/neocomplcache' 
+" [SuperTab]
+" NeoBundle 'ervandew/supertab' 
+" [OmniCppComplete]
+" NeoBundle 'vim-scripts/OmniCppComplete'  
+" [AutoComplPop]
+" NeoBundle 'vim-scripts/AutoComplPop'     
+" [AutoPairs]
+" NeoBundle 'jiangmiao/auto-pairs'         
+" [AutoAlign]
+" NeoBundle 'vim-scripts/AutoAlign'
 "}}}2
 
 filetype plugin indent on       " Required!
