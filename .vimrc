@@ -355,6 +355,10 @@ inoremap <C-L> <Right>
 
 " PULGIN SETTINGS {{{1
 
+" [easytags]"{{{
+set updatetime=4000
+"}}}
+
 " [clangcomplete]"{{{
 " let g:clang_hl_errors = 1
 let g:clang_complete_copen = 1
@@ -405,6 +409,7 @@ let g:ycm_filetype_blacklist                        = {
 " let g:ycm_filetype_whitelist                      = {
       " \ '*'      : 1,
       " \}
+let g:ycm_allow_changing_updatetime = 0
 "}}}
 
 " [nerdcomment]{{{2
