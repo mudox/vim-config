@@ -247,9 +247,9 @@ call auto_colo#AutoColoRandom()
 set guifont=Ubuntu\ Mono\ 12
 
 " Editor interface
-set noshowmode " powerline does better 
+set noshowmode   " powerline does better
 set showcmd
-set noruler " powerline does better 
+set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 set laststatus=2 " always show status bar.
@@ -282,6 +282,7 @@ set noautochdir " for VimShell to work
 set sessionoptions=buffers,folds,globals,help,localoptions,options,resize,sesdir,slash,tabpages,unix,winpos,winsize
 set autowriteall
 set viminfo+=!  " save global variables in viminfo files 
+set winaltkeys=no " turns of the Alt key bindings to the gui menu
 
 " Insert behaviour
 set whichwrap=b,s,<,>,[,],h,l
