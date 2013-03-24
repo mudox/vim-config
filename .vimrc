@@ -451,12 +451,12 @@ let g:UltiSnipsEditSplit             = "horizontal"
 " let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 " let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsNoPythonWarning       = 1
-let g:UltiSnipsSnippetsDir           = "~/.vim/MdxUltiSnips/"
-let g:UltiSnipsSnippetDirectories    = [ "MdxUltiSnips" ]
+let g:UltiSnipsSnippetsDir           = "~/.vim/mdx_ultisnips/"
+let g:UltiSnipsSnippetDirectories    = [ "mdx_ultisnips" ]
 "}}}2
 
 " [pathogen]{{{2
-call pathogen#infect() 
+" call pathogen#infect() 
 "}}}2
 
 " [taglist]{{{2
@@ -532,6 +532,10 @@ nnoremap \ub  :Unite -vertical bookmark<CR>
 " let g:unite_enable_start_inser = 1
 " let g:unite_split_rule = 'topleft'
 " let g:unite_enable_split_vertically
+"}}}2
+
+" " [pathogen]{{{2
+" call pathogen#infect() 
 "}}}2
 
 " " [omnicppcomplete]{{{2
