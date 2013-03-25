@@ -98,12 +98,7 @@ NeoBundle 'nvie/vim-flake8', { 'name' : 'flake8' }
 " [rainbow_parentheses]
 NeoBundle 'kien/rainbow_parentheses.vim'
 " [YouCompleteMe]
-NeoBundle 'Valloric/YouCompleteMe', {
-            \   'name' : 'youcompleteme',
-            \   'build': {
-            \        'unix' : './install.sh --clang-completer'
-            \   }
-            \ }
+NeoBundle 'Valloric/YouCompleteMe', { 'name' : 'youcompleteme' }
 " [Syntastic]
 NeoBundle 'scrooloose/syntastic' 
 " [MatchTagAlways]
