@@ -367,6 +367,12 @@ inoremap <C-L> <Right>
 " }}}1
 
 " PULGIN SETTINGS {{{1
+" [delimitmate]"{{{
+let delimitMate_expand_space       = 1
+let delimitMate_expand_cr          = 1
+let delimitMate_smart_quotes       = 1
+let delimitMate_balance_matchpairs = 1
+"}}}
 
 " [easytags]"{{{
 set updatetime=4000
