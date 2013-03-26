@@ -4,7 +4,7 @@
 set nocompatible                " Recommend
 
 if has('vim_starting')
-    set runtimepath+=~/.vim/neobundle/neobundle
+    set runtimepath+=$HOME\vimfiles\neobundle\neobundle
 endif
 
 " Use https protocol over proxy.
@@ -98,12 +98,12 @@ NeoBundle 'nvie/vim-flake8', { 'name' : 'flake8' }
 " [rainbow_parentheses]
 NeoBundle 'kien/rainbow_parentheses.vim'
 " [YouCompleteMe]
-NeoBundle 'Valloric/YouCompleteMe', { 'name' : 'youcompleteme' }
+" NeoBundle 'Valloric/YouCompleteMe', { 'name' : 'youcompleteme' }
 " [Syntastic]
 NeoBundle 'scrooloose/syntastic' 
 " [MatchTagAlways]
 NeoBundle 'Valloric/MatchTagAlways', { 'name' : 'matchtagsalways' }
-" [jedi]-vim
+" [jedi-vim]
 NeoBundle 'davidhalter/jedi-vim'
 " [FSwitch]
 NeoBundle 'vim-scripts/FSwitch', { 'name' : 'fswitch' }
@@ -231,15 +231,16 @@ endif
 
 " Important
 set nocp
-set guioptions=fgtaM
+set guioptions=fegtaM
 syntax on
 filetype plugin indent on " 'filetype on' implied
 
-set encoding=utf8
+set encoding=utf8 " cp936 conficts with several plugins e.g. jedi-vim 
 
 " color & font
 call auto_colo#AutoColoRandom()
-set guifont=Ubuntu\ Mono\ 12
+
+set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
 
 " Editor interface
 set noshowmode   " powerline does better
@@ -282,7 +283,7 @@ set winaltkeys=no " turns of the Alt key bindings to the gui menu
 " Insert behaviour
 set whichwrap=b,s,<,>,[,],h,l
 set backspace=indent,eol,start
-set completeopt=menu
+set completeopt=menu,menuone
 set dictionary+=/usr/share/dict/words 
 " Fold line text
 set foldtext=MyFoldText()
@@ -295,7 +296,7 @@ endfunction
 " Command line completion
 set history=30
 set wildmenu
-set wildignorecase " *nix platform only
+" set wildignorecase " *nix platform only
 
 " }}}1
 
@@ -344,10 +345,6 @@ noremap H 
 nnoremap z/ :noh<CR>
 nnoremap z? :set hlsearch!<CR>
 
-" My new line scheme
-" nnoremap OO O
-" nnoremap Oj mpo<Esc>0d$`p
-" nnoremap Ok mpO<Esc>0d$`p
 
 " Toggle tab line
 nnoremap \t :exe "set showtabline=" . (&showtabline+1)%2<CR>
@@ -453,12 +450,8 @@ let g:UltiSnipsEditSplit             = "horizontal"
 " let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 " let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsNoPythonWarning       = 1
-let g:UltiSnipsSnippetsDir           = "~/.vim/mdx_ultisnips/"
+let g:UltiSnipsSnippetsDir           = "$HOME\\vimfiles\\mdx_ultisnips\\"
 let g:UltiSnipsSnippetDirectories    = [ "mdx_ultisnips" ]
-"}}}2
-
-" [pathogen]{{{2
-" call pathogen#infect() 
 "}}}2
 
 " [taglist]{{{2
@@ -480,7 +473,7 @@ let g:jedi#show_function_definition = 0
 nnoremap <leader>tb :TagbarToggle<CR>
 " let g:tagbar_compact = 1
 " let g:tagbar_indent = 1
-let g:tagbar_iconchars = ['▾', '▸']
+let g:tagbar_iconchars = ['+', '-']
 let g:tagbar_autoshowtag = 1
 " let g:tagbar_iconchars = ['+', '-']
 " let g:tagbar_systemenc = 'cp936'
@@ -512,7 +505,7 @@ let g:EasyMotion_do_shade = 0
 "}}}2
 
 " [powerline]{{{2
-let g:Powerline_symbols        = 'fancy'
+" let g:Powerline_symbols        = 'fancy'
 " let g:Powerline_colorscheme  = 'solarized'
 let g:Powerline_stl_path_style = 'filename'
 let g:Powerline_mode_n         = 'N'
