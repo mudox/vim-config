@@ -1,0 +1,17 @@
+snippet fun "Define a VimL function" b
+function${1:!} ${2:>Function name<}( ${3:>Parameter list<} )
+${4:>Function body here ...}
+endfunction
+$0
+endsnippet
+
+snippet abb "Define an abbreviation" b
+${1:>Prefix:[c|cno|i|ino]<}abbrev ${2:>[e-<expr>|b-<buffer>]} ${3:lhs} ${4:rhs}
+$0
+endsnippet
+
+snippet com "Define a command" b
+command${1:!} ${2:>Command Attributes<} ${3:>Command Name<} ${4:>Command Do ...<}
+endsnippet
+
+

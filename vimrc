@@ -29,7 +29,7 @@ NeoBundle 'Shougo/vimproc', {
             \    },
             \ }
 " [Vimfiler]
-NeoBundle 'Shougo/vimfiler', { 'depends' : 'Shougo/unite.vim' }
+NeoBundle 'Shougo/vimfiler'
 " [Unite]
 NeoBundle 'Shougo/unite.vim', { 'name' : 'unite' }
 " [clang_complete]
@@ -40,7 +40,6 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
             \ }
 " [Vimshell]
 NeoBundleLazy 'Shougo/vimshell',{
-            \     'depends' : 'Shougo/vimproc',
             \     'autoload' : {
             \       'commands' : [
             \           { 
