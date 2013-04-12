@@ -23,9 +23,6 @@ NeoBundle 'Shougo/neobundle-vim-scripts'
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
             \        'windows' : 'make -f make_mingw32.mak',
-            \        'cygwin'  : 'make -f make_cygwin.mak',
-            \        'mac'     : 'make -f make_mac.mak',
-            \        'unix'    : 'make -f make_unix.mak',
             \    },
             \ }
 " [Vimfiler]
@@ -43,15 +40,19 @@ NeoBundleLazy 'Shougo/vimshell',{
             \     'autoload' : {
             \       'commands' : [
             \           { 
-            \               'name' : 'VimShell',
-            \               'complete' : 'customlist,vimshell#complete'
+            \           'name'     : 'VimShell',
+            \           'complete' : 'customlist,vimshell#complete'
             \           },
-            \           'VimShellExecute', 'VimShellInteractive',
-            \           'VimShellTerminal', 'VimShellPop'
+            \           'VimShellExecute', 
+            \           'VimShellInteractive',
+            \           'VimShellTerminal',
+            \           'VimShellPop'
             \       ],
             \       'mappings' : [ '<Plug>(vimshell_switch)' ]
             \     }
             \ }
+" [indentline]
+NeoBundle 'Yggdroot/indentLine'
 " [Mudox-vim-scripts]
 NeoBundle 'Mudox/mudox-vim-scripts'
 " [delimitMate]
@@ -117,7 +118,10 @@ NeoBundle 'scrooloose/nerdcommenter'
 " [NerdTree]
 NeoBundle 'scrooloose/nerdtree' 
 " [vim]-signature
-NeoBundle 'kshenoy/vim-signature', { 'name' : 'signature' }
+NeoBundleLazy 'kshenoy/vim-signature', { 
+            \ 'name'     : 'signature',
+            \ 'autoload' : { 'commands' : 'SignatureToggle' }
+            \ }
 " [UltiSnips]
 NeoBundle 'SirVer/ultisnips'
 " [EasyMotion]
@@ -151,6 +155,42 @@ NeoBundle 'vim-scripts/Align', { 'name' : 'align' }
 " [AutoAlign]
 " NeoBundle 'vim-scripts/AutoAlign'
 "}}}2
+
+" My Colorscheme Bundles here: {{{2
+
+function! Colo_Opt_Dict( name, vim_name )
+    let s:bundle_path = expand('~/.vim/colos_neobundle')
+    let s:colors_path = expand('~/.vim/colors') 
+
+    let s:colo_options       = {}
+    let s:colo_options.name  = a:name
+    let s:colo_options.base  = s:bundle_path
+    let s:colo_options.build = { 
+                \   'unix' : 'cp ' 
+                \       . a:vim_name . ' ' . s:colors_path 
+                \ }
+
+    return s:colo_options
+endfunction
+
+NeoBundleFetch 'w0ng/vim-hybrid', 
+            \ Colo_Opt_Dict( 'hybrid', 'colors/hybrid.vim' )
+NeoBundleFetch 'tomasr/molokai', 
+            \ Colo_Opt_Dict( 'molokai', 'colors/molokai.vim' ) 
+NeoBundleFetch 'nanotech/jellybeans.vim', 
+            \ Colo_Opt_Dict( 'jellybeans', 'colors/jellybeans.vim' ) 
+NeoBundleFetch 'sjl/badwolf', 
+            \ Colo_Opt_Dict( 'badwolf', 'colors/badwolf.vim' ) 
+NeoBundleFetch 'hukl/Smyck-Color-Scheme', 
+            \ Colo_Opt_Dict( 'smyck', 'smyck.vim' ) 
+NeoBundleFetch 'jelera/vim-gummybears-colorscheme', 
+            \ Colo_Opt_Dict( 'gummybears', 'colors/gummybears.vim' ) 
+NeoBundleFetch 'YorickPeterse/Autumn.vim', 
+            \ Colo_Opt_Dict( 'autumn', 'colors/autumn.vim' ) 
+
+"}}}2
+
+NeoBundleLocal ~/.vim/bundle
 
 filetype plugin indent on       " Required!
 
@@ -226,85 +266,11 @@ if version >= 500
 endif
 " }}}1
 
-" SETTINGS {{{1
-
-" Important
-set nocp
-set guioptions=fegtaM
-syntax on
-filetype plugin indent on " 'filetype on' implied
-
-set encoding=utf8 " cp936 conficts with several plugins e.g. jedi-vim 
-
-" color & font
-call auto_colo#AutoColoRandom()
-
-set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
-
-" Editor interface
-set noshowmode   " powerline does better
-set showcmd
-set noruler      " powerline does better
-set shortmess+=I " no intro text when start with an empty buffer.
-set nocursorline
-set laststatus=2 " always show status bar.
-
-" Brace match
-set showmatch
-set matchtime=1
-
-" Tab setting
-" using expandtab scheme
-set tabstop=8
-set softtabstop=4
-set shiftwidth=4
-set smarttab
-set expandtab
-set listchars=tab:>+,eol:$
-set autoindent
-
-" Pattern searching
-set nohlsearch
-set wrapscan
-set incsearch
-set ignorecase
-set smartcase
-
-" Editor behaviour
-set whichwrap=b,s,<,>,[,],h,l
-set backspace=indent,eol,start
-set noautochdir " for VimShell to work 
-set sessionoptions=buffers,folds,globals,help,localoptions,options,resize,sesdir,slash,tabpages,unix,winpos,winsize
-set autowriteall
-set viminfo+=!  " save global variables in viminfo files 
-set winaltkeys=no " turns of the Alt key bindings to the gui menu
-
-" Insert behaviour
-set whichwrap=b,s,<,>,[,],h,l
-set backspace=indent,eol,start
-set completeopt=menu,menuone
-set dictionary+=/usr/share/dict/words 
-" Fold line text
-set foldtext=MyFoldText()
-function! MyFoldText()
-  let line = getline(v:foldstart)
-  let sub = substitute(line, '/\*\|\*/\|{\{3}.*', '', 'g')
-  return sub . v:folddashes
-endfunction
-
-" Command line completion
-set history=30
-set wildmenu
-" set wildignorecase " *nix platform only
-
-" }}}1
-
 " MAPPINGS {{{1
 
 " Default leader key for <leader> mappings
 let g:mapleader = ','
 
-nnoremap \z   :call z_menu#Main()<CR>
 
 map <Up> gk
 map <Down> gj
@@ -348,9 +314,6 @@ nnoremap z? :set hlsearch!<CR>
 " Toggle tab line
 nnoremap \t :exe "set showtabline=" . (&showtabline+1)%2<CR>
 
-" Toggle vim-signature plugin
-nnoremap \s :SignatureToggle<CR>
-
 " key q is too easy to touch, but is needed infrequently
 nnoremap q <Nop>
 nnoremap _q q
@@ -363,6 +326,53 @@ inoremap <C-L> <Right>
 " }}}1
 
 " PULGIN SETTINGS {{{1
+" [indentline]"{{{2
+let g:indentLine_char = '|'
+ " }}}2
+
+" [mudoxvimscripts]"{{{
+" let g:mdx_colos_white_list = [
+            " \   'badwolf'
+            " \ ] " just for testing ...
+let g:mdx_colos_black_list = [
+            \   'galaxy'
+            \ ]
+
+" let g:mdx_colos_256_white_list = [
+            " \   'badwolf', 
+            " \   'blackboard',
+            " \   'desert_mdx',  
+            " \   'diablo3_mdx', 
+            " \   'hybrid',      
+            " \   'jellybeans',  
+            " \   'lucius',      
+            " \   'molokai',     
+            " \   'valloric',    
+            " \   'zenburn'      
+            " \ ]                
+let g:mdx_colos_256_black_list = [
+            \   'galaxy',      
+            \   'inkpot_mdx'   
+            \ ]
+
+nnoremap \z   :<C-U>call z_menu#Main()<CR>
+ " }}}
+
+" [rainbowparentheses] " {{{
+nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR> 
+"}}}
+
+" [yankring]"{{{
+let g:yankring_min_element_length = 2
+let yankring_history_dir          = '$HOME/.vim'
+let g:yankring_history_file       = 'yankring_hist'
+function! g:YRRunAfterMaps()
+    nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+endfunction
+
+nnoremap <leader>yr :<C-U>YRShow<CR>
+"}}}
+
 " [delimitmate]"{{{
 let delimitMate_expand_space       = 1
 let delimitMate_expand_cr          = 1
@@ -372,6 +382,13 @@ let delimitMate_balance_matchpairs = 1
 
 " [easytags]"{{{
 set updatetime=4000
+let g:easytags_updatetime_autodisable = 1
+let g:easytags_include_members = 1
+highlight cMember gui=italic
+" highlight link cMember Special
+if has('unix') || has('win32unix')
+    let g:easytags_resolve_links = 1
+end
 "}}}
 
 " [clangcomplete]"{{{
@@ -444,13 +461,17 @@ let NERDDefaultNesting            = 0
 "}}}2
 
 " [ultisnips]{{{2
-let g:UltiSnipsEditSplit             = "horizontal"
-" let g:UltiSnipsExpandTrigger       = "<tab>"
-" let g:UltiSnipsJumpForwardTrigger  = "<tab>"
-" let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsNoPythonWarning       = 1
-let g:UltiSnipsSnippetsDir           = "$HOME\\vimfiles\\mdx_ultisnips\\"
-let g:UltiSnipsSnippetDirectories    = [ "mdx_ultisnips" ]
+let g:UltiSnipsEditSplit           = "horizontal"
+" let g:UltiSnipsExpandTrigger     = "<tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<C-H>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-L>"
+let g:UltiSnipsNoPythonWarning     = 1
+let g:UltiSnipsSnippetsDir         = "$HOME\\vimfiles\\mdx_ultisnips\\"
+let g:UltiSnipsSnippetDirectories  = [ "mdx_ultisnips" ]
+"}}}2
+
+" [pathogen]{{{2
+" call pathogen#infect() 
 "}}}2
 
 " [taglist]{{{2
@@ -489,6 +510,7 @@ let NERDTreeMinimalUI = 1 " No ? tips line, no bookmark headline.
 "}}}2
 
 " [vimsignature]{{{2
+nnoremap \s :SignatureToggle<CR>
 let g:SignaturePeriodicRefresh = 0
 "}}}2
 
@@ -568,116 +590,6 @@ nnoremap \ub  :Unite -vertical bookmark<CR>
 " " let g:SuperTabClosePreviewOnPopupClose = 1
 " "}}}2
 
-" " [neocomplcache]{{{2
-
-    " "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-
-    " " Use neocomplcache.
-    " let g:neocomplcache_enable_at_startup = 0
-
-    " " Use smartcase.
-    " let g:neocomplcache_enable_smart_case = 1
-
-    " " Set minimum syntax keyword length.
-    " let g:neocomplcache_min_syntax_length = 3
-    " let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-    " " Enable heavy features.
-    " " Use camel case completion.
-    " " let g:neocomplcache_enable_camel_case_completion = 1
-
-    " " Use underbar completion.
-    " " let g:neocomplcache_enable_underbar_completion = 1
-
-    " let g:neocomplcache_enable_auto_close_preview = 0
-
-    " " Fuzzy matching
-    " let g:neocomplcache_enable_fuzzy_completion = 1
-    " let g:neocomplcache_fuzzy_completion_start_length = 3
-
-    " " Define dictionary.
-    " let g:neocomplcache_dictionary_filetype_lists = {
-        " \ 'default' : '',
-        " \ 'vimshell' : $HOME . '/.vimshell_hist',
-        " \ 'scheme' : $HOME . '/.gosh_completions'
-        " \ }
-
-    " " Define keyword.
-    " if !exists('g:neocomplcache_keyword_patterns')
-        " let g:neocomplcache_keyword_patterns = {}
-    " endif
-    " let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-    " " Plugin key-mappings.
-    " inoremap <expr><C-g>     neocomplcache#undo_completion()
-    " inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-    " " Recommended key-mappings.
-    " " Close popup by <Space>.
-    " inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() ."\<Space>" : "\<Space>"
-
-    " " <CR> behaviour:
-    " " When menu popped up, insert selected candidate word followed with a new
-    " " line, otherwise behave as it is.
-    " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    " function! s:my_cr_function()
-      " return neocomplcache#close_popup() . "\<CR>"
-      " " For no inserting <CR> key.
-      " "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-    " endfunction
-
-    " " <TAB>: completion.
-    " inoremap <expr><TAB>  pumvisible() ? "\<C-N>" : "\<TAB>"
-    " inoremap <C-J>  <C-N>
-    " inoremap <C-K>  <C-P>
-
-    " " <C-h>, <BS>: close popup and delete backword char.
-    " inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-    " inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-    " inoremap <expr><C-y>  neocomplcache#close_popup()
-    " inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
-    " " For cursor moving in insert mode(Not recommended)
-    " "inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
-    " "inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
-    " "inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
-    " "inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
-    " " Or set this.
-    " "let g:neocomplcache_enable_cursor_hold_i = 1
-    " " Or set this.
-    " "let g:neocomplcache_enable_insert_char_pre = 1
-
-    " " AutoComplPop like behavior.
-    " " let g:neocomplcache_enable_auto_select = 1
-
-    " " Shell like behavior(not recommended).
-    " "set completeopt+=longest
-    " "let g:neocomplcache_enable_auto_select = 1
-    " "let g:neocomplcache_disable_auto_complete = 1
-    " "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-    " " Enable omni completion.
-    " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    " autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    " autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-    " " Enable heavy omni completion.
-    " if !exists('g:neocomplcache_omni_patterns')
-      " let g:neocomplcache_omni_patterns = {}
-    " endif
-    " let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-    " "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-    " let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-    " let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-    " let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-    " " For perlomni.vim setting.
-    " " https://github.com/c9s/perlomni.vim
-    " let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-" " "}}}2
-
 "}}}1
 
 " EVENTS {{{1
@@ -711,4 +623,76 @@ hi SignColumn     gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
 
 "}}}1
 
+" SETTINGS {{{1
+
+" Important
+set nocp
+set guioptions=fegtaM
+syntax on
+filetype plugin indent on " 'filetype on' implied
+
+set encoding=utf8 " cp936 conficts with several plugins e.g. jedi-vim 
+
+" color & font
+call auto_colo#AutoColoRandom()
+
+set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
+
+" Editor interface
+set noshowmode   " powerline does better
+set showcmd
+set noruler      " powerline does better
+set shortmess+=I " no intro text when start with an empty buffer.
+set nocursorline
+set laststatus=2 " always show status bar.
+
+" Brace match
+set showmatch
+set matchtime=1
+
+" Tab setting
+" using expandtab scheme
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+set listchars=tab:>+,eol:$
+set autoindent
+
+" Pattern searching
+set nohlsearch
+set wrapscan
+set incsearch
+set ignorecase
+set smartcase
+
+" Editor behaviour
+set whichwrap=b,s,<,>,[,],h,l
+set backspace=indent,eol,start
+set noautochdir " for VimShell to work 
+set sessionoptions=buffers,folds,globals,help,localoptions,options,resize,sesdir,slash,tabpages,unix,winpos,winsize
+set autowriteall
+set viminfo+=!  " save global variables in viminfo files 
+set winaltkeys=no " turns of the Alt key bindings to the gui menu
+
+" Insert behaviour
+set whichwrap=b,s,<,>,[,],h,l
+set backspace=indent,eol,start
+set completeopt=menu,menuone
+set dictionary+=/usr/share/dict/words 
+" Fold line text
+set foldtext=MyFoldText()
+function! MyFoldText()
+  let line = getline(v:foldstart)
+  let sub = substitute(line, '/\*\|\*/\|{\{3}.*', '', 'g')
+  return sub . v:folddashes
+endfunction
+
+" Command line completion
+set history=30
+set wildmenu
+" set wildignorecase " *nix platform only
+
+" }}}1
 " vim: foldmethod=marker fileformat=unix
