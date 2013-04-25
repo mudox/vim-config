@@ -51,97 +51,105 @@ NeoBundleLazy 'Shougo/vimshell',{
             \       'mappings' : [ '<Plug>(vimshell_switch)' ]
             \     }
             \ }
-" [indentline]
-NeoBundle 'Yggdroot/indentLine'
-" [Mudox-vim-scripts]
-NeoBundle 'Mudox/mudox-vim-scripts'
-" [delimitMate]
-NeoBundle 'Raimondi/delimitMate', { 'name' : 'delimitmate' }
-" [Easytags]
-NeoBundle 'xolox/vim-easytags', { 'name' : 'easytags' }
-" [Vim-textobj-syntax]
-NeoBundle 'kana/vim-textobj-syntax', { 'name' : 'text-ojbect-syntax' }
-" [Vim-textobj-function]
-NeoBundle 'kana/vim-textobj-function', { 'name' : 'textobj-function' }
-" [Vim-textobj-entire]
-NeoBundle 'kana/vim-textobj-entire', { 'name' : 'textobj-entire' }
-" [Vim-textobj-indent]
-NeoBundle 'kana/vim-textobj-indent', { 'name' : 'textobj-indent' }
-" [Vim-textobj-line]
-NeoBundle 'kana/vim-textobj-line', { 'name' : 'textobj-line' }
-" [Vim-textobj-user]
-NeoBundle 'kana/vim-textobj-user', { 'name' : 'textobj-user' }
-" [Nrrwrgn]
-NeoBundle 'chrisbra/NrrwRgn', { 'name' : 'nrrwrgn' }
-" [Repeat]
-NeoBundle 'tpope/vim-repeat', { 'name' : 'repeat' }
-" [Unimpaired]
-NeoBundle 'tpope/vim-unimpaired', { 'name' : 'unimpaired' }
-" [Abolish]
-NeoBundle 'tpope/vim-abolish', { 'name' : 'abolish' }
-" [Textobj-word-column]
-NeoBundle 'coderifous/textobj-word-column.vim'
-" [Zoomwintab]
-NeoBundle 'troydm/zoomwintab.vim'
-" [singlecompile]
-NeoBundle 'xuhdev/SingleCompile', { 'name' : 'singlecompile' }
-" [hardmode]
-NeoBundle 'wikitopian/hardmode'
-" [yankring]
-NeoBundle 'vim-scripts/YankRing.vim', { 'name' : 'yankring' }
-" [python-mode]
-NeoBundle 'klen/python-mode'
-" [vimwiki]
-NeoBundle 'vim-scripts/vimwiki'
-" [flake8]
-NeoBundle 'nvie/vim-flake8', { 'name' : 'flake8' }
-" [rainbow_parentheses]
-NeoBundle 'kien/rainbow_parentheses.vim'
-" [YouCompleteMe]
-" NeoBundle 'Valloric/YouCompleteMe', { 'name' : 'youcompleteme' }
-" [Syntastic]
-NeoBundle 'scrooloose/syntastic' 
-" [MatchTagAlways]
-NeoBundle 'Valloric/MatchTagAlways', { 'name' : 'matchtagsalways' }
-" [jedi-vim]
-NeoBundle 'davidhalter/jedi-vim'
-" [FSwitch]
-NeoBundle 'vim-scripts/FSwitch', { 'name' : 'fswitch' }
-" [ColorV] related
-NeoBundle 'mattn/webapi-vim' 
-NeoBundle 'Rykka/colorv.vim'
-NeoBundle 'Rykka/galaxy.vim'
-" [Powerline]
-NeoBundle 'Lokaltog/vim-powerline', { 'name' : 'powerline' }
-" [NerdCommenter]
-NeoBundle 'scrooloose/nerdcommenter' 
-" [NerdTree]
-NeoBundle 'scrooloose/nerdtree' 
 " [vim]-signature
 NeoBundleLazy 'kshenoy/vim-signature', { 
             \ 'name'     : 'signature',
             \ 'autoload' : { 'commands' : 'SignatureToggle' }
             \ }
-" [UltiSnips]
-NeoBundle 'SirVer/ultisnips'
+" [delimitMate]
+NeoBundle 'Raimondi/delimitMate'        , { 'name' : 'delimitmate' }
+" [Easytags]
+NeoBundle 'xolox/vim-easytags'          , { 'name' : 'easytags' }
+" [Vim-textobj-syntax]
+NeoBundle 'kana/vim-textobj-syntax'     , { 'name' : 'text-ojbect-syntax' }
+" [Vim-textobj-function]
+NeoBundle 'kana/vim-textobj-function'   , { 'name' : 'textobj-function' }
+" [Vim-textobj-entire]
+NeoBundle 'kana/vim-textobj-entire'     , { 'name' : 'textobj-entire' }
+" [Vim-textobj-indent]
+NeoBundle 'kana/vim-textobj-indent'     , { 'name' : 'textobj-indent' }
+" [vim-multiple-cursors]
+NeoBundle 'terryma/vim-multiple-cursors', { 'name' : 'multiple-cursors' }
+" [Vim-textobj-line]
+NeoBundle 'kana/vim-textobj-line'       , { 'name' : 'textobj-line' }
+" [Vim-textobj-user]
+NeoBundle 'kana/vim-textobj-user'       , { 'name' : 'textobj-user' }
+" [Nrrwrgn]
+NeoBundle 'chrisbra/NrrwRgn'            , { 'name' : 'nrrwrgn' }
+" [Repeat]
+NeoBundle 'tpope/vim-repeat'            , { 'name' : 'repeat' }
+" [Unimpaired]
+NeoBundle 'tpope/vim-unimpaired'        , { 'name' : 'unimpaired' }
+" [Unimpaired]
+NeoBundle 'tpope/vim-unimpaired'        , { 'name' : 'unimpaired' }
+" [Abolish]
+NeoBundle 'tpope/vim-abolish'           , { 'name' : 'abolish' }
+" [singlecompile]
+NeoBundle 'xuhdev/SingleCompile'        , { 'name' : 'singlecompile' }
+" [yankring]
+NeoBundle 'vim-scripts/YankRing.vim'    , { 'name' : 'yankring' }
+" [flake8]
+NeoBundle 'nvie/vim-flake8'             , { 'name' : 'flake8' }
+" [MatchTagAlways]
+NeoBundle 'Valloric/MatchTagAlways'     , { 'name' : 'matchtagsalways' }
+" [FSwitch]
+NeoBundle 'vim-scripts/FSwitch'         , { 'name' : 'fswitch' }
+" [Powerline]
+NeoBundle 'Lokaltog/vim-powerline'      , { 'name' : 'powerline' }
 " [EasyMotion]
-NeoBundle 'Lokaltog/vim-easymotion', { 'name' : 'easymotion' }
+NeoBundle 'Lokaltog/vim-easymotion'     , { 'name' : 'easymotion' }
 " [Vim-Indent-Guides]
 NeoBundle 'mutewinter/vim-indent-guides', { 'name' : 'indent-guides' }
-" [TagList]
-NeoBundle 'vim-scripts/taglist.vim'        
-" [TagBar]
-NeoBundle 'majutsushi/tagbar'            
 " [SrcExpl]
-NeoBundle 'wesleyche/SrcExpl', { 'name' : 'srcexpl' }
+NeoBundle 'wesleyche/SrcExpl'           , { 'name' : 'srcexpl' }
 " [BufExplorer]
-NeoBundle 'vim-scripts/bufexplorer.zip', { 'name' : 'bufexplorer' }
+NeoBundle 'vim-scripts/bufexplorer.zip' , { 'name' : 'bufexplorer' }
 " [Fugitive]
-NeoBundle 'tpope/vim-fugitive', { 'name' : 'fugitive' }
+NeoBundle 'tpope/vim-fugitive'          , { 'name' : 'fugitive' }
 " [Surround]
-NeoBundle 'tpope/vim-surround', { 'name' : 'surround' }
+NeoBundle 'tpope/vim-surround'          , { 'name' : 'surround' }
 " [Align]
-NeoBundle 'vim-scripts/Align', { 'name' : 'align' }
+NeoBundle 'vim-scripts/Align'           , { 'name' : 'align' }
+" [vim-multiple-cursors]
+NeoBundle 'terryma/vim-multiple-cursors', { 'name' : 'multiple-cursors' }
+" [vim-expand-region]
+NeoBundle 'terryma/vim-expand-region'   , { 'name' : 'expand-region' }
+" [indentline]
+NeoBundle 'Yggdroot/indentLine'
+" [Mudox-vim-scripts]
+NeoBundle 'Mudox/mudox-vim-scripts'
+" [python-mode]
+NeoBundle 'klen/python-mode'
+" [vimwiki]
+NeoBundle 'vim-scripts/vimwiki'
+" [TagList]
+NeoBundle 'vim-scripts/taglist.vim'
+" [TagBar]
+NeoBundle 'majutsushi/tagbar'
+" [rainbow_parentheses]
+NeoBundle 'kien/rainbow_parentheses.vim'
+" [Syntastic]
+NeoBundle 'scrooloose/syntastic'
+" [jedi-vim]
+NeoBundle 'davidhalter/jedi-vim'
+" [ColorV] related
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'Rykka/colorv.vim'
+NeoBundle 'Rykka/galaxy.vim'
+" [NerdCommenter]
+NeoBundle 'scrooloose/nerdcommenter'
+" [NerdTree]
+NeoBundle 'scrooloose/nerdtree'
+" [UltiSnips]
+NeoBundle 'SirVer/ultisnips'
+" [Textobj-word-column]
+NeoBundle 'coderifous/textobj-word-column.vim'
+" [Zoomwintab]
+NeoBundle 'troydm/zoomwintab.vim'
+" [hardmode]
+NeoBundle 'wikitopian/hardmode'
+" [YouCompleteMe]
+" NeoBundle 'Valloric/YouCompleteMe', { 'name' : 'youcompleteme' }
 " [NeoComplCache]
 " NeoBundle 'Shougo/neocomplcache' 
 " [SuperTab]
@@ -201,6 +209,13 @@ if !has('vim_starting')
     " Call on_source hook when reloading .vimrc.
     call neobundle#call_hook('on_source')
 endif
+
+function NeoUpdateLogs()
+    NeoBundleUpdate
+    NeoBundleUpdatesLog
+endfunction
+
+nnoremap \neo :call NeoUpdateLogs()<CR>
 "}}}1
 
 " FROM SAMPLE FILE {{{1
@@ -327,10 +342,14 @@ inoremap <C-L> <Right>
 
 " PULGIN SETTINGS {{{1
 " [indentline]"{{{2
-let g:indentLine_char = '|'
+nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
+
+" let g:indentLine_char = '.'
+" let g:indentLine_color_term = 239
+" let g:indentLine_color_gui = '#389900'
  " }}}2
 
-" [mudoxvimscripts]"{{{
+" [mudoxvimscripts]"{{{2
 " let g:mdx_colos_white_list = [
             " \   'badwolf'
             " \ ] " just for testing ...
@@ -356,13 +375,13 @@ let g:mdx_colos_256_black_list = [
             \ ]
 
 nnoremap \z   :<C-U>call z_menu#Main()<CR>
- " }}}
+ " }}}2
 
-" [rainbowparentheses] " {{{
+" [rainbowparentheses] " {{{2
 nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR> 
-"}}}
+"}}}2
 
-" [yankring]"{{{
+" [yankring]"{{{2
 let g:yankring_min_element_length = 2
 let yankring_history_dir          = '$HOME/.vim'
 let g:yankring_history_file       = 'yankring_hist'
@@ -371,16 +390,16 @@ function! g:YRRunAfterMaps()
 endfunction
 
 nnoremap <leader>yr :<C-U>YRShow<CR>
-"}}}
+"}}}2
 
-" [delimitmate]"{{{
+" [delimitmate]"{{{2
 let delimitMate_expand_space       = 1
 let delimitMate_expand_cr          = 1
 let delimitMate_smart_quotes       = 1
 let delimitMate_balance_matchpairs = 1
-"}}}
+"}}}2
 
-" [easytags]"{{{
+" [easytags]"{{{2
 set updatetime=4000
 let g:easytags_updatetime_autodisable = 1
 let g:easytags_include_members = 1
@@ -389,60 +408,61 @@ highlight cMember gui=italic
 if has('unix') || has('win32unix')
     let g:easytags_resolve_links = 1
 end
-"}}}
+"}}}2
 
-" [clangcomplete]"{{{
-" let g:clang_hl_errors = 1
-let g:clang_complete_copen = 1
-let g:clang_complete_auto = 1
-let g:clang_periodic_quickfix = 1
-let g:clang_snippets = 1
-let g:clang_close_preview = 1
-let g:clang_snippets_engine = 'ultisnips'
-" let g:clang_trailing_placeholder = 1
-" let g:clang_user_options = '-std=c++11'
-" let g:clang_auto_user_options
-" let g:clang_compilation_database
-" let g:clang_use_library = 1
-" let g:clang_library_path = ""
-" let g:clang_sort_algo = "priority"
-" let g:clang_complete_macros = 0
-" let g:clang_complete_patterns = 0
-"}}}
+" " [clangcomplete]"{{{2
+" " let g:clang_hl_errors = 1
+" let g:clang_complete_copen = 1
+" let g:clang_complete_auto = 1
+" let g:clang_periodic_quickfix = 1
+" let g:clang_snippets = 1
+" let g:clang_close_preview = 1
+" let g:clang_snippets_engine = 'ultisnips'
+" " let g:clang_trailing_placeholder = 1
+" " let g:clang_user_options = '-std=c++11'
+" " let g:clang_auto_user_options
+" " let g:clang_compilation_database
+" " let g:clang_use_library = 1
+" " let g:clang_library_path = ""
+" " let g:clang_sort_algo = "priority"
+" " let g:clang_complete_macros = 0
+" " let g:clang_complete_patterns = 0
+" "}}}2
 
-" [singlecompile]"{{{
+" [singlecompile]"{{{2
 nnoremap <F5> :<C-U>SCCompileRun<CR>
-"}}}
+"}}}2
 
-" [python-mode]"{{{
+" [python-mode]"{{{2
 let g:pymode_doc_key  = '<leader>k'
 let g:pymode_run_key  = '<leader>run'
 let pymode_lint_onfly = 1
 let pymode_breakpoint = '<leader>brk'
-"}}}
+"}}}2
 
-" [youcompleteme]"{{{
+" [youcompleteme]"{{{2
 nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_add_preview_to_completeopt                = 1
-let g:ycm_complete_in_comments_and_strings          = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_key_list_select_completion                = ['<Down>']
-let g:ycm_key_list_previous_completion              = ['<Up>']
-" let g:ycm_key_invoke_completion                   = '<C-Space>'
-" let g:ycm_key_detailed_diagnostics                = '<leader>d'
-let g:ycm_global_ycm_extra_conf                     = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_filetypes_to_completely_ignore            = {}
-let g:ycm_filetype_blacklist                        = {
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_add_preview_to_completeopt                    = 1
+let g:ycm_complete_in_comments_and_strings              = 1
+let g:ycm_autoclose_preview_window_after_completion     = 1
+let g:ycm_key_list_select_completion                    = ['<Down>']
+let g:ycm_key_list_previous_completion                  = ['<Up>']
+let g:ycm_global_ycm_extra_conf                         = '~/.vim/neobundle/youcompleteme/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_filetypes_to_completely_ignore                = {}
+let g:ycm_filetype_blacklist                            = {
       \ 'notes'    : 1,
       \ 'markdown' : 1,
-      \ 'python'   : 1,
-      \ 'cpp'      : 1, 
+      \ 'python'   : 1
       \}
-" let g:ycm_filetype_whitelist                      = {
+" let g:ycm_filetype_whitelist                          = {
       " \ '*'      : 1,
       " \}
-let g:ycm_allow_changing_updatetime = 0
-"}}}
+let g:ycm_allow_changing_updatetime                     = 0
+let g:ycm_register_as_syntastic_checker                 = 1
+" let g:ycm_key_invoke_completion                       = '<C-Space>'
+" let g:ycm_key_detailed_diagnostics                    = '<leader>d'
+"}}}2
 
 " [nerdcomment]{{{2
 let NERDBlockComIgnoreEmpty       = 1
@@ -463,8 +483,8 @@ let NERDDefaultNesting            = 0
 " [ultisnips]{{{2
 let g:UltiSnipsEditSplit           = "horizontal"
 " let g:UltiSnipsExpandTrigger     = "<tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<C-H>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-L>"
+let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-S>"
 let g:UltiSnipsNoPythonWarning     = 1
 let g:UltiSnipsSnippetsDir         = "$HOME\\vimfiles\\mdx_ultisnips\\"
 let g:UltiSnipsSnippetDirectories  = [ "mdx_ultisnips" ]
@@ -635,7 +655,6 @@ set encoding=utf8 " cp936 conficts with several plugins e.g. jedi-vim
 
 " color & font
 call auto_colo#AutoColoRandom()
-
 set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
 
 " Editor interface
@@ -670,7 +689,7 @@ set smartcase
 " Editor behaviour
 set whichwrap=b,s,<,>,[,],h,l
 set backspace=indent,eol,start
-set noautochdir " for VimShell to work 
+set autochdir 
 set sessionoptions=buffers,folds,globals,help,localoptions,options,resize,sesdir,slash,tabpages,unix,winpos,winsize
 set autowriteall
 set viminfo+=!  " save global variables in viminfo files 
@@ -679,7 +698,7 @@ set winaltkeys=no " turns of the Alt key bindings to the gui menu
 " Insert behaviour
 set whichwrap=b,s,<,>,[,],h,l
 set backspace=indent,eol,start
-set completeopt=menu,menuone
+set completeopt=menu
 set dictionary+=/usr/share/dict/words 
 " Fold line text
 set foldtext=MyFoldText()
@@ -695,4 +714,5 @@ set wildmenu
 " set wildignorecase " *nix platform only
 
 " }}}1
+
 " vim: foldmethod=marker fileformat=unix
