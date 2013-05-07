@@ -29,12 +29,6 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/vimfiler'
 " [Unite]
 NeoBundle 'Shougo/unite.vim', { 'name' : 'unite' }
-" [clang_complete]
-NeoBundleLazy 'Rip-Rip/clang_complete', {
-            \   'autoload' : {
-            \       'filetypes' : ['c', 'cpp'],
-            \   },
-            \ }
 " [Vimshell]
 NeoBundleLazy 'Shougo/vimshell',{
             \     'autoload' : {
@@ -148,6 +142,13 @@ NeoBundle 'coderifous/textobj-word-column.vim'
 NeoBundle 'troydm/zoomwintab.vim'
 " [hardmode]
 NeoBundle 'wikitopian/hardmode'
+" [vim-markdown]
+NeoBundle 'plasticboy/vim-markdown'
+" [python-vim-instant-markdown]
+NeoBundle 'isnowfy/python-vim-instant-markdown'
+
+" ======================== DEPRECATED PLUGINS ========================
+
 " [YouCompleteMe]
 " NeoBundle 'Valloric/YouCompleteMe', { 'name' : 'youcompleteme' }
 " [NeoComplCache]
@@ -162,6 +163,12 @@ NeoBundle 'wikitopian/hardmode'
 " NeoBundle 'jiangmiao/auto-pairs'         
 " [AutoAlign]
 " NeoBundle 'vim-scripts/AutoAlign'
+" [clang_complete]
+" NeoBundleLazy 'Rip-Rip/clang_complete', {
+	    " \   'autoload' : {
+	    " \       'filetypes' : ['c', 'cpp'],
+	    " \   },
+	    " \ }
 "}}}2
 
 " My Colorscheme Bundles here: {{{2
@@ -286,7 +293,6 @@ endif
 " Default leader key for <leader> mappings
 let g:mapleader = ','
 
-
 map <Up> gk
 map <Down> gj
 
@@ -338,6 +344,7 @@ noremap zi zizz
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
 
+nnoremap <leader>cd :<C-U>lcd %:p:h<CR>
 " }}}1
 
 " PULGIN SETTINGS {{{1
