@@ -1,4 +1,9 @@
 " .vimrc for [G]Vim on Linux
+"
+" NOTE:
+" This vimrc has several presumption:
+" * assumes you haved defined a system or user environment variable: MDX_DROPBOX
+"   which holds the absolute path to dropbox root path.
 
 " NEOBUNDLE {{{1
 set nocompatible                " Recommend
@@ -27,8 +32,6 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 " [Vimfiler]
 NeoBundle 'Shougo/vimfiler'
-" [Unite]
-NeoBundle 'Shougo/unite.vim', { 'name' : 'unite' }
 " [Vimshell]
 NeoBundleLazy 'Shougo/vimshell',{
             \     'autoload' : {
@@ -47,69 +50,87 @@ NeoBundleLazy 'Shougo/vimshell',{
             \ }
 " [vim]-signature
 NeoBundleLazy 'kshenoy/vim-signature', { 
-            \ 'name'     : 'signature',
-            \ 'autoload' : { 'commands' : 'SignatureToggle' }
+            \   'name'     : 'signature',
+            \   'autoload' : { 'commands' : 'SignatureToggle' }
             \ }
+" [Unite]
+NeoBundle 'Shougo/unite.vim'                  , { 'name' : 'unite' }
 " [delimitMate]
-NeoBundle 'Raimondi/delimitMate'        , { 'name' : 'delimitmate' }
+NeoBundle 'Raimondi/delimitMate'              , { 'name' : 'delimitmate' }
 " [Easytags]
-NeoBundle 'xolox/vim-easytags'          , { 'name' : 'easytags' }
+NeoBundle 'xolox/vim-easytags'                , { 'name' : 'easytags' }
 " [Vim-textobj-syntax]
-NeoBundle 'kana/vim-textobj-syntax'     , { 'name' : 'text-ojbect-syntax' }
+NeoBundle 'kana/vim-textobj-syntax'           , { 'name' : 'textobj-syntax' }
 " [Vim-textobj-function]
-NeoBundle 'kana/vim-textobj-function'   , { 'name' : 'textobj-function' }
+NeoBundle 'kana/vim-textobj-function'         , { 'name' : 'textobj-function' }
 " [Vim-textobj-entire]
-NeoBundle 'kana/vim-textobj-entire'     , { 'name' : 'textobj-entire' }
+NeoBundle 'kana/vim-textobj-entire'           , { 'name' : 'textobj-entire' }
 " [Vim-textobj-indent]
-NeoBundle 'kana/vim-textobj-indent'     , { 'name' : 'textobj-indent' }
-" [vim-multiple-cursors]
-NeoBundle 'terryma/vim-multiple-cursors', { 'name' : 'multiple-cursors' }
+NeoBundle 'kana/vim-textobj-indent'           , { 'name' : 'textobj-indent' }
+" [textobj-comment]
+NeoBundle 'glts/vim-textobj-comment'          , { 'name' : 'textobj-comment' }
 " [Vim-textobj-line]
-NeoBundle 'kana/vim-textobj-line'       , { 'name' : 'textobj-line' }
+NeoBundle 'kana/vim-textobj-line'             , { 'name' : 'textobj-line' }
 " [Vim-textobj-user]
-NeoBundle 'kana/vim-textobj-user'       , { 'name' : 'textobj-user' }
-" [Nrrwrgn]
-NeoBundle 'chrisbra/NrrwRgn'            , { 'name' : 'nrrwrgn' }
-" [Repeat]
-NeoBundle 'tpope/vim-repeat'            , { 'name' : 'repeat' }
-" [Unimpaired]
-NeoBundle 'tpope/vim-unimpaired'        , { 'name' : 'unimpaired' }
-" [Unimpaired]
-NeoBundle 'tpope/vim-unimpaired'        , { 'name' : 'unimpaired' }
-" [Abolish]
-NeoBundle 'tpope/vim-abolish'           , { 'name' : 'abolish' }
-" [singlecompile]
-NeoBundle 'xuhdev/SingleCompile'        , { 'name' : 'singlecompile' }
-" [yankring]
-NeoBundle 'vim-scripts/YankRing.vim'    , { 'name' : 'yankring' }
-" [flake8]
-NeoBundle 'nvie/vim-flake8'             , { 'name' : 'flake8' }
-" [MatchTagAlways]
-NeoBundle 'Valloric/MatchTagAlways'     , { 'name' : 'matchtagsalways' }
-" [FSwitch]
-NeoBundle 'vim-scripts/FSwitch'         , { 'name' : 'fswitch' }
-" [Powerline]
-NeoBundle 'Lokaltog/vim-powerline'      , { 'name' : 'powerline' }
-" [EasyMotion]
-NeoBundle 'Lokaltog/vim-easymotion'     , { 'name' : 'easymotion' }
-" [Vim-Indent-Guides]
-NeoBundle 'mutewinter/vim-indent-guides', { 'name' : 'indent-guides' }
-" [SrcExpl]
-NeoBundle 'wesleyche/SrcExpl'           , { 'name' : 'srcexpl' }
-" [BufExplorer]
-NeoBundle 'vim-scripts/bufexplorer.zip' , { 'name' : 'bufexplorer' }
-" [Fugitive]
-NeoBundle 'tpope/vim-fugitive'          , { 'name' : 'fugitive' }
-" [Surround]
-NeoBundle 'tpope/vim-surround'          , { 'name' : 'surround' }
-" [Align]
-NeoBundle 'vim-scripts/Align'           , { 'name' : 'align' }
+NeoBundle 'kana/vim-textobj-user'             , { 'name' : 'textobj-user' }
+" [Textobj-word-column]
+NeoBundle 'coderifous/textobj-word-column.vim', { 'name' : 'textobj-word-column'}
 " [vim-multiple-cursors]
-NeoBundle 'terryma/vim-multiple-cursors', { 'name' : 'multiple-cursors' }
+NeoBundle 'terryma/vim-multiple-cursors'      , { 'name' : 'multiple-cursors' }
+" [Nrrwrgn]
+NeoBundle 'chrisbra/NrrwRgn'                  , { 'name' : 'nrrwrgn' }
+" [Repeat]
+NeoBundle 'tpope/vim-repeat'                  , { 'name' : 'repeat' }
+" [Unimpaired]
+NeoBundle 'tpope/vim-unimpaired'              , { 'name' : 'unimpaired' }
+" [Unimpaired]
+NeoBundle 'tpope/vim-unimpaired'              , { 'name' : 'unimpaired' }
+" [Abolish]
+NeoBundle 'tpope/vim-abolish'                 , { 'name' : 'abolish' }
+" [singlecompile]
+NeoBundle 'xuhdev/SingleCompile'              , { 'name' : 'singlecompile' }
+" [yankring]
+NeoBundle 'vim-scripts/YankRing.vim'          , { 'name' : 'yankring' }
+" [flake8]
+NeoBundle 'nvie/vim-flake8'                   , { 'name' : 'flake8' }
+" [MatchTagAlways]
+NeoBundle 'Valloric/MatchTagAlways'           , { 'name' : 'matchtagsalways' }
+" [FSwitch]
+NeoBundle 'vim-scripts/FSwitch'               , { 'name' : 'fswitch' }
+" [Powerline]
+NeoBundle 'Lokaltog/vim-powerline'            , { 'name' : 'powerline' }
+" [EasyMotion]
+NeoBundle 'Lokaltog/vim-easymotion'           , { 'name' : 'easymotion' }
+" [Vim-Indent-Guides]
+NeoBundle 'mutewinter/vim-indent-guides'      , { 'name' : 'indent-guides' }
+" [SrcExpl]
+NeoBundle 'wesleyche/SrcExpl'                 , { 'name' : 'srcexpl' }
+" [BufExplorer]
+NeoBundle 'vim-scripts/bufexplorer.zip'       , { 'name' : 'bufexplorer' }
+" [Fugitive]
+NeoBundle 'tpope/vim-fugitive'                , { 'name' : 'fugitive' }
+" [Surround]
+NeoBundle 'tpope/vim-surround'                , { 'name' : 'surround' }
+" [Align]
+NeoBundle 'vim-scripts/Align'                 , { 'name' : 'align' }
+" [vim-multiple-cursors]
+NeoBundle 'terryma/vim-multiple-cursors'      , { 'name' : 'multiple-cursors' }
 " [vim-expand-region]
-NeoBundle 'terryma/vim-expand-region'   , { 'name' : 'expand-region' }
+NeoBundle 'terryma/vim-expand-region'         , { 'name' : 'expand-region' }
+" " [YouCompleteMe]
+" NeoBundle 'Valloric/YouCompleteMe'            , { 'name' : 'youcompleteme' }
+" [zencoding-vim]
+NeoBundle 'mattn/zencoding-vim'               , { 'name' : 'zencoding' }
 " [indentline]
-NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'Yggdroot/indentLine'               , { 'name' : 'indentline' }
+" [dbext]
+NeoBundle 'vim-scripts/dbext.vim'             , { 'name' : 'dbext' }
+" [vim-matrix-screensaver]
+NeoBundle 'uguu-org/vim-matrix-screensaver'
+" [vim-misc]
+NeoBundle 'xolox/vim-misc'
+" [pyton-syntax]
+NeoBundle 'hdima/python-syntax'
 " [Mudox-vim-scripts]
 NeoBundle 'Mudox/mudox-vim-scripts'
 " [python-mode]
@@ -136,12 +157,10 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 " [UltiSnips]
 NeoBundle 'SirVer/ultisnips'
-" [Textobj-word-column]
-NeoBundle 'coderifous/textobj-word-column.vim'
 " [Zoomwintab]
 NeoBundle 'troydm/zoomwintab.vim'
-" [hardmode]
-NeoBundle 'wikitopian/hardmode'
+" [abolish]
+NeoBundle 'tpope/vim-abolish'
 " [vim-markdown]
 NeoBundle 'plasticboy/vim-markdown'
 " [python-vim-instant-markdown]
@@ -165,17 +184,17 @@ NeoBundle 'isnowfy/python-vim-instant-markdown'
 " NeoBundle 'vim-scripts/AutoAlign'
 " [clang_complete]
 " NeoBundleLazy 'Rip-Rip/clang_complete', {
-	    " \   'autoload' : {
-	    " \       'filetypes' : ['c', 'cpp'],
-	    " \   },
-	    " \ }
+            " \   'autoload' : {
+            " \       'filetypes' : ['c', 'cpp'],
+            " \   },
+            " \ }
 "}}}2
 
 " My Colorscheme Bundles here: {{{2
 
 function! Colo_Opt_Dict( name, vim_name )
-    let s:bundle_path = expand('~/.vim/colos_neobundle')
-    let s:colors_path = expand('~/.vim/colors') 
+    let s:bundle_path = expand('$HOME/.vim/colos_neobundle')
+    let s:colors_path = expand('$HOME/.vim/colors') 
 
     let s:colo_options       = {}
     let s:colo_options.name  = a:name
@@ -202,10 +221,21 @@ NeoBundleFetch 'jelera/vim-gummybears-colorscheme',
             \ Colo_Opt_Dict( 'gummybears', 'colors/gummybears.vim' ) 
 NeoBundleFetch 'YorickPeterse/Autumn.vim', 
             \ Colo_Opt_Dict( 'autumn', 'colors/autumn.vim' ) 
-
+NeoBundleFetch 'mbbill/desertEx', 
+            \ Colo_Opt_Dict( 'desertEx', 'colors/desertEx.vim' ) 
+NeoBundleFetch 'altercation/vim-colors-solarized', 
+            \ Colo_Opt_Dict( 'solarized', 'colors/solarized.vim' ) 
+NeoBundleFetch 'zeis/vim-kolor', 
+            \ Colo_Opt_Dict( 'kolor', 'colors/kolor.vim' ) 
+NeoBundleFetch 'larssmit/vim-getafe', 
+            \ Colo_Opt_Dict( 'getafe', 'colors/getafe.vim' ) 
+NeoBundleFetch 'noahfrederick/Hemisu', 
+            \ Colo_Opt_Dict( 'hemisu', 'colors/hemisu.vim' ) 
+NeoBundleFetch 'morhetz/gruvbox', 
+            \ Colo_Opt_Dict( 'gruvbox', 'colors/gruvbox.vim' ) 
 "}}}2
 
-NeoBundleLocal ~/.vim/bundle
+NeoBundleLocal $HOME\vimfiles\bundle
 
 filetype plugin indent on       " Required!
 
@@ -348,13 +378,73 @@ nnoremap <leader>cd :<C-U>lcd %:p:h<CR>
 " }}}1
 
 " PULGIN SETTINGS {{{1
+
+" [vimwiki]"{{{2
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_hl_headers    = 1
+let g:vimwiki_global_ext    = 0
+let g:vimwiki_listsyms      = ' .oOX'
+
+let g:vimwiki_list = []
+
+let s:wiki_root = expand('$MDX_DROPBOX/WIKI.DROP')
+
+" Below is my vimviki sections ...
+
+" wiki 'misc'
+let s:wiki               = {}
+let s:wiki.path          = s:wiki_root . '/misc/'
+let s:wiki.path_html     = s:wiki_root . '/IT/html/'
+let s:wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+call add(g:vimwiki_list, s:wiki)
+
+" wiki 'IT'
+let s:wiki               = {}
+let s:wiki.path          = s:wiki_root . '/IT/'
+let s:wiki.path_html     = s:wiki_root . '/IT/html/'
+let s:wiki.auto_export   = 1
+let s:wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+call add(g:vimwiki_list, s:wiki)
+
+" wiki 'English'
+let s:wiki               = {}
+let s:wiki.path          = s:wiki_root . '/English/'
+let s:wiki.path_html     = s:wiki_root . '/English/html/'
+let s:wiki.auto_export   = 1
+call add(g:vimwiki_list, s:wiki)
+
+" wiki 'Math'
+let s:wiki               = {}
+let s:wiki.path          = s:wiki_root . '/Math/'
+let s:wiki.path_html     = s:wiki_root . '/Math/html/'
+let s:wiki.auto_export   = 1
+call add(g:vimwiki_list, s:wiki)
+" }}}2
+
+" [color: kolor]"{{{2
+let g:kolor_italic=1                    " Enable italic. Default: 1
+let g:kolor_bold=1                      " Enable bold. Default: 1
+let g:kolor_underlined=1                " Enable underline for 'Underlined'. Default: 0
+let g:kolor_alternative_matchparen=1    " Gray 'MatchParen' color. Default: 0
+" }}}2
+
+" [textobj-comment]"{{{2
+let g:textobj_comment_no_default_key_mappings = 1
+xmap ax <Plug>(textobj-comment-a)
+omap ax <Plug>(textobj-comment-a)
+xmap ix <Plug>(textobj-comment-i)
+omap ix <Plug>(textobj-comment-i)
+xmap aX <Plug>(textobj-comment-big-a)
+omap aX <Plug>(textobj-comment-big-a)
+" }}}2
+
 " [indentline]"{{{2
 nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
 
 " let g:indentLine_char = '.'
 " let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#389900'
- " }}}2
+" }}}2
 
 " [mudoxvimscripts]"{{{2
 " let g:mdx_colos_white_list = [
@@ -382,7 +472,7 @@ let g:mdx_colos_256_black_list = [
             \ ]
 
 nnoremap \z   :<C-U>call z_menu#Main()<CR>
- " }}}2
+" }}}2
 
 " [rainbowparentheses] " {{{2
 nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR> 
@@ -417,25 +507,6 @@ if has('unix') || has('win32unix')
 end
 "}}}2
 
-" " [clangcomplete]"{{{2
-" " let g:clang_hl_errors = 1
-" let g:clang_complete_copen = 1
-" let g:clang_complete_auto = 1
-" let g:clang_periodic_quickfix = 1
-" let g:clang_snippets = 1
-" let g:clang_close_preview = 1
-" let g:clang_snippets_engine = 'ultisnips'
-" " let g:clang_trailing_placeholder = 1
-" " let g:clang_user_options = '-std=c++11'
-" " let g:clang_auto_user_options
-" " let g:clang_compilation_database
-" " let g:clang_use_library = 1
-" " let g:clang_library_path = ""
-" " let g:clang_sort_algo = "priority"
-" " let g:clang_complete_macros = 0
-" " let g:clang_complete_patterns = 0
-" "}}}2
-
 " [singlecompile]"{{{2
 nnoremap <F5> :<C-U>SCCompileRun<CR>
 "}}}2
@@ -466,7 +537,7 @@ let g:ycm_filetype_blacklist                            = {
       " \ '*'      : 1,
       " \}
 let g:ycm_allow_changing_updatetime                     = 0
-let g:ycm_register_as_syntastic_checker                 = 1
+let g:ycm_register_as_syntastic_checker                 = 0
 " let g:ycm_key_invoke_completion                       = '<C-Space>'
 " let g:ycm_key_detailed_diagnostics                    = '<leader>d'
 "}}}2
@@ -577,46 +648,6 @@ nnoremap \ub  :Unite -vertical bookmark<CR>
 " let g:unite_enable_split_vertically
 "}}}2
 
-" " [pathogen]{{{2
-" call pathogen#infect() 
-"}}}2
-
-" " [omnicppcomplete]{{{2
-" let OmniCpp_NamespaceSearch = 2
-" let OmniCpp_DisplayMode = 1 " always show members 
-" let OmniCpp_ShowScopeInAbbr = 0
-" let OmniCpp_ShowPrototypeInAbbr = 1
-" let OmniCpp_ShowAccess = 1
-" let OmniCpp_DefaultNamespaces = ["std"]
-" let OmniCpp_MayCompleteScope = 1
-" let OmniCpp_MayCompleteArrow = 1
-" let OmniCpp_MayCompleteDot   = 1
-" let OmniCpp_LocalSearchDecl  = 1
-
-" "}}}2
-
-" " [autocomplpop]{{{2
-" " let g:acp_enableAtStartup = 0 " disable acp at startup 
-" " " let g:acp_mappingDriven = 0
-" " let g:acp_ignorecaseOption = 1
-" " let g:acp_behaviorSnipmateLength = 1
-" " " let g:acp_completeOption = '.,w,b,k'
-" " let g:acp_completeoptPreview = 1
-" " let g:acp_behaviorKeywordLength = 3
-" " " let g:acp_behaviorKeywordIgnores = []
-" " " let g:acp_behaviorRubyOmniMethodLength = 0
-" " " let g:acp_behaviorPythonOmniLength = 0
-" "}}}2
-
-" " [supertab]{{{2
-" " let g:SuperTabDefaultCompletionType    = "context"
-" " let g:SuperTabMappingForward           = '<C-J>'
-" " let g:SuperTabMappingBackward          = '<C-K>'
-" " let g:SuperTabLongestEnhanced          = 1
-" " let g:SuperTabLongestHighlight         = 1
-" " let g:SuperTabClosePreviewOnPopupClose = 1
-" "}}}2
-
 "}}}1
 
 " EVENTS {{{1
@@ -634,8 +665,6 @@ autocmd VimEnter * exe "cd " . expand("~")
 " ABBREVIATES {{{1
 cabbrev ue UltiSnipsEdit
 cabbrev nt NERDTree
-cabbrev ac AlignCtrl
-cabbrev al Align
 "}}}1
 
 " DEFAULT COLORS {{{1
@@ -661,6 +690,7 @@ filetype plugin indent on " 'filetype on' implied
 set encoding=utf8 " cp936 conficts with several plugins e.g. jedi-vim 
 
 " color & font
+set background=dark
 call auto_colo#AutoColoRandom()
 set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
 
