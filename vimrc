@@ -388,14 +388,19 @@ let g:vimwiki_listsyms      = ' .oOX'
 let g:vimwiki_list = []
 
 let s:wiki_root = expand('$MDX_DROPBOX/WIKI.DROP')
+let s:wiki_nested_syntaxes = {
+            \'python' : 'python',
+            \'c++'    : 'cpp',
+            \'sql'    : 'sql'
+            \}
 
 " Below is my vimviki sections ...
 
 " wiki 'misc'
 let s:wiki               = {}
 let s:wiki.path          = s:wiki_root . '/misc/'
-let s:wiki.path_html     = s:wiki_root . '/IT/html/'
-let s:wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+let s:wiki.path_html     = s:wiki_root . '/misc/html/'
+let s:wiki.nested_syntaxes = s:wiki_nested_syntaxes
 call add(g:vimwiki_list, s:wiki)
 
 " wiki 'IT'
@@ -403,7 +408,7 @@ let s:wiki               = {}
 let s:wiki.path          = s:wiki_root . '/IT/'
 let s:wiki.path_html     = s:wiki_root . '/IT/html/'
 let s:wiki.auto_export   = 1
-let s:wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+let s:wiki.nested_syntaxes = s:wiki_nested_syntaxes
 call add(g:vimwiki_list, s:wiki)
 
 " wiki 'English'
