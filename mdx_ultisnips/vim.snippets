@@ -14,4 +14,19 @@ snippet com "Define a command" b
 command${1:!} ${2:>Command Attributes<} ${3:>Command Name<} ${4:>Command Do ...<}
 endsnippet
 
+snippet if "if ... enif"
+if ${1:>condition<}
+    ${2:>then body<}
+endif
+$0
+endsnippet
+
+snippet if "if ... else ... enif"
+if ${1:>condition<}
+    ${2:>then body<}
+else
+    ${3:>else body<}
+endif
+$0
+endsnippet
 

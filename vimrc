@@ -1,9 +1,15 @@
 " .vimrc for [G]Vim on Linux
 "
 " NOTE:
-" This vimrc has several presumption:
-" * assumes you haved defined a system or user environment variable: MDX_DROPBOX
+" ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+" This vimrc has several preconditions:
+" * Assumes you haved defined a system or user environment variable: MDX_DROPBOX
 "   which holds the absolute path to dropbox root path.
+" ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+" This vimrc follows several predefined laws:
+" * Mapping scheme:
+"   1. use '\' to map relatively infrequently used functions.
+"   2. usr g:mapleader & b:localleader to map relatively frequently used functions.
 
 " NEOBUNDLE {{{1
 set nocompatible                " Recommend
@@ -125,6 +131,14 @@ NeoBundle 'mattn/zencoding-vim'               , { 'name' : 'zencoding' }
 NeoBundle 'Yggdroot/indentLine'               , { 'name' : 'indentline' }
 " [dbext]
 NeoBundle 'vim-scripts/dbext.vim'             , { 'name' : 'dbext' }
+" [join]
+NeoBundle 'sk1418/Join'                       , { 'name' : 'join' }
+" [gitgutter]
+NeoBundle 'airblade/vim-gitgutter'            , { 'name' : 'gitgutter' }
+" [colorv]
+NeoBundle 'Rykka/colorv.vim'                  , { 'name' : 'colorv' }
+" [vcscommand]
+NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vim-matrix-screensaver]
 NeoBundle 'uguu-org/vim-matrix-screensaver'
 " [vim-misc]
@@ -147,9 +161,8 @@ NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'scrooloose/syntastic'
 " [jedi-vim]
 NeoBundle 'davidhalter/jedi-vim'
-" [ColorV] related
+" [colorv] related
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'Rykka/colorv.vim'
 NeoBundle 'Rykka/galaxy.vim'
 " [NerdCommenter]
 NeoBundle 'scrooloose/nerdcommenter'
@@ -201,6 +214,8 @@ function! Colo_Opt_Dict( name, vim_name )
     let s:colo_options.base  = s:bundle_path
     let s:colo_options.build = { 
                 \   'unix' : 'cp ' 
+                \       . a:vim_name . ' ' . s:colors_path,
+                \   'windows' : 'copy ' 
                 \       . a:vim_name . ' ' . s:colors_path 
                 \ }
 
@@ -233,6 +248,12 @@ NeoBundleFetch 'noahfrederick/Hemisu',
             \ Colo_Opt_Dict( 'hemisu', 'colors/hemisu.vim' ) 
 NeoBundleFetch 'morhetz/gruvbox', 
             \ Colo_Opt_Dict( 'gruvbox', 'colors/gruvbox.vim' ) 
+NeoBundleFetch 'junegunn/seoul256.vim', 
+            \ Colo_Opt_Dict( 'seoul', 'colors/seoul256.vim' ) 
+NeoBundleFetch 'jnurmine/Zenburn', 
+            \ Colo_Opt_Dict( 'zenburn', 'colors/zenburn.vim' ) 
+NeoBundleFetch 'gregsexton/Atom', 
+            \ Colo_Opt_Dict( 'atom', 'colors/atom.vim' ) 
 "}}}2
 
 NeoBundleLocal $HOME\vimfiles\bundle
@@ -379,6 +400,35 @@ nnoremap <leader>cd :<C-U>lcd %:p:h<CR>
 
 " PULGIN SETTINGS {{{1
 
+" [gitgutter]"{{{2
+nnoremap \gg :<C-U>GitGutterToggle<CR> 
+let g:gitgutter_enabled = 0
+" }}}2
+
+" [syntastic]"{{{2
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
+let syntastic_error_symbol = 'x'
+let syntastic_warning_symbol = '!'
+" let syntastic_style_error_symbol
+" let syntastic_style_warning_symbol
+let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_jump=1
+" let g:syntastic_auto_loc_list=1
+let g:syntastic_loc_list_height=5
+" let g:syntastic_ignore_files=['^/usr/include/', '\c\.h$']
+let g:syntastic_mode_map = { 
+            \ 'mode': 'active',
+            \ 'active_filetypes': ['ruby', 'php'],
+            \ 'passive_filetypes': ['puppet'] 
+            \ }
+let g:syntastic_stl_format = '%E{%e ✗}%B{, }%W{%w ⚠}'
+
+" checker options
+let g:syntastic_c_checkers = ['<ycm>']
+let g:syntastic_cpp_checkers = ['<ycm>']
+" }}}2
+
 " [vimwiki]"{{{2
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_hl_headers    = 1
@@ -477,6 +527,7 @@ let g:mdx_colos_256_black_list = [
             \ ]
 
 nnoremap \z   :<C-U>call z_menu#Main()<CR>
+nnoremap <leader>`   :<C-U>call max_restore_win#Main()<CR>
 " }}}2
 
 " [rainbowparentheses] " {{{2
@@ -524,27 +575,34 @@ let pymode_breakpoint = '<leader>brk'
 "}}}2
 
 " [youcompleteme]"{{{2
-nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_add_preview_to_completeopt                    = 1
+" nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
+let g:ycm_complete_in_strings                           = 1
+let g:ycm_complete_in_comments                          = 1
+let g:ycm_max_diagnostics_to_display                    = 14
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" let g:ycm_add_preview_to_completeopt                  = 1
 let g:ycm_complete_in_comments_and_strings              = 1
 let g:ycm_autoclose_preview_window_after_completion     = 1
-let g:ycm_key_list_select_completion                    = ['<Down>']
-let g:ycm_key_list_previous_completion                  = ['<Up>']
+let g:ycm_autoclose_preview_window_after_insertion      = 1
 let g:ycm_global_ycm_extra_conf                         = '~/.vim/neobundle/youcompleteme/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_filetypes_to_completely_ignore                = {}
 let g:ycm_filetype_blacklist                            = {
       \ 'notes'    : 1,
       \ 'markdown' : 1,
-      \ 'python'   : 1
+      \ 'python'   : 1,
+      \ 'vimwiki'  : 1
       \}
-" let g:ycm_filetype_whitelist                          = {
-      " \ '*'      : 1,
-      " \}
+let g:ycm_filetype_whitelist                            = {
+      \ '*'	   : 1
+      \}
+" let g:ycm_filetype_specific_completion_to_disable     = {}
 let g:ycm_allow_changing_updatetime                     = 0
-let g:ycm_register_as_syntastic_checker                 = 0
+let g:ycm_register_as_syntastic_checker                 = 1
+let g:ycm_seed_identifiers_with_syntax                  = 1
 " let g:ycm_key_invoke_completion                       = '<C-Space>'
 " let g:ycm_key_detailed_diagnostics                    = '<leader>d'
+let g:ycm_key_list_select_completion                    = ['<Down>']
+let g:ycm_key_list_previous_completion                  = ['<Up>']
 "}}}2
 
 " [nerdcomment]{{{2
