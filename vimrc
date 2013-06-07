@@ -800,7 +800,8 @@ set whichwrap=b,s,<,>,[,],h,l
 set backspace=indent,eol,start
 set completeopt=menu
 set dictionary+=/usr/share/dict/words 
-" Fold line text
+
+" Fold behaviour
 set foldtext=MyFoldText()
 function! MyFoldText()
   let line = getline(v:foldstart)
