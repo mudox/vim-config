@@ -1,7 +1,3 @@
-###########################################################################
-#                            TextMate Snippets                            #
-###########################################################################
-
 snippet def "#define ..."
 #define ${1}
 endsnippet
@@ -143,5 +139,15 @@ endsnippet
 snippet fund "function declaration" b
 ${1:void} ${2:function_name}(${3});
 endsnippet
+
+# include guard
+snippet incguard "header inclusion guard" b
+#ifndef ${1:`!v substitute(substitute(expand('%'), '\.', '_', 'g'), '.*', '\U&\E', 'g')`}
+#define $1
+
+${VISUAL}${0:${VISUAL/(.*)/(?1::\/* code *\/)/}}
+
+#endif /* include guard: $1 */
+endsnippet 
 
 # vim:ft=snippets:
