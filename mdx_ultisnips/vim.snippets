@@ -1,35 +1,35 @@
 snippet fun "Define a VimL function" b
-function${1:!} ${2:└ Function name ┘}( ${3:└ Parameter list ┘} )
-${4:└ Function body here ... ┘}
+function${1:!} ${2:Function name}( ${3:Parameter list} )
+${4:Function body here ...}
 endfunction
 $0
 endsnippet
 
 snippet abb "Define an abbreviation" b
-${1:└ Prefix:[c|cno|i|ino] ┘}abbrev ${2:└ [e-<expr>|b-<buffer>] ┘} ${3:└ lhs ┘} ${4:└ rhs ┘}
+${1:Prefix:[c|cno|i|ino]}abbrev ${2:[e-<expr>|b-<buffer>]} ${3:lhs} ${4:rhs}
 $0
 endsnippet
 
 snippet if "if .. endif structure" b
-if ${1:└ Condition ┘}
-    ${2:└ Then ... ┘}
+if ${1:Condition}
+    ${2:Then ...}
 endif
 endsnippet
 
 snippet if "if .. else .. endif structure" b
-if ${1:└ Condition ┘}
-    ${2:└ Then ... ┘}
+if ${1:Condition}
+    ${2:Then ...}
 else
-    ${3:└ Else ... ┘}
+    ${3:Else ...}
 endif
 endsnippet
 
 snippet if "if .. elseif .. endif structure" b
-if ${1:└ Condition ┘}
-    ${2:└ Then ... ┘}
-elseif ${3:└ Else condition ┘}
-    ${4:└ Else ... ┘}
+if ${1:Condition}
+    ${2:Then ...}
+elseif ${3:Else condition}
+    ${4:Else ...}
 else
-    ${5:└ Else ... ┘}
+    ${5:Else ...}
 endif
 endsnippet

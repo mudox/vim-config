@@ -353,20 +353,29 @@ nnoremap <C-J>	   <C-W>j
 nnoremap <C-K>	   <C-W>k
 nnoremap <C-L>	   <C-W>l
 "}}}2
+
 " Ctrl + Shift + Arrow Keys to resize windows {{{2
 nnoremap <C-S-Up> 		5<C-W>+
 nnoremap <C-S-Down> 	5<C-W>-
 nnoremap <C-S-Left> 	5<C-W>< 
 nnoremap <C-S-Right> 	5<C-W>>
 "}}}2
+
 " Ctrl + Alt + Left / Right Arrow to move tabs {{{2
 nnoremap <silent> <M-C-Left> :if tabpagenr() == 1\|exe "tabm ".tabpagenr("$")\|el\|exe "tabm ".(tabpagenr()-2)\|en<CR>
 nnoremap <silent> <M-C-Right> :if tabpagenr() == tabpagenr("$")\|tabm 0\|el\|exe "tabm ".tabpagenr()\|en<CR>
 "}}}2
+
 " Atl + Left / Right Arrow to switch among tabs {{{2
 nnoremap <silent> <M-Left> gT
 nnoremap <silent> <M-Right> gt
 "}}}2
+
+" Atl + Left / Right Arrow to switch among tabs {{{2
+nnoremap <silent> <C-S> gT
+nnoremap <silent> <C-F> gt
+"}}}2
+
 " Ctr + Left / Right Arrow to switch current buffer {{{2
 nnoremap <silent> <C-Left> :bnext<CR>
 nnoremap <silent> <C-Right> :bNext<CR>
