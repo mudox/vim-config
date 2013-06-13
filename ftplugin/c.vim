@@ -14,6 +14,6 @@ setlocal tags+=~/.ctags/cpp/libstdc++        " C++ Standard Library
 
 " Build tags of your own project with Ctrl-F12
 " Recursively travel through the entire tree rooted on current directory.
-nnoremap <buffer> \tag :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+nnoremap <buffer> \tag :!ctags -R --sort=yes --fields=+iaS --extra=+q .<CR>
 "}}}1
 

@@ -8,7 +8,7 @@
 "   to source this file, resides just outisde .vim or vimfiles direcotry. By doing
 "   this, we can conveniently use git to manage the whole vim configuration stuff.
 " * Assumes you haved defined a system or user environment variable: MDX_DROPBOX
-"   which holds the absolute path to dropbox root path.
+"   which holds the absolute path to dropbox root path. (deprecated)
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
 " This vimrc follows several predefined laws:
 " * Mapping scheme:
@@ -39,14 +39,17 @@ NeoBundleFetch 'Shougo/neobundle.vim', { 'name' : 'neobundle' }
 NeoBundle 'Shougo/neobundle-vim-scripts'
 
 " My Bundles here:                                 {{{2
+
 " [Vimproc]
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
             \        'windows' : 'make -f make_mingw32.mak',
             \    },
             \ }
+
 " [Vimfiler]
 NeoBundle 'Shougo/vimfiler'
+
 " [Vimshell]
 NeoBundleLazy 'Shougo/vimshell',{
             \     'autoload' : {
@@ -63,6 +66,7 @@ NeoBundleLazy 'Shougo/vimshell',{
             \       'mappings' : [ '<Plug>(vimshell_switch)' ]
             \     }
             \ }
+
 " [vim]-signature
 NeoBundleLazy 'kshenoy/vim-signature', { 
             \   'name'     : 'signature',
@@ -96,8 +100,6 @@ NeoBundle 'terryma/vim-multiple-cursors'      , { 'name' : 'multiple-cursors' }
 NeoBundle 'chrisbra/NrrwRgn'                  , { 'name' : 'nrrwrgn' }
 " [Repeat]
 NeoBundle 'tpope/vim-repeat'                  , { 'name' : 'repeat' }
-" [Unimpaired]
-NeoBundle 'tpope/vim-unimpaired'              , { 'name' : 'unimpaired' }
 " [Unimpaired]
 NeoBundle 'tpope/vim-unimpaired'              , { 'name' : 'unimpaired' }
 " [Abolish]
@@ -148,41 +150,39 @@ NeoBundle 'airblade/vim-gitgutter'            , { 'name' : 'gitgutter' }
 NeoBundle 'Rykka/colorv.vim'                  , { 'name' : 'colorv' }
 " [origami]
 NeoBundle 'kshenoy/vim-origami'               , { 'name' : 'origami' }
+" [TagList]
+NeoBundle 'vim-scripts/taglist.vim'           , { 'name' : 'taglist' }
+" [colorv] related
+NeoBundle 'mattn/webapi-vim'                  , { 'name' : 'webapi' }
+NeoBundle 'Rykka/galaxy.vim'                  , { 'name' : 'galaxy' }
+" [Zoomwintab]
+NeoBundle 'troydm/zoomwintab.vim'             , { 'name' : 'zoomwintab' }
+" [Mudox-vim-scripts]
+NeoBundle 'Mudox/mudox-vim-scripts'           , { 'name' : 'mudox' }
+" [rainbow_parentheses]
+NeoBundle 'kien/rainbow_parentheses.vim'      , { 'name' : 'rainbow_parentheses' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
-" [vim-matrix-screensaver]
-NeoBundle 'uguu-org/vim-matrix-screensaver'
 " [vim-misc]
 NeoBundle 'xolox/vim-misc'
 " [pyton-syntax]
 NeoBundle 'hdima/python-syntax'
-" [Mudox-vim-scripts]
-NeoBundle 'Mudox/mudox-vim-scripts'
 " [python-mode]
 NeoBundle 'klen/python-mode'
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
-" [TagList]
-NeoBundle 'vim-scripts/taglist.vim'
 " [TagBar]
 NeoBundle 'majutsushi/tagbar'
-" [rainbow_parentheses]
-NeoBundle 'kien/rainbow_parentheses.vim'
 " [Syntastic]
 NeoBundle 'scrooloose/syntastic'
 " [jedi-vim]
 NeoBundle 'davidhalter/jedi-vim'
-" [colorv] related
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'Rykka/galaxy.vim'
 " [NerdCommenter]
 NeoBundle 'scrooloose/nerdcommenter'
 " [NerdTree]
 NeoBundle 'scrooloose/nerdtree'
 " [UltiSnips]
 NeoBundle 'SirVer/ultisnips'
-" [Zoomwintab]
-NeoBundle 'troydm/zoomwintab.vim'
 " [abolish]
 NeoBundle 'tpope/vim-abolish'
 " [vim-markdown]
@@ -271,7 +271,7 @@ NeoBundleFetch 'jonathanfilip/vim-lucius',
             \ Colo_Opt_Dict( 'lucius', 'colors/lucius.vim' ) 
 "}}}2
 
-NeoBundleLocal $HOME\vimfiles\bundle
+exe 'NeoBundleLocal ' . g:vim_config_root . '/bundle'
 
 filetype plugin indent on       " Required!
 
@@ -420,6 +420,20 @@ inoremap <C-H> <Left>
 inoremap <C-L> <Right>
 
 nnoremap <leader>cd :<C-U>lcd %:p:h<CR>
+
+function! EditFileTypeSettings( filetype )
+    let l:ft = ( a:filetype == '' ) ? &filetype : a:filetype
+    if l:ft != ''
+        let l:setting_file = g:vim_config_root . '/ftplugin/' . l:ft . '.vim'
+        exe query_open_file#Main() . l:setting_file
+    else
+        echohl ErrorMsg
+        echo "* No filetype *"
+        echohl None
+    endif
+endfunction
+command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
+
 " }}}1
 
 " PULGIN SETTINGS                                  {{{1
@@ -647,11 +661,11 @@ let NERDDefaultNesting            = 0
 
 " [ultisnips]                                      {{{2
 let g:UltiSnipsEditSplit           = "horizontal"
-" let g:UltiSnipsExpandTrigger     = "<tab>"
+let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-S>"
 let g:UltiSnipsNoPythonWarning     = 1
-let g:UltiSnipsSnippetsDir         = "$HOME\\vimfiles\\mdx_ultisnips\\"
+let g:UltiSnipsSnippetsDir         = g:vim_config_root . '/mdx_ultisnips'
 let g:UltiSnipsSnippetDirectories  = [ "mdx_ultisnips" ]
 "}}}2
 
@@ -778,8 +792,9 @@ set encoding=utf8 " cp936 conficts with several plugins e.g. jedi-vim
 
 " color & font
 set background=dark
-call auto_colo#AutoColoRandom()
+call auto_colo#AutoColoRandom()  " random colorscheme 
 set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
+set linespace=0
 
 " Editor interface
 set noshowmode   " powerline does better
@@ -826,12 +841,12 @@ set completeopt=menu
 set dictionary+=/usr/share/dict/words 
 
 " Fold behaviour
-set foldtext=MyFoldText()
-function! MyFoldText()
-  let line = getline(v:foldstart)
-  let sub = substitute(line, '/\*\|\*/\|{\{3}.*', '', 'g')
-  return sub . v:folddashes
-endfunction
+" set foldtext=MyFoldText()
+" function! MyFoldText()
+  " let line = getline(v:foldstart)
+  " let sub = substitute(line, '/\*\|\*/\|{\{3}.*', '', 'g')
+  " return sub . v:folddashes
+" endfunction
 
 " Command line completion
 set history=30
