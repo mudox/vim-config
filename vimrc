@@ -70,124 +70,122 @@ NeoBundleLazy 'kshenoy/vim-signature', {
             \   'autoload' : { 'commands' : 'SignatureToggle' }
             \ }
 " [Unite]
-NeoBundle 'Shougo/unite.vim'                  , { 'name' : 'unite' }
+NeoBundle 'Shougo/unite.vim'                   , { 'name' : 'unite' }
 " [delimitMate]
-NeoBundle 'Raimondi/delimitMate'              , { 'name' : 'delimitmate' }
+NeoBundle 'Raimondi/delimitMate'               , { 'name' : 'delimitmate' }
 " [Easytags]
-NeoBundle 'xolox/vim-easytags'                , { 'name' : 'easytags' }
+NeoBundle 'xolox/vim-easytags'                 , { 'name' : 'easytags' }
 " [Vim-textobj-syntax]
-NeoBundle 'kana/vim-textobj-syntax'           , { 'name' : 'textobj-syntax' }
+NeoBundle 'kana/vim-textobj-syntax'            , { 'name' : 'textobj_syntax' }
 " [Vim-textobj-function]
-NeoBundle 'kana/vim-textobj-function'         , { 'name' : 'textobj-function' }
+NeoBundle 'kana/vim-textobj-function'          , { 'name' : 'textobj_function' }
 " [Vim-textobj-entire]
-NeoBundle 'kana/vim-textobj-entire'           , { 'name' : 'textobj-entire' }
+NeoBundle 'kana/vim-textobj-entire'            , { 'name' : 'textobj_entire' }
 " [Vim-textobj-indent]
-NeoBundle 'kana/vim-textobj-indent'           , { 'name' : 'textobj-indent' }
+NeoBundle 'kana/vim-textobj-indent'            , { 'name' : 'textobj_indent' }
 " [textobj-comment]
-NeoBundle 'glts/vim-textobj-comment'          , { 'name' : 'textobj-comment' }
+NeoBundle 'glts/vim-textobj-comment'           , { 'name' : 'textobj_comment' }
 " [Vim-textobj-line]
-NeoBundle 'kana/vim-textobj-line'             , { 'name' : 'textobj-line' }
+NeoBundle 'kana/vim-textobj-line'              , { 'name' : 'textobj_line' }
 " [Vim-textobj-user]
-NeoBundle 'kana/vim-textobj-user'             , { 'name' : 'textobj-user' }
+NeoBundle 'kana/vim-textobj-user'              , { 'name' : 'textobj_user' }
 " [Textobj-word-column]
-NeoBundle 'coderifous/textobj-word-column.vim', { 'name' : 'textobj-word-column'}
+NeoBundle 'coderifous/textobj-word-column.vim' , { 'name' : 'textobj_word_column'}
 " [vim-multiple-cursors]
-NeoBundle 'terryma/vim-multiple-cursors'      , { 'name' : 'multiple-cursors' }
+NeoBundle 'terryma/vim-multiple-cursors'       , { 'name' : 'multiple_cursors' }
 " [Nrrwrgn]
-NeoBundle 'chrisbra/NrrwRgn'                  , { 'name' : 'nrrwrgn' }
+NeoBundle 'chrisbra/NrrwRgn'                   , { 'name' : 'nrrwrgn' }
 " [Repeat]
-NeoBundle 'tpope/vim-repeat'                  , { 'name' : 'repeat' }
+NeoBundle 'tpope/vim-repeat'                   , { 'name' : 'repeat' }
 " [Unimpaired]
-NeoBundle 'tpope/vim-unimpaired'              , { 'name' : 'unimpaired' }
+NeoBundle 'tpope/vim-unimpaired'               , { 'name' : 'unimpaired' }
 " [Abolish]
-NeoBundle 'tpope/vim-abolish'                 , { 'name' : 'abolish' }
+NeoBundle 'tpope/vim-abolish'                  , { 'name' : 'abolish' }
 " [singlecompile]
-NeoBundle 'xuhdev/SingleCompile'              , { 'name' : 'singlecompile' }
+NeoBundle 'xuhdev/SingleCompile'               , { 'name' : 'singlecompile' }
 " [yankring]
-NeoBundle 'vim-scripts/YankRing.vim'          , { 'name' : 'yankring' }
+NeoBundle 'vim-scripts/YankRing.vim'           , { 'name' : 'yankring' }
 " [flake8]
-NeoBundle 'nvie/vim-flake8'                   , { 'name' : 'flake8' }
+NeoBundle 'nvie/vim-flake8'                    , { 'name' : 'flake8' }
 " [MatchTagAlways]
-NeoBundle 'Valloric/MatchTagAlways'           , { 'name' : 'matchtagsalways' }
+NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
 " [FSwitch]
-NeoBundle 'vim-scripts/FSwitch'               , { 'name' : 'fswitch' }
+NeoBundle 'vim-scripts/FSwitch'                , { 'name' : 'fswitch' }
 " [Powerline]
-NeoBundle 'Lokaltog/vim-powerline'            , { 'name' : 'powerline' }
+NeoBundle 'Lokaltog/vim-powerline'             , { 'name' : 'powerline' }
 " [EasyMotion]
-NeoBundle 'Lokaltog/vim-easymotion'           , { 'name' : 'easymotion' }
+NeoBundle 'Lokaltog/vim-easymotion'            , { 'name' : 'easymotion' }
 " [Vim-Indent-Guides]
-NeoBundle 'mutewinter/vim-indent-guides'      , { 'name' : 'indent-guides' }
+NeoBundle 'mutewinter/vim-indent-guides'       , { 'name' : 'indent_guides' }
 " [SrcExpl]
-NeoBundle 'wesleyche/SrcExpl'                 , { 'name' : 'srcexpl' }
+NeoBundle 'wesleyche/SrcExpl'                  , { 'name' : 'srcexpl' }
 " [BufExplorer]
-NeoBundle 'vim-scripts/bufexplorer.zip'       , { 'name' : 'bufexplorer' }
+NeoBundle 'vim-scripts/bufexplorer.zip'        , { 'name' : 'bufexplorer' }
 " [Fugitive]
-NeoBundle 'tpope/vim-fugitive'                , { 'name' : 'fugitive' }
+NeoBundle 'tpope/vim-fugitive'                 , { 'name' : 'fugitive' }
 " [Surround]
-NeoBundle 'tpope/vim-surround'                , { 'name' : 'surround' }
+NeoBundle 'tpope/vim-surround'                 , { 'name' : 'surround' }
 " [Align]
-NeoBundle 'vim-scripts/Align'                 , { 'name' : 'align' }
+NeoBundle 'vim-scripts/Align'                  , { 'name' : 'align' }
 " [vim-multiple-cursors]
-NeoBundle 'terryma/vim-multiple-cursors'      , { 'name' : 'multiple-cursors' }
+NeoBundle 'terryma/vim-multiple-cursors'       , { 'name' : 'multiple_cursors' }
 " [vim-expand-region]
-NeoBundle 'terryma/vim-expand-region'         , { 'name' : 'expand-region' }
-" " [YouCompleteMe]
-" NeoBundle 'Valloric/YouCompleteMe'            , { 'name' : 'youcompleteme' }
+NeoBundle 'terryma/vim-expand-region'          , { 'name' : 'expand_region' }
 " [zencoding-vim]
-NeoBundle 'mattn/zencoding-vim'               , { 'name' : 'zencoding' }
+NeoBundle 'mattn/zencoding-vim'                , { 'name' : 'zencoding' }
 " [indentline]
-NeoBundle 'Yggdroot/indentLine'               , { 'name' : 'indentline' }
+NeoBundle 'Yggdroot/indentLine'                , { 'name' : 'indentline' }
 " [dbext]
-NeoBundle 'vim-scripts/dbext.vim'             , { 'name' : 'dbext' }
+NeoBundle 'vim-scripts/dbext.vim'              , { 'name' : 'dbext' }
 " [join]
-NeoBundle 'sk1418/Join'                       , { 'name' : 'join' }
+NeoBundle 'sk1418/Join'                        , { 'name' : 'join' }
 " [gitgutter]
-NeoBundle 'airblade/vim-gitgutter'            , { 'name' : 'gitgutter' }
+NeoBundle 'airblade/vim-gitgutter'             , { 'name' : 'gitgutter' }
 " [colorv]
-NeoBundle 'Rykka/colorv.vim'                  , { 'name' : 'colorv' }
+NeoBundle 'Rykka/colorv.vim'                   , { 'name' : 'colorv' }
 " [origami]
-NeoBundle 'kshenoy/vim-origami'               , { 'name' : 'origami' }
+NeoBundle 'kshenoy/vim-origami'                , { 'name' : 'origami' }
 " [TagList]
-NeoBundle 'vim-scripts/taglist.vim'           , { 'name' : 'taglist' }
+NeoBundle 'vim-scripts/taglist.vim'            , { 'name' : 'taglist' }
 " [colorv] related
-NeoBundle 'mattn/webapi-vim'                  , { 'name' : 'webapi' }
-NeoBundle 'Rykka/galaxy.vim'                  , { 'name' : 'galaxy' }
+NeoBundle 'mattn/webapi-vim'                   , { 'name' : 'webapi' }
+NeoBundle 'Rykka/galaxy.vim'                   , { 'name' : 'galaxy' }
 " [Zoomwintab]
-NeoBundle 'troydm/zoomwintab.vim'             , { 'name' : 'zoomwintab' }
+NeoBundle 'troydm/zoomwintab.vim'              , { 'name' : 'zoomwintab' }
 " [Mudox-vim-scripts]
-NeoBundle 'Mudox/mudox-vim-scripts'           , { 'name' : 'mudox' }
+NeoBundle 'Mudox/mudox-vim-scripts'            , { 'name' : 'mudox' }
 " [rainbow_parentheses]
-NeoBundle 'kien/rainbow_parentheses.vim'      , { 'name' : 'rainbow_parentheses' }
+NeoBundle 'kien/rainbow_parentheses.vim'       , { 'name' : 'rainbow_parentheses' }
 " [mudox_ultisnips]
-NeoBundle 'Mudox/ultisnips_snippets'          , { 'name' : 'mudox_ultisnips' }
+NeoBundle 'Mudox/ultisnips_snippets'           , { 'name' : 'mudox_ultisnips' }
+" [jedi-vim]
+NeoBundle 'davidhalter/jedi-vim'               , { 'name' : 'jedi_vim' }
+" [python-mode]
+NeoBundle 'klen/python-mode'                   , { 'name' : 'python_mode' }
+" [vim-misc]
+NeoBundle 'xolox/vim-misc'                     , { 'name' : 'vim_misc' }
+" [pyton-syntax]
+NeoBundle 'hdima/python-syntax'                , { 'name' : 'python_syntax' }
+" [abolish]
+NeoBundle 'tpope/vim-abolish'                  , { 'name' : 'vim_abolish' }
+" [vim-markdown]
+NeoBundle 'plasticboy/vim-markdown'            , { 'name' : 'vim_markdown' }
+" [python-vim-instant-markdown]
+NeoBundle 'isnowfy/python-vim-instant-markdown', { 'name' : 'python_vim_instant_markdown' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
-" [vim-misc]
-NeoBundle 'xolox/vim-misc'
-" [pyton-syntax]
-NeoBundle 'hdima/python-syntax'
-" [python-mode]
-NeoBundle 'klen/python-mode'
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
 NeoBundle 'majutsushi/tagbar'
 " [Syntastic]
 NeoBundle 'scrooloose/syntastic'
-" [jedi-vim]
-NeoBundle 'davidhalter/jedi-vim'
 " [NerdCommenter]
 NeoBundle 'scrooloose/nerdcommenter'
 " [NerdTree]
 NeoBundle 'scrooloose/nerdtree'
 " [UltiSnips]
 NeoBundle 'SirVer/ultisnips'
-" [abolish]
-NeoBundle 'tpope/vim-abolish'
-" [vim-markdown]
-NeoBundle 'plasticboy/vim-markdown'
-" [python-vim-instant-markdown]
-NeoBundle 'isnowfy/python-vim-instant-markdown'
 
 " ======================== DEPRECATED PLUGINS ========================
 
@@ -437,9 +435,23 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                                  {{{1
 
+" [surround]"                                     {{{2
+xmap ' S'
+xmap " S"
+xmap ( S(
+xmap ) S)
+xmap { S{
+xmap } S}
+" xmap [ S[
+" xmap ] S]
+" }}}2
+
 " [solarized]"                                     {{{2
 let g:solarized_termcolors = 256
-let g:solarized_contrast = "high"
+let g:solarized_contrast   = "high"
+let g:solarized_bold       = 0
+" let g:solarized_underline
+" let g:solarized_italic
 " }}}2
 
 " [gitgutter]"                                     {{{2
@@ -658,11 +670,6 @@ let NERDDefaultNesting            = 0
 " let NERD_<filetype>_alt_style   = 1
 "}}}2
 
-" [autopairs]                                      {{{2
-" let g:AutoPairsFlyMode = 1
-" let g:AutoPairsShortcutBackInsert = '<M-b>' 
-"}}}2
-
 " [ultisnips]                                      {{{2
 let g:UltiSnipsEditSplit           = "horizontal"
 let g:UltiSnipsExpandTrigger       = "<Tab>"
@@ -845,12 +852,14 @@ set completeopt=menu
 set dictionary+=/usr/share/dict/words 
 
 " Fold behaviour
-" set foldtext=MyFoldText()
-" function! MyFoldText()
-  " let line = getline(v:foldstart)
-  " let sub = substitute(line, '/\*\|\*/\|{\{3}.*', '', 'g')
-  " return sub . v:folddashes
-" endfunction
+set foldtext=MyFoldText()
+function! MyFoldText()
+  let l:firstline = getline(v:foldstart)
+  let l:sub = substitute(l:firstline, '\s*"\|"/\*\|\*/\|{\{3}.*', '', 'g')
+  let l:prefix = '★ '
+  let l:foldline = l:prefix . l:sub. v:folddashes
+  return l:foldline
+endfunction
 
 " Command line completion
 set history=30
