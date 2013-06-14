@@ -18,19 +18,16 @@
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
 
 " get the full path of .vim or vimfiles. 
-let g:vim_config_root = expand('<sfile>:p:h')
+let g:vim_config_root = substitute(expand('<sfile>:p:h'), ' ', '\\ ', 'g')
 
 " NEOBUNDLE                                        {{{1
 set nocompatible                " Recommend
 
 if has('vim_starting')
-    set runtimepath+=$HOME\vimfiles\neobundle\neobundle
+    exe 'set runtimepath+=' . g:vim_config_root . '/neobundle/neobundle'
 endif
 
-" Use https protocol over proxy.
-" let g:neobundle#types#git#default_protocol = 'https'
-
-call neobundle#rc(expand('~/.vim/neobundle'))
+call neobundle#rc(g:vim_config_root . '/neobundle')
 
 " Let neobundle manage neobundle
 NeoBundleFetch 'Shougo/neobundle.vim', { 'name' : 'neobundle' }
@@ -161,6 +158,8 @@ NeoBundle 'troydm/zoomwintab.vim'             , { 'name' : 'zoomwintab' }
 NeoBundle 'Mudox/mudox-vim-scripts'           , { 'name' : 'mudox' }
 " [rainbow_parentheses]
 NeoBundle 'kien/rainbow_parentheses.vim'      , { 'name' : 'rainbow_parentheses' }
+" [mudox_ultisnips]
+NeoBundle 'Mudox/ultisnips_snippets'          , { 'name' : 'mudox_ultisnips' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vim-misc]
@@ -386,7 +385,7 @@ nnoremap <silent> <M-Left> gT
 nnoremap <silent> <M-Right> gt
 "}}}2
 
-" Atl + Left / Right Arrow to switch among tabs    {{{2
+" Ctrl + S / F to switch among tabs                {{{2
 nnoremap <silent> <C-S> gT
 nnoremap <silent> <C-F> gt
 "}}}2
@@ -437,6 +436,11 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 " }}}1
 
 " PULGIN SETTINGS                                  {{{1
+
+" [solarized]"                                     {{{2
+let g:solarized_termcolors = 256
+let g:solarized_contrast = "high"
+" }}}2
 
 " [gitgutter]"                                     {{{2
 nnoremap \gg :<C-U>GitGutterToggle<CR> 
@@ -622,7 +626,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments_and_strings              = 1
 let g:ycm_autoclose_preview_window_after_completion     = 1
 let g:ycm_autoclose_preview_window_after_insertion      = 1
-let g:ycm_global_ycm_extra_conf                         = '~/.vim/neobundle/youcompleteme/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf                         = g:vim_config_root . '/neobundle/youcompleteme/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_filetypes_to_completely_ignore                = {}
 let g:ycm_filetype_blacklist                            = {
       \ 'notes'    : 1,
@@ -665,8 +669,8 @@ let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-S>"
 let g:UltiSnipsNoPythonWarning     = 1
-let g:UltiSnipsSnippetsDir         = g:vim_config_root . '/mdx_ultisnips'
-let g:UltiSnipsSnippetDirectories  = [ "mdx_ultisnips" ]
+let g:UltiSnipsSnippetsDir         = g:vim_config_root . '/neobundle/mudox_ultisnips/ultisnips_snippets'
+let g:UltiSnipsSnippetDirectories  = [ "ultisnips_snippets" ]
 "}}}2
 
 " [pathogen]                                       {{{2
