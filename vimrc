@@ -108,8 +108,6 @@ NeoBundle 'xuhdev/SingleCompile'               , { 'name' : 'singlecompile' }
 NeoBundle 'vim-scripts/YankRing.vim'           , { 'name' : 'yankring' }
 " [flake8]
 NeoBundle 'nvie/vim-flake8'                    , { 'name' : 'flake8' }
-" [MatchTagAlways]
-" NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
 " [FSwitch]
 NeoBundle 'vim-scripts/FSwitch'                , { 'name' : 'fswitch' }
 " [EasyMotion]
@@ -175,6 +173,8 @@ NeoBundle 'tpope/vim-abolish'                  , { 'name' : 'vim_abolish' }
 NeoBundle 'plasticboy/vim-markdown'            , { 'name' : 'vim_markdown' }
 " [python-vim-instant-markdown]
 NeoBundle 'isnowfy/python-vim-instant-markdown', { 'name' : 'python_vim_instant_markdown' }
+" [vim-cpp_enhanced_highlight]
+NeoBundle 'octol/vim-cpp-enhanced-highlight'   , { 'name' : 'cpp_enhanced_highlight' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
@@ -192,28 +192,21 @@ NeoBundle 'SirVer/ultisnips'
 
 " ======================== DEPRECATED PLUGINS ========================
 
+" [MatchTagAlways]
+" NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
+
 " [vim-signature]
 " NeoBundleLazy 'kshenoy/vim-signature', { 
             " \   'name'     : 'signature',
             " \   'autoload' : { 'commands' : 'SignatureToggle' }
-" [YouCompleteMe]
-" NeoBundle 'Shougo/neocomplcache' 
-" [SuperTab]
-" NeoBundle 'ervandew/supertab' 
-" [OmniCppComplete]
-" NeoBundle 'vim-scripts/OmniCppComplete'  
-" [AutoComplPop]
-" NeoBundle 'vim-scripts/AutoComplPop'     
-" [AutoPairs]
-" NeoBundle 'jiangmiao/auto-pairs'         
-" [AutoAlign]
-" NeoBundle 'vim-scripts/AutoAlign'
+
 " [clang_complete]
 " NeoBundleLazy 'Rip-Rip/clang_complete', {
             " \   'autoload' : {
             " \       'filetypes' : ['c', 'cpp'],
             " \   },
             " \ }
+
 "}}}2
 
 " My Colorscheme Bundles here:                     {{{2
@@ -271,6 +264,8 @@ NeoBundleFetch 'gregsexton/Atom',
             \ Colo_Opt_Dict( 'atom', 'colors/atom.vim' ) 
 NeoBundleFetch 'jonathanfilip/vim-lucius', 
             \ Colo_Opt_Dict( 'lucius', 'colors/lucius.vim' ) 
+NeoBundleFetch 'Pychimp/vim-luna', 
+            \ Colo_Opt_Dict( 'luna', 'colors/luna.vim' ) 
 "}}}2
 
 exe 'NeoBundleLocal ' . g:vim_config_root . '/bundle'
@@ -489,7 +484,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_loc_list_height=5
 " let g:syntastic_ignore_files=['^/usr/include/', '\c\.h$']
 let g:syntastic_mode_map = { 
-            \ 'mode': 'active',
+            \ 'mode': 'passive',
             \ 'active_filetypes': ['ruby', 'php'],
             \ 'passive_filetypes': ['puppet'] 
             \ }
