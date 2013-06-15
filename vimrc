@@ -62,12 +62,12 @@ NeoBundleLazy 'Shougo/vimshell',{
 
 " [Powerline]
 if has('win32') || has('win64')
+    NeoBundle 'Lokaltog/vim-powerline'         , { 'name' : 'powerline' }
+elseif has('unix')
     NeoBundle 'Lokaltog/powerline', {
                 \ 'name' : 'powerline',
                 \ 'rtp'  : 'powerline/bindings/vim'
                 \}
-elseif has('unix')
-    NeoBundle 'Lokaltog/vim-powerline'         , { 'name' : 'powerline' }
 elseif has('mac') || has('macunix')
     NeoBundle 'Lokaltog/powerline', {
                 \ 'name' : 'powerline',
