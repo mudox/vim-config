@@ -30,7 +30,7 @@ endif
 call neobundle#rc(g:vim_config_root . '/neobundle')
 
 " Let neobundle manage neobundle
-NeoBundleFetch 'Shougo/neobundle.vim', { 'name' : 'neobundle' }
+NeoBundleFetch 'Shougo/neobundle.vim' , { 'name' : 'neobundle' }
 
 " Use neobundle standard recipes.
 NeoBundle 'Shougo/neobundle-vim-scripts'
@@ -38,7 +38,11 @@ NeoBundle 'Shougo/neobundle-vim-scripts'
 " My Bundles here:                                 {{{2
 
 " [Vimproc]
-NeoBundle 'Shougo/vimproc' 
+NeoBundle 'Shougo/vimproc', {
+            \ 'build' : {
+            \    'unix'    : 'make -f make_unix.mak'
+            \    }
+            \ }
 
 " [Vimfiler]
 NeoBundle 'Shougo/vimfiler'
@@ -61,21 +65,10 @@ NeoBundleLazy 'Shougo/vimshell',{
             \ }
 
 " [Powerline]
-if has('win32') || has('win64')
-    NeoBundle 'Lokaltog/vim-powerline'         , { 'name' : 'powerline' }
-elseif has('unix')
-    NeoBundle 'Lokaltog/powerline', {
-                \ 'name' : 'powerline',
-                \ 'rtp'  : 'powerline/bindings/vim'
-                \}
-elseif has('mac') || has('macunix')
-    NeoBundle 'Lokaltog/powerline', {
-                \ 'name' : 'powerline',
-                \ 'rtp'  : 'powerline/bindings/vim'
-                \}
-else
-    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
-endif
+NeoBundle 'Lokaltog/powerline', {
+            \ 'name' : 'powerline',
+            \ 'rtp'  : 'powerline/bindings/vim'
+            \}
 
 " [Unite]
 NeoBundle 'Shougo/unite.vim'                   , { 'name' : 'unite' }
@@ -116,7 +109,7 @@ NeoBundle 'vim-scripts/YankRing.vim'           , { 'name' : 'yankring' }
 " [flake8]
 NeoBundle 'nvie/vim-flake8'                    , { 'name' : 'flake8' }
 " [MatchTagAlways]
-NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
+" NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
 " [FSwitch]
 NeoBundle 'vim-scripts/FSwitch'                , { 'name' : 'fswitch' }
 " [EasyMotion]
@@ -137,6 +130,10 @@ NeoBundle 'vim-scripts/Align'                  , { 'name' : 'align' }
 NeoBundle 'terryma/vim-multiple-cursors'       , { 'name' : 'multiple_cursors' }
 " [vim-expand-region]
 NeoBundle 'terryma/vim-expand-region'          , { 'name' : 'expand_region' }
+" [YouCompleteMe]
+if has('unix')
+    NeoBundle 'Valloric/YouCompleteMe'         , { 'name' : 'youcompleteme' }
+endif
 " [zencoding-vim]
 NeoBundle 'mattn/zencoding-vim'                , { 'name' : 'zencoding' }
 " [indentline]
@@ -195,14 +192,11 @@ NeoBundle 'SirVer/ultisnips'
 
 " ======================== DEPRECATED PLUGINS ========================
 
-" [vim]-signature
+" [vim-signature]
 " NeoBundleLazy 'kshenoy/vim-signature', { 
             " \   'name'     : 'signature',
             " \   'autoload' : { 'commands' : 'SignatureToggle' }
-            " \ }
 " [YouCompleteMe]
-" NeoBundle 'Valloric/YouCompleteMe', { 'name' : 'youcompleteme' }
-" [NeoComplCache]
 " NeoBundle 'Shougo/neocomplcache' 
 " [SuperTab]
 " NeoBundle 'ervandew/supertab' 
@@ -448,7 +442,7 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " [surround]"                                      {{{2
 xmap ' S'
-xmap " S"
+" xmap " S"
 xmap ( S(
 xmap ) S)
 xmap { S{
@@ -473,8 +467,20 @@ let g:gitgutter_enabled = 0
 " [syntastic]"                                     {{{2
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
-let syntastic_error_symbol = 'x'
-let syntastic_warning_symbol = '!'
+
+if has('win32') || has('win64')
+        let syntastic_error_symbol = 'x'
+        let syntastic_warning_symbol = '!'
+elseif has('unix')
+        let syntastic_error_symbol = '✗'
+        let syntastic_warning_symbol = '⚠'
+elseif has('mac') || has('macunix')
+        let syntastic_error_symbol = '✗'
+        let syntastic_warning_symbol = '⚠'
+else
+    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+endif
+
 " let syntastic_style_error_symbol
 " let syntastic_style_warning_symbol
 let g:syntastic_always_populate_loc_list = 1
@@ -592,7 +598,11 @@ let g:mdx_colos_256_black_list = [
             \ ]
 
 nnoremap \z   :<C-U>call z_menu#Main()<CR>
-nnoremap <leader>`   :<C-U>call max_restore_win#Main()<CR>
+
+if has('win32') || has('win64')
+    nnoremap <leader>`   :<C-U>call max_restore_win#Main()<CR>
+endif
+
 " }}}2
 
 " [rainbowparentheses] "                           {{{2
@@ -623,9 +633,11 @@ let g:easytags_updatetime_autodisable = 1
 let g:easytags_include_members = 1
 highlight cMember gui=italic
 " highlight link cMember Special
+
 if has('unix') || has('win32unix')
     let g:easytags_resolve_links = 1
-end
+endif
+
 "}}}2
 
 " [singlecompile]"                                 {{{2
@@ -714,10 +726,18 @@ let g:jedi#show_function_definition = 0
 nnoremap <leader>tb :TagbarToggle<CR>
 " let g:tagbar_compact = 1
 " let g:tagbar_indent = 1
-let g:tagbar_iconchars = ['+', '-']
+
+if has('win32') || has('win64')
+        let g:tagbar_iconchars = ['+', '-']
+elseif has('unix')
+        let g:tagbar_iconchars = ['▾', '▸']
+elseif has('mac') || has('macunix')
+        let g:tagbar_iconchars = ['▾', '▸']
+else
+    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+endif
+
 let g:tagbar_autoshowtag = 1
-" let g:tagbar_iconchars = ['+', '-']
-" let g:tagbar_systemenc = 'cp936'
 "}}}2
 
 " [nerdtree]                                       {{{2
@@ -749,7 +769,7 @@ let g:EasyMotion_do_shade = 0
 " [powerline]                                      {{{2
 
 if has('unix')
-        let g:Powerline_symbols    = 'fancy'
+    let g:Powerline_symbols    = 'fancy'
 endif
 
 let g:Powerline_stl_path_style = 'filename'
@@ -808,17 +828,37 @@ hi SignColumn     gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
 " SETTINGS                                         {{{1
 
 " Important
-set nocp
-set guioptions=fegtaM
+set nocompatible
+
+if has('win32') || has('win64')
+        set guioptions=fegtaM
+elseif has('unix')
+        set guioptions=fgtaM
+elseif has('mac') || has('macunix')
+        set guioptions=fgtaM
+else
+    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+endif
+
 syntax on
 filetype plugin indent on " 'filetype on' implied
 
-set encoding=utf8 " cp936 conficts with several plugins e.g. jedi-vim 
+set encoding=utf8
 
 " color & font
 set background=dark
 call auto_colo#AutoColoRandom()  " random colorscheme 
-set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
+
+if has('win32') || has('win64')
+    set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
+elseif has('unix')
+    set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
+elseif has('mac') || has('macunix')
+    " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
+else
+    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+endif
+
 set linespace=0
 
 " Editor interface
@@ -878,7 +918,10 @@ endfunction
 " Command line completion
 set history=30
 set wildmenu
-" set wildignorecase " *nix platform only
+
+if has('unix')
+    set wildignorecase "
+endif
 
 " }}}1
 
