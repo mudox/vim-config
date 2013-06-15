@@ -38,11 +38,7 @@ NeoBundle 'Shougo/neobundle-vim-scripts'
 " My Bundles here:                                 {{{2
 
 " [Vimproc]
-NeoBundle 'Shougo/vimproc', {
-            \ 'build' : {
-            \        'windows' : 'make -f make_mingw32.mak',
-            \    },
-            \ }
+NeoBundle 'Shougo/vimproc' 
 
 " [Vimfiler]
 NeoBundle 'Shougo/vimfiler'
@@ -64,11 +60,23 @@ NeoBundleLazy 'Shougo/vimshell',{
             \     }
             \ }
 
-" [vim]-signature
-NeoBundleLazy 'kshenoy/vim-signature', { 
-            \   'name'     : 'signature',
-            \   'autoload' : { 'commands' : 'SignatureToggle' }
-            \ }
+" [Powerline]
+if has('win32') || has('win64')
+    NeoBundle 'Lokaltog/powerline', {
+                \ 'name' : 'powerline',
+                \ 'rtp'  : 'powerline/bindings/vim'
+                \}
+elseif has('unix')
+    NeoBundle 'Lokaltog/vim-powerline'         , { 'name' : 'powerline' }
+elseif has('mac') || has('macunix')
+    NeoBundle 'Lokaltog/powerline', {
+                \ 'name' : 'powerline',
+                \ 'rtp'  : 'powerline/bindings/vim'
+                \}
+else
+    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+endif
+
 " [Unite]
 NeoBundle 'Shougo/unite.vim'                   , { 'name' : 'unite' }
 " [delimitMate]
@@ -111,8 +119,6 @@ NeoBundle 'nvie/vim-flake8'                    , { 'name' : 'flake8' }
 NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
 " [FSwitch]
 NeoBundle 'vim-scripts/FSwitch'                , { 'name' : 'fswitch' }
-" [Powerline]
-NeoBundle 'Lokaltog/vim-powerline'             , { 'name' : 'powerline' }
 " [EasyMotion]
 NeoBundle 'Lokaltog/vim-easymotion'            , { 'name' : 'easymotion' }
 " [Vim-Indent-Guides]
@@ -189,6 +195,11 @@ NeoBundle 'SirVer/ultisnips'
 
 " ======================== DEPRECATED PLUGINS ========================
 
+" [vim]-signature
+" NeoBundleLazy 'kshenoy/vim-signature', { 
+            " \   'name'     : 'signature',
+            " \   'autoload' : { 'commands' : 'SignatureToggle' }
+            " \ }
 " [YouCompleteMe]
 " NeoBundle 'Valloric/YouCompleteMe', { 'name' : 'youcompleteme' }
 " [NeoComplCache]
@@ -435,7 +446,7 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                                  {{{1
 
-" [surround]"                                     {{{2
+" [surround]"                                      {{{2
 xmap ' S'
 xmap " S"
 xmap ( S(
@@ -590,7 +601,7 @@ nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR>
 
 " [yankring]"                                      {{{2
 let g:yankring_min_element_length = 2
-let yankring_history_dir          = '$HOME/.vim'
+let yankring_history_dir          = g:vim_config_root
 let g:yankring_history_file       = 'yankring_hist'
 function! g:YRRunAfterMaps()
     nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
@@ -720,8 +731,8 @@ let NERDTreeMinimalUI = 1 " No ? tips line, no bookmark headline.
 "}}}2
 
 " [vimsignature]                                   {{{2
-nnoremap \s :SignatureToggle<CR>
-let g:SignaturePeriodicRefresh = 0
+" nnoremap \s :SignatureToggle<CR>
+" let g:SignaturePeriodicRefresh = 0
 "}}}2
 
 " [mark]                                           {{{2
@@ -736,8 +747,11 @@ let g:EasyMotion_do_shade = 0
 "}}}2
 
 " [powerline]                                      {{{2
-" let g:Powerline_symbols        = 'fancy'
-" let g:Powerline_colorscheme  = 'solarized'
+
+if has('unix')
+        let g:Powerline_symbols    = 'fancy'
+endif
+
 let g:Powerline_stl_path_style = 'filename'
 let g:Powerline_mode_n         = 'N'
 let g:Powerline_mode_i         = 'I'
