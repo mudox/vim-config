@@ -71,7 +71,7 @@ NeoBundle 'Lokaltog/powerline', {
             \}
 
 " [Unite]
-NeoBundle 'Shougo/unite.vim'                   , { 'name' : 'unite' }
+NeoBundle 'Shougo/unite.vim'
 " [delimitMate]
 NeoBundle 'Raimondi/delimitMate'               , { 'name' : 'delimitmate' }
 " [Easytags]
