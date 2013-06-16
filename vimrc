@@ -175,6 +175,8 @@ NeoBundle 'plasticboy/vim-markdown'            , { 'name' : 'vim_markdown' }
 NeoBundle 'isnowfy/python-vim-instant-markdown', { 'name' : 'python_vim_instant_markdown' }
 " [vim-cpp_enhanced_highlight]
 NeoBundle 'octol/vim-cpp-enhanced-highlight'   , { 'name' : 'cpp_enhanced_highlight' }
+" [GoldenView.vim]
+NeoBundle 'zhaocai/GoldenView.Vim'             , { 'name' : 'goldenview' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
@@ -434,6 +436,11 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 " }}}1
 
 " PULGIN SETTINGS                                  {{{1
+
+" [goldenview]"                                    {{{2
+let g:goldenview__enable_default_mapping = 0
+nmap <silent> <C-O>s <Plug>GoldenViewSplit
+" }}}2
 
 " [surround]"                                      {{{2
 xmap ' S'
