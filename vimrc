@@ -451,6 +451,12 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                                  {{{1
 
+" [vimproc]"                                    {{{2
+if has('win32') || has('win64')
+    let g:stdoutencoding = 'cp936'
+endif
+" }}}2
+
 " [goldenview]"                                    {{{2
 let g:goldenview__enable_default_mapping = 0
 nmap <silent> <C-O>s <Plug>GoldenViewSplit
