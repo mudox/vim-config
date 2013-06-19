@@ -1,4 +1,4 @@
-" vimrc NOT .vimrc for [G]Vim on Linux
+" vimrc NOT .vimrc for [G]Vim on Linux / Window    {{{1
 "
 " NOTE:
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
@@ -16,6 +16,7 @@
 "   2. usr g:mapleader & b:localleader to map relatively frequently used functions.
 " * Use g:vim_config_root to gain the full path of .vim or vimfies directory.
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+"}}}1
 
 " get the full path of .vim or vimfiles. 
 let g:vim_config_root = substitute(expand('<sfile>:p:h'), ' ', '\\ ', 'g')
@@ -65,10 +66,21 @@ NeoBundleLazy 'Shougo/vimshell',{
             \ }
 
 " [Powerline]
-NeoBundle 'Lokaltog/powerline', {
-            \ 'name' : 'powerline',
-            \ 'rtp'  : 'powerline/bindings/vim'
-            \}
+if has('win32') || has('win64')
+    NeoBundle 'Lokaltog/vim-powerline'         , { 'name' : 'powerline' }
+elseif has('unix')
+    NeoBundle 'Lokaltog/powerline', {
+                \ 'name' : 'powerline',
+                \ 'rtp'  : 'powerline/bindings/vim'
+                \}
+elseif has('mac') || has('macunix')
+    NeoBundle 'Lokaltog/powerline', {
+                \ 'name' : 'powerline',
+                \ 'rtp'  : 'powerline/bindings/vim'
+                \}
+else
+    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+endif
 
 " [Unite]
 NeoBundle 'Shougo/unite.vim'
@@ -177,6 +189,8 @@ NeoBundle 'isnowfy/python-vim-instant-markdown', { 'name' : 'python_vim_instant_
 NeoBundle 'octol/vim-cpp-enhanced-highlight'   , { 'name' : 'cpp_enhanced_highlight' }
 " [GoldenView.vim]
 NeoBundle 'zhaocai/GoldenView.Vim'             , { 'name' : 'goldenview' }
+" [DrawIt]
+NeoBundle 'vim-scripts/DrawIt'                 , { 'name' : 'drawit' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
