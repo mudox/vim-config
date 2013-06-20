@@ -66,22 +66,10 @@ NeoBundleLazy 'Shougo/vimshell',{
             \ }
 
 " [Powerline]
-if has('win32') || has('win64')
-    NeoBundle 'Lokaltog/vim-powerline'         , { 'name' : 'powerline' }
-elseif has('unix')
-    NeoBundle 'Lokaltog/powerline', {
-                \ 'name' : 'powerline',
-                \ 'rtp'  : 'powerline/bindings/vim'
-                \}
-elseif has('mac') || has('macunix')
-    NeoBundle 'Lokaltog/powerline', {
-                \ 'name' : 'powerline',
-                \ 'rtp'  : 'powerline/bindings/vim'
-                \}
-else
-    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
-endif
-
+NeoBundle 'Lokaltog/powerline', {
+            \ 'name' : 'powerline',
+            \ 'rtp'  : 'powerline/bindings/vim'
+            \}
 " [Unite]
 NeoBundle 'Shougo/unite.vim'
 " [delimitMate]
