@@ -777,11 +777,7 @@ let g:EasyMotion_do_shade = 0
 "}}}2
 
 " [powerline]                                      {{{2
-
-if has('unix')
-    let g:Powerline_symbols    = 'fancy'
-endif
-
+let g:Powerline_symbols        = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
 let g:Powerline_mode_n         = 'N'
 let g:Powerline_mode_i         = 'I'
