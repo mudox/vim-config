@@ -179,6 +179,8 @@ NeoBundle 'octol/vim-cpp-enhanced-highlight'   , { 'name' : 'cpp_enhanced_highli
 NeoBundle 'zhaocai/GoldenView.Vim'             , { 'name' : 'goldenview' }
 " [DrawIt]
 NeoBundle 'vim-scripts/DrawIt'                 , { 'name' : 'drawit' }
+" [vim-shell]
+NeoBundle 'xolox/vim-shell'                    , { 'name' : 'vim_shell' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
@@ -857,15 +859,17 @@ call auto_colo#AutoColoRandom()  " random colorscheme
 
 if has('win32') || has('win64')
     set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
+    set linespace=0
 elseif has('unix')
-    set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
+    set guifont=Ubuntu\ Mono\ for\ Powerline\ 11
+    set linespace=0
 elseif has('mac') || has('macunix')
     " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
+    " set linespace=1
 else
     echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
 endif
 
-set linespace=0
 
 " Editor interface
 set noshowmode   " powerline does better
