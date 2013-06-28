@@ -181,6 +181,10 @@ NeoBundle 'zhaocai/GoldenView.Vim'             , { 'name' : 'goldenview' }
 NeoBundle 'vim-scripts/DrawIt'                 , { 'name' : 'drawit' }
 " [vim-shell]
 NeoBundle 'xolox/vim-shell'                    , { 'name' : 'vim_shell' }
+" [visincr]
+NeoBundle 'vim-scripts/VisIncr'                , { 'name' : 'visincr' }
+" [VOoM]
+NeoBundle 'vim-scripts/VOoM'                   , { 'name' : 'voom' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
@@ -861,8 +865,10 @@ if has('win32') || has('win64')
     set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
     set linespace=0
 elseif has('unix')
-    set guifont=Ubuntu\ Mono\ for\ Powerline\ 11
+    set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.5
     set linespace=0
+    " set guifont=Monaco\ 9.5
+    " set linespace=0
 elseif has('mac') || has('macunix')
     " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
     " set linespace=1
