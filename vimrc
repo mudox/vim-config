@@ -445,7 +445,7 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                                  {{{1
 
-" [vimproc]"                                    {{{2
+" [vimproc]"                                       {{{2
 if has('win32') || has('win64')
     let g:stdoutencoding = 'cp936'
 endif
@@ -865,10 +865,9 @@ if has('win32') || has('win64')
     set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
     set linespace=0
 elseif has('unix')
+    " under infinality style: winxp
     set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.5
     set linespace=0
-    " set guifont=Monaco\ 9.5
-    " set linespace=0
 elseif has('mac') || has('macunix')
     " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
     " set linespace=1
