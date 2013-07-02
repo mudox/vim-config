@@ -506,14 +506,16 @@ let g:syntastic_loc_list_height=5
 " let g:syntastic_ignore_files=['^/usr/include/', '\c\.h$']
 let g:syntastic_mode_map = { 
             \ 'mode': 'passive',
-            \ 'active_filetypes': ['ruby', 'php'],
+            \ 'active_filetypes': ['ruby', 'php', 'javascript'],
             \ 'passive_filetypes': ['puppet'] 
             \ }
 let g:syntastic_stl_format = '%E{%e ✗}%B{, }%W{%w ⚠}'
 
 " checker options
-let g:syntastic_c_checkers = ['<ycm>']
-let g:syntastic_cpp_checkers = ['<ycm>']
+let g:syntastic_c_checkers = ['ycm']
+let g:syntastic_cpp_checkers = ['ycm']
+let g:syntastic_javascript_checkers = ['jshint']
+
 " }}}2
 
 " [vimwiki]"                                   {{{2
