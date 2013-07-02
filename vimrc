@@ -398,7 +398,7 @@ nnoremap <silent> <C-S> gT
 nnoremap <silent> <C-F> gt
 "}}}2
 
-" <C-Left/Right> Arrow to switch current buffer{{{2
+" <C-Left/Right> to switch current buffer      {{{2
 nnoremap <silent> <C-Left> :bnext<CR>
 nnoremap <silent> <C-Right> :bNext<CR>
 "}}}2
@@ -926,7 +926,8 @@ function! MyFoldText()
   let l:firstline = getline(v:foldstart)
   let l:sub = substitute(l:firstline, '\s*"\|"/\*\|\*/\|{\{3}.*', '', 'g')
   let l:prefix = '★ '
-  let l:foldline = l:prefix . l:sub. v:folddashes
+  " let l:foldline = l:prefix . l:sub. v:folddashes
+  let l:foldline = l:prefix . l:sub
   return l:foldline
 endfunction
 
