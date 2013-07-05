@@ -3,6 +3,8 @@ Mudox's Vim Configuration
 
 Totally 80+ plugins under the management of 'Neobundle'.
 
+Currently, my configuration focus on C/C++, Python, Bash script coding.
+
 NOTE:
 -----
 This vimrc has several preconditions:
@@ -10,7 +12,7 @@ This vimrc has several preconditions:
 * This file 'vimrc' NOT '.vimrc' must reside in the root directory of .vim or
   vimfiles directory, while the formally '.vimrc' file, containing a single line
   to source this file, resides just outisde .vim or vimfiles direcotry. By doing
-  this, we can conveniently use git to manage the whole vim configuration stuff.
+  this, we can conveniently use git to manage the whole vim configuration stuffs.
 
 * Assumes you haved defined a system or user environment variable: MDX_DROPBOX
   which holds the absolute path to dropbox root path. (deprecated)
