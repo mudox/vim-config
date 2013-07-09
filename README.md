@@ -7,20 +7,22 @@ Currently, my configuration focus on C/C++, Python, Bash script coding.
 
 NOTE:
 -----
-This vimrc has several preconditions:
 
-* This file 'vimrc' NOT '.vimrc' must reside in the root directory of .vim or
+### This vimrc has several preconditions:
+
+* This file 'vimrc' NOT '.vimrc' must reside in the root of .vim or
   vimfiles directory, while the formally '.vimrc' file, containing a single line
   to source this file, resides just outisde .vim or vimfiles direcotry. By doing
   this, we can conveniently use git to manage the whole vim configuration stuffs.
 
 * Assumes you haved defined a system or user environment variable: MDX_DROPBOX
   which holds the absolute path to dropbox root path. (deprecated)
-This vimrc follows several predefined laws:
+
+### This vimrc follows several predefined laws:
 
 * Mapping scheme:
   1. use '\' to map relatively infrequently used functions.
-  2. usr g:mapleader & b:localleader to map relatively frequently used functions.
+  2. use g:mapleader & b:localleader to map relatively frequently used functions.
 
 * Use g:vim_config_root to gain the full path of .vim or vimfies directory.
 
