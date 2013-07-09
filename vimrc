@@ -185,6 +185,8 @@ NeoBundle 'xolox/vim-shell'                    , { 'name' : 'vim_shell' }
 NeoBundle 'vim-scripts/VisIncr'                , { 'name' : 'visincr' }
 " [VOoM]
 NeoBundle 'vim-scripts/VOoM'                   , { 'name' : 'voom' }
+" [cottidie]
+NeoBundle 'glts/vim-cottidie'                  , { 'name' : 'cottidie' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
