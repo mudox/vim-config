@@ -1,4 +1,4 @@
-" vimrc NOT .vimrc for [G]Vim on Linux / Window{{{1
+"r vimrc NOT .vimrc for [G]Vim on Linux / Window{{{1
 "
 " NOTE:
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
@@ -428,6 +428,8 @@ inoremap <C-L> <Right>
 
 nnoremap <leader>cd :<C-U>lcd %:p:h<CR>
 
+" like UltisniptEdit command, edit main ftplugin config file
+" for current file type.
 function! EditFileTypeSettings( filetype )
     let l:ft = ( a:filetype == '' ) ? &filetype : a:filetype
     if l:ft != ''
@@ -660,6 +662,18 @@ endif
 
 " [singlecompile]"                             {{{2
 nnoremap <F5> :<C-U>SCCompileRun<CR>
+if has('win32') || has('win64')
+    call SingleCompile#SetCompilerTemplate('python', 'py3',
+                \'New python3 executable for python3.3.2', 
+                \'E:\PYF\SDK\Python3\py3.exe', '', '')
+    call SingleCompile#ChooseCompiler('python', 'py3')
+elseif has('unix')
+    call SingleCompile#ChooseCompiler('python', 'python3')
+elseif has('mac') || has('macunix')
+    call SingleCompile#ChooseCompiler('python', 'python3')
+else
+    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+endif
 "}}}2
 
 " [python-mode]"                               {{{2
@@ -714,8 +728,8 @@ let NERDDefaultNesting            = 0
 " [ultisnips]                                  {{{2
 let g:UltiSnipsEditSplit           = "horizontal"
 let g:UltiSnipsExpandTrigger       = "<Tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-S>"
+let g:UltiSnipsJumpForwardTrigger  = "<C-E>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-D>"
 let g:UltiSnipsNoPythonWarning     = 1
 let g:UltiSnipsSnippetsDir         = g:vim_config_root . '/neobundle/mudox_ultisnips/ultisnips_snippets'
 let g:UltiSnipsSnippetDirectories  = [ "ultisnips_snippets" ]
