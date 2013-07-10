@@ -1,4 +1,4 @@
-set nosmarttab
-set tabstop=8
-set softtabstop=4
-set noexpandtab
+setloca nosmarttab
+setloca tabstop=8
+setloca softtabstop=4
+setloca noexpandtab
