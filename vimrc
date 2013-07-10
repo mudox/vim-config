@@ -187,6 +187,8 @@ NeoBundle 'vim-scripts/VisIncr'                , { 'name' : 'visincr' }
 NeoBundle 'vim-scripts/VOoM'                   , { 'name' : 'voom' }
 " [cottidie]
 NeoBundle 'glts/vim-cottidie'                  , { 'name' : 'cottidie' }
+" [vim-easy-align]
+NeoBundle 'junegunn/vim-easy-align'            , { 'name' : 'easy_align' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
@@ -242,6 +244,8 @@ function! Colo_Opt_Dict( name, vim_name )
     return s:colo_options
 endfunction
 
+NeoBundleFetch 'molok/vim-vombato-colorscheme', 
+            \ Colo_Opt_Dict( 'vombato', 'colors/vombato.vim' )
 NeoBundleFetch 'w0ng/vim-hybrid', 
             \ Colo_Opt_Dict( 'hybrid', 'colors/hybrid.vim' )
 NeoBundleFetch 'tomasr/molokai', 
@@ -700,7 +704,6 @@ let g:ycm_filetypes_to_completely_ignore                = {}
 let g:ycm_filetype_blacklist                            = {
       \ 'notes'    : 1,
       \ 'markdown' : 1,
-      \ 'python'   : 1,
       \ 'vimwiki'  : 1
       \}
 let g:ycm_filetype_whitelist                            = {

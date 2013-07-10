@@ -1,25 +1,27 @@
-if has('win32') || has('win64')
-    function! s:Py3Run( args )
-        w
-        lcd %:p:h
+function! s:Py3Run( args )
+    " save & lcd to current python script file path.
+    w
+    lcd %:p:h
 
-        let l:python3_path = 'E:\\PYF\\SDK\\Python3\\py3.exe'
+    if has('win32') || has('win64')
+            let l:python3_path = 'E:\\PYF\\SDK\\Python3\\py3.exe'
+            let l:exeString = l:python3_path . ' ' . expand('%') . ' ' . a:args
+    elseif has('unix')
+            let l:python3_path = 'python3'
+            let l:exeString = l:python3_path . ' ' . expand('%') . ' ' . a:args
+    elseif has('mac') || has('macunix')
+            let l:python3_path = 'python3'
+            let l:exeString = l:python3_path . ' ' . expand('%') . ' ' . a:args
+    else
+        echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+    endif
 
-        let l:exeString = l:python3_path . ' ' . expand('%') . ' ' . a:args
+    echohl Underlined | echo l:exeString | echohl NONE
 
-        echohl Underlined
-        echo l:exeString
-        echohl NONE
+    echo vimproc#system2(l:exeString)
+endfunction
 
-        echo vimproc#system2(l:exeString)
-    endfunction
+command! -buffer -nargs=* Pr call s:Py3Run(<q-args>) 
+command! -buffer -nargs=* Python3Run call s:Py3Run(<q-args>) 
 
-    command! -nargs=* Pr call s:Py3Run(<q-args>)
-
-elseif has('unix')
-    command! -nargs=* Pr exe 'VimProcBang python3 ' . expand('%:p') . ' ' . <q-args>
-elseif has('mac') || has('macunix')
-    command! -nargs=* Pr exe 'VimProcBang python3 ' . expand('%:p') . ' ' . <q-args>
-else
-    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
-endif
+nnoremap <buffer> <leader><leader>r :Python3Run  
