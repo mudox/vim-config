@@ -4,7 +4,7 @@ function! s:Py3Run( args )
     lcd %:p:h
 
     if has('win32') || has('win64')
-            let l:python3_path = 'E:\\PYF\\SDK\\Python3\\py3.exe'
+            let l:python3_path = 'E:/PYF/SDK/Python3/python.exe'
             let l:exeString = l:python3_path . ' ' . expand('%') . ' ' . a:args
     elseif has('unix')
             let l:python3_path = 'python3'
@@ -21,7 +21,7 @@ function! s:Py3Run( args )
     echo vimproc#system2(l:exeString)
 endfunction
 
-command! -buffer -nargs=* Pr call s:Py3Run(<q-args>) 
-command! -buffer -nargs=* Python3Run call s:Py3Run(<q-args>) 
+command! -buffer -nargs=* Run call s:Py3Run(<q-args>) 
+command! -buffer -nargs=* Python3RunWithArgs call s:Py3Run(<q-args>) 
 
-nnoremap <buffer> <leader><leader>r :Python3Run  
+nnoremap <buffer> <leader><leader>r :Python3RunWithArgs 
