@@ -189,6 +189,10 @@ NeoBundle 'vim-scripts/VOoM'                   , { 'name' : 'voom' }
 NeoBundle 'glts/vim-cottidie'                  , { 'name' : 'cottidie' }
 " [vim-easy-align]
 NeoBundle 'junegunn/vim-easy-align'            , { 'name' : 'easy_align' }
+" [Gundo]
+NeoBundle 'sjl/gundo.vim'                      , { 'name' : 'gundo' }
+" [vim-autoformat]
+NeoBundle 'Chiel92/vim-autoformat'             , { 'name' : 'autoformat' }
 " [neocomplete]
 if has('lua')
     if has('win32') || has('win64')
@@ -477,16 +481,15 @@ nnoremap <leader><leader>s :VimProcBang
 
 " [goldenview]"                                 {{{2
 let g:goldenview__enable_default_mapping = 0
-nmap <silent> <C-O>s <Plug>GoldenViewSplit
 " }}}2
 
 " [surround]"                                   {{{2
-xmap ' S'
-" xmap " S"
-xmap ( S(
-xmap ) S)
-xmap { S{
-xmap } S}
+xmap ' <Plug>VSurround'
+xmap " <Plug>VSurround"
+xmap ( <Plug>VSurround(
+xmap ) <Plug>VSurround)
+xmap { <Plug>VSurround{
+xmap } <Plug>VSurround}
 " xmap [ S[
 " xmap ] S]
 " }}}2
@@ -660,9 +663,8 @@ nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR>
 let g:yankring_min_element_length = 2
 let yankring_history_dir          = g:vim_config_root
 let g:yankring_history_file       = 'yankring_hist'
-function! g:YRRunAfterMaps()
-    nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
-endfunction
+let yankring_replace_n_nkey       = '<C-0>'
+let yankring_replace_n_pkey       = '<C-9>'
 
 nnoremap <leader>yr :<C-U>YRShow<CR>
 "}}}2
@@ -756,8 +758,8 @@ let NERDDefaultNesting            = 0
 " [ultisnips]                                   {{{2
 let g:UltiSnipsEditSplit           = "horizontal"
 let g:UltiSnipsExpandTrigger       = "<Tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<C-E>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-D>"
+let g:UltiSnipsJumpForwardTrigger  = "<C-.>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-,>"
 let g:UltiSnipsNoPythonWarning     = 1
 let g:UltiSnipsSnippetsDir         = g:vim_config_root . '/neobundle/mudox_ultisnips/ultisnips_snippets'
 let g:UltiSnipsSnippetDirectories  = [ "ultisnips_snippets" ]
