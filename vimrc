@@ -523,12 +523,12 @@ let g:syntastic_mode_map = {
             \ 'active_filetypes': ['ruby', 'php', 'javascript'],
             \ 'passive_filetypes': ['puppet'] 
             \ }
-let g:syntastic_stl_format = '%E{%e ✗}%B{, }%W{%w ⚠}'
 
 " checker options
 let g:syntastic_c_checkers = ['ycm']
 let g:syntastic_cpp_checkers = ['ycm']
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 
 " }}}2
 
@@ -689,10 +689,10 @@ nnoremap <F5> :<C-U>SCCompileRun<CR>
 "}}}2
 
 " [python-mode]"                                {{{2
-let g:pymode_doc_key  = '<leader>k'
-let g:pymode_run_key  = '<leader>run'
-let pymode_lint_onfly = 1
-let pymode_breakpoint = '<leader>brk'
+let g:pymode_run                      = 0
+let g:pymode_lint                     = 0
+let g:pymode_syntax_print_as_function = 1
+let g:pymode_doc_key                  = '<leader>k'
 "}}}2
 
 " [youcompleteme]"                              {{{2
