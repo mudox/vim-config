@@ -459,10 +459,20 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                               {{{1
 
+" [matchparen]"                                 {{{2
+let loaded_matchparen = 1
+" }}}2
+
+" [cottidie]"                                   {{{2
+command! GiveMeTip CottidieTip
+" }}}2
+
 " [vimproc]"                                    {{{2
 if has('win32') || has('win64')
     let g:stdoutencoding = 'cp936'
 endif
+
+nnoremap <leader><leader>s :VimProcBang 
 " }}}2
 
 " [goldenview]"                                 {{{2
@@ -495,6 +505,8 @@ let g:gitgutter_enabled = 0
 " }}}2
 
 " [syntastic]"                                  {{{2
+nnoremap <leader>ck :<C-U>SyntasticCheck<CR>
+
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
 
@@ -528,7 +540,7 @@ let g:syntastic_mode_map = {
 let g:syntastic_c_checkers = ['ycm']
 let g:syntastic_cpp_checkers = ['ycm']
 let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+let g:syntastic_python_checkers = ['python', 'pyflakes', 'pep8']
 
 " }}}2
 
@@ -604,7 +616,7 @@ nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
 " let g:indentLine_color_gui = '#389900'
 " }}}2
 
-" [mudoxvimscripts]"                            {{{2
+" [mudox]"                                      {{{2
 " let g:mdx_colos_white_list = [
             " \   'badwolf'
             " \ ] " just for testing ...
@@ -631,8 +643,11 @@ let g:mdx_colos_256_black_list = [
 
 nnoremap \z   :<C-U>call z_menu#Main()<CR>
 
+let g:mdx_vim_alpha_step = 15
 if has('win32') || has('win64')
-    nnoremap <leader>`   :<C-U>call max_restore_win#Main()<CR>
+    nnoremap <silent> <leader>`   :<C-U>call max_restore_win#Main()<CR>
+    nnoremap <silent> > :<C-U>call trans_win#AlphaStep(g:mdx_vim_alpha_step)<CR>
+    nnoremap <silent> < :<C-U>call trans_win#AlphaStep(-g:mdx_vim_alpha_step)<CR>
 endif
 
 " }}}2
@@ -691,6 +706,8 @@ nnoremap <F5> :<C-U>SCCompileRun<CR>
 " [python-mode]"                                {{{2
 let g:pymode_run                      = 0
 let g:pymode_lint                     = 0
+let g:pymode_lint_onfly               = 0
+let g:pymode_lint_write               = 0
 let g:pymode_syntax_print_as_function = 1
 let g:pymode_doc_key                  = '<leader>k'
 "}}}2
