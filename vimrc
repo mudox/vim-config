@@ -389,38 +389,23 @@ nnoremap <C-K>	   <C-W>k
 nnoremap <C-L>	   <C-W>l
 "}}}2
 
-" <C-S-Up/Down/Left/Right> to resize windows    {{{2
-nnoremap <C-S-Up> 		5<C-W>+
-nnoremap <C-S-Down> 	5<C-W>-
-nnoremap <C-S-Left> 	5<C-W>< 
-nnoremap <C-S-Right> 	5<C-W>>
+" <M-Up/Down/Left/Right> to resize windows      {{{2
+nnoremap <M-Up> 	5<C-W>+
+nnoremap <M-Down> 	5<C-W>-
+nnoremap <M-Left> 	5<C-W>< 
+nnoremap <M-Right> 	5<C-W>>
 "}}}2
 
-" <C-M-Left/Right> to move tabs                 {{{2
-nnoremap <silent> <M-C-Left> :if tabpagenr() == 1\|exe "tabm ".tabpagenr("$")\|el\|exe "tabm ".(tabpagenr()-2)\|en<CR>
-nnoremap <silent> <M-C-Right> :if tabpagenr() == tabpagenr("$")\|tabm 0\|el\|exe "tabm ".tabpagenr()\|en<CR>
-"}}}2
-
-" <M-Left/Right> to switch among tabs           {{{2
-nnoremap <silent> <M-Left> gT
-nnoremap <silent> <M-Right> gt
-"}}}2
-
-" <C-Left/Right> to switch among tabs           {{{2
-nnoremap <silent> <Left> gT
-nnoremap <silent> <Right> gt
+" <M-H/L> to switch among tabs                  {{{2
 if has('gui_running')
-    nnoremap <silent> <M-L> gt
-    nnoremap <silent> <M-H> gT
+    nnoremap <silent> <M-l> gt
+    nnoremap <silent> <M-h> gT
+    nnoremap <silent> ì     gt
+    nnoremap <silent> è     gT
 else
     nnoremap <silent> l gt
     nnoremap <silent> h gT
 end
-"}}}2
-
-" <C-Left/Right> to switch current buffer       {{{2
-nnoremap <silent> <C-Left> :bnext<CR>
-nnoremap <silent> <C-Right> :bNext<CR>
 "}}}2
 
 " In case you leave CapLock key pressed inadvertently, which will mess you up.
@@ -442,6 +427,7 @@ nnoremap q <Nop>
 nnoremap _q q
 
 noremap zi zizz
+
 " Move in insert mode 
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
