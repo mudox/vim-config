@@ -382,9 +382,6 @@ endif
 " Default leader key for <leader> mappings
 let g:mapleader = ','
 
-map <Up> gk
-map <Down> gj
-
 " <C-H/J/K/L> to jump among windows             {{{2
 nnoremap <C-H>	   <C-W>h
 nnoremap <C-J>	   <C-W>j
@@ -409,9 +406,9 @@ nnoremap <silent> <M-Left> gT
 nnoremap <silent> <M-Right> gt
 "}}}2
 
-" <C-S/F> to switch among tabs                  {{{2
-nnoremap <silent> <C-S> gT
-nnoremap <silent> <C-F> gt
+" <C-Left/Right> to switch among tabs           {{{2
+nnoremap <silent> <Left> gT
+nnoremap <silent> <Right> gt
 "}}}2
 
 " <C-Left/Right> to switch current buffer       {{{2
@@ -450,7 +447,7 @@ function! EditFileTypeSettings( filetype )
     let l:ft = ( a:filetype == '' ) ? &filetype : a:filetype
     if l:ft != ''
         let l:setting_file = g:vim_config_root . '/ftplugin/' . l:ft . '.vim'
-        exe query_open_file#Main() . l:setting_file
+        exe mudox#query_open_file#Main() . l:setting_file
     else
         echohl ErrorMsg
         echo "* No filetype *"
@@ -644,13 +641,15 @@ let g:mdx_colos_256_black_list = [
             \   'inkpot_mdx'   
             \ ]
 
-nnoremap \z   :<C-U>call z_menu#Main()<CR>
+nnoremap \z   :<C-U>call mudox#z_menu#Main()<CR>
+nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
+
 
 let g:mdx_vim_alpha_step = 15
 if has('win32') || has('win64')
-    nnoremap <silent> <leader>`   :<C-U>call max_restore_win#Main()<CR>
-    nnoremap <silent> > :<C-U>call trans_win#AlphaStep(g:mdx_vim_alpha_step)<CR>
-    nnoremap <silent> < :<C-U>call trans_win#AlphaStep(-g:mdx_vim_alpha_step)<CR>
+    nnoremap <silent> <leader>`   :<C-U>call mudox#max_restore_win#Main()<CR>
+    " nnoremap <silent> > :<C-U>call trans_win#AlphaStep(g:mdx_vim_alpha_step)<CR>
+    " nnoremap <silent> < :<C-U>call trans_win#AlphaStep(-g:mdx_vim_alpha_step)<CR>
 endif
 
 " }}}2
@@ -663,8 +662,8 @@ nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR>
 let g:yankring_min_element_length = 2
 let yankring_history_dir          = g:vim_config_root
 let g:yankring_history_file       = 'yankring_hist'
-let yankring_replace_n_nkey       = '<C-0>'
-let yankring_replace_n_pkey       = '<C-9>'
+let yankring_replace_n_nkey       = '<Down>'
+let yankring_replace_n_pkey       = '<Up>'
 
 nnoremap <leader>yr :<C-U>YRShow<CR>
 "}}}2
@@ -758,8 +757,8 @@ let NERDDefaultNesting            = 0
 " [ultisnips]                                   {{{2
 let g:UltiSnipsEditSplit           = "horizontal"
 let g:UltiSnipsExpandTrigger       = "<Tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<C-.>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-,>"
+let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-S>"
 let g:UltiSnipsNoPythonWarning     = 1
 let g:UltiSnipsSnippetsDir         = g:vim_config_root . '/neobundle/mudox_ultisnips/ultisnips_snippets'
 let g:UltiSnipsSnippetDirectories  = [ "ultisnips_snippets" ]
@@ -905,7 +904,7 @@ set encoding=utf8
 
 " color & font
 set background=dark
-call auto_colo#AutoColoRandom()  " random colorscheme 
+call mudox#auto_colo#AutoColoRandom()  " random colorscheme 
 
 if has('win32') || has('win64')
     set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
