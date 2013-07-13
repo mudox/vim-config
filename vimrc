@@ -409,6 +409,13 @@ nnoremap <silent> <M-Right> gt
 " <C-Left/Right> to switch among tabs           {{{2
 nnoremap <silent> <Left> gT
 nnoremap <silent> <Right> gt
+if has('gui_running')
+    nnoremap <silent> <M-L> gt
+    nnoremap <silent> <M-H> gT
+else
+    nnoremap <silent> l gt
+    nnoremap <silent> h gT
+end
 "}}}2
 
 " <C-Left/Right> to switch current buffer       {{{2
@@ -610,6 +617,21 @@ omap aX <Plug>(textobj-comment-big-a)
 
 " [indentline]"                                 {{{2
 nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
+let g:indentLine_noConcealCursor  = 1                    
+let g:indentLine_fileTypeExclude = [
+            \ 'text',
+            \ 'help',
+            \ ''
+            \]                    
+
+let g:indentLine_bufNameExclude = [
+            \ 'h_.*', 
+            \ 'hNERD_tree.*'
+            \]
+
+" let g:indentLine_fileType = [
+            " \
+            " \]
 
 " let g:indentLine_char = '.'
 " let g:indentLine_color_term = 239
