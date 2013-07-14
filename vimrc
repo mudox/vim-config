@@ -193,6 +193,8 @@ NeoBundle 'junegunn/vim-easy-align'            , { 'name' : 'easy_align' }
 NeoBundle 'sjl/gundo.vim'                      , { 'name' : 'gundo' }
 " [vim-autoformat]
 NeoBundle 'Chiel92/vim-autoformat'             , { 'name' : 'autoformat' }
+" [ropevim]
+NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
 " [neocomplete]
 if has('lua')
     if has('win32') || has('win64')
@@ -310,6 +312,19 @@ function NeoUpdateLogs()
     NeoBundleUpdate
     NeoBundleUpdatesLog
 endfunction
+
+" function NeoUpdateLogs()
+    " let l:tmpFile = tempname()
+
+    " execute 'redi > ' . l:tmpFile
+
+    " NeoBundleUpdate
+    " NeoBundleUpdatesLog
+
+    " redi END
+    
+    " silent execute mudox#query_open_file#Main() . ' ' . l:tmpFile
+" endfunction
 
 nnoremap \neo :call NeoUpdateLogs()<CR>
 "}}}1
@@ -603,7 +618,7 @@ omap aX <Plug>(textobj-comment-big-a)
 
 " [indentline]"                                 {{{2
 nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
-let g:indentLine_noConcealCursor  = 1                    
+" let g:indentLine_noConcealCursor  = 1                    
 let g:indentLine_fileTypeExclude = [
             \ 'text',
             \ 'help',
@@ -826,8 +841,8 @@ let NERDTreeMinimalUI = 1 " No ? tips line, no bookmark headline.
 
 " [mark]                                        {{{2
 let g:mwAutoSaveMarks = 0
-" let g:mwHistAdd = '/@'
 let g:mwIgnoreCase = 0
+" let g:mwHistAdd = '/@'
 "}}}2
 
 " [easymotion]                                  {{{2
@@ -917,10 +932,12 @@ call mudox#auto_colo#AutoColoRandom()  " random colorscheme
 if has('win32') || has('win64')
     set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
     set linespace=0
+    autocmd ColorScheme * set linespace=0
 elseif has('unix')
     " under infinality style: winxp
     set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.5
     set linespace=0
+    autocmd ColorScheme * set linespace=0
 elseif has('mac') || has('macunix')
     " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
     " set linespace=1

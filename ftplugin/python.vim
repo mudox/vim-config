@@ -24,4 +24,4 @@ endfunction
 command! -buffer -nargs=* Run call s:Py3Run(<q-args>) 
 command! -buffer -nargs=* Python3RunWithArgs call s:Py3Run(<q-args>) 
 
-nnoremap <buffer> <leader><leader>r :Python3RunWithArgs 
+nnoremap <buffer> <leader><leader>r :Python3RunWithArgs<Space>
