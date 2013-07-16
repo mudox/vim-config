@@ -193,6 +193,10 @@ NeoBundle 'junegunn/vim-easy-align'            , { 'name' : 'easy_align' }
 NeoBundle 'sjl/gundo.vim'                      , { 'name' : 'gundo' }
 " [vim-autoformat]
 NeoBundle 'Chiel92/vim-autoformat'             , { 'name' : 'autoformat' }
+" [pyinterative]
+NeoBundle 'clericJ/pyinteractive-vim'          , { 'name' : 'pyinterative' }
+" [SQLUtilities]
+NeoBundle 'vim-scripts/SQLUtilities'           , { 'name' : 'sqlutil' }
 " [ropevim]
 NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
 " [neocomplete]
@@ -467,6 +471,10 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 " }}}1
 
 " PULGIN SETTINGS                               {{{1
+
+" [dbext]"                                 {{{2
+let g:dbext_default_SQLITE_bin = 'sqlite3'
+" }}}2
 
 " [matchparen]"                                 {{{2
 let loaded_matchparen = 1
