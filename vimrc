@@ -71,7 +71,7 @@ NeoBundle 'Lokaltog/powerline', {
             \ 'rtp'  : 'powerline/bindings/vim'
             \}
 " [Unite]
-NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite.vim'                   , { 'name' : 'unite' }
 " [delimitMate]
 NeoBundle 'Raimondi/delimitMate'               , { 'name' : 'delimitmate' }
 " [Easytags]
@@ -459,7 +459,7 @@ function! EditFileTypeSettings( filetype )
     let l:ft = ( a:filetype == '' ) ? &filetype : a:filetype
     if l:ft != ''
         let l:setting_file = g:vim_config_root . '/ftplugin/' . l:ft . '.vim'
-        exe mudox#query_open_file#Main() . l:setting_file
+        exe mudox#query_open_file#Main() . ' ' . l:setting_file
     else
         echohl ErrorMsg
         echo "* No filetype *"
