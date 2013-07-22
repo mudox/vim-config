@@ -197,14 +197,12 @@ NeoBundle 'Chiel92/vim-autoformat'             , { 'name' : 'autoformat' }
 NeoBundle 'clericJ/pyinteractive-vim'          , { 'name' : 'pyinterative' }
 " [SQLUtilities]
 NeoBundle 'vim-scripts/SQLUtilities'           , { 'name' : 'sqlutil' }
+" [matchit]
+NeoBundle 'vim-scripts/matchit.zip'            , { 'name' : 'matchit' }
 " [ropevim]
 NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
-" [neocomplete]
-if has('lua')
-    if has('win32') || has('win64')
-            NeoBundle 'Shougo/neocomplete.vim' , { 'name' : 'neocomplete' }
-    endif
-endif
+" [MatchTagAlways]
+NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
@@ -222,8 +220,6 @@ NeoBundle 'SirVer/ultisnips'
 
 " ======================== DEPRECATED PLUGINS ========================
 
-" [MatchTagAlways]
-" NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
 
 " [vim-signature]
 " NeoBundleLazy 'kshenoy/vim-signature', { 
