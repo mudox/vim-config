@@ -203,6 +203,8 @@ NeoBundle 'vim-scripts/matchit.zip'            , { 'name' : 'matchit' }
 NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
 " [MatchTagAlways]
 NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
+" [vim-session]
+NeoBundle 'xolox/vim-session'                  , { 'name' : 'session' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
