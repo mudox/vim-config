@@ -203,8 +203,6 @@ NeoBundle 'vim-scripts/matchit.zip'            , { 'name' : 'matchit' }
 NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
 " [MatchTagAlways]
 NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
-" [vim-session]
-NeoBundle 'xolox/vim-session'                  , { 'name' : 'session' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
@@ -221,8 +219,8 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'SirVer/ultisnips'
 
 " ======================== DEPRECATED PLUGINS ========================
-
-
+" [vim-session]
+" NeoBundle 'xolox/vim-session'                  , { 'name' : 'session' }
 " [vim-signature]
 " NeoBundleLazy 'kshenoy/vim-signature', { 
             " \   'name'     : 'signature',
@@ -470,7 +468,12 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                               {{{1
 
-" [dbext]"                                 {{{2
+" [vim-session]"                                {{{2
+" let g:session_autosave = 0
+" let g:session_directory = '~/.vim_session'
+" }}}2
+
+" [dbext]"                                      {{{2
 let g:dbext_default_SQLITE_bin = 'sqlite3'
 " }}}2
 
