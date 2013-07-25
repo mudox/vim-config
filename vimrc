@@ -70,8 +70,6 @@ NeoBundle 'Lokaltog/powerline', {
             \ 'name' : 'powerline',
             \ 'rtp'  : 'powerline/bindings/vim'
             \}
-" [Unite]
-NeoBundle 'Shougo/unite.vim'                   , { 'name' : 'unite' }
 " [delimitMate]
 NeoBundle 'Raimondi/delimitMate'               , { 'name' : 'delimitmate' }
 " [Easytags]
@@ -202,7 +200,7 @@ NeoBundle 'vim-scripts/matchit.zip'            , { 'name' : 'matchit' }
 " [ropevim]
 NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
 " [MatchTagAlways]
-NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
+" NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
 " [vcscommand]
 NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
@@ -478,7 +476,7 @@ let g:dbext_default_SQLITE_bin = 'sqlite3'
 " }}}2
 
 " [matchparen]"                                 {{{2
-let loaded_matchparen = 1
+" let loaded_matchparen = 1
 " }}}2
 
 " [cottidie]"                                   {{{2
