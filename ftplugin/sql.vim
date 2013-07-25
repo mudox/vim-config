@@ -13,7 +13,8 @@ function! s:UppercaseKeywords()
                 \ 'select' ,
                 \ 'table'  ,
                 \ 'unique' ,
-                \ 'values'
+                \ 'values' ,
+                \ 'where'
                 \ ]
 
     let l:pattern = l:keyword_list[0]
