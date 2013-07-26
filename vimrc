@@ -46,8 +46,22 @@ NeoBundle 'Shougo/vimproc', {
             \ }
 
 " [Vimfiler]
-NeoBundle 'Shougo/vimfiler'
-
+NeoBundleLazy 'Shougo/vimfiler', {
+      \     'depends' : 'Shougo/unite.vim',
+      \     'autoload' : {
+      \         'commands' : [
+      \             { 'name' : 'VimFiler',
+      \             'complete' : 'customlist,vimfiler#complete' },
+      \             'VimFilerExplorer',
+      \             'Edit', 
+      \             'Read', 
+      \             'Source', 
+      \             'Write'
+      \         ],
+      \         'mappings' : ['<Plug>(vimfiler_switch)'],
+      \         'explorer' : 1,
+      \     }
+      \ }
 " [Vimshell]
 NeoBundleLazy 'Shougo/vimshell',{
             \     'autoload' : {
@@ -137,9 +151,19 @@ NeoBundle 'Yggdroot/indentLine'                , { 'name' : 'indentline' }
 " [dbext]
 NeoBundle 'vim-scripts/dbext.vim'              , { 'name' : 'dbext' }
 " [join]
-NeoBundle 'sk1418/Join'                        , { 'name' : 'join' }
+NeoBundleLazy 'sk1418/Join', { 
+            \   'name' : 'join',
+            \   'autoload' : {
+            \       'command' : [ 'Join' ]
+            \   }
+            \ }
 " [gitgutter]
-NeoBundle 'airblade/vim-gitgutter'             , { 'name' : 'gitgutter' }
+NeoBundleLazy 'airblade/vim-gitgutter', { 
+            \    'name' : 'gitgutter',
+            \    'autolaod' : {
+            \       'mappings' : ['\gg']
+            \    }
+            \ }
 " [colorv]
 NeoBundle 'Rykka/colorv.vim'                   , { 'name' : 'colorv' }
 " [origami]
@@ -158,7 +182,12 @@ NeoBundle 'kien/rainbow_parentheses.vim'       , { 'name' : 'rainbow_parentheses
 " [mudox_ultisnips]
 NeoBundle 'Mudox/ultisnips_snippets'           , { 'name' : 'mudox_ultisnips' }
 " [jedi-vim]
-NeoBundle 'davidhalter/jedi-vim'               , { 'name' : 'jedi_vim' }
+NeoBundleLazy 'davidhalter/jedi-vim', { 
+            \   'name' : 'jedi_vim',
+            \   'autoload' : {
+            \       'filtype' : [ 'python' ]
+            \   }
+            \ }
 " [python-mode]
 NeoBundle 'klen/python-mode'                   , { 'name' : 'python_mode' }
 " [vim-misc]
@@ -184,7 +213,10 @@ NeoBundle 'vim-scripts/VisIncr'                , { 'name' : 'visincr' }
 " [VOoM]
 NeoBundle 'vim-scripts/VOoM'                   , { 'name' : 'voom' }
 " [cottidie]
-NeoBundle 'glts/vim-cottidie'                  , { 'name' : 'cottidie' }
+NeoBundleLazy 'glts/vim-cottidie', { 
+            \ 'name' : 'cottidie',
+            \ 'autoload' : { 'commands' : ['CottidieTip'] }
+            \ }
 " [vim-easy-align]
 NeoBundle 'junegunn/vim-easy-align'            , { 'name' : 'easy_align' }
 " [Gundo]
@@ -236,8 +268,6 @@ NeoBundle 'SirVer/ultisnips'
 " My Colorscheme Bundles here:                  {{{2
 
 function! Colo_Opt_Dict( name, vim_name )
-    " let s:bundle_path = expand('$HOME/.vim/colos_neobundle')
-    " let s:colors_path = expand('$HOME/.vim/colors') 
     let s:bundle_path = g:vim_config_root . '/colos_neobundle'
     let s:colors_path = g:vim_config_root . '/colors'
 
@@ -480,7 +510,7 @@ let g:dbext_default_SQLITE_bin = 'sqlite3'
 " }}}2
 
 " [cottidie]"                                   {{{2
-command! GiveMeTip CottidieTip
+command! Tips CottidieTip
 " }}}2
 
 " [vimproc]"                                    {{{2
