@@ -78,6 +78,8 @@ NeoBundleLazy 'Shougo/vimshell',{
             \       'mappings' : [ '<Plug>(vimshell_switch)' ]
             \     }
             \ }
+" [Unite]
+NeoBundle 'Shougo/unite.vim'
 
 " [Powerline]
 NeoBundle 'Lokaltog/powerline', {
