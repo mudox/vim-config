@@ -47,7 +47,6 @@ NeoBundle 'Shougo/vimproc', {
 
 " [Vimfiler]
 NeoBundleLazy 'Shougo/vimfiler', {
-      \     'depends' : 'Shougo/unite.vim',
       \     'autoload' : {
       \         'commands' : [
       \             { 'name' : 'VimFiler',
@@ -79,7 +78,7 @@ NeoBundleLazy 'Shougo/vimshell',{
             \     }
             \ }
 " [Unite]
-NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite.vim'                   , { 'name' : 'unite' }
 
 " [Powerline]
 NeoBundle 'Lokaltog/powerline', {
@@ -151,7 +150,19 @@ NeoBundle 'mattn/zencoding-vim'                , { 'name' : 'zencoding' }
 " [indentline]
 NeoBundle 'Yggdroot/indentLine'                , { 'name' : 'indentline' }
 " [dbext]
-NeoBundle 'vim-scripts/dbext.vim'              , { 'name' : 'dbext' }
+NeoBundleLazy 'vim-scripts/dbext.vim', {
+            \   'name' : 'dbext',
+            \   'autoload': {
+            \       'filetypes' : [ 'sql' ]
+            \   }
+            \ }
+" [SQLUtilities]
+NeoBundleLazy 'vim-scripts/SQLUtilities', {
+            \   'name' : 'sqlutil',
+            \   'autoload': {
+            \       'filetypes' : [ 'sql' ]
+            \   }
+            \ }
 " [join]
 NeoBundleLazy 'sk1418/Join', { 
             \   'name' : 'join',
@@ -187,7 +198,7 @@ NeoBundle 'Mudox/ultisnips_snippets'           , { 'name' : 'mudox_ultisnips' }
 NeoBundleLazy 'davidhalter/jedi-vim', { 
             \   'name' : 'jedi_vim',
             \   'autoload' : {
-            \       'filtype' : [ 'python' ]
+            \       'filetypes' : [ 'python' ]
             \   }
             \ }
 " [python-mode]
@@ -227,16 +238,10 @@ NeoBundle 'sjl/gundo.vim'                      , { 'name' : 'gundo' }
 NeoBundle 'Chiel92/vim-autoformat'             , { 'name' : 'autoformat' }
 " [pyinterative]
 NeoBundle 'clericJ/pyinteractive-vim'          , { 'name' : 'pyinterative' }
-" [SQLUtilities]
-NeoBundle 'vim-scripts/SQLUtilities'           , { 'name' : 'sqlutil' }
 " [matchit]
 NeoBundle 'vim-scripts/matchit.zip'            , { 'name' : 'matchit' }
 " [ropevim]
 NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
-" [MatchTagAlways]
-" NeoBundle 'Valloric/MatchTagAlways'            , { 'name' : 'matchtagsalways' }
-" [vcscommand]
-NeoBundle 'http://repo.or.cz/r/vcscommand.git'
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
@@ -505,6 +510,14 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " [dbext]"                                      {{{2
 let g:dbext_default_SQLITE_bin = 'sqlite3'
+
+" SQLITE3 profiles.
+let s:profile_config_list = [
+            \ 'type=SQLITE',
+            \ 'SQLITE_bin=sqlite3',
+            \ 'dbname=/home/mudox/Git/GwaMan/Gwa.db'
+            \ ]
+let g:dbext_default_profile_GwaMan = join(s:profile_config_list, ':')
 " }}}2
 
 " [matchparen]"                                 {{{2
