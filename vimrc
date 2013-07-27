@@ -671,6 +671,12 @@ omap aX <Plug>(textobj-comment-big-a)
 " [indentline]"                                 {{{2
 nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
 " let g:indentLine_noConcealCursor  = 1                    
+let g:indentLine_fileType = [
+            \ 'c',
+            \ 'cpp',
+            \ 'python',
+            \ 'make'
+            \ ]
 let g:indentLine_fileTypeExclude = [
             \ 'text',
             \ 'help',
@@ -679,12 +685,9 @@ let g:indentLine_fileTypeExclude = [
 
 let g:indentLine_bufNameExclude = [
             \ 'h_.*', 
-            \ 'hNERD_tree.*'
+            \ 'hNERD_tree.*',
+            \ '.*\.txt'
             \]
-
-" let g:indentLine_fileType = [
-            " \
-            " \]
 
 " let g:indentLine_char = '.'
 " let g:indentLine_color_term = 239
