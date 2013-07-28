@@ -242,6 +242,10 @@ NeoBundle 'clericJ/pyinteractive-vim'          , { 'name' : 'pyinterative' }
 NeoBundle 'vim-scripts/matchit.zip'            , { 'name' : 'matchit' }
 " [ropevim]
 NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
+" [ctrlp]
+NeoBundle 'kien/ctrlp.vim'                     , { 'name' : 'ctrlp' }
+" [renamer]
+NeoBundle 'vim-scripts/renamer.vim'        , { 'name' : 'renamer' }
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
@@ -503,21 +507,38 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                               {{{1
 
+" [zoomwintab]"                                 {{{2
+nnoremap <M-t> :ZoomWinTabToggle<CR>
+nnoremap <M-T> :ZoomWinTabToggle<CR>
+" }}}2
+
 " [vim-session]"                                {{{2
 " let g:session_autosave = 0
 " let g:session_directory = '~/.vim_session'
 " }}}2
 
 " [dbext]"                                      {{{2
-let g:dbext_default_SQLITE_bin = 'sqlite3'
+
+let g:dbext_default_buffer_lines          = 5
+let g:dbext_default_use_sep_result_buffer = 1
+let g:dbext_default_display_cmd_line      = 1
+let g:dbext_default_history_file          = '~/.dbext_sql_history'
+let g:dbext_default_autoclose             = 1
+
+" Sqlite3 specific settings.
+let g:dbext_default_SQLITE_bin            = 'sqlite3'
+let g:dbext_default_SQLITE_cmd_header     = ".mode column\n.headers ON\n"
+let g:dbext_default_SQLITE_cmd_terminator = ';'
 
 " SQLITE3 profiles.
 let s:profile_config_list = [
             \ 'type=SQLITE',
             \ 'SQLITE_bin=sqlite3',
+            \ 'cmd_terminator=',
             \ 'dbname=/home/mudox/Git/GwaMan/Gwa.db'
             \ ]
 let g:dbext_default_profile_GwaMan = join(s:profile_config_list, ':')
+
 " }}}2
 
 " [matchparen]"                                 {{{2
@@ -671,6 +692,7 @@ omap aX <Plug>(textobj-comment-big-a)
 " [indentline]"                                 {{{2
 nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
 " let g:indentLine_noConcealCursor  = 1                    
+let g:indentLine_enabled = 0                            
 let g:indentLine_fileType = [
             \ 'c',
             \ 'cpp',
