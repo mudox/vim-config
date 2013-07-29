@@ -167,7 +167,7 @@ NeoBundleLazy 'vim-scripts/SQLUtilities', {
 NeoBundleLazy 'sk1418/Join', { 
             \   'name' : 'join',
             \   'autoload' : {
-            \       'command' : [ 'Join' ]
+            \       'commands' : [ 'Join', 'J' ]
             \   }
             \ }
 " [gitgutter]
@@ -245,7 +245,9 @@ NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
 " [ctrlp]
 NeoBundle 'kien/ctrlp.vim'                     , { 'name' : 'ctrlp' }
 " [renamer]
-NeoBundle 'vim-scripts/renamer.vim'        , { 'name' : 'renamer' }
+NeoBundle 'vim-scripts/renamer.vim'            , { 'name' : 'renamer' }
+" [python-syntax]
+NeoBundle 'hdima/python-syntax'                , { 'name' : 'python_syntax' }
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
@@ -480,6 +482,10 @@ nnoremap \t :exe "set showtabline=" . (&showtabline+1)%2<CR>
 nnoremap q <Nop>
 nnoremap _q q
 
+" key Q is too easy to touch, but is needed infrequently
+nnoremap Q <Nop>
+nnoremap <C-Q> Q
+
 noremap zi zizz
 
 " Move in insert mode 
@@ -691,7 +697,6 @@ omap aX <Plug>(textobj-comment-big-a)
 
 " [indentline]"                                 {{{2
 nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
-" let g:indentLine_noConcealCursor  = 1                    
 let g:indentLine_enabled = 0                            
 let g:indentLine_fileType = [
             \ 'c',
