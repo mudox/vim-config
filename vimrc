@@ -514,8 +514,8 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 " PULGIN SETTINGS                               {{{1
 
 " [zoomwintab]"                                 {{{2
-nnoremap <M-t> :ZoomWinTabToggle<CR>
-nnoremap <M-T> :ZoomWinTabToggle<CR>
+nnoremap <M-o> :ZoomWinTabToggle<CR>
+nnoremap <M-O> :ZoomWinTabToggle<CR>
 " }}}2
 
 " [vim-session]"                                {{{2
@@ -525,22 +525,21 @@ nnoremap <M-T> :ZoomWinTabToggle<CR>
 
 " [dbext]"                                      {{{2
 
-let g:dbext_default_buffer_lines          = 5
-let g:dbext_default_use_sep_result_buffer = 1
-let g:dbext_default_display_cmd_line      = 1
+let g:dbext_default_buffer_lines          = 10
+let g:dbext_default_use_sep_result_buffer = 0
 let g:dbext_default_history_file          = '~/.dbext_sql_history'
 let g:dbext_default_autoclose             = 1
+let g:dbext_default_display_cmd_line      = 0
 
 " Sqlite3 specific settings.
 let g:dbext_default_SQLITE_bin            = 'sqlite3'
-let g:dbext_default_SQLITE_cmd_header     = ".mode column\n.headers ON\n"
-let g:dbext_default_SQLITE_cmd_terminator = ';'
+let g:dbext_default_SQLITE_cmd_header     = ".mode column\n.headers on\n"
 
 " SQLITE3 profiles.
-let s:profile_config_list = [
+let s:profile_config_list                 = [
             \ 'type=SQLITE',
             \ 'SQLITE_bin=sqlite3',
-            \ 'cmd_terminator=',
+            \ "cmd_terminator=';'",
             \ 'dbname=/home/mudox/Git/GwaMan/Gwa.db'
             \ ]
 let g:dbext_default_profile_GwaMan = join(s:profile_config_list, ':')
@@ -709,7 +708,6 @@ let g:indentLine_fileTypeExclude = [
             \ 'help',
             \ ''
             \]                    
-
 let g:indentLine_bufNameExclude = [
             \ 'h_.*', 
             \ 'hNERD_tree.*',
