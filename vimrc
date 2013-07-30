@@ -516,8 +516,9 @@ let g:python_highlight_all = 1
 " }}}2
 
 " [zoomwintab]"                                 {{{2
-nnoremap <M-o> :ZoomWinTabToggle<CR>
-nnoremap <M-O> :ZoomWinTabToggle<CR>
+" <M-O/o> to invoke :ZoomWinTabToggle
+nnoremap ï :ZoomWinTabToggle<CR>
+nnoremap Ï :ZoomWinTabToggle<CR>
 " }}}2
 
 " [vim-session]"                                {{{2
