@@ -246,8 +246,6 @@ NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
 NeoBundle 'kien/ctrlp.vim'                     , { 'name' : 'ctrlp' }
 " [renamer]
 NeoBundle 'vim-scripts/renamer.vim'            , { 'name' : 'renamer' }
-" [python-syntax]
-NeoBundle 'hdima/python-syntax'                , { 'name' : 'python_syntax' }
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
@@ -512,6 +510,10 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 " }}}1
 
 " PULGIN SETTINGS                               {{{1
+
+" [python_syntax]"                                 {{{2
+let g:python_highlight_all = 1
+" }}}2
 
 " [zoomwintab]"                                 {{{2
 nnoremap <M-o> :ZoomWinTabToggle<CR>
