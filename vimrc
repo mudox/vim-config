@@ -201,6 +201,10 @@ NeoBundleLazy 'davidhalter/jedi-vim', {
             \       'filetypes' : [ 'python' ]
             \   }
             \ }
+
+if has('unix')
+    NeoBundleDisable 'jedi_vim'
+endif
 " [python-mode]
 NeoBundle 'klen/python-mode'                   , { 'name' : 'python_mode' }
 " [vim-misc]
@@ -246,6 +250,10 @@ NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
 NeoBundle 'kien/ctrlp.vim'                     , { 'name' : 'ctrlp' }
 " [renamer]
 NeoBundle 'vim-scripts/renamer.vim'            , { 'name' : 'renamer' }
+" [space]
+NeoBundle 'spiiph/vim-space'                   , { 'name' : 'space' }
+" [switch]
+NeoBundle 'AndrewRadev/switch.vim'             , { 'name' : 'switch' }
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
