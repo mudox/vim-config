@@ -250,8 +250,6 @@ NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
 NeoBundle 'kien/ctrlp.vim'                     , { 'name' : 'ctrlp' }
 " [renamer]
 NeoBundle 'vim-scripts/renamer.vim'            , { 'name' : 'renamer' }
-" [space]
-NeoBundle 'spiiph/vim-space'                   , { 'name' : 'space' }
 " [switch]
 NeoBundle 'AndrewRadev/switch.vim'             , { 'name' : 'switch' }
 " [vimwiki]
