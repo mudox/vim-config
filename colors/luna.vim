@@ -4,7 +4,7 @@
 " (see this url for latest release & screenshots)
 " License: MIT (see LICENSE.rst in the root of project)
 " Created: In the middle of Earth's Rotation
-" Version: 0.0.3
+" Version: 0.0.4
 "
 "
 " TODO: {{{
@@ -174,7 +174,9 @@ hi StatusLineNC  guifg=#ffffff guibg=#474747 gui=NONE
 " hi PmenuSel      guifg=#fdf6e3 guibg=#2aa198 gui=NONE
 " hi PmenuSbar     guifg=#fdf6e3 guibg=#fdf6e3 gui=NONE
 " hi PmenuThumb    guifg=#fdf6e3 guibg=#fdf6e3 gui=NONE
-hi Pmenu         guifg=#426464 guibg=#002b2b gui=NONE
+" hi Pmenu         guifg=#426464 guibg=#002b2b gui=NONE
+" hi Pmenu         guifg=#609292 guibg=#002b2b gui=NONE
+hi Pmenu         guifg=#7ca9a9 guibg=#002b2b gui=NONE
 hi PmenuSel      guifg=#002b2b guibg=#fdf6e3 gui=NONE
 hi PmenuSbar     guifg=#002b2b guibg=#002b2b gui=NONE
 hi PmenuThumb    guifg=#002b2b guibg=#002b2b gui=NONE
@@ -187,7 +189,7 @@ hi CursorLineNr  guifg=#87ceeb guibg=NONE    gui=NONE
 hi CursorColumn  guifg=NONE    guibg=#2e2e2e gui=NONE
 hi ColorColumn   guifg=NONE    guibg=#3e3739 gui=NONE
 hi WildMenu      guifg=#002b2b guibg=#ffffff gui=NONE
-"
+hi SignColumn    guifg=NONE    guibg=#212121 gui=NONE
 " }}}
 "
 " Language Specifics: {{{
@@ -208,7 +210,9 @@ hi pythonClass               guifg=#00bcbc guibg=NONE gui=NONE
 " ---------------------------------------------------------------------
 "  Ruby Specifics
 hi rubyInterpolation      guifg=#ff4040 guibg=NONE gui=NONE
-hi rubyMethodBlock        guifg=#f64a8a guibg=NONE gui=NONE
+"hi rubyMethodBlock        guifg=#ff8da1 guibg=NONE gui=NONE
+"hi rubyMethodBlock        guifg=#8ddaff guibg=NONE gui=NONE
+hi rubyMethodBlock        guifg=#ffb28d guibg=NONE gui=NONE
 hi rubyCurlyBlock         guifg=#f64a8a guibg=NONE gui=NONE
 hi rubyDoBlock            guifg=#f64a8a guibg=NONE gui=NONE
 hi rubyBlockExpression    guifg=#f64a8a guibg=NONE gui=NONE
