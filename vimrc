@@ -323,8 +323,6 @@ NeoBundleFetch 'altercation/vim-colors-solarized',
             \ Colo_Opt_Dict( 'solarized', 'colors/solarized.vim' ) 
 NeoBundleFetch 'zeis/vim-kolor', 
             \ Colo_Opt_Dict( 'kolor', 'colors/kolor.vim' ) 
-NeoBundleFetch 'larssmit/vim-getafe', 
-            \ Colo_Opt_Dict( 'getafe', 'colors/getafe.vim' ) 
 NeoBundleFetch 'noahfrederick/Hemisu', 
             \ Colo_Opt_Dict( 'hemisu', 'colors/hemisu.vim' ) 
 NeoBundleFetch 'morhetz/gruvbox', 
