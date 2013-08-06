@@ -145,8 +145,8 @@ NeoBundle 'terryma/vim-expand-region'          , { 'name' : 'expand_region' }
 if has('unix')
     NeoBundle 'Valloric/YouCompleteMe'         , { 'name' : 'youcompleteme' }
 endif
-" [zencoding-vim]
-NeoBundle 'mattn/zencoding-vim'                , { 'name' : 'zencoding' }
+" [emmet]
+NeoBundle 'mattn/emmet-vim'                    , { 'name' : 'emmet' }
 " [indentline]
 NeoBundle 'Yggdroot/indentLine'                , { 'name' : 'indentline' }
 " [dbext]
