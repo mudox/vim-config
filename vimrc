@@ -515,7 +515,7 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                               {{{1
 
-" [python_syntax]"                                 {{{2
+" [python_syntax]"                              {{{2
 let g:python_highlight_all = 1
 " }}}2
 
@@ -584,7 +584,7 @@ xmap } <Plug>VSurround}
 " xmap ] S]
 " }}}2
 
-" [solarized]"                                  {{{2
+" [color: solarized]"                           {{{2
 let g:solarized_termcolors = 256
 let g:solarized_contrast   = "high"
 let g:solarized_bold       = 0
