@@ -840,7 +840,8 @@ let g:ycm_filetypes_to_completely_ignore                = {}
 let g:ycm_filetype_blacklist                            = {
       \ 'notes'    : 1,
       \ 'markdown' : 1,
-      \ 'vimwiki'  : 1
+      \ 'vimwiki'  : 1,
+      \ 'unite'    : 1
       \}
 let g:ycm_filetype_whitelist                            = {
       \ '*'	   : 1
