@@ -171,12 +171,7 @@ NeoBundleLazy 'sk1418/Join', {
             \   }
             \ }
 " [gitgutter]
-NeoBundleLazy 'airblade/vim-gitgutter', { 
-            \    'name' : 'gitgutter',
-            \    'autolaod' : {
-            \       'mappings' : ['\gg']
-            \    }
-            \ }
+NeoBundle 'airblade/vim-gitgutter'             , { 'name' : 'gitgutter' } 
 " [colorv]
 NeoBundle 'Rykka/colorv.vim'                   , { 'name' : 'colorv' }
 " [origami]
@@ -594,6 +589,8 @@ let g:solarized_bold       = 0
 
 " [gitgutter]"                                  {{{2
 nnoremap \gg :<C-U>GitGutterToggle<CR> 
+nnoremap <leader>ggn :GitGutterNextHunk<CR>
+nnoremap <leader>ggp :GitGutterPrevHunk<CR>
 let g:gitgutter_enabled = 0
 " }}}2
 
