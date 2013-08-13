@@ -557,10 +557,6 @@ command! Tips CottidieTip
 " }}}2
 
 " [vimproc]"                                    {{{2
-if has('win32') || has('win64')
-    let g:stdoutencoding = 'cp936'
-endif
-
 nnoremap <leader><leader>s :VimProcBang 
 " }}}2
 
@@ -1011,6 +1007,7 @@ syntax on
 filetype plugin indent on " 'filetype on' implied
 
 set encoding=utf8
+set termencoding=gbk
 
 " color & font
 set background=dark
@@ -1031,7 +1028,6 @@ elseif has('mac') || has('macunix')
 else
     echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
 endif
-
 
 " Editor interface
 set noshowmode   " powerline does better
@@ -1082,7 +1078,7 @@ set foldtext=MyFoldText()
 function! MyFoldText()
   let l:firstline = getline(v:foldstart)
   let l:sub = substitute(l:firstline, '\s*"\|"/\*\|\*/\|{\{3}.*', '', 'g')
-  let l:prefix = '★ '
+  let l:prefix = '»'
   " let l:foldline = l:prefix . l:sub. v:folddashes
   let l:foldline = l:prefix . l:sub
   return l:foldline
