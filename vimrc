@@ -252,6 +252,8 @@ NeoBundle 'kien/ctrlp.vim'                     , { 'name' : 'ctrlp' }
 NeoBundle 'vim-scripts/renamer.vim'            , { 'name' : 'renamer' }
 " [switch]
 NeoBundle 'AndrewRadev/switch.vim'             , { 'name' : 'switch' }
+" [breeze]
+NeoBundle 'gcmt/breeze.vim'                    , { 'name' : 'breeze' }
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
@@ -515,6 +517,17 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                               {{{1
 
+" [cltrp]"                              {{{2
+let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
+let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_root_markers    = ['']
+let g:ctrlp_show_hidden       = 0
+" let g:ctrlp_custom_ignore   = ''
+let g:ctrlp_follow_symlinks   = 1
+let g:ctrlp_by_filename       = 1
+
+" }}}2
+
 " [python_syntax]"                              {{{2
 let g:python_highlight_all = 1
 " }}}2
@@ -701,6 +714,7 @@ xmap aX <Plug>(textobj-comment-big-a)
 omap aX <Plug>(textobj-comment-big-a)
 " }}}2
 
+
 " [indentline]"                                 {{{2
 nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
 let g:indentLine_enabled = 0                            
@@ -718,7 +732,7 @@ let g:indentLine_fileTypeExclude = [
 let g:indentLine_bufNameExclude = [
             \ 'h_.*', 
             \ 'hNERD_tree.*',
-            \ '.*\.txt'
+            \ '.*\doc\.txt'
             \]
 
 " let g:indentLine_char = '.'
