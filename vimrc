@@ -451,16 +451,9 @@ nnoremap <M-Left> 	5<C-W><
 nnoremap <M-Right> 	5<C-W>>
 "}}}2
 
-" <M-H/L> to switch among tabs                  {{{2
-if has('gui_running')
-    nnoremap <silent> <M-l> gt
-    nnoremap <silent> <M-h> gT
-    nnoremap <silent> ì     gt
-    nnoremap <silent> è     gT
-else
-    nnoremap <silent> l gt
-    nnoremap <silent> h gT
-end
+" <A-H/L> to switch among tabs                  {{{2
+    nnoremap <silent> ì gt
+    nnoremap <silent> è gT
 "}}}2
 
 " In case you leave CapLock key pressed inadvertently, which will mess you up.
@@ -468,8 +461,9 @@ noremap <silent> J @='8j'<CR>
 noremap <silent> K @='8k'<CR>
 noremap L 
 noremap H 
+"}}}2
 
-" :noh is frequently used, but typing it is a chore
+" :noh is frequently used, but typing it is a chore.
 nnoremap z/ :noh<CR>
 nnoremap z? :set hlsearch!<CR>
 
@@ -512,7 +506,7 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                               {{{1
 
-" [cltrp]"                              {{{2
+" [cltrp]"                                      {{{2
 let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
 let g:ctrlp_working_path_mode = 'ra'
 " let g:ctrlp_root_markers    = ['']
@@ -1050,6 +1044,7 @@ set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 set laststatus=2 " always show status bar.
+set clipboard=unnamed
 
 " Brace match
 set showmatch
