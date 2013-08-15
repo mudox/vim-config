@@ -1,4 +1,4 @@
-"r vimrc NOT .vimrc for [G]Vim on Linux / Window{{{1
+" vimrc NOT .vimrc for [G]Vim on Linux / Window{{{1
 "
 " NOTE:
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
@@ -18,10 +18,10 @@
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
 "}}}1
 
-" get the full path of .vim or vimfiles. 
+" get the full path of .vim or vimfiles.
 let g:vim_config_root = substitute(expand('<sfile>:p:h'), ' ', '\\ ', 'g')
 
-" NEOBUNDLE                                     {{{1
+" NEOBUNDLE                                    {{{1
 set nocompatible                " Recommend
 
 if has('vim_starting')
@@ -36,7 +36,7 @@ NeoBundleFetch 'Shougo/neobundle.vim' , { 'name' : 'neobundle' }
 " Use neobundle standard recipes.
 NeoBundle 'Shougo/neobundle-vim-scripts'
 
-" My Bundles here:                              {{{2
+" My Bundles here:                             {{{2
 
 " [Vimproc]
 NeoBundle 'Shougo/vimproc', {
@@ -52,9 +52,9 @@ NeoBundleLazy 'Shougo/vimfiler', {
       \             { 'name' : 'VimFiler',
       \             'complete' : 'customlist,vimfiler#complete' },
       \             'VimFilerExplorer',
-      \             'Edit', 
-      \             'Read', 
-      \             'Source', 
+      \             'Edit',
+      \             'Read',
+      \             'Source',
       \             'Write'
       \         ],
       \         'mappings' : ['<Plug>(vimfiler_switch)'],
@@ -65,11 +65,11 @@ NeoBundleLazy 'Shougo/vimfiler', {
 NeoBundleLazy 'Shougo/vimshell',{
             \     'autoload' : {
             \       'commands' : [
-            \           { 
+            \           {
             \           'name'     : 'VimShell',
             \           'complete' : 'customlist,vimshell#complete'
             \           },
-            \           'VimShellExecute', 
+            \           'VimShellExecute',
             \           'VimShellInteractive',
             \           'VimShellTerminal',
             \           'VimShellPop'
@@ -164,14 +164,14 @@ NeoBundleLazy 'vim-scripts/SQLUtilities', {
             \   }
             \ }
 " [join]
-NeoBundleLazy 'sk1418/Join', { 
+NeoBundleLazy 'sk1418/Join', {
             \   'name' : 'join',
             \   'autoload' : {
             \       'commands' : [ 'Join', 'J' ]
             \   }
             \ }
 " [gitgutter]
-NeoBundle 'airblade/vim-gitgutter'             , { 'name' : 'gitgutter' } 
+NeoBundle 'airblade/vim-gitgutter'             , { 'name' : 'gitgutter' }
 " [colorv]
 NeoBundle 'Rykka/colorv.vim'                   , { 'name' : 'colorv' }
 " [origami]
@@ -190,7 +190,7 @@ NeoBundle 'kien/rainbow_parentheses.vim'       , { 'name' : 'rainbow_parentheses
 " [mudox_ultisnips]
 NeoBundle 'Mudox/ultisnips_snippets'           , { 'name' : 'mudox_ultisnips' }
 " [jedi-vim]
-NeoBundleLazy 'davidhalter/jedi-vim', { 
+NeoBundleLazy 'davidhalter/jedi-vim', {
             \   'name' : 'jedi_vim',
             \   'autoload' : {
             \       'filetypes' : [ 'python' ]
@@ -225,7 +225,7 @@ NeoBundle 'vim-scripts/VisIncr'                , { 'name' : 'visincr' }
 " [VOoM]
 NeoBundle 'vim-scripts/VOoM'                   , { 'name' : 'voom' }
 " [cottidie]
-NeoBundleLazy 'glts/vim-cottidie', { 
+NeoBundleLazy 'glts/vim-cottidie', {
             \ 'name' : 'cottidie',
             \ 'autoload' : { 'commands' : ['CottidieTip'] }
             \ }
@@ -268,7 +268,7 @@ NeoBundle 'SirVer/ultisnips'
 " [vim-session]
 " NeoBundle 'xolox/vim-session'                  , { 'name' : 'session' }
 " [vim-signature]
-" NeoBundleLazy 'kshenoy/vim-signature', { 
+" NeoBundleLazy 'kshenoy/vim-signature', {
             " \   'name'     : 'signature',
             " \   'autoload' : { 'commands' : 'SignatureToggle' }
 
@@ -281,7 +281,7 @@ NeoBundle 'SirVer/ultisnips'
 
 "}}}2
 
-" My Colorscheme Bundles here:                  {{{2
+" My Colorscheme Bundles here:                 {{{2
 
 function! Colo_Opt_Dict( name, vim_name )
     let s:bundle_path = g:vim_config_root . '/colos_neobundle'
@@ -290,54 +290,54 @@ function! Colo_Opt_Dict( name, vim_name )
     let s:colo_options       = {}
     let s:colo_options.name  = a:name
     let s:colo_options.base  = s:bundle_path
-    let s:colo_options.build = { 
-                \   'unix' : 'cp ' 
+    let s:colo_options.build = {
+                \   'unix' : 'cp '
                 \       . a:vim_name . ' ' . s:colors_path,
-                \   'windows' : 'copy /Y ' 
-                \       . a:vim_name . ' ' . s:colors_path 
+                \   'windows' : 'copy /Y '
+                \       . a:vim_name . ' ' . s:colors_path
                 \ }
 
     return s:colo_options
 endfunction
 
-NeoBundleFetch 'molok/vim-vombato-colorscheme', 
+NeoBundleFetch 'molok/vim-vombato-colorscheme',
             \ Colo_Opt_Dict( 'vombato', 'colors/vombato.vim' )
-NeoBundleFetch 'w0ng/vim-hybrid', 
+NeoBundleFetch 'w0ng/vim-hybrid',
             \ Colo_Opt_Dict( 'hybrid', 'colors/hybrid.vim' )
-NeoBundleFetch 'tomasr/molokai', 
-            \ Colo_Opt_Dict( 'molokai', 'colors/molokai.vim' ) 
-NeoBundleFetch 'nanotech/jellybeans.vim', 
-            \ Colo_Opt_Dict( 'jellybeans', 'colors/jellybeans.vim' ) 
-NeoBundleFetch 'sjl/badwolf', 
-            \ Colo_Opt_Dict( 'badwolf', 'colors/badwolf.vim' ) 
-NeoBundleFetch 'hukl/Smyck-Color-Scheme', 
-            \ Colo_Opt_Dict( 'smyck', 'smyck.vim' ) 
-NeoBundleFetch 'jelera/vim-gummybears-colorscheme', 
-            \ Colo_Opt_Dict( 'gummybears', 'colors/gummybears.vim' ) 
-NeoBundleFetch 'YorickPeterse/Autumn.vim', 
-            \ Colo_Opt_Dict( 'autumn', 'colors/autumn.vim' ) 
-NeoBundleFetch 'mbbill/desertEx', 
-            \ Colo_Opt_Dict( 'desertEx', 'colors/desertEx.vim' ) 
-NeoBundleFetch 'altercation/vim-colors-solarized', 
-            \ Colo_Opt_Dict( 'solarized', 'colors/solarized.vim' ) 
-NeoBundleFetch 'zeis/vim-kolor', 
-            \ Colo_Opt_Dict( 'kolor', 'colors/kolor.vim' ) 
-NeoBundleFetch 'noahfrederick/Hemisu', 
-            \ Colo_Opt_Dict( 'hemisu', 'colors/hemisu.vim' ) 
-NeoBundleFetch 'morhetz/gruvbox', 
-            \ Colo_Opt_Dict( 'gruvbox', 'colors/gruvbox.vim' ) 
-NeoBundleFetch 'junegunn/seoul256.vim', 
-            \ Colo_Opt_Dict( 'seoul', 'colors/seoul256.vim' ) 
-NeoBundleFetch 'jnurmine/Zenburn', 
-            \ Colo_Opt_Dict( 'zenburn', 'colors/zenburn.vim' ) 
-NeoBundleFetch 'gregsexton/Atom', 
-            \ Colo_Opt_Dict( 'atom', 'colors/atom.vim' ) 
-NeoBundleFetch 'jonathanfilip/vim-lucius', 
-            \ Colo_Opt_Dict( 'lucius', 'colors/lucius.vim' ) 
-NeoBundleFetch 'Pychimp/vim-luna', 
-            \ Colo_Opt_Dict( 'luna', 'colors/luna.vim' ) 
-NeoBundleFetch 'toupeira/vim-desertink', 
-            \ Colo_Opt_Dict( 'desertink', 'colors/desertink.vim' ) 
+NeoBundleFetch 'tomasr/molokai',
+            \ Colo_Opt_Dict( 'molokai', 'colors/molokai.vim' )
+NeoBundleFetch 'nanotech/jellybeans.vim',
+            \ Colo_Opt_Dict( 'jellybeans', 'colors/jellybeans.vim' )
+NeoBundleFetch 'sjl/badwolf',
+            \ Colo_Opt_Dict( 'badwolf', 'colors/badwolf.vim' )
+NeoBundleFetch 'hukl/Smyck-Color-Scheme',
+            \ Colo_Opt_Dict( 'smyck', 'smyck.vim' )
+NeoBundleFetch 'jelera/vim-gummybears-colorscheme',
+            \ Colo_Opt_Dict( 'gummybears', 'colors/gummybears.vim' )
+NeoBundleFetch 'YorickPeterse/Autumn.vim',
+            \ Colo_Opt_Dict( 'autumn', 'colors/autumn.vim' )
+NeoBundleFetch 'mbbill/desertEx',
+            \ Colo_Opt_Dict( 'desertEx', 'colors/desertEx.vim' )
+NeoBundleFetch 'altercation/vim-colors-solarized',
+            \ Colo_Opt_Dict( 'solarized', 'colors/solarized.vim' )
+NeoBundleFetch 'zeis/vim-kolor',
+            \ Colo_Opt_Dict( 'kolor', 'colors/kolor.vim' )
+NeoBundleFetch 'noahfrederick/Hemisu',
+            \ Colo_Opt_Dict( 'hemisu', 'colors/hemisu.vim' )
+NeoBundleFetch 'morhetz/gruvbox',
+            \ Colo_Opt_Dict( 'gruvbox', 'colors/gruvbox.vim' )
+NeoBundleFetch 'junegunn/seoul256.vim',
+            \ Colo_Opt_Dict( 'seoul', 'colors/seoul256.vim' )
+NeoBundleFetch 'jnurmine/Zenburn',
+            \ Colo_Opt_Dict( 'zenburn', 'colors/zenburn.vim' )
+NeoBundleFetch 'gregsexton/Atom',
+            \ Colo_Opt_Dict( 'atom', 'colors/atom.vim' )
+NeoBundleFetch 'jonathanfilip/vim-lucius',
+            \ Colo_Opt_Dict( 'lucius', 'colors/lucius.vim' )
+NeoBundleFetch 'Pychimp/vim-luna',
+            \ Colo_Opt_Dict( 'luna', 'colors/luna.vim' )
+NeoBundleFetch 'toupeira/vim-desertink',
+            \ Colo_Opt_Dict( 'desertink', 'colors/desertink.vim' )
 "}}}2
 
 exe 'NeoBundleLocal ' . g:vim_config_root . '/bundle'
@@ -366,14 +366,14 @@ endfunction
     " NeoBundleUpdatesLog
 
     " redi END
-    
+
     " silent execute mudox#query_open_file#Main() . ' ' . l:tmpFile
 " endfunction
 
 nnoremap \neo :call NeoUpdateLogs()<CR>
 "}}}1
 
-" FROM SAMPLE FILE                              {{{1
+" FROM SAMPLE FILE                             {{{1
 
 " An example for a gvimrc file.
 " The commands in this are executed when the GUI is started.
@@ -436,26 +436,26 @@ if version >= 500
 endif
 " }}}1
 
-" MAPPINGS                                      {{{1
+" MAPPINGS                                     {{{1
 
 " Default leader key for <leader> mappings
 let g:mapleader = ','
 
-" <C-H/J/K/L> to jump among windows             {{{2
+" <C-H/J/K/L> to jump among windows            {{{2
 nnoremap <C-H>	   <C-W>h
 nnoremap <C-J>	   <C-W>j
 nnoremap <C-K>	   <C-W>k
 nnoremap <C-L>	   <C-W>l
 "}}}2
 
-" <M-Up/Down/Left/Right> to resize windows      {{{2
+" <M-Up/Down/Left/Right> to resize windows     {{{2
 nnoremap <M-Up> 	5<C-W>+
 nnoremap <M-Down> 	5<C-W>-
-nnoremap <M-Left> 	5<C-W>< 
+nnoremap <M-Left> 	5<C-W><
 nnoremap <M-Right> 	5<C-W>>
 "}}}2
 
-" <M-H/L> to switch among tabs                  {{{2
+" <M-H/L> to switch among tabs                 {{{2
 if has('gui_running')
     nnoremap <silent> <M-l> gt
     nnoremap <silent> <M-h> gT
@@ -491,7 +491,7 @@ nnoremap <C-Q> Q
 
 noremap zi zizz
 
-" Move in insert mode 
+" Move in insert mode
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
 
@@ -514,22 +514,16 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " }}}1
 
-" PULGIN SETTINGS                               {{{1
+" PULGIN SETTINGS                              {{{1
 
-" [airline]"                                     {{{2
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_branch_prefix = ' '
-let g:airline_readonly_symbol = '⭤'
-let g:airline_linecolumn_prefix = ' '
+" [airline]                                    {{{2
+let g:airline_powerline_fonts = 1
 " }}}2
 
-" [switch]"                                     {{{2
+" [switch]"                                    {{{2
 " }}}2
 
-" [cltrp]"                                      {{{2
+" [cltrp]"                                     {{{2
 let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
 let g:ctrlp_working_path_mode = 'ra'
 " let g:ctrlp_root_markers    = ['']
@@ -540,22 +534,22 @@ let g:ctrlp_by_filename       = 1
 
 " }}}2
 
-" [python_syntax]"                              {{{2
+" [python_syntax]"                             {{{2
 let g:python_highlight_all = 1
 " }}}2
 
-" [zoomwintab]"                                 {{{2
+" [zoomwintab]"                                {{{2
 " <M-O/o> to invoke :ZoomWinTabToggle
 nnoremap ï :ZoomWinTabToggle<CR>
 nnoremap Ï :ZoomWinTabToggle<CR>
 " }}}2
 
-" [vim-session]"                                {{{2
+" [vim-session]"                               {{{2
 " let g:session_autosave = 0
 " let g:session_directory = '~/.vim_session'
 " }}}2
 
-" [dbext]"                                      {{{2
+" [dbext]"                                     {{{2
 
 let g:dbext_default_buffer_lines          = 10
 let g:dbext_default_use_sep_result_buffer = 0
@@ -578,23 +572,23 @@ let g:dbext_default_profile_GwaMan = join(s:profile_config_list, ':')
 
 " }}}2
 
-" [matchparen]"                                 {{{2
+" [matchparen]"                                {{{2
 " let loaded_matchparen = 1
 " }}}2
 
-" [cottidie]"                                   {{{2
+" [cottidie]"                                  {{{2
 command! Tips CottidieTip
 " }}}2
 
-" [vimproc]"                                    {{{2
-nnoremap <leader><leader>s :VimProcBang 
+" [vimproc]"                                   {{{2
+nnoremap <leader><leader>s :VimProcBang
 " }}}2
 
-" [goldenview]"                                 {{{2
+" [goldenview]"                                {{{2
 let g:goldenview__enable_default_mapping = 0
 " }}}2
 
-" [surround]"                                   {{{2
+" [surround]"                                  {{{2
 xmap ' <Plug>VSurround'
 xmap " <Plug>VSurround"
 xmap ( <Plug>VSurround(
@@ -605,7 +599,7 @@ xmap } <Plug>VSurround}
 " xmap ] S]
 " }}}2
 
-" [color: solarized]"                           {{{2
+" [color: solarized]"                          {{{2
 let g:solarized_termcolors = 256
 let g:solarized_contrast   = "high"
 let g:solarized_bold       = 0
@@ -613,14 +607,14 @@ let g:solarized_bold       = 0
 " let g:solarized_italic
 " }}}2
 
-" [gitgutter]"                                  {{{2
-nnoremap \gg :<C-U>GitGutterToggle<CR> 
+" [gitgutter]"                                 {{{2
+nnoremap \gg :<C-U>GitGutterToggle<CR>
 nnoremap <leader>ggn :GitGutterNextHunk<CR>
 nnoremap <leader>ggp :GitGutterPrevHunk<CR>
 let g:gitgutter_enabled = 0
 " }}}2
 
-" [syntastic]"                                  {{{2
+" [syntastic]"                                 {{{2
 nnoremap <leader>ck :<C-U>SyntasticCheck<CR>
 
 let g:syntastic_check_on_wq = 0
@@ -646,10 +640,10 @@ let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=5
 " let g:syntastic_ignore_files=['^/usr/include/', '\c\.h$']
-let g:syntastic_mode_map = { 
+let g:syntastic_mode_map = {
             \ 'mode': 'passive',
             \ 'active_filetypes': ['ruby', 'php', 'javascript'],
-            \ 'passive_filetypes': ['puppet'] 
+            \ 'passive_filetypes': ['puppet']
             \ }
 
 " checker options
@@ -660,7 +654,7 @@ let g:syntastic_python_checkers = ['python', 'pyflakes', 'pep8']
 
 " }}}2
 
-" [vimwiki]"                                    {{{2
+" [vimwiki]"                                   {{{2
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_hl_headers    = 1
 let g:vimwiki_global_ext    = 0
@@ -707,14 +701,14 @@ let s:wiki.auto_export   = 1
 call add(g:vimwiki_list, s:wiki)
 " }}}2
 
-" [color: kolor]"                               {{{2
+" [color: kolor]"                              {{{2
 let g:kolor_italic=1                    " Enable italic. Default: 1
 let g:kolor_bold=1                      " Enable bold. Default: 1
 let g:kolor_underlined=1                " Enable underline for 'Underlined'. Default: 0
 let g:kolor_alternative_matchparen=1    " Gray 'MatchParen' color. Default: 0
 " }}}2
 
-" [textobj-comment]"                            {{{2
+" [textobj-comment]"                           {{{2
 let g:textobj_comment_no_default_key_mappings = 1
 xmap ax <Plug>(textobj-comment-a)
 omap ax <Plug>(textobj-comment-a)
@@ -725,9 +719,9 @@ omap aX <Plug>(textobj-comment-big-a)
 " }}}2
 
 
-" [indentline]"                                 {{{2
+" [indentline]"                                {{{2
 nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
-let g:indentLine_enabled = 0                            
+let g:indentLine_enabled = 0
 let g:indentLine_fileType = [
             \ 'c',
             \ 'cpp',
@@ -738,9 +732,9 @@ let g:indentLine_fileTypeExclude = [
             \ 'text',
             \ 'help',
             \ ''
-            \]                    
+            \]
 let g:indentLine_bufNameExclude = [
-            \ 'h_.*', 
+            \ 'h_.*',
             \ 'hNERD_tree.*',
             \ '.*\doc\.txt'
             \]
@@ -750,7 +744,7 @@ let g:indentLine_bufNameExclude = [
 " let g:indentLine_color_gui = '#389900'
 " }}}2
 
-" [mudox]"                                      {{{2
+" [mudox]"                                     {{{2
 " let g:mdx_colos_white_list = [
             " \   'badwolf'
             " \ ] " just for testing ...
@@ -759,20 +753,20 @@ let g:mdx_colos_black_list = [
             \ ]
 
 " let g:mdx_colos_256_white_list = [
-            " \   'badwolf', 
+            " \   'badwolf',
             " \   'blackboard',
-            " \   'desert_mdx',  
-            " \   'diablo3_mdx', 
-            " \   'hybrid',      
-            " \   'jellybeans',  
-            " \   'lucius',      
-            " \   'molokai',     
-            " \   'valloric',    
-            " \   'zenburn'      
-            " \ ]                
+            " \   'desert_mdx',
+            " \   'diablo3_mdx',
+            " \   'hybrid',
+            " \   'jellybeans',
+            " \   'lucius',
+            " \   'molokai',
+            " \   'valloric',
+            " \   'zenburn'
+            " \ ]
 let g:mdx_colos_256_black_list = [
-            \   'galaxy',      
-            \   'inkpot_mdx'   
+            \   'galaxy',
+            \   'inkpot_mdx'
             \ ]
 
 nnoremap \z   :<C-U>call mudox#z_menu#Main()<CR>
@@ -790,11 +784,11 @@ endif
 
 " }}}2
 
-" [rainbowparentheses] "                        {{{2
-nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR> 
+" [rainbowparentheses] "                       {{{2
+nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR>
 "}}}2
 
-" [yankring]"                                   {{{2
+" [yankring]"                                  {{{2
 let g:yankring_min_element_length = 2
 let yankring_history_dir          = g:vim_config_root
 let g:yankring_history_file       = 'yankring_hist'
@@ -804,14 +798,14 @@ let yankring_replace_n_pkey       = '<Up>'
 nnoremap <leader>yr :<C-U>YRShow<CR>
 "}}}2
 
-" [delimitmate]"                                {{{2
+" [delimitmate]"                               {{{2
 let delimitMate_expand_space       = 1
 let delimitMate_expand_cr          = 1
 let delimitMate_smart_quotes       = 1
 let delimitMate_balance_matchpairs = 1
 "}}}2
 
-" [easytags]"                                   {{{2
+" [easytags]"                                  {{{2
 set updatetime=4000
 let g:easytags_updatetime_autodisable = 1
 let g:easytags_include_members = 1
@@ -824,11 +818,11 @@ endif
 
 "}}}2
 
-" [singlecompile]"                              {{{2
+" [singlecompile]"                             {{{2
 nnoremap <F5> :<C-U>SCCompileRun<CR>
 " if has('win32') || has('win64')
     " call SingleCompile#SetCompilerTemplate('python', 'python',
-                " \'New python3 executable for python3.3.2', 
+                " \'New python3 executable for python3.3.2',
                 " \'E:\PYF\SDK\Python3\python.exe', '', '')
     " call SingleCompile#ChooseCompiler('python', 'python')
 " elseif has('unix')
@@ -840,7 +834,7 @@ nnoremap <F5> :<C-U>SCCompileRun<CR>
 " endif
 "}}}2
 
-" [python-mode]"                                {{{2
+" [python-mode]"                               {{{2
 let g:pymode_run                      = 0
 let g:pymode_lint                     = 0
 let g:pymode_lint_onfly               = 0
@@ -849,7 +843,7 @@ let g:pymode_syntax_print_as_function = 1
 let g:pymode_doc_key                  = '<leader>k'
 "}}}2
 
-" [youcompleteme]"                              {{{2
+" [youcompleteme]"                             {{{2
 " nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
 let g:ycm_complete_in_strings                           = 1
 let g:ycm_complete_in_comments                          = 1
@@ -880,7 +874,7 @@ let g:ycm_key_list_select_completion                    = ['<Down>']
 let g:ycm_key_list_previous_completion                  = ['<Up>']
 "}}}2
 
-" [nerdcomment]                                 {{{2
+" [nerdcomment]                                {{{2
 let NERDBlockComIgnoreEmpty       = 1
 let NERDSpaceDelims               = 1
 let NERDDefaultNesting            = 0
@@ -891,7 +885,7 @@ let NERDDefaultNesting            = 0
 " let NERD_<filetype>_alt_style   = 1
 "}}}2
 
-" [ultisnips]                                   {{{2
+" [ultisnips]                                  {{{2
 let g:UltiSnipsEditSplit           = "horizontal"
 let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
@@ -901,11 +895,11 @@ let g:UltiSnipsSnippetsDir         = g:vim_config_root . '/neobundle/mudox_ultis
 let g:UltiSnipsSnippetDirectories  = [ "ultisnips_snippets" ]
 "}}}2
 
-" [pathogen]                                    {{{2
-" call pathogen#infect() 
+" [pathogen]                                   {{{2
+" call pathogen#infect()
 "}}}2
 
-" [taglist]                                     {{{2
+" [taglist]                                    {{{2
 let Tlist_Show_One_File             = 1
 let Tlist_Exit_OnlyWindow           = 1
 if ! has("gui_running")
@@ -913,14 +907,14 @@ if ! has("gui_running")
 endif
 "}}}2
 
-" [jedi]                                        {{{2
+" [jedi]                                       {{{2
 let g:jedi#pydoc                    = "<leader>k"
 let g:jedi#popup_select_first       = 0
 let g:jedi#auto_vim_configuration   = 0
 let g:jedi#show_function_definition = 0
 "}}}2
 
-" [tagbar]                                      {{{2
+" [tagbar]                                     {{{2
 nnoremap <leader>tb :TagbarToggle<CR>
 " let g:tagbar_compact = 1
 " let g:tagbar_indent = 1
@@ -938,7 +932,7 @@ endif
 let g:tagbar_autoshowtag = 1
 "}}}2
 
-" [nerdtree]                                    {{{2
+" [nerdtree]                                   {{{2
 
 " close vim if the only window left open is a NERDTree
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -948,23 +942,23 @@ let NERDTreeMinimalUI = 1 " No ? tips line, no bookmark headline.
 " let NERDTreeWinPos = "left" or "right"
 "}}}2
 
-" [vimsignature]                                {{{2
+" [vimsignature]                               {{{2
 " nnoremap \s :SignatureToggle<CR>
 " let g:SignaturePeriodicRefresh = 0
 "}}}2
 
-" [mark]                                        {{{2
+" [mark]                                       {{{2
 let g:mwAutoSaveMarks = 0
 let g:mwIgnoreCase = 0
 " let g:mwHistAdd = '/@'
 "}}}2
 
-" [easymotion]                                  {{{2
+" [easymotion]                                 {{{2
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz12347890'
 let g:EasyMotion_do_shade = 0
 "}}}2
 
-" [powerline]                                   {{{2
+" [powerline]                                  {{{2
 let g:Powerline_symbols        = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
 let g:Powerline_mode_n         = 'N'
@@ -978,7 +972,7 @@ let g:Powerline_mode_S         = 'SL'
 let g:Powerline_mode_cs        = 'SB'
 "}}}2
 
-" [unite]                                       {{{2
+" [unite]                                      {{{2
 nnoremap \mru :Unite -start-insert file_mru<CR>
 nnoremap \bm  :Unite -vertical bookmark<CR>
 nnoremap \mru :Unite -start-insert file_mru<CR>
@@ -990,7 +984,7 @@ nnoremap \ub  :Unite -vertical bookmark<CR>
 
 "}}}1
 
-" EVENTS                                        {{{1
+" EVENTS                                       {{{1
 
 " Only highlights current line in the window which gets focus.
 " autocmd WinEnter * set cursorline
@@ -999,15 +993,15 @@ nnoremap \ub  :Unite -vertical bookmark<CR>
 " On a new Vim session, set CWD to the user's root path (i.e. expand("~"))
 " and open NerdTree rooted on the user's root path.
 autocmd VimEnter * exe "cd " . expand("~")
-" autocmd VimEnter * exe "NERDTree " . expand("~") 
+" autocmd VimEnter * exe "NERDTree " . expand("~")
 "}}}1
 
-" ABBREVIATES                                   {{{1
+" ABBREVIATES                                  {{{1
 cabbrev ue UltiSnipsEdit
 cabbrev nt NERDTree
 "}}}1
 
-" DEFAULT COLORS                                {{{1
+" DEFAULT COLORS                               {{{1
 
 " default popup menu colors
 highlight Pmenu ctermbg=8 guibg=#140033
@@ -1019,7 +1013,7 @@ hi SignColumn     gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
 
 "}}}1
 
-" SETTINGS                                      {{{1
+" SETTINGS                                     {{{1
 
 " Important
 set nocompatible
@@ -1042,7 +1036,7 @@ set termencoding=gbk
 
 " color & font
 set background=dark
-call mudox#auto_colo#AutoColoRandom()  " random colorscheme 
+call mudox#auto_colo#AutoColoRandom()  " random colorscheme
 
 if has('win32') || has('win64')
     set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
@@ -1092,17 +1086,17 @@ set smartcase
 " Editor behaviour
 set whichwrap=b,s,<,>,[,],h,l
 set backspace=indent,eol,start
-set autochdir 
+set autochdir
 set sessionoptions=buffers,folds,globals,help,localoptions,options,resize,sesdir,slash,tabpages,unix,winpos,winsize
 set autowriteall
-set viminfo+=!  " save global variables in viminfo files 
+set viminfo+=!  " save global variables in viminfo files
 set winaltkeys=no " turns of the Alt key bindings to the gui menu
 
 " Insert behaviour
 set whichwrap=b,s,<,>,[,],h,l
 set backspace=indent,eol,start
 set completeopt=menu
-set dictionary+=/usr/share/dict/words 
+set dictionary+=/usr/share/dict/words
 
 " Fold behaviour
 set foldtext=MyFoldText()
