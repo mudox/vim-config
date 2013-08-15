@@ -518,6 +518,7 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " [airline]                                    {{{2
 let g:airline_powerline_fonts = 1
+let g:airline_theme='molokai'
 " }}}2
 
 " [switch]"                                    {{{2
