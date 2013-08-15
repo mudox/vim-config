@@ -334,6 +334,8 @@ NeoBundleFetch 'jonathanfilip/vim-lucius',
             \ Colo_Opt_Dict( 'lucius', 'colors/lucius.vim' ) 
 NeoBundleFetch 'Pychimp/vim-luna', 
             \ Colo_Opt_Dict( 'luna', 'colors/luna.vim' ) 
+NeoBundleFetch 'toupeira/vim-desertink', 
+            \ Colo_Opt_Dict( 'desertink', 'colors/desertink.vim' ) 
 "}}}2
 
 exe 'NeoBundleLocal ' . g:vim_config_root . '/bundle'
