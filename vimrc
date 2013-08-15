@@ -81,10 +81,10 @@ NeoBundleLazy 'Shougo/vimshell',{
 NeoBundle 'Shougo/unite.vim'                   , { 'name' : 'unite' }
 
 " [Powerline]
-NeoBundle 'Lokaltog/powerline', {
-            \ 'name' : 'powerline',
-            \ 'rtp'  : 'powerline/bindings/vim'
-            \}
+" NeoBundle 'Lokaltog/powerline', {
+            " \ 'name' : 'powerline',
+            " \ 'rtp'  : 'powerline/bindings/vim'
+            " \}
 " [delimitMate]
 NeoBundle 'Raimondi/delimitMate'               , { 'name' : 'delimitmate' }
 " [Easytags]
@@ -249,6 +249,8 @@ NeoBundle 'vim-scripts/renamer.vim'            , { 'name' : 'renamer' }
 NeoBundle 'AndrewRadev/switch.vim'             , { 'name' : 'switch' }
 " [breeze]
 NeoBundle 'gcmt/breeze.vim'                    , { 'name' : 'breeze' }
+" [airline]
+NeoBundle 'bling/vim-airline'                  , { 'name' : 'airline' }
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
@@ -514,7 +516,20 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                               {{{1
 
-" [cltrp]"                              {{{2
+" [airline]"                                     {{{2
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_branch_prefix = ' '
+let g:airline_readonly_symbol = '⭤'
+let g:airline_linecolumn_prefix = ' '
+" }}}2
+
+" [switch]"                                     {{{2
+" }}}2
+
+" [cltrp]"                                      {{{2
 let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
 let g:ctrlp_working_path_mode = 'ra'
 " let g:ctrlp_root_markers    = ['']
