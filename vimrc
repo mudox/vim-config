@@ -251,6 +251,8 @@ NeoBundle 'AndrewRadev/switch.vim'             , { 'name' : 'switch' }
 NeoBundle 'gcmt/breeze.vim'                    , { 'name' : 'breeze' }
 " [airline]
 NeoBundle 'bling/vim-airline'                  , { 'name' : 'airline' }
+" [pairs]
+NeoBundle 'kurkale6ka/vim-pairs'               , { 'name' : 'pairs' }
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
