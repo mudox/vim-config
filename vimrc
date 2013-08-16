@@ -184,7 +184,7 @@ NeoBundle 'Rykka/galaxy.vim'                   , { 'name' : 'galaxy' }
 " [Zoomwintab]
 NeoBundle 'troydm/zoomwintab.vim'              , { 'name' : 'zoomwintab' }
 " [Mudox-vim-scripts]
-NeoBundle 'Mudox/mudox-vim-scripts'            , { 'name' : 'mudox' }
+" NeoBundle 'Mudox/mudox-vim-scripts'            , { 'name' : 'mudox' }
 " [rainbow_parentheses]
 NeoBundle 'kien/rainbow_parentheses.vim'       , { 'name' : 'rainbow_parentheses' }
 " [mudox_ultisnips]
