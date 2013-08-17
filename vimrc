@@ -253,6 +253,8 @@ NeoBundle 'gcmt/breeze.vim'                    , { 'name' : 'breeze' }
 NeoBundle 'bling/vim-airline'                  , { 'name' : 'airline' }
 " [pairs]
 NeoBundle 'kurkale6ka/vim-pairs'               , { 'name' : 'pairs' }
+" [tabular]
+NeoBundle 'godlygeek/tabular'                  , { 'name' : 'tabular' }
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
@@ -538,6 +540,10 @@ let g:ctrlp_show_hidden       = 0
 let g:ctrlp_follow_symlinks   = 1
 let g:ctrlp_by_filename       = 1
 
+" Single VCS, listing command does not list untracked files:
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+let g:ctrlp_user_command = ['.hg', 'hg --cwd %s locate -I .']
+
 " }}}2
 
 " [python_syntax]"                             {{{2
@@ -555,12 +561,16 @@ nnoremap Ï :ZoomWinTabToggle<CR>
 " let g:session_directory = '~/.vim_session'
 " }}}2
 
+" [ft-sql]"                                     {{{2
+let g:ftplugin_sql_omni_key_right = '<C-l>'
+let g:ftplugin_sql_omni_key_left  = '<C-h>'
+
 " [dbext]"                                     {{{2
 
 let g:dbext_default_buffer_lines          = 10
 let g:dbext_default_use_sep_result_buffer = 0
 let g:dbext_default_history_file          = '~/.dbext_sql_history'
-let g:dbext_default_autoclose             = 1
+let g:dbext_default_autoclose             = 0
 let g:dbext_default_display_cmd_line      = 0
 
 " Sqlite3 specific settings.
@@ -577,7 +587,6 @@ let s:profile_config_list                 = [
 let g:dbext_default_profile_GwaMan = join(s:profile_config_list, ':')
 
 " }}}2
-
 " [matchparen]"                                {{{2
 " let loaded_matchparen = 1
 " }}}2
@@ -1067,7 +1076,6 @@ set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 set laststatus=2 " always show status bar.
-set clipboard=unnamed
 
 " Brace match
 set showmatch
@@ -1110,8 +1118,7 @@ set foldtext=MyFoldText()
 function! MyFoldText()
     let l:firstline = getline(v:foldstart)
     let l:sub = substitute(l:firstline, '\s*"\|"/\*\|\*/\|{\{3}.*', '', 'g')
-    let l:prefix = '»'
-    " let l:foldline = l:prefix . l:sub. v:folddashes
+    let l:prefix = '» '
     let l:foldline = l:prefix . l:sub
     return l:foldline
 endfunction
