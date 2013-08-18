@@ -291,62 +291,25 @@ NeoBundle 'SirVer/ultisnips'
 
 " My Colorscheme Bundles here:                 {{{2
 
-function! Colo_Opt_Dict( name, vim_name )
-    let s:bundle_path = g:vim_config_root . '/colos_neobundle'
-    let s:colors_path = g:vim_config_root . '/colors'
-
-    let s:colo_options       = {}
-    let s:colo_options.name  = a:name
-    let s:colo_options.base  = s:bundle_path
-    let s:colo_options.build = {
-                \   'unix' : 'cp '
-                \       . a:vim_name . ' ' . s:colors_path,
-                \   'windows' : 'copy /Y '
-                \       . a:vim_name . ' ' . s:colors_path
-                \ }
-
-    return s:colo_options
-endfunction
-
-NeoBundleFetch 'molok/vim-vombato-colorscheme',
-            \ Colo_Opt_Dict( 'vombato', 'colors/vombato.vim' )
-NeoBundleFetch 'w0ng/vim-hybrid',
-            \ Colo_Opt_Dict( 'hybrid', 'colors/hybrid.vim' )
-NeoBundleFetch 'tomasr/molokai',
-            \ Colo_Opt_Dict( 'molokai', 'colors/molokai.vim' )
-NeoBundleFetch 'nanotech/jellybeans.vim',
-            \ Colo_Opt_Dict( 'jellybeans', 'colors/jellybeans.vim' )
-NeoBundleFetch 'sjl/badwolf',
-            \ Colo_Opt_Dict( 'badwolf', 'colors/badwolf.vim' )
-NeoBundleFetch 'hukl/Smyck-Color-Scheme',
-            \ Colo_Opt_Dict( 'smyck', 'smyck.vim' )
-NeoBundleFetch 'jelera/vim-gummybears-colorscheme',
-            \ Colo_Opt_Dict( 'gummybears', 'colors/gummybears.vim' )
-NeoBundleFetch 'YorickPeterse/Autumn.vim',
-            \ Colo_Opt_Dict( 'autumn', 'colors/autumn.vim' )
-NeoBundleFetch 'mbbill/desertEx',
-            \ Colo_Opt_Dict( 'desertEx', 'colors/desertEx.vim' )
-NeoBundleFetch 'altercation/vim-colors-solarized',
-            \ Colo_Opt_Dict( 'solarized', 'colors/solarized.vim' )
-NeoBundleFetch 'zeis/vim-kolor',
-            \ Colo_Opt_Dict( 'kolor', 'colors/kolor.vim' )
-NeoBundleFetch 'noahfrederick/Hemisu',
-            \ Colo_Opt_Dict( 'hemisu', 'colors/hemisu.vim' )
-NeoBundleFetch 'morhetz/gruvbox',
-            \ Colo_Opt_Dict( 'gruvbox', 'colors/gruvbox.vim' )
-NeoBundleFetch 'junegunn/seoul256.vim',
-            \ Colo_Opt_Dict( 'seoul', 'colors/seoul256.vim' )
-NeoBundleFetch 'jnurmine/Zenburn',
-            \ Colo_Opt_Dict( 'zenburn', 'colors/zenburn.vim' )
-NeoBundleFetch 'gregsexton/Atom',
-            \ Colo_Opt_Dict( 'atom', 'colors/atom.vim' )
-NeoBundleFetch 'jonathanfilip/vim-lucius',
-            \ Colo_Opt_Dict( 'lucius', 'colors/lucius.vim' )
-NeoBundleFetch 'Pychimp/vim-luna',
-            \ Colo_Opt_Dict( 'luna', 'colors/luna.vim' )
-NeoBundleFetch 'toupeira/vim-desertink',
-            \ Colo_Opt_Dict( 'desertink', 'colors/desertink.vim' )
-" [tomorrow]
+NeoBundle 'molok/vim-vombato-colorscheme'    , { 'name' : 'color_vombato' }
+NeoBundle 'w0ng/vim-hybrid'                  , { 'name' : 'color_hybrid' }
+NeoBundle 'tomasr/molokai'                   , { 'name' : 'color_molokai' }
+NeoBundle 'nanotech/jellybeans.vim'          , { 'name' : 'color_jellybeans' }
+NeoBundle 'sjl/badwolf'                      , { 'name' : 'color_badwolf' }
+NeoBundle 'hukl/Smyck-Color-Scheme'          , { 'name' : 'color_smyck' }
+NeoBundle 'jelera/vim-gummybears-colorscheme', { 'name' : 'color_gummybears' }
+NeoBundle 'YorickPeterse/Autumn.vim'         , { 'name' : 'color_autumn' }
+NeoBundle 'mbbill/desertEx'                  , { 'name' : 'color_desertex' }
+NeoBundle 'altercation/vim-colors-solarized' , { 'name' : 'color_solarized' }
+NeoBundle 'zeis/vim-kolor'                   , { 'name' : 'color_kolor' }
+NeoBundle 'noahfrederick/Hemisu'             , { 'name' : 'color_hemisu' }
+NeoBundle 'morhetz/gruvbox'                  , { 'name' : 'color_grubox' }
+NeoBundle 'junegunn/seoul256.vim'            , { 'name' : 'color_seoul256' }
+NeoBundle 'jnurmine/Zenburn'                 , { 'name' : 'color_zenburn' }
+NeoBundle 'gregsexton/Atom'                  , { 'name' : 'color_atom' }
+NeoBundle 'jonathanfilip/vim-lucius'         , { 'name' : 'color_lucius' }
+NeoBundle 'Pychimp/vim-luna'                 , { 'name' : 'color_luna' }
+NeoBundle 'toupeira/vim-desertink'           , { 'name' : 'color_desertink' }
 NeoBundle 'chriskempson/tomorrow-theme'           , {
             \ 'name' : 'tomorrow',
             \ 'rtp' : 'vim'
