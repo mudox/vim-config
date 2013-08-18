@@ -255,6 +255,10 @@ NeoBundle 'bling/vim-airline'                  , { 'name' : 'airline' }
 NeoBundle 'kurkale6ka/vim-pairs'               , { 'name' : 'pairs' }
 " [tabular]
 NeoBundle 'godlygeek/tabular'                  , { 'name' : 'tabular' }
+" [trailertrash]
+NeoBundle 'csexton/trailertrash.vim'           , { 'name' : 'trailertrash' }
+" [json]
+NeoBundle 'elzr/vim-json'                      , { 'name' : 'json' }
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
@@ -342,6 +346,11 @@ NeoBundleFetch 'Pychimp/vim-luna',
             \ Colo_Opt_Dict( 'luna', 'colors/luna.vim' )
 NeoBundleFetch 'toupeira/vim-desertink',
             \ Colo_Opt_Dict( 'desertink', 'colors/desertink.vim' )
+" [tomorrow]
+NeoBundle 'chriskempson/tomorrow-theme'           , {
+            \ 'name' : 'tomorrow',
+            \ 'rtp' : 'vim'
+            \ }
 "}}}2
 
 exe 'NeoBundleLocal ' . g:vim_config_root . '/bundle'
@@ -1088,7 +1097,7 @@ set softtabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
-set listchars=tab:>+,eol:$
+set listchars=tab:>-,eol:¶
 set autoindent
 
 " Pattern searching
