@@ -560,7 +560,7 @@ let g:dbext_default_profile_GwaMan = join(s:profile_config_list, ':')
 
 " }}}2
 " [matchparen]"                                {{{2
-" let loaded_matchparen = 1
+let loaded_matchparen = 1
 " }}}2
 
 " [cottidie]"                                  {{{2
