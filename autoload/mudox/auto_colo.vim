@@ -49,9 +49,19 @@ endif
 
 
 function! mudox#auto_colo#AutoColoByDay()
-    let today = strftime("%d", localtime()) + 0
-    let idx = today % len(g:color_toy_vim_colors_collected)
-    execute "colorscheme " . g:color_toy_vim_colors_collected[idx]
+    let l:today = strftime("%d", localtime()) + 0
+    let l:idx = l:today % len(g:color_toy_vim_colors_collected)
+    let g:the_vim_color = g:color_toy_vim_colors_collected[l:idx]
+
+    if len(g:color_toy_vim_colors_collected) > 0
+        if index(g:color_toy_airline_colors_collected, g:the_vim_color) >= 0
+            let g:the_airline_color = g:the_vim_color
+        else
+            let l:idx = l:today % len(g:color_toy_airline_colors_collected)
+            let g:the_airline_color = g:color_toy_airline_colors_collected[l:idx]
+        endif
+        let g:airline_theme = g:the_airline_color
+    endif
 endfunction
 
 

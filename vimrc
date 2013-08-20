@@ -1024,6 +1024,7 @@ set termencoding=gbk
 " color & font
 set background=dark
 call mudox#auto_colo#AutoColoRandom()  " random colorscheme
+" call mudox#auto_colo#AutoColoByDay()  " random colorscheme
 
 if has('win32') || has('win64')
     set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
