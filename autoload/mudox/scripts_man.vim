@@ -85,7 +85,6 @@ endfunction
 
 function! mudox#scripts_man#LoadingStatus()
     let [l:detail, l:summary] = s:SPrintScriptLoadingStatus()
-    echo l:summary
 
     if !exists('s:LoadingStatusBufNum')
         let s:LoadingStatusBufNum = 0

@@ -82,12 +82,17 @@ function! mudox#auto_colo#AutoColoRandom()
 endfunction
 
 function! mudox#auto_colo#ColoMarquee()
+    let l:cur_color = g:colors_name
+
     for c in g:color_toy_vim_colors_collected
         execute "colorscheme " . c
         redraw
         echo c
         sleep 300m
     endfor
+
+    " restore previous colorscheme.
+    execute 'colorscheme ' . l:cur_color
 endfunction
 
 " vim: fileformat=unix
