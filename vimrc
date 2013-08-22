@@ -431,7 +431,7 @@ nnoremap <M-Left> 	5<C-W><
 nnoremap <M-Right> 	5<C-W>>
 "}}}2
 
-" <A-H/L> to switch among tabs                  {{{2
+" <A-H/L> to switch among tabs                 {{{2
 nnoremap <silent> ì gt
 nnoremap <silent> è gT
 "}}}2
@@ -533,7 +533,7 @@ nnoremap Ï :ZoomWinTabToggle<CR>
 " let g:session_directory = '~/.vim_session'
 " }}}2
 
-" [ft-sql]"                                     {{{2
+" [ft-sql]"                                    {{{2
 let g:ftplugin_sql_omni_key_right = '<C-l>'
 let g:ftplugin_sql_omni_key_left  = '<C-h>'
 
@@ -831,11 +831,14 @@ let g:pymode_doc_key                  = '<leader>k'
 "}}}2
 
 " [youcompleteme]"                             {{{2
-" nnoremap <leader>ycm :YcmForceCompileAndDiagnostics<CR>
+let g:ycm_collect_identifiers_from_tags_files           = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_seed_identifiers_with_syntax                  = 1
+
 let g:ycm_complete_in_strings                           = 1
 let g:ycm_complete_in_comments                          = 1
+
 let g:ycm_max_diagnostics_to_display                    = 14
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
 " let g:ycm_add_preview_to_completeopt                  = 1
 let g:ycm_complete_in_comments_and_strings              = 1
 let g:ycm_autoclose_preview_window_after_completion     = 1
@@ -849,12 +852,11 @@ let g:ycm_filetype_blacklist                            = {
             \ 'unite'    : 1
             \}
 let g:ycm_filetype_whitelist                            = {
-            \ '*'	   : 1
+            \ '*'          : 1
             \}
 " let g:ycm_filetype_specific_completion_to_disable     = {}
 let g:ycm_allow_changing_updatetime                     = 0
 let g:ycm_register_as_syntastic_checker                 = 1
-let g:ycm_seed_identifiers_with_syntax                  = 1
 " let g:ycm_key_invoke_completion                       = '<C-Space>'
 " let g:ycm_key_detailed_diagnostics                    = '<leader>d'
 let g:ycm_key_list_select_completion                    = ['<Down>']
