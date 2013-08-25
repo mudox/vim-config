@@ -259,6 +259,10 @@ NeoBundle 'godlygeek/tabular'                  , { 'name' : 'tabular' }
 NeoBundle 'csexton/trailertrash.vim'           , { 'name' : 'trailertrash' }
 " [json]
 NeoBundle 'elzr/vim-json'                      , { 'name' : 'json' }
+" [vimperl]
+NeoBundle 'vim-perl/vim-perl'                  , { 'name' : 'vimperl' }
+" [vim-javascript]
+NeoBundle 'pangloss/vim-javascript'            , { 'name' : 'vimjavascript' }
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
@@ -310,7 +314,8 @@ NeoBundle 'gregsexton/Atom'                  , { 'name' : 'color_atom' }
 NeoBundle 'jonathanfilip/vim-lucius'         , { 'name' : 'color_lucius' }
 NeoBundle 'Pychimp/vim-luna'                 , { 'name' : 'color_luna' }
 NeoBundle 'toupeira/vim-desertink'           , { 'name' : 'color_desertink' }
-NeoBundle 'chriskempson/tomorrow-theme'           , {
+NeoBundle 'Valloric/vim-valloric-colorscheme', { 'name' : 'valloric' }
+NeoBundle 'chriskempson/tomorrow-theme'      , {
             \ 'name' : 'tomorrow',
             \ 'rtp' : 'vim'
             \ }
@@ -488,9 +493,9 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " [airline]                                    {{{2
 let g:airline_exclude_preview      = 1
-let g:airline_detect_modified      = 0
-let g:airline_detect_paste         = 0
-let g:airline_detect_iminsert      = 0
+let g:airline_detect_modified      = 1
+let g:airline_detect_paste         = 1
+let g:airline_detect_iminsert      = 1
 let g:airline_powerline_fonts      = 1
 let g:airline_theme                = 'molokai'
 let g:airline_whitespace_symbol    = '!'
