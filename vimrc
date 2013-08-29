@@ -2,19 +2,6 @@
 "
 " NOTE:
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
-" This vimrc has several preconditions:
-" * This file 'vimrc' NOT '.vimrc' must reside in the root directory of .vim or
-"   vimfiles directory, while the formally '.vimrc' file, containing a single line
-"   to source this file, resides just outisde .vim or vimfiles direcotry. By doing
-"   this, we can conveniently use git to manage the whole vim configuration stuff.
-" * Assumes you haved defined a system or user environment variable: MDX_DROPBOX
-"   which holds the absolute path to dropbox root path. (deprecated)
-" ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
-" This vimrc follows several predefined laws:
-" * Mapping scheme:
-"   1. use '\' to map relatively infrequently used functions.
-"   2. usr g:mapleader & b:localleader to map relatively frequently used functions.
-" * Use g:vim_config_root to gain the full path of .vim or vimfies directory.
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
 "}}}1
 
@@ -263,6 +250,8 @@ NeoBundle 'elzr/vim-json'                      , { 'name' : 'json' }
 NeoBundle 'vim-perl/vim-perl'                  , { 'name' : 'vimperl' }
 " [vim-javascript]
 NeoBundle 'pangloss/vim-javascript'            , { 'name' : 'vimjavascript' }
+" [vim-cute-python]
+NeoBundle 'ehamberg/vim-cute-python'           , { 'name' : 'cute_python' }
 " [vimwiki]
 NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
@@ -275,21 +264,6 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 " [UltiSnips]
 NeoBundle 'SirVer/ultisnips'
-
-" ======================== DEPRECATED PLUGINS ========================
-" [vim-session]
-" NeoBundle 'xolox/vim-session'                  , { 'name' : 'session' }
-" [vim-signature]
-" NeoBundleLazy 'kshenoy/vim-signature', {
-" \   'name'     : 'signature',
-" \   'autoload' : { 'commands' : 'SignatureToggle' }
-
-" [clang_complete]
-" NeoBundleLazy 'Rip-Rip/clang_complete', {
-" \   'autoload' : {
-" \       'filetypes' : ['c', 'cpp'],
-" \   },
-" \ }
 
 "}}}2
 
@@ -353,69 +327,6 @@ endfunction
 
 nnoremap \neo :call NeoUpdateLogs()<CR>
 "}}}1
-
-" FROM SAMPLE FILE                             {{{1
-
-" An example for a gvimrc file.
-" The commands in this are executed when the GUI is started.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2001 Sep 02
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.gvimrc
-"	      for Amiga:  s:.gvimrc
-"  for MS-DOS and Win32:  $VIM\_gvimrc
-"	    for OpenVMS:  sys$login:.gvimrc
-
-" Make external commands work through a pipe instead of a pseudo-tty
-"set noguipty
-
-" set the X11 font to use
-" set guifont=-misc-fixed-medium-r-normal--14-130-75-75-c-70-iso8859-1
-
-set ch=2		" Make command line two lines high
-
-set mousehide		" Hide the mouse when typing text
-
-" Make shift-insert work like in Xterm
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
-
-" Only do this for Vim version 5.0 and later.
-if version >= 500
-
-    " I like highlighting strings inside C comments
-    let c_comment_strings=1
-
-    " Switch on syntax highlighting if it wasn't on yet.
-    if !exists("syntax_on")
-        syntax on
-    endif
-
-    " Switch on search pattern highlighting.
-    set hlsearch
-
-    " For Win32 version, have "K" lookup the keyword in a help file
-    "if has("win32")
-    "  let winhelpfile='windows.hlp'
-    "  map K :execute "!start winhlp32 -k <cword> " . winhelpfile <CR>
-    "endif
-
-    " Set nice colors
-    " background for normal text is light grey
-    " Text below the last line is darker grey
-    " Cursor is green, Cyan when ":lmap" mappings are active
-    " Constants are not underlined but have a slightly lighter background
-    highlight Normal guibg=grey90
-    highlight Cursor guibg=Green guifg=NONE
-    highlight lCursor guibg=Cyan guifg=NONE
-    highlight NonText guibg=grey80
-    highlight Constant gui=NONE guibg=grey95
-    highlight Special gui=NONE guibg=grey95
-
-endif
-" }}}1
 
 " MAPPINGS                                     {{{1
 
@@ -492,17 +403,18 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 " PULGIN SETTINGS                              {{{1
 
 " [airline]                                    {{{2
-let g:airline_exclude_preview      = 1
-let g:airline_detect_modified      = 1
-let g:airline_detect_paste         = 1
-let g:airline_detect_iminsert      = 1
-let g:airline_powerline_fonts      = 1
-let g:airline_theme                = 'molokai'
-let g:airline_whitespace_symbol    = '!'
-let g:airline_branch_empty_message = "I'm Mudox"
-let g:airline_enable_branch        = 1
-let g:airline_enable_syntastic     = 1
-let g:airline_enable_tagbar        = 1
+let g:airline_exclude_preview            = 1
+let g:airline_detect_modified            = 1
+let g:airline_detect_paste               = 1
+let g:airline_detect_iminsert            = 1
+let g:airline_powerline_fonts            = 1
+let g:airline_theme                      = 'molokai'
+let g:airline_whitespace_symbol          = '!'
+let g:airline_branch_empty_message       = "I'm Mudox"
+let g:airline_enable_branch              = 1
+let g:airline_enable_syntastic           = 1
+let g:airline_enable_tagbar              = 1
+let g:airline#extensions#readonly#symbol = '⭤'
 " }}}2
 
 " [switch]"                                    {{{2
@@ -856,9 +768,9 @@ let g:ycm_filetype_blacklist                            = {
             \ 'vimwiki'  : 1,
             \ 'unite'    : 1
             \}
-let g:ycm_filetype_whitelist                            = {
-            \ '*'          : 1
-            \}
+" let g:ycm_filetype_whitelist                            = {
+            " \ '*'          : 1
+            " \}
 " let g:ycm_filetype_specific_completion_to_disable     = {}
 let g:ycm_allow_changing_updatetime                     = 0
 let g:ycm_register_as_syntastic_checker                 = 1
@@ -995,18 +907,6 @@ cabbrev ue UltiSnipsEdit
 cabbrev nt NERDTree
 "}}}1
 
-" DEFAULT COLORS                               {{{1
-
-" default popup menu colors
-highlight Pmenu ctermbg=8 guibg=#140033
-highlight PmenuSel ctermbg=1 guifg=#3D2466 guibg=#FF760D
-" highlight PmenuSbar ctermbg=0 guibg=083308
-
-" default signature column colors
-hi SignColumn     gui=NONE   guifg=#8b8bcd   guibg=#2e2e2e
-
-"}}}1
-
 " SETTINGS                                     {{{1
 
 " Important
@@ -1056,6 +956,7 @@ set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 set laststatus=2 " always show status bar.
+set cmdheight=2
 
 " Brace match
 set showmatch
@@ -1068,7 +969,7 @@ set softtabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
-set listchars=tab:>-,eol:¶
+set listchars=tab:▸-,eol:¶
 set autoindent
 
 " Pattern searching
@@ -1110,6 +1011,11 @@ set wildmenu
 if has('unix')
     set wildignorecase "
 endif
+
+" vim syntax
+let g:vimsyn_embed = 0      " disable all embeding syntax.
+let g:vimsyn_folding = 'af' " enable autofolding of autogroups & functions.
+" let g:vimsyn_noerror = 1
 
 " }}}1
 
