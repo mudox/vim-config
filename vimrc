@@ -1050,4 +1050,4 @@ let g:vimsyn_noerror = 1
 
 "}}}1
 
-" vim: foldmethod=marker fileformat=unix
+" vim: foldmethod=marker fileformat=unix foldmethod=marker
