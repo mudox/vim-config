@@ -64,7 +64,6 @@ function! mudox#auto_colo#AutoColoByDay()
     endif
 endfunction
 
-
 function! mudox#auto_colo#AutoColoRandom()
     let l:idx = localtime() % len(g:color_toy_vim_colors_collected)
     let g:the_vim_color = g:color_toy_vim_colors_collected[l:idx]
