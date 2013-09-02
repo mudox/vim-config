@@ -1,14 +1,20 @@
-" vimrc NOT .vimrc for [G]Vim on Linux / Window{{{1
+" vimrc NOT .vimrc for [G]Vim on Linux / Window   {{{1
 "
 " NOTE:
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
+"
+" TODO:
+" 1. the use of variables g:vim_config_root is not conventional, and error-prone.
+" 2. regrouping the vim options setttings in 'SETTINGS' section.
+" 3. fix the issues:
+"   * cursor hopping between current insertting position and the line end.
 "}}}1
 
 " get the full path of .vim or vimfiles.
 let g:vim_config_root = substitute(expand('<sfile>:p:h'), ' ', '\\ ', 'g')
 
-" NEOBUNDLE                                    {{{1
+" NEOBUNDLE                                       {{{1
 set nocompatible                " Recommend
 
 if has('vim_starting')
@@ -23,7 +29,7 @@ NeoBundleFetch 'Shougo/neobundle.vim' , { 'name' : 'neobundle' }
 " Use neobundle standard recipes.
 NeoBundle 'Shougo/neobundle-vim-scripts'
 
-" My Bundles here:                             {{{2
+" My Bundles here:                                   {{{2
 
 " [Vimproc]
 NeoBundle 'Shougo/vimproc', {
@@ -267,7 +273,7 @@ NeoBundle 'SirVer/ultisnips'
 
 "}}}2
 
-" My Colorscheme Bundles here:                 {{{2
+" My Colorscheme Bundles here:                       {{{2
 
 NeoBundle 'molok/vim-vombato-colorscheme'    , { 'name' : 'color_vombato' }
 NeoBundle 'w0ng/vim-hybrid'                  , { 'name' : 'color_hybrid' }
@@ -328,26 +334,26 @@ endfunction
 nnoremap \neo :call NeoUpdateLogs()<CR>
 "}}}1
 
-" MAPPINGS                                     {{{1
+" MAPPINGS                                        {{{1
 
 " Default leader key for <leader> mappings
 let g:mapleader = ','
 
-" <C-H/J/K/L> to jump among windows            {{{2
+" <C-H/J/K/L> to jump among windows                  {{{2
 nnoremap <C-H>	   <C-W>h
 nnoremap <C-J>	   <C-W>j
 nnoremap <C-K>	   <C-W>k
 nnoremap <C-L>	   <C-W>l
 "}}}2
 
-" <M-Up/Down/Left/Right> to resize windows     {{{2
+" <M-Up/Down/Left/Right> to resize windows           {{{2
 nnoremap <M-Up> 	5<C-W>+
 nnoremap <M-Down> 	5<C-W>-
 nnoremap <M-Left> 	5<C-W><
 nnoremap <M-Right> 	5<C-W>>
 "}}}2
 
-" <A-H/L> to switch among tabs                 {{{2
+" <A-H/L> to switch among tabs                       {{{2
 nnoremap <silent> ì gt
 nnoremap <silent> è gT
 "}}}2
@@ -400,9 +406,14 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " }}}1
 
-" PULGIN SETTINGS                              {{{1
+" PULGIN SETTINGS                                 {{{1
 
-" [airline]                                    {{{2
+" [origami]                                          {{{2
+let g:OrigamiPadding = 3
+let g:OrigamiStaggeredSpacing = 3
+" }}}2
+
+" [airline]                                          {{{2
 let g:airline_exclude_preview            = 1
 let g:airline_detect_modified            = 1
 let g:airline_detect_paste               = 1
@@ -415,12 +426,25 @@ let g:airline_enable_branch              = 1
 let g:airline_enable_syntastic           = 1
 let g:airline_enable_tagbar              = 1
 let g:airline#extensions#readonly#symbol = '⭤'
+let g:airline_mode_map = {
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V',
+            \ '' : 'V',
+            \ 's'  : 'S',
+            \ 'S'  : 'S',
+            \ '' : 'S',
+            \ }
 " }}}2
 
-" [switch]"                                    {{{2
+" [switch]"                                          {{{2
 " }}}2
 
-" [cltrp]"                                     {{{2
+" [cltrp]"                                           {{{2
 let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
 let g:ctrlp_working_path_mode = 'ra'
 " let g:ctrlp_root_markers    = ['']
@@ -435,26 +459,27 @@ let g:ctrlp_user_command = ['.hg', 'hg --cwd %s locate -I .']
 
 " }}}2
 
-" [python_syntax]"                             {{{2
+" [python_syntax]"                                   {{{2
 let g:python_highlight_all = 1
 " }}}2
 
-" [zoomwintab]"                                {{{2
+" [zoomwintab]"                                      {{{2
 " <M-O/o> to invoke :ZoomWinTabToggle
 nnoremap ï :ZoomWinTabToggle<CR>
 nnoremap Ï :ZoomWinTabToggle<CR>
 " }}}2
 
-" [vim-session]"                               {{{2
+" [vim-session]"                                     {{{2
 " let g:session_autosave = 0
 " let g:session_directory = '~/.vim_session'
 " }}}2
 
-" [ft-sql]"                                    {{{2
+" [ft-sql]"                                          {{{2
 let g:ftplugin_sql_omni_key_right = '<C-l>'
 let g:ftplugin_sql_omni_key_left  = '<C-h>'
+"}}}2
 
-" [dbext]"                                     {{{2
+" [dbext]"                                           {{{2
 
 let g:dbext_default_buffer_lines          = 10
 let g:dbext_default_use_sep_result_buffer = 0
@@ -476,23 +501,24 @@ let s:profile_config_list                 = [
 let g:dbext_default_profile_GwaMan = join(s:profile_config_list, ':')
 
 " }}}2
-" [matchparen]"                                {{{2
+
+" [matchparen]"                                      {{{2
 let loaded_matchparen = 1
 " }}}2
 
-" [cottidie]"                                  {{{2
+" [cottidie]"                                        {{{2
 command! Tips CottidieTip
 " }}}2
 
-" [vimproc]"                                   {{{2
+" [vimproc]"                                         {{{2
 nnoremap <leader><leader>s :VimProcBang
 " }}}2
 
-" [goldenview]"                                {{{2
+" [goldenview]"                                      {{{2
 let g:goldenview__enable_default_mapping = 0
 " }}}2
 
-" [surround]"                                  {{{2
+" [surround]"                                        {{{2
 xmap ' <Plug>VSurround'
 xmap " <Plug>VSurround"
 xmap ( <Plug>VSurround(
@@ -503,7 +529,7 @@ xmap } <Plug>VSurround}
 " xmap ] S]
 " }}}2
 
-" [color: solarized]"                          {{{2
+" [color: solarized]"                                {{{2
 let g:solarized_termcolors = 256
 let g:solarized_contrast   = "high"
 let g:solarized_bold       = 0
@@ -511,14 +537,14 @@ let g:solarized_bold       = 0
 " let g:solarized_italic
 " }}}2
 
-" [gitgutter]"                                 {{{2
+" [gitgutter]"                                       {{{2
 nnoremap \gg :<C-U>GitGutterToggle<CR>
 nnoremap <leader>ggn :GitGutterNextHunk<CR>
 nnoremap <leader>ggp :GitGutterPrevHunk<CR>
 let g:gitgutter_enabled = 0
 " }}}2
 
-" [syntastic]"                                 {{{2
+" [syntastic]"                                       {{{2
 nnoremap <leader>ck :<C-U>SyntasticCheck<CR>
 
 let g:syntastic_check_on_wq = 0
@@ -558,7 +584,7 @@ let g:syntastic_python_checkers = ['python', 'pyflakes', 'pep8']
 
 " }}}2
 
-" [vimwiki]"                                   {{{2
+" [vimwiki]"                                         {{{2
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_hl_headers    = 1
 let g:vimwiki_global_ext    = 0
@@ -605,14 +631,14 @@ let s:wiki.auto_export   = 1
 call add(g:vimwiki_list, s:wiki)
 " }}}2
 
-" [color: kolor]"                              {{{2
+" [color: kolor]"                                    {{{2
 let g:kolor_italic=1                    " Enable italic. Default: 1
 let g:kolor_bold=1                      " Enable bold. Default: 1
 let g:kolor_underlined=1                " Enable underline for 'Underlined'. Default: 0
 let g:kolor_alternative_matchparen=1    " Gray 'MatchParen' color. Default: 0
 " }}}2
 
-" [textobj-comment]"                           {{{2
+" [textobj-comment]"                                 {{{2
 let g:textobj_comment_no_default_key_mappings = 1
 xmap ax <Plug>(textobj-comment-a)
 omap ax <Plug>(textobj-comment-a)
@@ -622,8 +648,7 @@ xmap aX <Plug>(textobj-comment-big-a)
 omap aX <Plug>(textobj-comment-big-a)
 " }}}2
 
-
-" [indentline]"                                {{{2
+" [indentline]                                       {{{2
 nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
 let g:indentLine_enabled = 0
 let g:indentLine_fileType = [
@@ -648,7 +673,7 @@ let g:indentLine_bufNameExclude = [
 " let g:indentLine_color_gui = '#389900'
 " }}}2
 
-" [mudox]"                                     {{{2
+" [mudox]"                                           {{{2
 " let g:mdx_colos_white_list = [
 " \   'badwolf'
 " \ ] " just for testing ...
@@ -688,11 +713,11 @@ endif
 
 " }}}2
 
-" [rainbowparentheses] "                       {{{2
+" [rainbowparentheses] "                             {{{2
 nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR>
 "}}}2
 
-" [yankring]"                                  {{{2
+" [yankring]"                                        {{{2
 let g:yankring_min_element_length = 2
 let yankring_history_dir          = g:vim_config_root
 let g:yankring_history_file       = 'yankring_hist'
@@ -702,14 +727,14 @@ let yankring_replace_n_pkey       = '<Up>'
 nnoremap <leader>yr :<C-U>YRShow<CR>
 "}}}2
 
-" [delimitmate]"                               {{{2
+" [delimitmate]"                                     {{{2
 let delimitMate_expand_space       = 1
 let delimitMate_expand_cr          = 1
 let delimitMate_smart_quotes       = 1
 let delimitMate_balance_matchpairs = 1
 "}}}2
 
-" [easytags]"                                  {{{2
+" [easytags]"                                        {{{2
 set updatetime=4000
 let g:easytags_updatetime_autodisable = 1
 let g:easytags_include_members = 1
@@ -722,7 +747,7 @@ endif
 
 "}}}2
 
-" [singlecompile]"                             {{{2
+" [singlecompile]"                                   {{{2
 nnoremap <F5> :<C-U>SCCompileRun<CR>
 " if has('win32') || has('win64')
 " call SingleCompile#SetCompilerTemplate('python', 'python',
@@ -738,7 +763,7 @@ nnoremap <F5> :<C-U>SCCompileRun<CR>
 " endif
 "}}}2
 
-" [python-mode]"                               {{{2
+" [python-mode]"                                     {{{2
 let g:pymode_run                      = 0
 let g:pymode_lint                     = 0
 let g:pymode_lint_onfly               = 0
@@ -747,7 +772,7 @@ let g:pymode_syntax_print_as_function = 1
 let g:pymode_doc_key                  = '<leader>k'
 "}}}2
 
-" [youcompleteme]"                             {{{2
+" [youcompleteme]"                                   {{{2
 let g:ycm_collect_identifiers_from_tags_files           = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_seed_identifiers_with_syntax                  = 1
@@ -780,7 +805,7 @@ let g:ycm_key_list_select_completion                    = ['<Down>']
 let g:ycm_key_list_previous_completion                  = ['<Up>']
 "}}}2
 
-" [nerdcomment]                                {{{2
+" [nerdcomment]                                      {{{2
 let NERDBlockComIgnoreEmpty       = 1
 let NERDSpaceDelims               = 1
 let NERDDefaultNesting            = 0
@@ -791,7 +816,7 @@ let NERDDefaultNesting            = 0
 " let NERD_<filetype>_alt_style   = 1
 "}}}2
 
-" [ultisnips]                                  {{{2
+" [ultisnips]                                        {{{2
 let g:UltiSnipsEditSplit           = "horizontal"
 let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
@@ -801,11 +826,11 @@ let g:UltiSnipsSnippetsDir         = g:vim_config_root . '/neobundle/mudox_ultis
 let g:UltiSnipsSnippetDirectories  = [ "ultisnips_snippets" ]
 "}}}2
 
-" [pathogen]                                   {{{2
+" [pathogen]                                         {{{2
 " call pathogen#infect()
 "}}}2
 
-" [taglist]                                    {{{2
+" [taglist]                                          {{{2
 let Tlist_Show_One_File             = 1
 let Tlist_Exit_OnlyWindow           = 1
 if ! has("gui_running")
@@ -813,14 +838,14 @@ if ! has("gui_running")
 endif
 "}}}2
 
-" [jedi]                                       {{{2
+" [jedi]                                             {{{2
 let g:jedi#pydoc                    = "<leader>k"
 let g:jedi#popup_select_first       = 0
 let g:jedi#auto_vim_configuration   = 0
 let g:jedi#show_function_definition = 0
 "}}}2
 
-" [tagbar]                                     {{{2
+" [tagbar]                                           {{{2
 nnoremap <leader>tb :TagbarToggle<CR>
 " let g:tagbar_compact = 1
 " let g:tagbar_indent = 1
@@ -838,7 +863,7 @@ endif
 let g:tagbar_autoshowtag = 1
 "}}}2
 
-" [nerdtree]                                   {{{2
+" [nerdtree]                                         {{{2
 
 " close vim if the only window left open is a NERDTree
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -848,23 +873,23 @@ let NERDTreeMinimalUI = 1 " No ? tips line, no bookmark headline.
 " let NERDTreeWinPos = "left" or "right"
 "}}}2
 
-" [vimsignature]                               {{{2
+" [vimsignature]                                     {{{2
 " nnoremap \s :SignatureToggle<CR>
 " let g:SignaturePeriodicRefresh = 0
 "}}}2
 
-" [mark]                                       {{{2
+" [mark]                                             {{{2
 let g:mwAutoSaveMarks = 0
 let g:mwIgnoreCase = 0
 " let g:mwHistAdd = '/@'
 "}}}2
 
-" [easymotion]                                 {{{2
+" [easymotion]                                       {{{2
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz12347890'
 let g:EasyMotion_do_shade = 0
 "}}}2
 
-" [powerline]                                  {{{2
+" [powerline]                                        {{{2
 let g:Powerline_symbols        = 'fancy'
 let g:Powerline_stl_path_style = 'filename'
 let g:Powerline_mode_n         = 'N'
@@ -878,7 +903,7 @@ let g:Powerline_mode_S         = 'SL'
 let g:Powerline_mode_cs        = 'SB'
 "}}}2
 
-" [unite]                                      {{{2
+" [unite]                                            {{{2
 nnoremap \mru :Unite -start-insert file_mru<CR>
 nnoremap \bm  :Unite -vertical bookmark<CR>
 nnoremap \mru :Unite -start-insert file_mru<CR>
@@ -890,7 +915,7 @@ nnoremap \ub  :Unite -vertical bookmark<CR>
 
 "}}}1
 
-" EVENTS                                       {{{1
+" EVENTS                                          {{{1
 
 " Only highlights current line in the window which gets focus.
 " autocmd WinEnter * set cursorline
@@ -902,12 +927,12 @@ autocmd VimEnter * exe "cd " . expand("~")
 " autocmd VimEnter * exe "NERDTree " . expand("~")
 "}}}1
 
-" ABBREVIATES                                  {{{1
+" ABBREVIATES                                     {{{1
 cabbrev ue UltiSnipsEdit
 cabbrev nt NERDTree
 "}}}1
 
-" SETTINGS                                     {{{1
+" SETTINGS                                        {{{1
 
 " Important
 set nocompatible
@@ -1012,11 +1037,17 @@ if has('unix')
     set wildignorecase "
 endif
 
-" vim syntax
+
+" multiple windows                                   {{{2
+set hidden " don't unload a buffer when no longer shown in a window.
+"}}}2
+
+" vim files syntax hightlighting                     {{{2
 let g:vimsyn_embed = 0      " disable all embeding syntax.
 let g:vimsyn_folding = 'af' " enable autofolding of autogroups & functions.
-" let g:vimsyn_noerror = 1
+let g:vimsyn_noerror = 1
+"}}}2
 
-" }}}1
+"}}}1
 
 " vim: foldmethod=marker fileformat=unix
