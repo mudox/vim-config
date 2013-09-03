@@ -183,15 +183,13 @@ NeoBundle 'kien/rainbow_parentheses.vim'       , { 'name' : 'rainbow_parentheses
 " [mudox_ultisnips]
 NeoBundle 'Mudox/ultisnips_snippets'           , { 'name' : 'mudox_ultisnips' }
 " [jedi-vim]
-NeoBundleLazy 'davidhalter/jedi-vim', {
-            \   'name' : 'jedi_vim',
-            \   'autoload' : {
-            \       'filetypes' : [ 'python' ]
-            \   }
-            \ }
-
-if has('unix')
-    NeoBundleDisable 'jedi_vim'
+if !has('unix')
+    NeoBundleLazy 'davidhalter/jedi-vim', {
+                \   'name' : 'jedi_vim',
+                \   'autoload' : {
+                \       'filetypes' : [ 'python' ]
+                \   }
+                \ }
 endif
 " [python-mode]
 NeoBundle 'klen/python-mode'                   , { 'name' : 'python_mode' }
