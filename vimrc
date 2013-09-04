@@ -436,6 +436,9 @@ let g:airline_mode_map = {
             \ 'S'  : 'S',
             \ '' : 'S',
             \ }
+" airline-tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':p:t:.'
 " }}}2
 
 " [switch]"                                          {{{2
@@ -934,15 +937,7 @@ cabbrev nt NERDTree
 " Important
 set nocompatible
 
-if has('win32') || has('win64')
-    set guioptions=fegtaM
-elseif has('unix')
-    set guioptions=fgtaM
-elseif has('mac') || has('macunix')
-    set guioptions=fgtaM
-else
-    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
-endif
+set guioptions=fgtaM
 
 syntax on
 filetype plugin indent on " 'filetype on' implied
