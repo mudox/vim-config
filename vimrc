@@ -423,7 +423,6 @@ let g:airline_branch_empty_message       = "I'm Mudox"
 let g:airline_enable_branch              = 1
 let g:airline_enable_syntastic           = 1
 let g:airline_enable_tagbar              = 1
-let g:airline#extensions#readonly#symbol = '⭤'
 let g:airline_mode_map = {
             \ '__' : '-',
             \ 'n'  : 'N',
