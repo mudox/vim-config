@@ -27,7 +27,7 @@ call neobundle#rc(g:vim_config_root . '/neobundle')
 NeoBundleFetch 'Shougo/neobundle.vim' , { 'name' : 'neobundle' }
 
 " Use neobundle standard recipes.
-NeoBundle 'Shougo/neobundle-vim-scripts'
+" NeoBundle 'Shougo/neobundle-vim-scripts'
 
 " My Bundles here:                                   {{{2
 
@@ -176,8 +176,6 @@ NeoBundle 'mattn/webapi-vim'                   , { 'name' : 'webapi' }
 NeoBundle 'Rykka/galaxy.vim'                   , { 'name' : 'galaxy' }
 " [Zoomwintab]
 NeoBundle 'troydm/zoomwintab.vim'              , { 'name' : 'zoomwintab' }
-" [Mudox-vim-scripts]
-" NeoBundle 'Mudox/mudox-vim-scripts'            , { 'name' : 'mudox' }
 " [rainbow_parentheses]
 NeoBundle 'kien/rainbow_parentheses.vim'       , { 'name' : 'rainbow_parentheses' }
 " [mudox_ultisnips]
