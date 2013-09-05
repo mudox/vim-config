@@ -403,6 +403,9 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 " }}}1
 
 " PULGIN SETTINGS                                 {{{1
+" [easy_align]                                       {{{2
+vnoremap <silent> <Enter> :EasyAlign<cr>
+" }}}2
 
 " [origami]                                          {{{2
 let g:OrigamiPadding = 3
