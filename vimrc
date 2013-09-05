@@ -509,7 +509,7 @@ command! Tips CottidieTip
 " }}}2
 
 " [vimproc]"                                         {{{2
-nnoremap <leader><leader>s :VimProcBang
+nnoremap <leader><leader>s :VimProcBang<Space>
 " }}}2
 
 " [goldenview]"                                      {{{2
