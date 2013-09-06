@@ -71,13 +71,7 @@ NeoBundleLazy 'Shougo/vimshell',{
             \     }
             \ }
 " [Unite]
-NeoBundle 'Shougo/unite.vim'                   , { 'name' : 'unite' }
-
-" [Powerline]
-" NeoBundle 'Lokaltog/powerline', {
-" \ 'name' : 'powerline',
-" \ 'rtp'  : 'powerline/bindings/vim'
-" \}
+" NeoBundle 'Shougo/unite.vim'
 " [delimitMate]
 NeoBundle 'Raimondi/delimitMate'               , { 'name' : 'delimitmate' }
 " [Easytags]
@@ -443,9 +437,18 @@ let g:airline#extensions#tabline#fnamemod = ':p:t:.'
 " }}}2
 
 " [switch]"                                          {{{2
+
+" Alt+S
+nnoremap ó :Switch<CR>
+let g:switch_custom_definitions =
+            \ [
+            \   ['NeoBundle', 'NeoBundleLazy', 'NeoBundleDisable']
+            \ ]
 " }}}2
 
 " [cltrp]"                                           {{{2
+nnoremap <C-P>r :CtrlPMRUFiles<CR>
+
 let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
 let g:ctrlp_working_path_mode = 'ra'
 " let g:ctrlp_root_markers    = ['']
@@ -675,42 +678,17 @@ let g:indentLine_bufNameExclude = [
 " }}}2
 
 " [mudox]"                                           {{{2
-" let g:mdx_colos_white_list = [
-" \   'badwolf'
-" \ ] " just for testing ...
-let g:mdx_colos_black_list = [
-            \   'galaxy'
-            \ ]
-
-" let g:mdx_colos_256_white_list = [
-" \   'badwolf',
-" \   'blackboard',
-" \   'desert_mdx',
-" \   'diablo3_mdx',
-" \   'hybrid',
-" \   'jellybeans',
-" \   'lucius',
-" \   'molokai',
-" \   'valloric',
-" \   'zenburn'
-" \ ]
-let g:mdx_colos_256_black_list = [
-            \   'galaxy',
-            \   'inkpot_mdx'
-            \ ]
-
 nnoremap \z   :<C-U>call mudox#z_menu#Main()<CR>
 nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 
-
-let g:mdx_vim_alpha_step = 15
-if has('win32') || has('win64')
-    nnoremap <silent> <leader>`   :<C-U>call mudox#max_restore_win#Main()<CR>
+" let g:mdx_vim_alpha_step = 15
+" if has('win32') || has('win64')
+    " nnoremap <silent> <leader>`   :<C-U>call mudox#max_restore_win#Main()<CR>
 
     " Alt + < / > to decrease or increase transparency of vim win.
-    nnoremap <silent> ® :<C-U>call trans_win#AlphaStep(g:mdx_vim_alpha_step)<CR>
-    nnoremap <silent> ¬ :<C-U>call trans_win#AlphaStep(-g:mdx_vim_alpha_step)<CR>
-endif
+    " nnoremap <silent> ® :<C-U>call trans_win#AlphaStep(g:mdx_vim_alpha_step)<CR>
+    " nnoremap <silent> ¬ :<C-U>call trans_win#AlphaStep(-g:mdx_vim_alpha_step)<CR>
+" endif
 
 " }}}2
 
