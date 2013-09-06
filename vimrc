@@ -938,7 +938,7 @@ cabbrev nt NERDTree
 " Important
 set nocompatible
 
-set guioptions=fgtaM
+set guioptions=fcaM
 
 syntax on
 filetype plugin indent on " 'filetype on' implied
