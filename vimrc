@@ -326,6 +326,9 @@ nnoremap \neo :call NeoUpdateLogs()<CR>
 
 " MAPPINGS                                        {{{1
 
+" Toggle syntax feature.
+nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR>
+
 " Default leader key for <leader> mappings
 let g:mapleader = ','
 
