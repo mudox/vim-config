@@ -193,8 +193,12 @@ let g:switch_custom_definitions =
 " }}}2
 
 " [cltrp]                                            {{{2
-let g:ctrlp_extensions = ['funky']
+let g:ctrlp_extensions = ['line', 'tag', 'mixed', 'funky',  'rtscript']
 nnoremap <C-P>r :CtrlPMRUFiles<CR>
+nnoremap <C-P>s :CtrlPRTS<CR>
+nnoremap <C-P>m :CtrlPMixed<CR>
+nnoremap <C-P>l :CtrlPLine<CR>
+nnoremap <C-P>c :CtrlPChangeAll<CR>
 
 let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
 let g:ctrlp_working_path_mode = 'ra'
