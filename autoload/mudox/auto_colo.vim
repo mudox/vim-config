@@ -64,7 +64,25 @@ function! mudox#auto_colo#AutoColoByDay()
     endif
 endfunction
 
-function! mudox#auto_colo#AutoColoRandom()
+" used after gvim's initialization is finished.
+function! mudox#auto_colo#AutoColoRandomAfter()
+    let l:idx = localtime() % len(g:color_toy_vim_colors_collected)
+    let g:the_vim_color = g:color_toy_vim_colors_collected[l:idx]
+    execute "colorscheme " . g:the_vim_color
+
+    if len(g:color_toy_vim_colors_collected) > 0
+        if index(g:color_toy_airline_colors_collected, g:the_vim_color) >= 0
+            let g:the_airline_color = g:the_vim_color
+        else
+            let l:idx = localtime() % len(g:color_toy_airline_colors_collected)
+            let g:the_airline_color = g:color_toy_airline_colors_collected[l:idx]
+        endif
+        execute "AirlineTheme " . g:the_airline_color
+    endif
+endfunction
+
+" used in vimrc.
+function! mudox#auto_colo#AutoColoRandomRC()
     let l:idx = localtime() % len(g:color_toy_vim_colors_collected)
     let g:the_vim_color = g:color_toy_vim_colors_collected[l:idx]
     execute "colorscheme " . g:the_vim_color

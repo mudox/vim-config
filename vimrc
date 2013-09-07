@@ -12,7 +12,8 @@
 "}}}1
 
 " get the full path of .vim or vimfiles.
-let g:vim_config_root = substitute(expand('<sfile>:p:h'), ' ', '\\ ', 'g')
+let g:vim_config_root = substitute(expand('<sfile>:p:h'), ' ', '\\ ', 'g') " deprecated
+let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 
 " NEOBUNDLE                                       {{{1
 set nocompatible                " Recommend
@@ -26,272 +27,9 @@ call neobundle#rc(g:vim_config_root . '/neobundle')
 " Let neobundle manage neobundle
 NeoBundleFetch 'Shougo/neobundle.vim' , { 'name' : 'neobundle' }
 
-" Use neobundle standard recipes.
-" NeoBundle 'Shougo/neobundle-vim-scripts'
-
-" My Bundles here:                                   {{{2
-
-" [Vimproc]
-NeoBundle 'Shougo/vimproc', {
-            \ 'build' : {
-            \    'unix'    : 'make -f make_unix.mak'
-            \    }
-            \ }
-
-" [Vimfiler]
-NeoBundleLazy 'Shougo/vimfiler', {
-            \     'autoload' : {
-            \         'commands' : [
-            \             { 'name' : 'VimFiler',
-            \             'complete' : 'customlist,vimfiler#complete' },
-            \             'VimFilerExplorer',
-            \             'Edit',
-            \             'Read',
-            \             'Source',
-            \             'Write'
-            \         ],
-            \         'mappings' : ['<Plug>(vimfiler_switch)'],
-            \         'explorer' : 1,
-            \     }
-            \ }
-" [Vimshell]
-NeoBundleLazy 'Shougo/vimshell',{
-            \     'autoload' : {
-            \       'commands' : [
-            \           {
-            \           'name'     : 'VimShell',
-            \           'complete' : 'customlist,vimshell#complete'
-            \           },
-            \           'VimShellExecute',
-            \           'VimShellInteractive',
-            \           'VimShellTerminal',
-            \           'VimShellPop'
-            \       ],
-            \       'mappings' : [ '<Plug>(vimshell_switch)' ]
-            \     }
-            \ }
-" [Unite]
-" NeoBundle 'Shougo/unite.vim'
-" [delimitMate]
-NeoBundle 'Raimondi/delimitMate'               , { 'name' : 'delimitmate' }
-" [Easytags]
-NeoBundle 'xolox/vim-easytags'                 , { 'name' : 'easytags' }
-" [Vim-textobj-syntax]
-NeoBundle 'kana/vim-textobj-syntax'            , { 'name' : 'textobj_syntax' }
-" [Vim-textobj-function]
-NeoBundle 'kana/vim-textobj-function'          , { 'name' : 'textobj_function' }
-" [Vim-textobj-entire]
-NeoBundle 'kana/vim-textobj-entire'            , { 'name' : 'textobj_entire' }
-" [Vim-textobj-indent]
-NeoBundle 'kana/vim-textobj-indent'            , { 'name' : 'textobj_indent' }
-" [textobj-comment]
-NeoBundle 'glts/vim-textobj-comment'           , { 'name' : 'textobj_comment' }
-" [Vim-textobj-line]
-NeoBundle 'kana/vim-textobj-line'              , { 'name' : 'textobj_line' }
-" [Vim-textobj-user]
-NeoBundle 'kana/vim-textobj-user'              , { 'name' : 'textobj_user' }
-" [Textobj-word-column]
-NeoBundle 'coderifous/textobj-word-column.vim' , { 'name' : 'textobj_word_column'}
-" [vim-multiple-cursors]
-NeoBundle 'terryma/vim-multiple-cursors'       , { 'name' : 'multiple_cursors' }
-" [Nrrwrgn]
-NeoBundle 'chrisbra/NrrwRgn'                   , { 'name' : 'nrrwrgn' }
-" [Repeat]
-NeoBundle 'tpope/vim-repeat'                   , { 'name' : 'repeat' }
-" [Unimpaired]
-NeoBundle 'tpope/vim-unimpaired'               , { 'name' : 'unimpaired' }
-" [Abolish]
-NeoBundle 'tpope/vim-abolish'                  , { 'name' : 'abolish' }
-" [singlecompile]
-NeoBundle 'xuhdev/SingleCompile'               , { 'name' : 'singlecompile' }
-" [yankring]
-NeoBundle 'vim-scripts/YankRing.vim'           , { 'name' : 'yankring' }
-" [flake8]
-NeoBundle 'nvie/vim-flake8'                    , { 'name' : 'flake8' }
-" [FSwitch]
-NeoBundle 'vim-scripts/FSwitch'                , { 'name' : 'fswitch' }
-" [EasyMotion]
-NeoBundle 'Lokaltog/vim-easymotion'            , { 'name' : 'easymotion' }
-" [Vim-Indent-Guides]
-NeoBundle 'mutewinter/vim-indent-guides'       , { 'name' : 'indent_guides' }
-" [SrcExpl]
-NeoBundle 'wesleyche/SrcExpl'                  , { 'name' : 'srcexpl' }
-" [BufExplorer]
-NeoBundle 'vim-scripts/bufexplorer.zip'        , { 'name' : 'bufexplorer' }
-" [Fugitive]
-NeoBundle 'tpope/vim-fugitive'                 , { 'name' : 'fugitive' }
-" [Surround]
-NeoBundle 'tpope/vim-surround'                 , { 'name' : 'surround' }
-" [Align]
-NeoBundle 'vim-scripts/Align'                  , { 'name' : 'align' }
-" [vim-multiple-cursors]
-NeoBundle 'terryma/vim-multiple-cursors'       , { 'name' : 'multiple_cursors' }
-" [vim-expand-region]
-NeoBundle 'terryma/vim-expand-region'          , { 'name' : 'expand_region' }
-" [YouCompleteMe]
-if has('unix')
-    NeoBundle 'Valloric/YouCompleteMe'         , { 'name' : 'youcompleteme' }
-endif
-" [emmet]
-NeoBundle 'mattn/emmet-vim'                    , { 'name' : 'emmet' }
-" [indentline]
-NeoBundle 'Yggdroot/indentLine'                , { 'name' : 'indentline' }
-" [dbext]
-NeoBundleLazy 'vim-scripts/dbext.vim', {
-            \   'name' : 'dbext',
-            \   'autoload': {
-            \       'filetypes' : [ 'sql' ]
-            \   }
-            \ }
-" [SQLUtilities]
-NeoBundleLazy 'vim-scripts/SQLUtilities', {
-            \   'name' : 'sqlutil',
-            \   'autoload': {
-            \       'filetypes' : [ 'sql' ]
-            \   }
-            \ }
-" [join]
-NeoBundleLazy 'sk1418/Join', {
-            \   'name' : 'join',
-            \   'autoload' : {
-            \       'commands' : [ 'Join', 'J' ]
-            \   }
-            \ }
-" [gitgutter]
-NeoBundle 'airblade/vim-gitgutter'             , { 'name' : 'gitgutter' }
-" [colorv]
-NeoBundle 'Rykka/colorv.vim'                   , { 'name' : 'colorv' }
-" [origami]
-NeoBundle 'kshenoy/vim-origami'                , { 'name' : 'origami' }
-" [TagList]
-NeoBundle 'vim-scripts/taglist.vim'            , { 'name' : 'taglist' }
-" [colorv] related
-NeoBundle 'mattn/webapi-vim'                   , { 'name' : 'webapi' }
-NeoBundle 'Rykka/galaxy.vim'                   , { 'name' : 'galaxy' }
-" [Zoomwintab]
-NeoBundle 'troydm/zoomwintab.vim'              , { 'name' : 'zoomwintab' }
-" [rainbow_parentheses]
-NeoBundle 'kien/rainbow_parentheses.vim'       , { 'name' : 'rainbow_parentheses' }
-" [mudox_ultisnips]
-NeoBundle 'Mudox/ultisnips_snippets'           , { 'name' : 'mudox_ultisnips' }
-" [jedi-vim]
-if !has('unix')
-    NeoBundleLazy 'davidhalter/jedi-vim', {
-                \   'name' : 'jedi_vim',
-                \   'autoload' : {
-                \       'filetypes' : [ 'python' ]
-                \   }
-                \ }
-endif
-" [python-mode]
-NeoBundle 'klen/python-mode'                   , { 'name' : 'python_mode' }
-" [vim-misc]
-NeoBundle 'xolox/vim-misc'                     , { 'name' : 'vim_misc' }
-" [pyton-syntax]
-NeoBundle 'hdima/python-syntax'                , { 'name' : 'python_syntax' }
-" [abolish]
-NeoBundle 'tpope/vim-abolish'                  , { 'name' : 'vim_abolish' }
-" [vim-markdown]
-NeoBundle 'plasticboy/vim-markdown'            , { 'name' : 'vim_markdown' }
-" [python-vim-instant-markdown]
-NeoBundle 'isnowfy/python-vim-instant-markdown', { 'name' : 'python_vim_instant_markdown' }
-" [vim-cpp_enhanced_highlight]
-NeoBundle 'octol/vim-cpp-enhanced-highlight'   , { 'name' : 'cpp_enhanced_highlight' }
-" [GoldenView.vim]
-NeoBundle 'zhaocai/GoldenView.Vim'             , { 'name' : 'goldenview' }
-" [DrawIt]
-NeoBundle 'vim-scripts/DrawIt'                 , { 'name' : 'drawit' }
-" [vim-shell]
-NeoBundle 'xolox/vim-shell'                    , { 'name' : 'vim_shell' }
-" [visincr]
-NeoBundle 'vim-scripts/VisIncr'                , { 'name' : 'visincr' }
-" [VOoM]
-NeoBundle 'vim-scripts/VOoM'                   , { 'name' : 'voom' }
-" [cottidie]
-NeoBundleLazy 'glts/vim-cottidie', {
-            \ 'name' : 'cottidie',
-            \ 'autoload' : { 'commands' : ['CottidieTip'] }
-            \ }
-" [vim-easy-align]
-NeoBundle 'junegunn/vim-easy-align'            , { 'name' : 'easy_align' }
-" [Gundo]
-NeoBundle 'sjl/gundo.vim'                      , { 'name' : 'gundo' }
-" [vim-autoformat]
-NeoBundle 'Chiel92/vim-autoformat'             , { 'name' : 'autoformat' }
-" [pyinterative]
-NeoBundle 'clericJ/pyinteractive-vim'          , { 'name' : 'pyinterative' }
-" [matchit]
-NeoBundle 'vim-scripts/matchit.zip'            , { 'name' : 'matchit' }
-" [ropevim]
-NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
-" [ctrlp]
-NeoBundle 'kien/ctrlp.vim'                     , { 'name' : 'ctrlp' }
-" [renamer]
-NeoBundle 'vim-scripts/renamer.vim'            , { 'name' : 'renamer' }
-" [switch]
-NeoBundle 'AndrewRadev/switch.vim'             , { 'name' : 'switch' }
-" [breeze]
-NeoBundle 'gcmt/breeze.vim'                    , { 'name' : 'breeze' }
-" [airline]
-NeoBundle 'bling/vim-airline'                  , { 'name' : 'airline' }
-" [pairs]
-NeoBundle 'kurkale6ka/vim-pairs'               , { 'name' : 'pairs' }
-" [tabular]
-NeoBundle 'godlygeek/tabular'                  , { 'name' : 'tabular' }
-" [trailertrash]
-NeoBundle 'csexton/trailertrash.vim'           , { 'name' : 'trailertrash' }
-" [json]
-NeoBundle 'elzr/vim-json'                      , { 'name' : 'json' }
-" [vimperl]
-NeoBundle 'vim-perl/vim-perl'                  , { 'name' : 'vimperl' }
-" [vim-javascript]
-NeoBundle 'pangloss/vim-javascript'            , { 'name' : 'vimjavascript' }
-" [vim-cute-python]
-NeoBundle 'ehamberg/vim-cute-python'           , { 'name' : 'cute_python' }
-" [vimwiki]
-NeoBundle 'vim-scripts/vimwiki'
-" [TagBar]
-NeoBundle 'majutsushi/tagbar'
-" [Syntastic]
-NeoBundle 'scrooloose/syntastic'
-" [NerdCommenter]
-NeoBundle 'scrooloose/nerdcommenter'
-" [NerdTree]
-NeoBundle 'scrooloose/nerdtree'
-" [UltiSnips]
-NeoBundle 'SirVer/ultisnips'
-
-"}}}2
-
-" My Colorscheme Bundles here:                       {{{2
-
-NeoBundle 'molok/vim-vombato-colorscheme'    , { 'name' : 'color_vombato' }
-NeoBundle 'w0ng/vim-hybrid'                  , { 'name' : 'color_hybrid' }
-NeoBundle 'tomasr/molokai'                   , { 'name' : 'color_molokai' }
-NeoBundle 'nanotech/jellybeans.vim'          , { 'name' : 'color_jellybeans' }
-NeoBundle 'sjl/badwolf'                      , { 'name' : 'color_badwolf' }
-NeoBundle 'hukl/Smyck-Color-Scheme'          , { 'name' : 'color_smyck' }
-NeoBundle 'jelera/vim-gummybears-colorscheme', { 'name' : 'color_gummybears' }
-NeoBundle 'YorickPeterse/Autumn.vim'         , { 'name' : 'color_autumn' }
-NeoBundle 'mbbill/desertEx'                  , { 'name' : 'color_desertex' }
-NeoBundle 'altercation/vim-colors-solarized' , { 'name' : 'color_solarized' }
-NeoBundle 'zeis/vim-kolor'                   , { 'name' : 'color_kolor' }
-NeoBundle 'noahfrederick/Hemisu'             , { 'name' : 'color_hemisu' }
-NeoBundle 'morhetz/gruvbox'                  , { 'name' : 'color_grubox' }
-NeoBundle 'junegunn/seoul256.vim'            , { 'name' : 'color_seoul256' }
-NeoBundle 'jnurmine/Zenburn'                 , { 'name' : 'color_zenburn' }
-NeoBundle 'gregsexton/Atom'                  , { 'name' : 'color_atom' }
-NeoBundle 'jonathanfilip/vim-lucius'         , { 'name' : 'color_lucius' }
-NeoBundle 'Pychimp/vim-luna'                 , { 'name' : 'color_luna' }
-NeoBundle 'toupeira/vim-desertink'           , { 'name' : 'color_desertink' }
-NeoBundle 'Valloric/vim-valloric-colorscheme', { 'name' : 'valloric' }
-NeoBundle 'chriskempson/tomorrow-theme'      , {
-            \ 'name' : 'tomorrow',
-            \ 'rtp' : 'vim'
-            \ }
-"}}}2
-
-exe 'NeoBundleLocal ' . g:vim_config_root . '/bundle'
+" 'neobundle_config' below is a symbollink which refers to file under
+" root/vimrc.d/neobundle.d/*
+execute "source " . g:rc_root . '/vimrc.d/neobundle_config'
 
 filetype plugin indent on       " Required!
 
@@ -400,6 +138,11 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 " }}}1
 
 " PULGIN SETTINGS                                 {{{1
+
+" [ctrlp-funky]                                      {{{2
+nnoremap <C-P>f :<C-U>CtrlPFunky<CR>
+" }}}2
+
 " [easy_align]                                       {{{2
 vnoremap <silent> <Enter> :EasyAlign<cr>
 " }}}2
@@ -439,7 +182,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':p:t:.'
 " }}}2
 
-" [switch]"                                          {{{2
+" [switch]                                           {{{2
 
 " Alt+S
 nnoremap ó :Switch<CR>
@@ -449,7 +192,8 @@ let g:switch_custom_definitions =
             \ ]
 " }}}2
 
-" [cltrp]"                                           {{{2
+" [cltrp]                                            {{{2
+let g:ctrlp_extensions = ['funky']
 nnoremap <C-P>r :CtrlPMRUFiles<CR>
 
 let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
@@ -681,6 +425,7 @@ let g:indentLine_bufNameExclude = [
 " }}}2
 
 " [mudox]"                                           {{{2
+nnoremap \cc  :<C-U>call mudox#auto_colo#AutoColoRandomAfter()<CR>
 nnoremap \z   :<C-U>call mudox#z_menu#Main()<CR>
 nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 
@@ -755,9 +500,9 @@ let g:pymode_doc_key                  = '<leader>k'
 "}}}2
 
 " [youcompleteme]"                                   {{{2
-let g:ycm_collect_identifiers_from_tags_files           = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_seed_identifiers_with_syntax                  = 1
+" let g:ycm_collect_identifiers_from_tags_files           = 1
+" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" let g:ycm_seed_identifiers_with_syntax                  = 1
 
 let g:ycm_complete_in_strings                           = 1
 let g:ycm_complete_in_comments                          = 1
@@ -929,8 +674,7 @@ set termencoding=gbk
 
 " color & font
 set background=dark
-call mudox#auto_colo#AutoColoRandom()  " random colorscheme
-" call mudox#auto_colo#AutoColoByDay()  " random colorscheme
+call mudox#auto_colo#AutoColoRandomRC()  " random colorscheme
 
 if has('win32') || has('win64')
     set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
