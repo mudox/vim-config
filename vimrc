@@ -682,13 +682,13 @@ nnoremap \z   :<C-U>call mudox#z_menu#Main()<CR>
 nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 
 " let g:mdx_vim_alpha_step = 15
-" if has('win32') || has('win64')
-    " nnoremap <silent> <leader>`   :<C-U>call mudox#max_restore_win#Main()<CR>
+if has('win32') || has('win64')
+    nnoremap <silent> <leader>`   :<C-U>call mudox#max_restore_win#Main()<CR>
 
     " Alt + < / > to decrease or increase transparency of vim win.
     " nnoremap <silent> ® :<C-U>call trans_win#AlphaStep(g:mdx_vim_alpha_step)<CR>
     " nnoremap <silent> ¬ :<C-U>call trans_win#AlphaStep(-g:mdx_vim_alpha_step)<CR>
-" endif
+endif
 
 " }}}2
 
