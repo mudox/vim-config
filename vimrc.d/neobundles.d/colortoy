@@ -1,0 +1,27 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" WARNING: DO NOT CHANGE   {{{1
+let s:cfg_name = expand('<sfile>:p:t:r')
+
+let s:dict = {}
+let s:dict.name = s:cfg_name
+" }}}1
+
+" TODO: repository address.
+let s:repo = "'mudox/ColorToy.vim'"
+
+" TODO: other configurations.
+
+" TODO: config
+function! s:cfg_func()
+    nnoremap \cc  :<C-U>call mudox#auto_colo#ShuffleColorAfterRC()<CR>
+    nnoremap \cn  :<C-U>call mudox#auto_colo#Toy.showCurColors()<CR>
+    nnoremap \z   :<C-U>call mudox#z_menu#Main()<CR>
+    nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
+endfunction
+
+" WARNING: DO NOT CHANGE   {{{1
+execute "NeoBundle " . s:repo . ', ' . string(s:dict)
+execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
+" }}}1
+

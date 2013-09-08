@@ -432,9 +432,6 @@ let g:indentLine_bufNameExclude = [
 " }}}2
 
 " [mudox]"                                           {{{2
-nnoremap \cc  :<C-U>call mudox#auto_colo#AutoColoRandomAfter()<CR>
-nnoremap \z   :<C-U>call mudox#z_menu#Main()<CR>
-nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 
 " let g:mdx_vim_alpha_step = 15
 if has('win32') || has('win64')
@@ -549,7 +546,7 @@ let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-S>"
 let g:UltiSnipsNoPythonWarning     = 1
-let g:UltiSnipsSnippetsDir         = g:vim_config_root . '/neobundle/mudox_ultisnips/ultisnips_snippets'
+let g:UltiSnipsSnippetsDir         = g:rc_root . '/neobundle/mudox_ultisnips/ultisnips_snippets'
 let g:UltiSnipsSnippetDirectories  = [ "ultisnips_snippets" ]
 "}}}2
 
@@ -689,7 +686,7 @@ set termencoding=gbk
 
 " color & font
 set background=dark
-call mudox#auto_colo#AutoColoRandomRC()  " random colorscheme
+call mudox#auto_colo#ShuffleColorRC()  " random colorscheme
 
 if has('win32') || has('win64')
     set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
