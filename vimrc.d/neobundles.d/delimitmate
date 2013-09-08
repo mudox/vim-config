@@ -1,0 +1,26 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" WARNING: DO NOT CHANGE   {{{1
+let s:cfg_name = expand('<sfile>:p:t:r')
+
+let s:dict = {}
+let s:dict.name = s:cfg_name
+" }}}1
+
+" TODO: repository address.
+let s:repo = "'Raimondi/delimitMate'"
+
+" TODO: other configurations.
+
+" TODO: config
+function! s:cfg_func()
+    let delimitMate_expand_space       = 1
+    let delimitMate_expand_cr          = 1
+    let delimitMate_smart_quotes       = 1
+    let delimitMate_balance_matchpairs = 1
+endfunction
+
+" WARNING: DO NOT CHANGE   {{{1
+execute "NeoBundle " . s:repo . ', ' . string(s:dict)
+execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
+" }}}1

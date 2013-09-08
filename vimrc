@@ -29,7 +29,14 @@ NeoBundleFetch 'Shougo/neobundle.vim' , { 'name' : 'neobundle' }
 
 " 'neobundle_config' below is a symbollink which refers to file under
 " root/vimrc.d/neobundle.d/*
+let g:neo_bundles = []
+
 execute "source " . g:rc_root . '/vimrc.d/neobundle_config'
+
+for p in g:neo_bundles
+    execute 'source ' . g:rc_root . '/vimrc.d/neobundles.d/' . p
+endfor
+unlet p
 
 filetype plugin indent on       " Required!
 
@@ -139,6 +146,11 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " PULGIN SETTINGS                                 {{{1
 
+for p in g:neo_bundles
+    call g:CONFIG_PLUGIN_{p}()
+endfor
+unlet p
+
 " [ctrlp-funky]                                      {{{2
 nnoremap <C-P>f :<C-U>CtrlPFunky<CR>
 " }}}2
@@ -200,7 +212,7 @@ nnoremap <C-P>m :CtrlPMixed<CR>
 nnoremap <C-P>l :CtrlPLine<CR>
 nnoremap <C-P>c :CtrlPChangeAll<CR>
 
-let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
+" let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
 let g:ctrlp_working_path_mode = 'ra'
 " let g:ctrlp_root_markers    = ['']
 let g:ctrlp_show_hidden       = 0
@@ -222,11 +234,6 @@ let g:python_highlight_all = 1
 " <M-O/o> to invoke :ZoomWinTabToggle
 nnoremap ï :ZoomWinTabToggle<CR>
 nnoremap Ï :ZoomWinTabToggle<CR>
-" }}}2
-
-" [vim-session]"                                     {{{2
-" let g:session_autosave = 0
-" let g:session_directory = '~/.vim_session'
 " }}}2
 
 " [ft-sql]"                                          {{{2
@@ -263,10 +270,6 @@ let loaded_matchparen = 1
 
 " [cottidie]"                                        {{{2
 command! Tips CottidieTip
-" }}}2
-
-" [vimproc]"                                         {{{2
-nnoremap <leader><leader>s :VimProcBang<Space>
 " }}}2
 
 " [goldenview]"                                      {{{2
@@ -458,13 +461,6 @@ let yankring_replace_n_pkey       = '<Up>'
 nnoremap <leader>yr :<C-U>YRShow<CR>
 "}}}2
 
-" [delimitmate]"                                     {{{2
-let delimitMate_expand_space       = 1
-let delimitMate_expand_cr          = 1
-let delimitMate_smart_quotes       = 1
-let delimitMate_balance_matchpairs = 1
-"}}}2
-
 " [easytags]"                                        {{{2
 set updatetime=4000
 let g:easytags_updatetime_autodisable = 1
@@ -643,6 +639,21 @@ nnoremap \ub  :Unite -vertical bookmark<CR>
 " let g:unite_split_rule = 'topleft'
 " let g:unite_enable_split_vertically
 "}}}2
+
+" moved to vimrc.d/neobndles.d{{{2
+
+" [delimitmate]"                                     {{{3
+" let delimitMate_expand_space       = 1
+" let delimitMate_expand_cr          = 1
+" let delimitMate_smart_quotes       = 1
+" let delimitMate_balance_matchpairs = 1
+"}}}3
+
+" [vimproc]"                                         {{{3
+" nnoremap <leader><leader>s :VimProcBang<Space>
+" }}}3
+
+" }}}2
 
 "}}}1
 

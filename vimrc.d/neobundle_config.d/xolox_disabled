@@ -1,5 +1,7 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
+let g:config_name = 'xolox_disabled'
+
 " My Bundles here:                                   {{{1
 
 " [Vimproc]
@@ -265,4 +267,4 @@ NeoBundle 'chriskempson/tomorrow-theme'      , {
             \ }
 "}}}1
 
-exe 'NeoBundleLocal ' . g:vim_config_root . '/bundle'
+execute 'NeoBundleLocal ' . g:rc_root . '/bundle'

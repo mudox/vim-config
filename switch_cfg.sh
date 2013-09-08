@@ -1,6 +1,6 @@
 #! /bin/bash
 
-cd ~/.vim/vimrc.d/neobundle.d
+cd ~/.vim/vimrc.d/neobundle_config.d
 let idx=0
 for f in *
 do
@@ -11,7 +11,7 @@ done
 cd ..
 select x in ${CONFIG_FILE[@]}
 do
-    ln -s -f "./neobundle.d/$x" "./neobundle_config"
+    ln -s -f "./neobundle_config.d/$x" "./neobundle_config"
     ls -l neobundle_config
     break
 done

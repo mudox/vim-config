@@ -1,50 +1,62 @@
-" vim: foldmethod=marker fileformat=unix foldmethod=marker filetype=vim
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:config_name = 'all_enabled'
 
 " My Bundles here:                                   {{{1
 
+call add(g:neo_bundles, 'vimproc')
+call add(g:neo_bundles, 'vimfiler')
+call add(g:neo_bundles, 'vimshell')
+call add(g:neo_bundles, 'delimitmate')
+
+" Moved to vimrc.d/neobundles.d{{{2
 " [Vimproc]
-NeoBundle 'Shougo/vimproc', {
-            \ 'build' : {
-            \    'unix'    : 'make -f make_unix.mak'
-            \    }
-            \ }
+" NeoBundle 'Shougo/vimproc', {
+            " \ 'build' : {
+            " \    'unix'    : 'make -f make_unix.mak'
+            " \    }
+            " \ }
 
 " [Vimfiler]
-NeoBundleLazy 'Shougo/vimfiler', {
-            \     'autoload' : {
-            \         'commands' : [
-            \             { 'name' : 'VimFiler',
-            \             'complete' : 'customlist,vimfiler#complete' },
-            \             'VimFilerExplorer',
-            \             'Edit',
-            \             'Read',
-            \             'Source',
-            \             'Write'
-            \         ],
-            \         'mappings' : ['<Plug>(vimfiler_switch)'],
-            \         'explorer' : 1,
-            \     }
-            \ }
+" NeoBundleLazy 'Shougo/vimfiler', {
+            " \     'autoload' : {
+            " \         'commands' : [
+            " \             { 'name' : 'VimFiler',
+            " \             'complete' : 'customlist,vimfiler#complete' },
+            " \             'VimFilerExplorer',
+            " \             'Edit',
+            " \             'Read',
+            " \             'Source',
+            " \             'Write'
+            " \         ],
+            " \         'mappings' : ['<Plug>(vimfiler_switch)'],
+            " \         'explorer' : 1,
+            " \     }
+            " \ }
+
 " [Vimshell]
-NeoBundleLazy 'Shougo/vimshell',{
-            \     'autoload' : {
-            \       'commands' : [
-            \           {
-            \           'name'     : 'VimShell',
-            \           'complete' : 'customlist,vimshell#complete'
-            \           },
-            \           'VimShellExecute',
-            \           'VimShellInteractive',
-            \           'VimShellTerminal',
-            \           'VimShellPop'
-            \       ],
-            \       'mappings' : [ '<Plug>(vimshell_switch)' ]
-            \     }
-            \ }
+" NeoBundleLazy 'Shougo/vimshell',{
+            " \     'autoload' : {
+            " \       'commands' : [
+            " \           {
+            " \           'name'     : 'VimShell',
+            " \           'complete' : 'customlist,vimshell#complete'
+            " \           },
+            " \           'VimShellExecute',
+            " \           'VimShellInteractive',
+            " \           'VimShellTerminal',
+            " \           'VimShellPop'
+            " \       ],
+            " \       'mappings' : [ '<Plug>(vimshell_switch)' ]
+            " \     }
+            " \ }
+
+" [delimitMate]
+" NeoBundle 'Raimondi/delimitMate'               , { 'name' : 'delimitmate' }
+"}}}2
+
 " [Unite]
 " NeoBundle 'Shougo/unite.vim'
-" [delimitMate]
-NeoBundle 'Raimondi/delimitMate'               , { 'name' : 'delimitmate' }
 " [Easytags]
 NeoBundle 'xolox/vim-easytags'                 , { 'name' : 'easytags' }
 " [Vim-textobj-syntax]
@@ -263,4 +275,4 @@ NeoBundle 'chriskempson/tomorrow-theme'      , {
             \ }
 "}}}1
 
-exe 'NeoBundleLocal ' . g:vim_config_root . '/bundle'
+execute 'NeoBundleLocal ' . g:vim_config_root . '/bundle'
