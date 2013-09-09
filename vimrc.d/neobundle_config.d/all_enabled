@@ -9,6 +9,8 @@ call add(g:neo_bundles, 'vimfiler')
 call add(g:neo_bundles, 'vimshell')
 call add(g:neo_bundles, 'delimitmate')
 call add(g:neo_bundles, 'colortoy')
+call add(g:neo_bundles, 'vim_notes')
+call add(g:neo_bundles, 'autoformat')
 
 " Moved to vimrc.d/neobundles.d{{{2
 " [Vimproc]
@@ -200,8 +202,6 @@ NeoBundleLazy 'glts/vim-cottidie', {
 NeoBundle 'junegunn/vim-easy-align'            , { 'name' : 'easy_align' }
 " [Gundo]
 NeoBundle 'sjl/gundo.vim'                      , { 'name' : 'gundo' }
-" [vim-autoformat]
-NeoBundle 'Chiel92/vim-autoformat'             , { 'name' : 'autoformat' }
 " [pyinterative]
 NeoBundle 'clericJ/pyinteractive-vim'          , { 'name' : 'pyinterative' }
 " [matchit]
@@ -269,6 +269,7 @@ NeoBundle 'jonathanfilip/vim-lucius'         , { 'name' : 'color_lucius' }
 NeoBundle 'Pychimp/vim-luna'                 , { 'name' : 'color_luna' }
 NeoBundle 'toupeira/vim-desertink'           , { 'name' : 'color_desertink' }
 NeoBundle 'Valloric/vim-valloric-colorscheme', { 'name' : 'color_valloric' }
+NeoBundle 'goatslacker/mango.vim'            , { 'name' : 'color_mango' }
 
 NeoBundle 'chriskempson/tomorrow-theme'      , {
             \ 'name' : 'tomorrow',
