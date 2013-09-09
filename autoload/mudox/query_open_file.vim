@@ -2,20 +2,22 @@
 
 function! mudox#query_open_file#Main()
     let l:promt = "[]Edit," .
-                \ " [k]Above, [j]Below, [K]Top, [J]Bttom," .
-                \ " [h]left-side, [r]right-side, [H]left-most, [L]right-most," .
+                \ " [k]Above, [j]Below, [K]Top, [J]Bottom," .
+                \ " [h]Left-Side, [r]Right-Side, [H]Left-Most, [L]Right-Most," .
                 \ " [t]Tabnew: "
 
     let l:openways = {}
-    let l:openways['k'] = 'aboveleft new '
-    let l:openways['j'] = 'belowright new '
-    let l:openways['K'] = 'topleft new '
-    let l:openways['J'] = 'botright new '
-    let l:openways['h'] = 'aboveleft vnew '
-    let l:openways['l'] = 'belowright vnew '
-    let l:openways['H'] = 'topleft vnew '
-    let l:openways['L'] = 'botright vnew '
-    let l:openways['t'] = 'tabnew '
+
+    " WARNING: keep the trailing space.
+    let l:openways['k'] = 'aboveleft new' . ' '
+    let l:openways['j'] = 'belowright new' . ' '
+    let l:openways['K'] = 'topleft new' . ' '
+    let l:openways['J'] = 'botright new' . ' '
+    let l:openways['h'] = 'aboveleft vnew' . ' '
+    let l:openways['l'] = 'belowright vnew' . ' '
+    let l:openways['H'] = 'topleft vnew' . ' '
+    let l:openways['L'] = 'botright vnew' . ' '
+    let l:openways['t'] = 'tabnew' . ' '
 
     while 1
         let l:open = input(l:promt)
