@@ -9,15 +9,15 @@ function! mudox#query_open_file#Main()
     let l:openways = {}
 
     " WARNING: keep the trailing space.
-    let l:openways['k'] = 'aboveleft new' . ' '
-    let l:openways['j'] = 'belowright new' . ' '
-    let l:openways['K'] = 'topleft new' . ' '
-    let l:openways['J'] = 'botright new' . ' '
-    let l:openways['h'] = 'aboveleft vnew' . ' '
-    let l:openways['l'] = 'belowright vnew' . ' '
-    let l:openways['H'] = 'topleft vnew' . ' '
-    let l:openways['L'] = 'botright vnew' . ' '
-    let l:openways['t'] = 'tabnew' . ' '
+    let l:openways['k'] = 'aboveleft new' . "\x20"
+    let l:openways['j'] = 'belowright new' . "\x20"
+    let l:openways['K'] = 'topleft new' . "\x20"
+    let l:openways['J'] = 'botright new' . "\x20"
+    let l:openways['h'] = 'aboveleft vnew' . "\x20"
+    let l:openways['l'] = 'belowright vnew' . "\x20"
+    let l:openways['H'] = 'topleft vnew' . "\x20"
+    let l:openways['L'] = 'botright vnew' . "\x20"
+    let l:openways['t'] = 'tabnew' . "\x20"
 
     while 1
         let l:open = input(l:promt)
