@@ -1,0 +1,75 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" WARNING: DO NOT CHANGE   {{{1
+let s:cfg_name = expand('<sfile>:p:t:r')
+
+let s:dict = {}
+let s:dict.name = s:cfg_name
+" }}}1
+
+" NEOBUNDLE REGISTRATION   {{{1
+
+" Repository Address.
+let s:repo = 'vimwiki/vimwiki'
+
+" More Neobundle Configurations.
+" TODO: any additional NeoBundle configuration goes here ...
+
+" }}}1
+
+" PLUGIN CONFIGURATIONS.   {{{1
+
+function! s:cfg_func()
+    let g:vimwiki_hl_cb_checked = 1
+    let g:vimwiki_hl_headers    = 1
+    let g:vimwiki_global_ext    = 0
+    let g:vimwiki_listsyms      = ' .oOX'
+
+    let g:vimwiki_list = []
+
+    let s:wiki_root = expand('$MDX_DROPBOX/WIKI.DROP')
+    let s:wiki_nested_syntaxes = {
+                \'python' : 'python',
+                \'c++'    : 'cpp',
+                \'sql'    : 'sql'
+                \}
+
+    " Below is my vimviki sections ...
+
+    " wiki 'misc'
+    let s:wiki               = {}
+    let s:wiki.path          = s:wiki_root . '/misc/'
+    let s:wiki.path_html     = s:wiki_root . '/misc/html/'
+    let s:wiki.nested_syntaxes = s:wiki_nested_syntaxes
+    call add(g:vimwiki_list, s:wiki)
+
+    " wiki 'IT'
+    let s:wiki               = {}
+    let s:wiki.path          = s:wiki_root . '/IT/'
+    let s:wiki.path_html     = s:wiki_root . '/IT/html/'
+    let s:wiki.auto_export   = 1
+    let s:wiki.nested_syntaxes = s:wiki_nested_syntaxes
+    call add(g:vimwiki_list, s:wiki)
+
+    " wiki 'English'
+    let s:wiki               = {}
+    let s:wiki.path          = s:wiki_root . '/English/'
+    let s:wiki.path_html     = s:wiki_root . '/English/html/'
+    let s:wiki.auto_export   = 1
+    call add(g:vimwiki_list, s:wiki)
+
+    " wiki 'Math'
+    let s:wiki               = {}
+    let s:wiki.path          = s:wiki_root . '/Math/'
+    let s:wiki.path_html     = s:wiki_root . '/Math/html/'
+    let s:wiki.auto_export   = 1
+    call add(g:vimwiki_list, s:wiki)
+endfunction
+" }}}1
+
+" WARNING: DO NOT CHANGE   {{{1
+let s:repo = "'" . s:repo . "'"
+execute "NeoBundle " . s:repo . ', ' . string(s:dict)
+execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
+" }}}1
+

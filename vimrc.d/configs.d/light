@@ -1,0 +1,18 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:config_name = 'light'
+
+let g:neo_bundles = [
+            \ 'fugitive',
+            \ 'surround',
+            \ 'origami',
+            \ 'easy_align',
+            \ 'airline',
+            \ 'autoformat',
+            \ 'colortoy',
+            \ 'ctrlp',
+            \ 'nerdcommenter',
+            \ 'nerdtree',
+            \ 'repeat',
+            \ 'unimpaired',
+            \ ]

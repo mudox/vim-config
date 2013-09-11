@@ -24,7 +24,7 @@ function! mudox#query_open_file#Main()
         let l:open = substitute(l:open, '\s\+', '', 'g') " strip spaces in l:open
 
         if l:open == ''
-            return 'drop '
+            return "edit\x20"
         elseif l:open =~ '^[jkJKhlHLt]$'
             return l:openways[l:open]
         else

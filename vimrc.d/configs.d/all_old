@@ -4,55 +4,79 @@ let g:config_name = 'all_enabled'
 
 " My Bundles here:                                   {{{1
 
-call add(g:neo_bundles, 'vimproc')
-call add(g:neo_bundles, 'vimfiler')
-call add(g:neo_bundles, 'vimshell')
-call add(g:neo_bundles, 'delimitmate')
-call add(g:neo_bundles, 'colortoy')
-call add(g:neo_bundles, 'vim_notes')
-call add(g:neo_bundles, 'autoformat')
+let g:neo_bundles = [
+            \ 'vimwiki',
+            \ 'airline',
+            \ 'easytags',
+            \ 'vim_misc',
+            \ 'vimproc',
+            \ 'vimfiler',
+            \ 'vimshell',
+            \ 'delimitmate',
+            \ 'colortoy',
+            \ 'vim_notes',
+            \ 'autoformat',
+            \ 'repeat',
+            \ 'vimwiki'
+            \ ]
 
 " Moved to vimrc.d/neobundles.d{{{2
+" [NerdCommenter]
+" NeoBundle 'scrooloose/nerdcommenter'
+" [ctrlp]
+"NeoBundle 'kien/ctrlp.vim'                     , { 'name' : 'ctrlp' }
+" [Fugitive]
+"NeoBundle 'tpope/vim-fugitive'                 , { 'name' : 'fugitive' }
+" [airline]
+" NeoBundle 'bling/vim-airline'                  , { 'name' : 'airline' }
+" [vimwiki]
+" NeoBundle 'vim-scripts/vimwiki'
+" [Repeat]
+" NeoBundle 'tpope/vim-repeat'                   , { 'name' : 'repeat' }
+" [vim-misc]
+" NeoBundle 'xolox/vim-misc'                     , { 'name' : 'vim_misc' }
+" [Easytags]
+" NeoBundle 'xolox/vim-easytags'                 , { 'name' : 'easytags' }
 " [Vimproc]
 " NeoBundle 'Shougo/vimproc', {
-            " \ 'build' : {
-            " \    'unix'    : 'make -f make_unix.mak'
-            " \    }
-            " \ }
+" \ 'build' : {
+" \    'unix'    : 'make -f make_unix.mak'
+" \    }
+" \ }
 
 " [Vimfiler]
 " NeoBundleLazy 'Shougo/vimfiler', {
-            " \     'autoload' : {
-            " \         'commands' : [
-            " \             { 'name' : 'VimFiler',
-            " \             'complete' : 'customlist,vimfiler#complete' },
-            " \             'VimFilerExplorer',
-            " \             'Edit',
-            " \             'Read',
-            " \             'Source',
-            " \             'Write'
-            " \         ],
-            " \         'mappings' : ['<Plug>(vimfiler_switch)'],
-            " \         'explorer' : 1,
-            " \     }
-            " \ }
+" \     'autoload' : {
+" \         'commands' : [
+" \             { 'name' : 'VimFiler',
+" \             'complete' : 'customlist,vimfiler#complete' },
+" \             'VimFilerExplorer',
+" \             'Edit',
+" \             'Read',
+" \             'Source',
+" \             'Write'
+" \         ],
+" \         'mappings' : ['<Plug>(vimfiler_switch)'],
+" \         'explorer' : 1,
+" \     }
+" \ }
 
 " [Vimshell]
 " NeoBundleLazy 'Shougo/vimshell',{
-            " \     'autoload' : {
-            " \       'commands' : [
-            " \           {
-            " \           'name'     : 'VimShell',
-            " \           'complete' : 'customlist,vimshell#complete'
-            " \           },
-            " \           'VimShellExecute',
-            " \           'VimShellInteractive',
-            " \           'VimShellTerminal',
-            " \           'VimShellPop'
-            " \       ],
-            " \       'mappings' : [ '<Plug>(vimshell_switch)' ]
-            " \     }
-            " \ }
+" \     'autoload' : {
+" \       'commands' : [
+" \           {
+" \           'name'     : 'VimShell',
+" \           'complete' : 'customlist,vimshell#complete'
+" \           },
+" \           'VimShellExecute',
+" \           'VimShellInteractive',
+" \           'VimShellTerminal',
+" \           'VimShellPop'
+" \       ],
+" \       'mappings' : [ '<Plug>(vimshell_switch)' ]
+" \     }
+" \ }
 
 " [delimitMate]
 " NeoBundle 'Raimondi/delimitMate'               , { 'name' : 'delimitmate' }
@@ -60,8 +84,6 @@ call add(g:neo_bundles, 'autoformat')
 
 " [Unite]
 " NeoBundle 'Shougo/unite.vim'
-" [Easytags]
-NeoBundle 'xolox/vim-easytags'                 , { 'name' : 'easytags' }
 " [Vim-textobj-syntax]
 NeoBundle 'kana/vim-textobj-syntax'            , { 'name' : 'textobj_syntax' }
 " [Vim-textobj-function]
@@ -80,16 +102,8 @@ NeoBundle 'kana/vim-textobj-user'              , { 'name' : 'textobj_user' }
 NeoBundle 'coderifous/textobj-word-column.vim' , { 'name' : 'textobj_word_column'}
 " [vim-multiple-cursors]
 NeoBundle 'terryma/vim-multiple-cursors'       , { 'name' : 'multiple_cursors' }
-" [Nrrwrgn]
-NeoBundle 'chrisbra/NrrwRgn'                   , { 'name' : 'nrrwrgn' }
-" [Repeat]
-NeoBundle 'tpope/vim-repeat'                   , { 'name' : 'repeat' }
-" [Unimpaired]
-NeoBundle 'tpope/vim-unimpaired'               , { 'name' : 'unimpaired' }
 " [Abolish]
 NeoBundle 'tpope/vim-abolish'                  , { 'name' : 'abolish' }
-" [singlecompile]
-NeoBundle 'xuhdev/SingleCompile'               , { 'name' : 'singlecompile' }
 " [yankring]
 NeoBundle 'vim-scripts/YankRing.vim'           , { 'name' : 'yankring' }
 " [flake8]
@@ -104,8 +118,6 @@ NeoBundle 'mutewinter/vim-indent-guides'       , { 'name' : 'indent_guides' }
 NeoBundle 'wesleyche/SrcExpl'                  , { 'name' : 'srcexpl' }
 " [BufExplorer]
 NeoBundle 'vim-scripts/bufexplorer.zip'        , { 'name' : 'bufexplorer' }
-" [Fugitive]
-NeoBundle 'tpope/vim-fugitive'                 , { 'name' : 'fugitive' }
 " [Surround]
 NeoBundle 'tpope/vim-surround'                 , { 'name' : 'surround' }
 " [Align]
@@ -136,19 +148,10 @@ NeoBundleLazy 'vim-scripts/SQLUtilities', {
             \       'filetypes' : [ 'sql' ]
             \   }
             \ }
-" [join]
-NeoBundleLazy 'sk1418/Join', {
-            \   'name' : 'join',
-            \   'autoload' : {
-            \       'commands' : [ 'Join', 'J' ]
-            \   }
-            \ }
 " [gitgutter]
 NeoBundle 'airblade/vim-gitgutter'             , { 'name' : 'gitgutter' }
 " [colorv]
 NeoBundle 'Rykka/colorv.vim'                   , { 'name' : 'colorv' }
-" [origami]
-NeoBundle 'kshenoy/vim-origami'                , { 'name' : 'origami' }
 " [TagList]
 NeoBundle 'vim-scripts/taglist.vim'            , { 'name' : 'taglist' }
 " [colorv] related
@@ -171,8 +174,6 @@ if !has('unix')
 endif
 " [python-mode]
 NeoBundle 'klen/python-mode'                   , { 'name' : 'python_mode' }
-" [vim-misc]
-NeoBundle 'xolox/vim-misc'                     , { 'name' : 'vim_misc' }
 " [pyton-syntax]
 NeoBundle 'hdima/python-syntax'                , { 'name' : 'python_syntax' }
 " [abolish]
@@ -198,8 +199,6 @@ NeoBundleLazy 'glts/vim-cottidie', {
             \ 'name' : 'cottidie',
             \ 'autoload' : { 'commands' : ['CottidieTip'] }
             \ }
-" [vim-easy-align]
-NeoBundle 'junegunn/vim-easy-align'            , { 'name' : 'easy_align' }
 " [Gundo]
 NeoBundle 'sjl/gundo.vim'                      , { 'name' : 'gundo' }
 " [pyinterative]
@@ -208,16 +207,10 @@ NeoBundle 'clericJ/pyinteractive-vim'          , { 'name' : 'pyinterative' }
 NeoBundle 'vim-scripts/matchit.zip'            , { 'name' : 'matchit' }
 " [ropevim]
 NeoBundle 'https://bitbucket.org/agr/ropevim'  , { 'name' : 'ropevim' }
-" [ctrlp]
-NeoBundle 'kien/ctrlp.vim'                     , { 'name' : 'ctrlp' }
 " [renamer]
 NeoBundle 'vim-scripts/renamer.vim'            , { 'name' : 'renamer' }
-" [switch]
-NeoBundle 'AndrewRadev/switch.vim'             , { 'name' : 'switch' }
 " [breeze]
 NeoBundle 'gcmt/breeze.vim'                    , { 'name' : 'breeze' }
-" [airline]
-NeoBundle 'bling/vim-airline'                  , { 'name' : 'airline' }
 " [pairs]
 NeoBundle 'kurkale6ka/vim-pairs'               , { 'name' : 'pairs' }
 " [tabular]
@@ -232,16 +225,10 @@ NeoBundle 'vim-perl/vim-perl'                  , { 'name' : 'vimperl' }
 NeoBundle 'pangloss/vim-javascript'            , { 'name' : 'vimjavascript' }
 " [vim-cute-python]
 NeoBundle 'ehamberg/vim-cute-python'           , { 'name' : 'cute_python' }
-" [vimwiki]
-NeoBundle 'vim-scripts/vimwiki'
 " [TagBar]
 NeoBundle 'majutsushi/tagbar'
 " [Syntastic]
 NeoBundle 'scrooloose/syntastic'
-" [NerdCommenter]
-NeoBundle 'scrooloose/nerdcommenter'
-" [NerdTree]
-NeoBundle 'scrooloose/nerdtree'
 " [UltiSnips]
 NeoBundle 'SirVer/ultisnips'
 

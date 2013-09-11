@@ -1,0 +1,42 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" WARNING: DO NOT CHANGE   {{{1
+let s:cfg_name = expand('<sfile>:p:t:r')
+
+let s:dict = {}
+let s:dict.name = s:cfg_name
+" }}}1
+
+" NEOBUNDLE REGISTRATION   {{{1
+
+" Repository Address.
+" use github's shortened form, e.g. "your_id/repo_name"
+let s:repo = 'xolox/vim-easytags'
+
+" More Neobundle Configurations.
+    " TODO: any additional NeoBundle configuration goes here ...
+
+" }}}1
+
+" PLUGIN CONFIGURATIONS.   {{{1
+
+function! s:cfg_func()
+    set updatetime=4000
+    let g:easytags_updatetime_autodisable = 1
+    let g:easytags_include_members = 1
+    highlight cMember gui=italic
+    " highlight link cMember Special
+
+    if has('unix') || has('win32unix')
+        let g:easytags_resolve_links = 1
+    endif
+    " TODO: your plugin configuration goes here.
+endfunction
+" }}}1
+
+" WARNING: DO NOT CHANGE   {{{1
+let s:repo = '"' . s:repo . '"'
+execute "NeoBundle " . s:repo . ', ' . string(s:dict)
+execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
+" }}}1
+

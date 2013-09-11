@@ -19,7 +19,7 @@ let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 set nocompatible                " Recommend
 
 if has('vim_starting')
-    exe 'set runtimepath+=' . g:vim_config_root . '/neobundle/neobundle'
+    exe 'set runtimepath+=' . g:rc_root . '/neobundle/neobundle'
 endif
 
 call neobundle#rc(g:vim_config_root . '/neobundle')
@@ -27,16 +27,9 @@ call neobundle#rc(g:vim_config_root . '/neobundle')
 " Let neobundle manage neobundle
 NeoBundleFetch 'Shougo/neobundle.vim' , { 'name' : 'neobundle' }
 
-" 'neobundle_config' below is a symbollink which refers to file under
-" root/vimrc.d/neobundle.d/*
-let g:neo_bundles = []
+execute 'NeoBundleLocal ' . g:rc_root . '/bundle'
 
-execute "source " . g:rc_root . '/vimrc.d/neobundle_config'
-
-for p in g:neo_bundles
-    execute 'source ' . g:rc_root . '/vimrc.d/neobundles.d/' . p
-endfor
-unlet p
+call mudox#cfg_bundle#RegisterBundles()
 
 filetype plugin indent on       " Required!
 
@@ -52,19 +45,6 @@ function NeoUpdateLogs()
     NeoBundleUpdate
     NeoBundleUpdatesLog
 endfunction
-
-" function NeoUpdateLogs()
-" let l:tmpFile = tempname()
-
-" execute 'redi > ' . l:tmpFile
-
-" NeoBundleUpdate
-" NeoBundleUpdatesLog
-
-" redi END
-
-" silent execute mudox#query_open_file#Main() . ' ' . l:tmpFile
-" endfunction
 
 nnoremap \neo :call NeoUpdateLogs()<CR>
 "}}}1
@@ -144,64 +124,12 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " }}}1
 
-" PULGIN SETTINGS                                 {{{1
+" BUNDLE SETTINGS                                 {{{1
 
-for p in g:neo_bundles
-    call g:CONFIG_PLUGIN_{p}()
-endfor
-unlet p
+call mudox#cfg_bundle#LoadBundleConfigs()
 
 " [ctrlp-funky]                                      {{{2
 nnoremap <C-P>f :<C-U>CtrlPFunky<CR>
-" }}}2
-
-" [easy_align]                                       {{{2
-vnoremap <silent> <Enter> :EasyAlign<cr>
-" }}}2
-
-" [origami]                                          {{{2
-let g:OrigamiPadding = 3
-let g:OrigamiStaggeredSpacing = 3
-" }}}2
-
-" [airline]                                          {{{2
-let g:airline_exclude_preview            = 1
-let g:airline_detect_modified            = 1
-let g:airline_detect_paste               = 1
-let g:airline_detect_iminsert            = 1
-let g:airline_powerline_fonts            = 1
-let g:airline_theme                      = 'molokai'
-let g:airline_whitespace_symbol          = '!'
-let g:airline_branch_empty_message       = "I'm Mudox"
-let g:airline_enable_branch              = 1
-let g:airline_enable_syntastic           = 1
-let g:airline_enable_tagbar              = 1
-let g:airline_mode_map = {
-            \ '__' : '-',
-            \ 'n'  : 'N',
-            \ 'i'  : 'I',
-            \ 'R'  : 'R',
-            \ 'c'  : 'C',
-            \ 'v'  : 'V',
-            \ 'V'  : 'V',
-            \ '' : 'V',
-            \ 's'  : 'S',
-            \ 'S'  : 'S',
-            \ '' : 'S',
-            \ }
-" airline-tabline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':p:t:.'
-" }}}2
-
-" [switch]                                           {{{2
-
-" Alt+S
-nnoremap ó :Switch<CR>
-let g:switch_custom_definitions =
-            \ [
-            \   ['NeoBundle', 'NeoBundleLazy', 'NeoBundleDisable']
-            \ ]
 " }}}2
 
 " [cltrp]                                            {{{2
@@ -241,29 +169,6 @@ let g:ftplugin_sql_omni_key_right = '<C-l>'
 let g:ftplugin_sql_omni_key_left  = '<C-h>'
 "}}}2
 
-" [dbext]"                                           {{{2
-
-let g:dbext_default_buffer_lines          = 10
-let g:dbext_default_use_sep_result_buffer = 0
-let g:dbext_default_history_file          = '~/.dbext_sql_history'
-let g:dbext_default_autoclose             = 0
-let g:dbext_default_display_cmd_line      = 0
-
-" Sqlite3 specific settings.
-let g:dbext_default_SQLITE_bin            = 'sqlite3'
-let g:dbext_default_SQLITE_cmd_header     = ".mode column\n.headers on\n"
-
-" SQLITE3 profiles.
-let s:profile_config_list                 = [
-            \ 'type=SQLITE',
-            \ 'SQLITE_bin=sqlite3',
-            \ "cmd_terminator=';'",
-            \ 'dbname=/home/mudox/Git/GwaMan/Gwa.db'
-            \ ]
-let g:dbext_default_profile_GwaMan = join(s:profile_config_list, ':')
-
-" }}}2
-
 " [matchparen]"                                      {{{2
 let loaded_matchparen = 1
 " }}}2
@@ -277,12 +182,6 @@ let g:goldenview__enable_default_mapping = 0
 " }}}2
 
 " [surround]"                                        {{{2
-xmap ' <Plug>VSurround'
-xmap " <Plug>VSurround"
-xmap ( <Plug>VSurround(
-xmap ) <Plug>VSurround)
-xmap { <Plug>VSurround{
-xmap } <Plug>VSurround}
 " xmap [ S[
 " xmap ] S]
 " }}}2
@@ -340,53 +239,6 @@ let g:syntastic_cpp_checkers = ['ycm']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_python_checkers = ['python', 'pyflakes', 'pep8']
 
-" }}}2
-
-" [vimwiki]"                                         {{{2
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_hl_headers    = 1
-let g:vimwiki_global_ext    = 0
-let g:vimwiki_listsyms      = ' .oOX'
-
-let g:vimwiki_list = []
-
-let s:wiki_root = expand('$MDX_DROPBOX/WIKI.DROP')
-let s:wiki_nested_syntaxes = {
-            \'python' : 'python',
-            \'c++'    : 'cpp',
-            \'sql'    : 'sql'
-            \}
-
-" Below is my vimviki sections ...
-
-" wiki 'misc'
-let s:wiki               = {}
-let s:wiki.path          = s:wiki_root . '/misc/'
-let s:wiki.path_html     = s:wiki_root . '/misc/html/'
-let s:wiki.nested_syntaxes = s:wiki_nested_syntaxes
-call add(g:vimwiki_list, s:wiki)
-
-" wiki 'IT'
-let s:wiki               = {}
-let s:wiki.path          = s:wiki_root . '/IT/'
-let s:wiki.path_html     = s:wiki_root . '/IT/html/'
-let s:wiki.auto_export   = 1
-let s:wiki.nested_syntaxes = s:wiki_nested_syntaxes
-call add(g:vimwiki_list, s:wiki)
-
-" wiki 'English'
-let s:wiki               = {}
-let s:wiki.path          = s:wiki_root . '/English/'
-let s:wiki.path_html     = s:wiki_root . '/English/html/'
-let s:wiki.auto_export   = 1
-call add(g:vimwiki_list, s:wiki)
-
-" wiki 'Math'
-let s:wiki               = {}
-let s:wiki.path          = s:wiki_root . '/Math/'
-let s:wiki.path_html     = s:wiki_root . '/Math/html/'
-let s:wiki.auto_export   = 1
-call add(g:vimwiki_list, s:wiki)
 " }}}2
 
 " [color: kolor]"                                    {{{2
@@ -458,19 +310,6 @@ let yankring_replace_n_pkey       = '<Up>'
 nnoremap <leader>yr :<C-U>YRShow<CR>
 "}}}2
 
-" [easytags]"                                        {{{2
-set updatetime=4000
-let g:easytags_updatetime_autodisable = 1
-let g:easytags_include_members = 1
-highlight cMember gui=italic
-" highlight link cMember Special
-
-if has('unix') || has('win32unix')
-    let g:easytags_resolve_links = 1
-endif
-
-"}}}2
-
 " [singlecompile]"                                   {{{2
 nnoremap <F5> :<C-U>SCCompileRun<CR>
 " if has('win32') || has('win64')
@@ -530,14 +369,6 @@ let g:ycm_key_list_previous_completion                  = ['<Up>']
 "}}}2
 
 " [nerdcomment]                                      {{{2
-let NERDBlockComIgnoreEmpty       = 1
-let NERDSpaceDelims               = 1
-let NERDDefaultNesting            = 0
-"let NERDCommentWholeLinesInVMode = 1
-"let NERDLPlace                   = "[>"
-"let NERDRPlace                   = "<]"
-"let NERDCompactSexyComs          = 1
-" let NERD_<filetype>_alt_style   = 1
 "}}}2
 
 " [ultisnips]                                        {{{2
@@ -587,16 +418,6 @@ endif
 let g:tagbar_autoshowtag = 1
 "}}}2
 
-" [nerdtree]                                         {{{2
-
-" close vim if the only window left open is a NERDTree
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-let NERDTreeMinimalUI = 1 " No ? tips line, no bookmark headline.
-" let NERDTreeSortOrder = ['\.vim$', '\.c$', '\.h$', '*', 'foobar']
-" let NERDTreeWinPos = "left" or "right"
-"}}}2
-
 " [vimsignature]                                     {{{2
 " nnoremap \s :SignatureToggle<CR>
 " let g:SignaturePeriodicRefresh = 0
@@ -613,20 +434,6 @@ let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz12347890'
 let g:EasyMotion_do_shade = 0
 "}}}2
 
-" [powerline]                                        {{{2
-let g:Powerline_symbols        = 'fancy'
-let g:Powerline_stl_path_style = 'filename'
-let g:Powerline_mode_n         = 'N'
-let g:Powerline_mode_i         = 'I'
-let g:Powerline_mode_R         = 'R'
-let g:Powerline_mode_v         = 'V'
-let g:Powerline_mode_V         = 'VL'
-let g:Powerline_mode_cv        = 'VB'
-let g:Powerline_mode_s         = 'S'
-let g:Powerline_mode_S         = 'SL'
-let g:Powerline_mode_cs        = 'SB'
-"}}}2
-
 " [unite]                                            {{{2
 nnoremap \mru :Unite -start-insert file_mru<CR>
 nnoremap \bm  :Unite -vertical bookmark<CR>
@@ -637,38 +444,19 @@ nnoremap \ub  :Unite -vertical bookmark<CR>
 " let g:unite_enable_split_vertically
 "}}}2
 
-" moved to vimrc.d/neobndles.d{{{2
-
-" [delimitmate]"                                     {{{3
-" let delimitMate_expand_space       = 1
-" let delimitMate_expand_cr          = 1
-" let delimitMate_smart_quotes       = 1
-" let delimitMate_balance_matchpairs = 1
-"}}}3
-
-" [vimproc]"                                         {{{3
-" nnoremap <leader><leader>s :VimProcBang<Space>
-" }}}3
-
-" }}}2
-
 "}}}1
+
+" VIMRC SCRIPTS SETTING {{{1
+nnoremap \z   :<C-U>call mudox#z_menu#Main()<CR>
+nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
+" }}}1
 
 " EVENTS                                          {{{1
 
-" Only highlights current line in the window which gets focus.
-" autocmd WinEnter * set cursorline
-" autocmd WinLeave * set nocursorline
-
-" On a new Vim session, set CWD to the user's root path (i.e. expand("~"))
-" and open NerdTree rooted on the user's root path.
-autocmd VimEnter * exe "cd " . expand("~")
-" autocmd VimEnter * exe "NERDTree " . expand("~")
 "}}}1
 
 " ABBREVIATES                                     {{{1
 cabbrev ue UltiSnipsEdit
-cabbrev nt NERDTree
 "}}}1
 
 " SETTINGS                                        {{{1
@@ -686,7 +474,7 @@ set termencoding=gbk
 
 " color & font
 set background=dark
-call mudox#auto_colo#ShuffleColorRC()  " random colorscheme
+colorscheme desert_mdx
 
 if has('win32') || has('win64')
     set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
@@ -697,7 +485,7 @@ elseif has('unix')
     set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.5
     set linespace=0
     autocmd ColorScheme * set linespace=0
-elseif has('mac') || has('macunix')
+elseif has('mac') || has('macunix') " oops!, I have no Mac OS ...
     " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
     " set linespace=1
 else
@@ -774,7 +562,7 @@ set hidden " don't unload a buffer when no longer shown in a window.
 
 " vim files syntax hightlighting                     {{{2
 let g:vimsyn_embed = 0      " disable all embeding syntax.
-let g:vimsyn_folding = 'af' " enable autofolding of autogroups & functions.
+"let g:vimsyn_folding = 'af' " enable autofolding of autogroups & functions.
 let g:vimsyn_noerror = 1
 "}}}2
 

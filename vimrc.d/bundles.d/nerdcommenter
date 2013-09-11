@@ -1,0 +1,40 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" WARNING: DO NOT CHANGE   {{{1
+let s:cfg_name = expand('<sfile>:p:t:r')
+
+let s:dict = {}
+let s:dict.name = s:cfg_name
+" }}}1
+
+" NEOBUNDLE REGISTRATION   {{{1
+
+" Repository Address.
+" use github's shortened form, e.g. 'your_id/repo_name'
+let s:repo = 'scrooloose/nerdcommenter'
+
+" More Neobundle Configurations.
+" TODO: any additional NeoBundle configuration goes here ...
+
+" }}}1
+
+" PLUGIN CONFIGURATIONS.   {{{1
+
+function! s:cfg_func()
+    let NERDBlockComIgnoreEmpty       = 1
+    let NERDSpaceDelims               = 1
+    let NERDDefaultNesting            = 0
+    "let NERDCommentWholeLinesInVMode = 1
+    "let NERDLPlace                   = "[>"
+    "let NERDRPlace                   = "<]"
+    "let NERDCompactSexyComs          = 1
+    " let NERD_<filetype>_alt_style   = 1
+endfunction
+" }}}1
+
+" WARNING: DO NOT CHANGE   {{{1
+let s:repo = "'" . s:repo . "'"
+execute "NeoBundle " . s:repo . ', ' . string(s:dict)
+execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
+" }}}1
+

@@ -10,8 +10,8 @@ let s:dict.name = s:cfg_name
 " NEOBUNDLE REGISTRATION   {{{1
 
 " Repository Address.
-" use github's shortened form, e.g. "your_id/repo_name"
-let s:repo = " TODO: your repo address goes here ...
+" use github's shortened form, e.g. 'your_id/repo_name'
+let s:repo = 'tpope/vim-unimpaired'
 
 " More Neobundle Configurations.
     " TODO: any additional NeoBundle configuration goes here ...
@@ -26,8 +26,7 @@ endfunction
 " }}}1
 
 " WARNING: DO NOT CHANGE   {{{1
-let s:repo = '"' . s:repo . '"'
+let s:repo = "'" . s:repo . "'"
 execute "NeoBundle " . s:repo . ', ' . string(s:dict)
 execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
 " }}}1
-
