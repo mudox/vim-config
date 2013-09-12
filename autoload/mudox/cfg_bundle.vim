@@ -8,7 +8,7 @@ function! mudox#cfg_bundle#EditBundle(name)
 
     if !filereadable(l:file_name)
         " read template content
-       let l:tmpl = readfile(g:mudox_vimrc_dir . '/bundle_template')
+        let l:tmpl = readfile(g:mudox_vimrc_dir . '/bundle_template')
     endif
 
     if l:open_cmd =~? 'tabnew'
@@ -19,11 +19,26 @@ function! mudox#cfg_bundle#EditBundle(name)
 
     execute  l:open_cmd . l:file_name
 
+    " if it is creating a new bundle, fill it with appropriate template.
     if exists('l:tmpl')
         setlocal filetype=vim
         setlocal foldmethod=marker
         setlocal fileformat=unix
+
+        " fill with template.
+        " if register + got a valid git repo address, then automatically
+        " insert the shrotened address into appropriate place.
+        let git_repo = s:ParsePlusReg()
+        if len(git_repo)
+            let l:n = match(l:tmpl, 'let s:repo = " TODO:')
+            let l:tmpl[l:n] = substitute(l:tmpl[l:n], '" TODO:.*$', l:git_repo, '')
+        endif
+
         call append(0, l:tmpl)
+
+        call cursor(1, 1)
+        call search("let s:repo = '.", 'e')
+        normal zO
     endif
 
     if l:open_cmd =~? 'tabnew'
@@ -64,4 +79,14 @@ function mudox#cfg_bundle#RegisterBundles()
     for b in g:neo_bundles
         execute 'source ' . g:mudox_bundles_dir . '/' . b
     endfor
+endfunction
+
+function! s:ParsePlusReg()
+    let l:shortened = matchstr(@+, '^https://github\.com/\zs.*\ze\.git$')
+
+    if len(l:shortened) > 0
+        return "'" . l:shortened . "'"
+    else
+        return ''
+    endif
 endfunction
