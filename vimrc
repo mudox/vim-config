@@ -19,7 +19,7 @@ let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 set nocompatible                " Recommend
 
 if has('vim_starting')
-    exe 'set runtimepath+=' . g:rc_root . '/neobundle/neobundle'
+    exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/neobundle/neobundle'
 endif
 
 call neobundle#rc(g:vim_config_root . '/neobundle')
@@ -27,7 +27,7 @@ call neobundle#rc(g:vim_config_root . '/neobundle')
 " Let neobundle manage neobundle
 NeoBundleFetch 'Shougo/neobundle.vim' , { 'name' : 'neobundle' }
 
-execute 'NeoBundleLocal ' . g:rc_root . '/bundle'
+execute 'NeoBundleLocal ' . escape(g:rc_root, '\ ') . '/bundle'
 
 call mudox#cfg_bundle#RegisterBundles()
 
