@@ -3,16 +3,17 @@
 let g:config_name = 'light'
 
 let g:neo_bundles = [
+            \ 'trailer_trash',
             \ 'fugitive',
             \ 'surround',
             \ 'origami',
             \ 'easy_align',
             \ 'airline',
             \ 'autoformat',
-            \ 'colortoy',
+            \ 'color_toy',
             \ 'ctrlp',
-            \ 'nerdcommenter',
-            \ 'nerdtree',
+            \ 'nerd_commenter',
+            \ 'nerd_tree',
             \ 'repeat',
             \ 'unimpaired',
             \ ]

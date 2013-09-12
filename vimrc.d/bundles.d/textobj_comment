@@ -1,0 +1,40 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" WARNING: DO NOT CHANGE   ------------------------------ {{{1
+let s:cfg_name = expand('<sfile>:p:t:r')
+
+let s:dict = {}
+let s:dict.name = s:cfg_name
+" }}}1
+
+" NEOBUNDLE REGISTRATION   ------------------------------ {{{1
+
+" Repository Address.
+" use github's shortened form, e.g. 'your_id/repo_name'
+let s:repo = 'glts/vim-textobj-comment'
+
+" More Neobundle Configurations.
+let s:dict.lazy = 1
+let s:dict.autoload = { 'mappings' : ['<Plug>(textobj-comment-'] }
+
+" }}}1
+
+" PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
+
+function! s:cfg_func()
+    let g:textobj_comment_no_default_key_mappings = 1
+    xmap ax <Plug>(textobj-comment-a)
+    omap ax <Plug>(textobj-comment-a)
+    xmap ix <Plug>(textobj-comment-i)
+    omap ix <Plug>(textobj-comment-i)
+    xmap aX <Plug>(textobj-comment-big-a)
+    omap aX <Plug>(textobj-comment-big-a)
+endfunction
+" }}}1
+
+" WARNING: DO NOT CHANGE   ------------------------------ {{{1
+let s:repo = "'" . s:repo . "'"
+execute "NeoBundle " . s:repo . ', ' . string(s:dict)
+execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
+" }}}1
+

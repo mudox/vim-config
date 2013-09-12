@@ -128,36 +128,6 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 call mudox#cfg_bundle#LoadBundleConfigs()
 
-" [ctrlp-funky]                                      {{{2
-nnoremap <C-P>f :<C-U>CtrlPFunky<CR>
-" }}}2
-
-" [cltrp]                                            {{{2
-let g:ctrlp_extensions = ['line', 'tag', 'mixed', 'funky',  'rtscript']
-nnoremap <C-P>r :CtrlPMRUFiles<CR>
-nnoremap <C-P>s :CtrlPRTS<CR>
-nnoremap <C-P>m :CtrlPMixed<CR>
-nnoremap <C-P>l :CtrlPLine<CR>
-nnoremap <C-P>c :CtrlPChangeAll<CR>
-
-" let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
-let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_root_markers    = ['']
-let g:ctrlp_show_hidden       = 0
-" let g:ctrlp_custom_ignore   = ''
-let g:ctrlp_follow_symlinks   = 1
-let g:ctrlp_by_filename       = 1
-
-" Single VCS, listing command does not list untracked files:
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-let g:ctrlp_user_command = ['.hg', 'hg --cwd %s locate -I .']
-
-" }}}2
-
-" [python_syntax]"                                   {{{2
-let g:python_highlight_all = 1
-" }}}2
-
 " [zoomwintab]"                                      {{{2
 " <M-O/o> to invoke :ZoomWinTabToggle
 nnoremap ï :ZoomWinTabToggle<CR>
@@ -181,11 +151,6 @@ command! Tips CottidieTip
 let g:goldenview__enable_default_mapping = 0
 " }}}2
 
-" [surround]"                                        {{{2
-" xmap [ S[
-" xmap ] S]
-" }}}2
-
 " [color: solarized]"                                {{{2
 let g:solarized_termcolors = 256
 let g:solarized_contrast   = "high"
@@ -201,86 +166,11 @@ nnoremap <leader>ggp :GitGutterPrevHunk<CR>
 let g:gitgutter_enabled = 0
 " }}}2
 
-" [syntastic]"                                       {{{2
-nnoremap <leader>ck :<C-U>SyntasticCheck<CR>
-
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_signs = 1
-
-if has('win32') || has('win64')
-    let syntastic_error_symbol = 'x'
-    let syntastic_warning_symbol = '!'
-elseif has('unix')
-    let syntastic_error_symbol = '✗'
-    let syntastic_warning_symbol = '⚠'
-elseif has('mac') || has('macunix')
-    let syntastic_error_symbol = '✗'
-    let syntastic_warning_symbol = '⚠'
-else
-    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
-endif
-
-" let syntastic_style_error_symbol
-" let syntastic_style_warning_symbol
-let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_jump=1
-" let g:syntastic_auto_loc_list=1
-let g:syntastic_loc_list_height=5
-" let g:syntastic_ignore_files=['^/usr/include/', '\c\.h$']
-let g:syntastic_mode_map = {
-            \ 'mode': 'passive',
-            \ 'active_filetypes': ['ruby', 'php', 'javascript'],
-            \ 'passive_filetypes': ['puppet']
-            \ }
-
-" checker options
-let g:syntastic_c_checkers = ['ycm']
-let g:syntastic_cpp_checkers = ['ycm']
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_python_checkers = ['python', 'pyflakes', 'pep8']
-
-" }}}2
-
 " [color: kolor]"                                    {{{2
 let g:kolor_italic=1                    " Enable italic. Default: 1
 let g:kolor_bold=1                      " Enable bold. Default: 1
 let g:kolor_underlined=1                " Enable underline for 'Underlined'. Default: 0
 let g:kolor_alternative_matchparen=1    " Gray 'MatchParen' color. Default: 0
-" }}}2
-
-" [textobj-comment]"                                 {{{2
-let g:textobj_comment_no_default_key_mappings = 1
-xmap ax <Plug>(textobj-comment-a)
-omap ax <Plug>(textobj-comment-a)
-xmap ix <Plug>(textobj-comment-i)
-omap ix <Plug>(textobj-comment-i)
-xmap aX <Plug>(textobj-comment-big-a)
-omap aX <Plug>(textobj-comment-big-a)
-" }}}2
-
-" [indentline]                                       {{{2
-nnoremap <leader>il :<C-U>IndentLinesToggle<CR>
-let g:indentLine_enabled = 0
-let g:indentLine_fileType = [
-            \ 'c',
-            \ 'cpp',
-            \ 'python',
-            \ 'make'
-            \ ]
-let g:indentLine_fileTypeExclude = [
-            \ 'text',
-            \ 'help',
-            \ ''
-            \]
-let g:indentLine_bufNameExclude = [
-            \ 'h_.*',
-            \ 'hNERD_tree.*',
-            \ '.*\doc\.txt'
-            \]
-
-" let g:indentLine_char = '.'
-" let g:indentLine_color_term = 239
-" let g:indentLine_color_gui = '#389900'
 " }}}2
 
 " [mudox]"                                           {{{2
@@ -298,16 +188,6 @@ endif
 
 " [rainbowparentheses] "                             {{{2
 nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR>
-"}}}2
-
-" [yankring]"                                        {{{2
-let g:yankring_min_element_length = 2
-let yankring_history_dir          = g:vim_config_root
-let g:yankring_history_file       = 'yankring_hist'
-let yankring_replace_n_nkey       = '<Down>'
-let yankring_replace_n_pkey       = '<Up>'
-
-nnoremap <leader>yr :<C-U>YRShow<CR>
 "}}}2
 
 " [singlecompile]"                                   {{{2
@@ -335,56 +215,6 @@ let g:pymode_syntax_print_as_function = 1
 let g:pymode_doc_key                  = '<leader>k'
 "}}}2
 
-" [youcompleteme]"                                   {{{2
-" let g:ycm_collect_identifiers_from_tags_files           = 1
-" let g:ycm_collect_identifiers_from_comments_and_strings = 1
-" let g:ycm_seed_identifiers_with_syntax                  = 1
-
-let g:ycm_complete_in_strings                           = 1
-let g:ycm_complete_in_comments                          = 1
-
-let g:ycm_max_diagnostics_to_display                    = 14
-" let g:ycm_add_preview_to_completeopt                  = 1
-let g:ycm_complete_in_comments_and_strings              = 1
-let g:ycm_autoclose_preview_window_after_completion     = 1
-let g:ycm_autoclose_preview_window_after_insertion      = 1
-let g:ycm_global_ycm_extra_conf                         = g:vim_config_root . '/neobundle/youcompleteme/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_filetypes_to_completely_ignore                = {}
-let g:ycm_filetype_blacklist                            = {
-            \ 'notes'    : 1,
-            \ 'markdown' : 1,
-            \ 'vimwiki'  : 1,
-            \ 'unite'    : 1
-            \}
-" let g:ycm_filetype_whitelist                            = {
-            " \ '*'          : 1
-            " \}
-" let g:ycm_filetype_specific_completion_to_disable     = {}
-let g:ycm_allow_changing_updatetime                     = 0
-let g:ycm_register_as_syntastic_checker                 = 1
-" let g:ycm_key_invoke_completion                       = '<C-Space>'
-" let g:ycm_key_detailed_diagnostics                    = '<leader>d'
-let g:ycm_key_list_select_completion                    = ['<Down>']
-let g:ycm_key_list_previous_completion                  = ['<Up>']
-"}}}2
-
-" [nerdcomment]                                      {{{2
-"}}}2
-
-" [ultisnips]                                        {{{2
-let g:UltiSnipsEditSplit           = "horizontal"
-let g:UltiSnipsExpandTrigger       = "<Tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-S>"
-let g:UltiSnipsNoPythonWarning     = 1
-let g:UltiSnipsSnippetsDir         = g:rc_root . '/neobundle/mudox_ultisnips/ultisnips_snippets'
-let g:UltiSnipsSnippetDirectories  = [ "ultisnips_snippets" ]
-"}}}2
-
-" [pathogen]                                         {{{2
-" call pathogen#infect()
-"}}}2
-
 " [taglist]                                          {{{2
 let Tlist_Show_One_File             = 1
 let Tlist_Exit_OnlyWindow           = 1
@@ -400,38 +230,10 @@ let g:jedi#auto_vim_configuration   = 0
 let g:jedi#show_function_definition = 0
 "}}}2
 
-" [tagbar]                                           {{{2
-nnoremap <leader>tb :TagbarToggle<CR>
-" let g:tagbar_compact = 1
-" let g:tagbar_indent = 1
-
-if has('win32') || has('win64')
-    let g:tagbar_iconchars = ['+', '-']
-elseif has('unix')
-    let g:tagbar_iconchars = ['▾', '▸']
-elseif has('mac') || has('macunix')
-    let g:tagbar_iconchars = ['▾', '▸']
-else
-    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
-endif
-
-let g:tagbar_autoshowtag = 1
-"}}}2
-
-" [vimsignature]                                     {{{2
-" nnoremap \s :SignatureToggle<CR>
-" let g:SignaturePeriodicRefresh = 0
-"}}}2
-
 " [mark]                                             {{{2
 let g:mwAutoSaveMarks = 0
 let g:mwIgnoreCase = 0
 " let g:mwHistAdd = '/@'
-"}}}2
-
-" [easymotion]                                       {{{2
-let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz12347890'
-let g:EasyMotion_do_shade = 0
 "}}}2
 
 " [unite]                                            {{{2

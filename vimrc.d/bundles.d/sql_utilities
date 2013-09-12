@@ -16,30 +16,12 @@ let s:repo = 'vim-scripts/dbext.vim'
 " More Neobundle Configurations.
 let s:dict.lazy = 1
 let s:dict.autoload = { 'filetypes' : ['sql'] }
-
 " }}}1
 
 " PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
 
 function! s:cfg_func()
-    let g:dbext_default_buffer_lines          = 10
-    let g:dbext_default_use_sep_result_buffer = 0
-    let g:dbext_default_history_file          = '~/.dbext_sql_history'
-    let g:dbext_default_autoclose             = 0
-    let g:dbext_default_display_cmd_line      = 0
-
-    " Sqlite3 specific settings.
-    let g:dbext_default_SQLITE_bin            = 'sqlite3'
-    let g:dbext_default_SQLITE_cmd_header     = ".mode column\n.headers on\n"
-
-    " SQLITE3 profiles.
-    let s:profile_config_list                 = [
-                \ 'type=SQLITE',
-                \ 'SQLITE_bin=sqlite3',
-                \ "cmd_terminator=';'",
-                \ 'dbname=/home/mudox/Git/GwaMan/Gwa.db'
-                \ ]
-    let g:dbext_default_profile_GwaMan = join(s:profile_config_list, ':')
+    " TODO: your plugin configuration goes here.
 endfunction
 " }}}1
 
