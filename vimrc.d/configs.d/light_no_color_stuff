@@ -1,6 +1,6 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-let g:config_name = 'light'
+let g:config_name = expand('%:p:t:r')
 
 let g:neo_bundles = [
             \ 'mudox_ultisnips_snippets',
@@ -13,12 +13,11 @@ let g:neo_bundles = [
             \ 'surround',
             \ 'origami',
             \ 'easy_align',
-            \ 'airline',
             \ 'autoformat',
-            \ 'color_toy',
             \ 'ctrlp',
             \ 'nerd_commenter',
             \ 'nerd_tree',
             \ 'repeat',
             \ 'unimpaired',
             \ ]
+
