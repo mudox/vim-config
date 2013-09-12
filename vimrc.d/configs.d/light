@@ -3,6 +3,7 @@
 let g:config_name = 'light'
 
 let g:neo_bundles = [
+            \ 'vim_wiki',
             \ 'mudox_ultisnips_snippets',
             \ 'ultisnips',
             \ 'ultisnips',
