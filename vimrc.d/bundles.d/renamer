@@ -14,8 +14,8 @@ let s:dict.name = s:cfg_name
 let s:repo = 'vim-scripts/renamer.vim'
 
 " More Neobundle Configurations.
-    " TODO: any additional NeoBundle configuration goes here ...
-
+let s:dict.lazy = 1
+let s:dict.autoload = { 'commands' : [ 'Renamer' ] }
 " }}}1
 
 " PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
