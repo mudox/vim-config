@@ -3,6 +3,10 @@
 let g:config_name = expand('%:p:t:r')
 
 let g:neo_bundles = [
+            \ 'color_toy',
+            \ 'xolox_vim_misc',
+            \ 'delimitmate',
+            \ 'vim_wiki',
             \ 'mudox_ultisnips_snippets',
             \ 'ultisnips',
             \ 'ultisnips',
@@ -21,3 +25,4 @@ let g:neo_bundles = [
             \ 'unimpaired',
             \ ]
 
+execute 'source ' . escape(expand('<sfile>:p:h'), '\ ') . '/all_colors'

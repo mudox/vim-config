@@ -3,4 +3,4 @@
 let g:config_name = 'migrating'
 
 let g:neo_bundles = glob(g:rc_root . '/vimrc.d/bundles.d/*', 1, 1)
-let g:neo_bundles = map(g:neo_bundles, 'fnamemodify(v:val, ":p:t:r")')
+let g:neo_bundles = map(g:neo_bundles, 'fnamemodify(v:val, ":t:r")')

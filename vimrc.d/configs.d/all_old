@@ -61,18 +61,6 @@ NeoBundle 'ehamberg/vim-cute-python'           , { 'name' : 'cute_python' }
 
 " My Colorscheme Bundles here:                       {{{1
 
-NeoBundle 'molok/vim-vombato-colorscheme'    , { 'name' : 'color_vombato' }
-NeoBundle 'w0ng/vim-hybrid'                  , { 'name' : 'color_hybrid' }
-NeoBundle 'tomasr/molokai'                   , { 'name' : 'color_molokai' }
-NeoBundle 'nanotech/jellybeans.vim'          , { 'name' : 'color_jellybeans' }
-NeoBundle 'sjl/badwolf'                      , { 'name' : 'color_badwolf' }
-NeoBundle 'hukl/Smyck-Color-Scheme'          , { 'name' : 'color_smyck' }
-NeoBundle 'jelera/vim-gummybears-colorscheme', { 'name' : 'color_gummybears' }
-NeoBundle 'YorickPeterse/Autumn.vim'         , { 'name' : 'color_autumn' }
-NeoBundle 'mbbill/desertEx'                  , { 'name' : 'color_desertex' }
-NeoBundle 'altercation/vim-colors-solarized' , { 'name' : 'color_solarized' }
-NeoBundle 'zeis/vim-kolor'                   , { 'name' : 'color_kolor' }
-NeoBundle 'noahfrederick/Hemisu'             , { 'name' : 'color_hemisu' }
 NeoBundle 'morhetz/gruvbox'                  , { 'name' : 'color_grubox' }
 NeoBundle 'junegunn/seoul256.vim'            , { 'name' : 'color_seoul256' }
 NeoBundle 'jnurmine/Zenburn'                 , { 'name' : 'color_zenburn' }
