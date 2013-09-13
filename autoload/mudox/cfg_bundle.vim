@@ -29,9 +29,9 @@ function! mudox#cfg_bundle#EditBundle(name)
         " if register + got a valid git repo address, then automatically
         " insert the shrotened address into appropriate place.
         let l:git_repo = s:ParsePlusReg()
-        if len(git_repo)
+        if len(git_repo) > 0
             let l:n = match(l:tmpl, 'let s:repo = " TODO:')
-            let l:tmpl[l:n] = substitute(l:tmpl[l:n], '" TODO:.*$', l:git_repo, '')
+            let l:tmpl[l:n] = substitute(l:tmpl[l:n], '" TODO:.*$', "'" . l:git_repo . "'", '')
         endif
 
         call append(0, l:tmpl)
@@ -82,21 +82,15 @@ function mudox#cfg_bundle#RegisterBundles()
 endfunction
 
 function! s:ParsePlusReg()
-    let l:quotes = '[\d' . char2nr('"') . '\d' . char2nr("'") . ']\='
-    let l:regex = '^\%(\s*' . l:quotes
-                \ . 'https://github\.com/\)\=\zs[^/]\+/[^/]\+\ze\%(\.git\)\='
-                \ . l:quotes . '\s*$'
+    let g:regex = '\zs[^/"' . "']" . '\+\%(github.com\)\@<!/\%([^/"' . "'" . ']\%(\.git\)\@!\)\+\ze'
 
     for l:x in [@", @+, @*, @a]
-        let g:shortened = matchstr(l:x, l:regex)
+        let g:shortened = matchstr(l:x, g:regex)
         if len(g:shortened) > 0
             break
         endif
     endfor
 
-    if len(g:shortened) > 0
-        return "'" . g:shortened . "'"
-    else
-        return ''
-    endif
+    " returns an empty string if parsing failed.
+    return g:shortened
 endfunction
