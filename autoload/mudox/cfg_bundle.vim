@@ -28,7 +28,7 @@ function! mudox#cfg_bundle#EditBundle(name)
         " fill with template.
         " if register + got a valid git repo address, then automatically
         " insert the shrotened address into appropriate place.
-        let git_repo = s:ParsePlusReg()
+        let l:git_repo = s:ParsePlusReg()
         if len(git_repo)
             let l:n = match(l:tmpl, 'let s:repo = " TODO:')
             let l:tmpl[l:n] = substitute(l:tmpl[l:n], '" TODO:.*$', l:git_repo, '')
@@ -82,10 +82,20 @@ function mudox#cfg_bundle#RegisterBundles()
 endfunction
 
 function! s:ParsePlusReg()
-    let l:shortened = matchstr(@+, '^https://github\.com/\zs.*\ze\.git$')
+    let l:quotes = '[\d' . char2nr('"') . '\d' . char2nr("'") . ']\='
+    let l:regex = '^\%(\s*' . l:quotes
+                \ . 'https://github\.com/\)\=\zs[^/]\+/[^/]\+\ze\%(\.git\)\='
+                \ . l:quotes . '\s*$'
 
-    if len(l:shortened) > 0
-        return "'" . l:shortened . "'"
+    for l:x in [@", @+, @*, @a]
+        let g:shortened = matchstr(l:x, l:regex)
+        if len(g:shortened) > 0
+            break
+        endif
+    endfor
+
+    if len(g:shortened) > 0
+        return "'" . g:shortened . "'"
     else
         return ''
     endif
