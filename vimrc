@@ -300,8 +300,8 @@ set showcmd
 set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
-set laststatus=2 " always show status bar.
-set cmdheight=2
+set laststatus=0 " never show statusline.
+set cmdheight=1
 
 " Brace match
 set showmatch
@@ -359,12 +359,12 @@ endif
 
 
 " multiple windows                                   {{{2
-set hidden " don't unload a buffer when no longer shown in a window.
+"set hidden " don't unload a buffer when no longer shown in a window.
 "}}}2
 
 " vim files syntax hightlighting                     {{{2
 let g:vimsyn_embed = 0      " disable all embeding syntax.
-"let g:vimsyn_folding = 'af' " enable autofolding of autogroups & functions.
+let g:vimsyn_folding = 'af' " enable autofolding of autogroups & functions.
 let g:vimsyn_noerror = 1
 "}}}2
 
