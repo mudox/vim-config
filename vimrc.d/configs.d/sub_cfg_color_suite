@@ -1,0 +1,6 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let s:all_colors = glob(g:rc_root . '/vimrc.d/bundles.d/vim_color_*', 1, 1)
+let s:all_colors = map(s:all_colors, 'fnamemodify(v:val, ":t:r")')
+
+call extend(g:neo_bundles, s:all_colors)
