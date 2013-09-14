@@ -35,6 +35,7 @@ function! mudox#cfg_bundle#EditBundle(name)
         endif
 
         call append(0, l:tmpl)
+        normal dd " delete trailling empty line.
 
         call cursor(1, 1)
         call search("let s:repo = '.", 'e')
