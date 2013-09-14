@@ -14,7 +14,8 @@ let s:dict.name = s:cfg_name
 let s:repo = 'csexton/trailertrash.vim'
 
 " More Neobundle Configurations.
-    " TODO: any additional NeoBundle configuration goes here ...
+let s:dict.lazy = 1
+let s:dict.autoload = { 'commands' : [ 'Trim' ] }
 
 " }}}1
 
@@ -30,4 +31,3 @@ let s:repo = "'" . s:repo . "'"
 execute "NeoBundle " . s:repo . ', ' . string(s:dict)
 execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
 " }}}1
-

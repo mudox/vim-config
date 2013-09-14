@@ -16,7 +16,7 @@ let s:repo = 'sk1418/Join'
 " More Neobundle Configurations.
 let s:dict.lazy = 1
 let s:dict.autoload = {
-            \ 'commands' : ['Join']
+            \ 'commands' : ['J', 'Join']
             \ }
 
 " }}}1

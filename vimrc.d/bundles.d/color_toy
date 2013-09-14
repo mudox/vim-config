@@ -21,9 +21,9 @@ let s:repo = 'mudox/ColorToy.vim'
 " PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
 
 function! s:cfg_func()
-    noremap \cc  :<C-U>call mudox#auto_colo#ShuffleColorAfterRC()<CR>
+    noremap \cc  :<C-U>call mudox#auto_colo#Toy.shuffleColor()<CR>
     nnoremap \cn  :<C-U>call mudox#auto_colo#Toy.showCurColors()<CR>
-    call mudox#auto_colo#ShuffleColorRC()  " random colorscheme
+    autocmd VimEnter * call mudox#auto_colo#ShuffleColor()
 endfunction
 " }}}1
 
@@ -32,4 +32,3 @@ let s:repo = "'" . s:repo . "'"
 execute "NeoBundle " . s:repo . ', ' . string(s:dict)
 execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
 " }}}1
-

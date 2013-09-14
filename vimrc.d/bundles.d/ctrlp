@@ -23,10 +23,13 @@ let s:repo = 'kien/ctrlp.vim'
 function! s:cfg_func()
     let g:ctrlp_extensions = ['line', 'tag', 'mixed', 'funky',  'rtscript']
 
-    let g:ctrlp_map = '<A-P>'
+    " mappings
+    let g:ctrlp_map = 'ð'
     nnoremap <C-P>r :CtrlPMRUFiles<CR>
+    nnoremap <Space>r :CtrlPMRUFiles<CR>
     nnoremap <C-P>s :CtrlPRTS<CR>
     nnoremap <C-P>m :CtrlPMixed<CR>
+    nnoremap <Space>m :CtrlPMixed<CR>
     nnoremap <C-P>l :CtrlPLine<CR>
     nnoremap <C-P>c :CtrlPChangeAll<CR>
     nnoremap <C-P>f :call <SID>Hard()<CR>

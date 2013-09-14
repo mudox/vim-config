@@ -21,34 +21,34 @@ let s:repo = 'Valloric/YouCompleteMe'
 " PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
 
 function! s:cfg_func()
-    " let g:ycm_collect_identifiers_from_tags_files           = 1
-    " let g:ycm_collect_identifiers_from_comments_and_strings = 1
-    " let g:ycm_seed_identifiers_with_syntax                  = 1
+    " white or black list
+    "let g:ycm_filetype_blacklist                           = {
+                "\ 'notes'    : 1,
+                "\ 'markdown' : 1,
+                "\ 'vimwiki'  : 1,
+                "\ 'vim'      : 1,
+                "\ 'unite'    : 1
+                "\}
+
+    let g:ycm_filetype_whitelist                            = {
+                \ 'cpp'    : 1,
+                \ 'c'      : 1,
+                \ 'python' : 1,
+                \ }
+
+    let g:ycm_collect_identifiers_from_tags_files           = 1
+    let g:ycm_collect_identifiers_from_comments_and_strings = 1
+    let g:ycm_seed_identifiers_with_syntax                  = 1
 
     let g:ycm_complete_in_strings                           = 1
     let g:ycm_complete_in_comments                          = 1
 
     let g:ycm_max_diagnostics_to_display                    = 14
-    " let g:ycm_add_preview_to_completeopt                  = 1
-    let g:ycm_complete_in_comments_and_strings              = 1
     let g:ycm_autoclose_preview_window_after_completion     = 1
     let g:ycm_autoclose_preview_window_after_insertion      = 1
     let g:ycm_global_ycm_extra_conf                         = g:vim_config_root . '/neobundle/youcompleteme/cpp/ycm/.ycm_extra_conf.py'
-    let g:ycm_filetypes_to_completely_ignore                = {}
-    let g:ycm_filetype_blacklist                            = {
-                \ 'notes'    : 1,
-                \ 'markdown' : 1,
-                \ 'vimwiki'  : 1,
-                \ 'unite'    : 1
-                \}
-    " let g:ycm_filetype_whitelist                            = {
-    " \ '*'          : 1
-    " \}
-    " let g:ycm_filetype_specific_completion_to_disable     = {}
     let g:ycm_allow_changing_updatetime                     = 0
     let g:ycm_register_as_syntastic_checker                 = 1
-    " let g:ycm_key_invoke_completion                       = '<C-Space>'
-    " let g:ycm_key_detailed_diagnostics                    = '<leader>d'
     let g:ycm_key_list_select_completion                    = ['<Down>']
     let g:ycm_key_list_previous_completion                  = ['<Up>']
 endfunction
