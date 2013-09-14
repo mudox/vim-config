@@ -20,7 +20,10 @@ while 1:
         break
     # TODO: beautify menu interface if got a invalid input.
 
-so_line = "execute 'source ' . g:rc_root . '/vimrc.d/configs.d/{0}'"
+so_line = '''\
+execute 'source ' . g:rc_root . '/vimrc.d/configs.d/{0}'
+let g:mdx_config_name = '{0}'
+'''
 
 with open(cur_config, 'w') as cc:
     cc.write(so_line.format(menu_dict[config_idx]))
