@@ -202,13 +202,20 @@ else
 endif
 
 " Editor interface
-set noshowmode   " powerline does better
-set showcmd
 set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
-set laststatus=0 " never show statusline.
-set cmdheight=1
+if index(g:neo_bundles, 'airline') == -1
+    set laststatus=0 " never show statusline.
+    set cmdheight=1
+    set showmode
+    set showcmd
+else
+    set noshowmode
+    set noshowcmd
+    set laststatus=2 
+    set cmdheight=2
+endif
 
 " Brace match
 set noshowmatch
@@ -233,7 +240,7 @@ set smartcase
 " Editor behaviour
 set whichwrap=b,s,<,>,[,],h,l
 set backspace=indent,eol,start
-set autochdir
+"set autochdir
 set sessionoptions=buffers,folds,globals,help,localoptions,options,resize,sesdir,slash,tabpages,unix,winpos,winsize
 set autowriteall
 set viminfo+=!  " save global variables in viminfo files
