@@ -1,12 +1,20 @@
-import os, glob
+from glob import glob
+from os import path
 
-configs_dir = os.path.expanduser('~/.vim/vimrc.d/configs.d')
-cur_config = os.path.expanduser('~/.vim/vimrc.d/cur_config')
+flag = False
+for vimDir in ['.vim', 'vimfiles']:
+    if path.exists(path.expanduser('~/%s' % vimDir)): 
+        configs_dir = path.expanduser('~/%s/vimrc.d/configs.d' % vimDir)
+        cur_config = path.expanduser('~/%s/vimrc.d/cur_config' % vimDir)
+        if path.exists(configs_dir):
+            flag = True
 
-# on Windows assuming a 'junction' named '.vim' is created to link to _vimfiles
-# TODO: fix it to be portable with out extra requirements.
-config_paths = glob.glob(os.path.expanduser('~/.vim/vimrc.d/configs.d/*'))
-config_names = [ os.path.basename(x) for x in config_paths ]
+if not flag:
+    print '* vim path tree detection failed *'
+    exit()
+
+config_paths = glob(configs_dir + '/*')
+config_names = [ path.basename(x) for x in config_paths ]
 menu_dict = { idx : name for idx, name in  enumerate(sorted(config_names)) }
 
 print '-------- Vim Configuration Available --------'
