@@ -64,10 +64,10 @@ function mudox#cfg_bundle#EditConfig(arg)
             execute mudox#query_open_file#Main() . l:file_path
         else
             " gvie user chance to cancel.
-            let l:open_cmd  = mudox#query_open_file#Main() 
+            let l:open_cmd  = mudox#query_open_file#Main()
 
             " read template content if any.
-            let l:tmpl_path = g:mudox_configs_dir . '/' 
+            let l:tmpl_path = g:mudox_configs_dir . '/'
                         \ . (len(l:names) == 2 ? l:names[1] : '../config_template')
             echo l:tmpl_path
 
@@ -116,7 +116,7 @@ function mudox#cfg_bundle#RegisterBundles()
             echoerr 'Unavailabled bundle [' . b . ']'
             continue
         endif
-        
+
         " no duplicated bundles.
         if index(g:neo_bundles, b) != -1
             continue
