@@ -29,6 +29,7 @@ NeoBundleFetch 'Shougo/neobundle.vim' , { 'name' : 'neobundle' }
 
 execute 'NeoBundleLocal ' . escape(g:rc_root, '\ ') . '/bundle'
 
+" Register bundles from under vimrc.d/bundles.d
 call mudox#cfg_bundle#RegisterBundles()
 
 filetype plugin indent on       " Required!
@@ -128,12 +129,6 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 call mudox#cfg_bundle#LoadBundleConfigs()
 
-" [zoomwintab]"                                      {{{2
-" <M-O/o> to invoke :ZoomWinTabToggle
-nnoremap ï :ZoomWinTabToggle<CR>
-nnoremap Ï :ZoomWinTabToggle<CR>
-" }}}2
-
 " [ft-sql]"                                          {{{2
 let g:ftplugin_sql_omni_key_right = '<C-l>'
 let g:ftplugin_sql_omni_key_left  = '<C-h>'
@@ -143,37 +138,13 @@ let g:ftplugin_sql_omni_key_left  = '<C-h>'
 let loaded_matchparen = 1
 " }}}2
 
-" [cottidie]"                                        {{{2
-command! Tips CottidieTip
-" }}}2
+" [mark]                                             {{{2
+let g:mwAutoSaveMarks = 0
+let g:mwIgnoreCase = 0
+" let g:mwHistAdd = '/@'
+"}}}2
 
-" [goldenview]"                                      {{{2
-let g:goldenview__enable_default_mapping = 0
-" }}}2
-
-" [color: solarized]"                                {{{2
-let g:solarized_termcolors = 256
-let g:solarized_contrast   = "high"
-let g:solarized_bold       = 0
-" let g:solarized_underline
-" let g:solarized_italic
-" }}}2
-
-" [gitgutter]"                                       {{{2
-nnoremap \gg :<C-U>GitGutterToggle<CR>
-nnoremap <leader>ggn :GitGutterNextHunk<CR>
-nnoremap <leader>ggp :GitGutterPrevHunk<CR>
-let g:gitgutter_enabled = 0
-" }}}2
-
-" [color: kolor]"                                    {{{2
-let g:kolor_italic=1                    " Enable italic. Default: 1
-let g:kolor_bold=1                      " Enable bold. Default: 1
-let g:kolor_underlined=1                " Enable underline for 'Underlined'. Default: 0
-let g:kolor_alternative_matchparen=1    " Gray 'MatchParen' color. Default: 0
-" }}}2
-
-" [mudox]"                                           {{{2
+" [dot_vim]                                          {{{2
 
 " let g:mdx_vim_alpha_step = 15
 if has('win32') || has('win64')
@@ -182,76 +153,12 @@ if has('win32') || has('win64')
     " Alt + < / > to decrease or increase transparency of vim win.
     " nnoremap <silent> ® :<C-U>call trans_win#AlphaStep(g:mdx_vim_alpha_step)<CR>
     " nnoremap <silent> ¬ :<C-U>call trans_win#AlphaStep(-g:mdx_vim_alpha_step)<CR>
+
 endif
-
-" }}}2
-
-" [rainbowparentheses] "                             {{{2
-nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR>
-"}}}2
-
-" [singlecompile]"                                   {{{2
-nnoremap <F5> :<C-U>SCCompileRun<CR>
-" if has('win32') || has('win64')
-" call SingleCompile#SetCompilerTemplate('python', 'python',
-" \'New python3 executable for python3.3.2',
-" \'E:\PYF\SDK\Python3\python.exe', '', '')
-" call SingleCompile#ChooseCompiler('python', 'python')
-" elseif has('unix')
-" call SingleCompile#ChooseCompiler('python', 'python3')
-" elseif has('mac') || has('macunix')
-" call SingleCompile#ChooseCompiler('python', 'python3')
-" else
-" echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
-" endif
-"}}}2
-
-" [python-mode]"                                     {{{2
-let g:pymode_run                      = 0
-let g:pymode_lint                     = 0
-let g:pymode_lint_onfly               = 0
-let g:pymode_lint_write               = 0
-let g:pymode_syntax_print_as_function = 1
-let g:pymode_doc_key                  = '<leader>k'
-"}}}2
-
-" [taglist]                                          {{{2
-let Tlist_Show_One_File             = 1
-let Tlist_Exit_OnlyWindow           = 1
-if ! has("gui_running")
-    let Tlist_Inc_Winwidth          = 0
-endif
-"}}}2
-
-" [jedi]                                             {{{2
-let g:jedi#pydoc                    = "<leader>k"
-let g:jedi#popup_select_first       = 0
-let g:jedi#auto_vim_configuration   = 0
-let g:jedi#show_function_definition = 0
-"}}}2
-
-" [mark]                                             {{{2
-let g:mwAutoSaveMarks = 0
-let g:mwIgnoreCase = 0
-" let g:mwHistAdd = '/@'
-"}}}2
-
-" [unite]                                            {{{2
-nnoremap \mru :Unite -start-insert file_mru<CR>
-nnoremap \bm  :Unite -vertical bookmark<CR>
-nnoremap \mru :Unite -start-insert file_mru<CR>
-nnoremap \ub  :Unite -vertical bookmark<CR>
-" let g:unite_enable_start_inser = 1
-" let g:unite_split_rule = 'topleft'
-" let g:unite_enable_split_vertically
-"}}}2
-
-"}}}1
-
-" VIMRC SCRIPTS SETTING {{{1
 nnoremap \z   :<C-U>call mudox#z_menu#Main()<CR>
 nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
-" }}}1
+" }}}2
+"}}}1
 
 " EVENTS                                          {{{1
 
@@ -304,8 +211,7 @@ set laststatus=0 " never show statusline.
 set cmdheight=1
 
 " Brace match
-set showmatch
-set matchtime=1
+set noshowmatch
 
 " Tab setting
 " using expandtab scheme
