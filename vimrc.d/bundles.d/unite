@@ -11,17 +11,23 @@ let s:dict.name = s:cfg_name
 
 " Repository Address.
 " use github's shortened form, e.g. 'your_id/repo_name'
-let s:repo = 'altercation/vim-colors-solarized'
+let s:repo = 'Shougo/unite.vim'
 
 " More Neobundle Configurations.
-    " TODO: any additional NeoBundle configuration goes here ...
+" TODO: any additional NeoBundle configuration goes here ...
 
 " }}}1
 
 " PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
 
 function! s:cfg_func()
-    " TODO: your plugin configuration goes here.
+    nnoremap \mru :Unite -start-insert file_mru<CR>
+    nnoremap \bm  :Unite -vertical bookmark<CR>
+    nnoremap \mru :Unite -start-insert file_mru<CR>
+    nnoremap \ub  :Unite -vertical bookmark<CR>
+    " let g:unite_enable_start_inser = 1
+    " let g:unite_split_rule = 'topleft'
+    " let g:unite_enable_split_vertically
 endfunction
 " }}}1
 
@@ -30,4 +36,3 @@ let s:repo = "'" . s:repo . "'"
 execute "NeoBundle " . s:repo . ', ' . string(s:dict)
 execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
 " }}}1
-

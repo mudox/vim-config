@@ -1,0 +1,71 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" WARNING: DO NOT CHANGE   ------------------------------ {{{1
+let s:cfg_name = expand('<sfile>:p:t:r')
+
+let s:dict = {}
+let s:dict.name = s:cfg_name
+" }}}1
+
+" NEOBUNDLE REGISTRATION   ------------------------------ {{{1
+
+" Repository Address.
+" use github's shortened form, e.g. 'your_id/repo_name'
+let s:repo = 'klen/python-mode'
+
+" More Neobundle Configurations.
+let s:dict.lazy = 1
+let s:dict.autoload = { 'filetypes' : ['python'] }
+
+" }}}1
+
+" PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
+
+function! s:cfg_func()
+    " TODO: your plugin configuration goes here.
+endfunction
+" }}}1
+
+" WARNING: DO NOT CHANGE   ------------------------------ {{{1
+let s:repo = "'" . s:repo . "'"
+execute "NeoBundle " . s:repo . ', ' . string(s:dict)
+execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
+" }}}1
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" WARNING: DO NOT CHANGE   ------------------------------ {{{1
+let s:cfg_name = expand('<sfile>:p:t:r')
+
+let s:dict = {}
+let s:dict.name = s:cfg_name
+" }}}1
+
+" NEOBUNDLE REGISTRATION   ------------------------------ {{{1
+
+" Repository Address.
+" use github's shortened form, e.g. 'your_id/repo_name'
+let s:repo = 'klen/python-mode'
+
+" More Neobundle Configurations.
+" TODO: any additional NeoBundle configuration goes here ...
+
+" }}}1
+
+" PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
+
+function! s:cfg_func()
+    let g:pymode_run                      = 0
+    let g:pymode_lint                     = 0
+    let g:pymode_lint_onfly               = 0
+    let g:pymode_lint_write               = 0
+    let g:pymode_syntax_print_as_function = 1
+    let g:pymode_doc_key                  = '<leader>k'
+endfunction
+" }}}1
+
+" WARNING: DO NOT CHANGE   ------------------------------ {{{1
+let s:repo = "'" . s:repo . "'"
+execute "NeoBundle " . s:repo . ', ' . string(s:dict)
+execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
+" }}}1
+

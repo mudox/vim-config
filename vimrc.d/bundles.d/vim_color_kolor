@@ -11,17 +11,20 @@ let s:dict.name = s:cfg_name
 
 " Repository Address.
 " use github's shortened form, e.g. 'your_id/repo_name'
-let s:repo = 'nathanaelkane/vim-indent-guides'
+let s:repo = 'zeis/vim-kolor'
 
 " More Neobundle Configurations.
-    " TODO: any additional NeoBundle configuration goes here ...
+" TODO: any additional NeoBundle configuration goes here ...
 
 " }}}1
 
 " PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
 
 function! s:cfg_func()
-    nnoremap <leader>ig :<C-U>IndentLinesToggle<CR>
+    let g:kolor_italic                 = 1
+    let g:kolor_bold                   = 1
+    let g:kolor_underlined             = 1
+    let g:kolor_alternative_matchparen = 1
 endfunction
 " }}}1
 

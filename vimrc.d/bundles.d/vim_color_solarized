@@ -11,17 +11,18 @@ let s:dict.name = s:cfg_name
 
 " Repository Address.
 " use github's shortened form, e.g. 'your_id/repo_name'
-let s:repo = 'nathanaelkane/vim-indent-guides'
+let s:repo = 'altercation/vim-colors-solarized'
 
 " More Neobundle Configurations.
-    " TODO: any additional NeoBundle configuration goes here ...
+" TODO: any additional NeoBundle configuration goes here ...
 
 " }}}1
 
 " PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
 
 function! s:cfg_func()
-    nnoremap <leader>ig :<C-U>IndentLinesToggle<CR>
+    let g:solarized_termcolors = 256
+    let g:solarized_contrast   = "high"
 endfunction
 " }}}1
 

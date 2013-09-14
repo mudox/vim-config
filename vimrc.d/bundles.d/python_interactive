@@ -11,7 +11,7 @@ let s:dict.name = s:cfg_name
 
 " Repository Address.
 " use github's shortened form, e.g. 'your_id/repo_name'
-let s:repo = 'zeis/vim-kolor'
+let s:repo = 'clericJ/pyinteractive-vim'
 
 " More Neobundle Configurations.
     " TODO: any additional NeoBundle configuration goes here ...
@@ -30,4 +30,3 @@ let s:repo = "'" . s:repo . "'"
 execute "NeoBundle " . s:repo . ', ' . string(s:dict)
 execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
 " }}}1
-

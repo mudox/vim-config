@@ -11,17 +11,18 @@ let s:dict.name = s:cfg_name
 
 " Repository Address.
 " use github's shortened form, e.g. 'your_id/repo_name'
-let s:repo = 'nathanaelkane/vim-indent-guides'
+let s:repo = 'glts/vim-cottidie'
 
 " More Neobundle Configurations.
-    " TODO: any additional NeoBundle configuration goes here ...
+let s:dict.lazy = 1
+let s:dict.autoload = { 'commands' : ['CottidieTip'] }
 
 " }}}1
 
 " PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
 
 function! s:cfg_func()
-    nnoremap <leader>ig :<C-U>IndentLinesToggle<CR>
+    command! Tips CottidieTip
 endfunction
 " }}}1
 
@@ -30,4 +31,3 @@ let s:repo = "'" . s:repo . "'"
 execute "NeoBundle " . s:repo . ', ' . string(s:dict)
 execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
 " }}}1
-

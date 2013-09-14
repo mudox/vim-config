@@ -11,17 +11,20 @@ let s:dict.name = s:cfg_name
 
 " Repository Address.
 " use github's shortened form, e.g. 'your_id/repo_name'
-let s:repo = 'nathanaelkane/vim-indent-guides'
+let s:repo = 'airblade/vim-gitgutter'
 
 " More Neobundle Configurations.
-    " TODO: any additional NeoBundle configuration goes here ...
+" TODO: any additional NeoBundle configuration goes here ...
 
 " }}}1
 
 " PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
 
 function! s:cfg_func()
-    nnoremap <leader>ig :<C-U>IndentLinesToggle<CR>
+    nnoremap \gg :<C-U>GitGutterToggle<CR>
+    nnoremap <leader>ggn :GitGutterNextHunk<CR>
+    nnoremap <leader>ggp :GitGutterPrevHunk<CR>
+    let g:gitgutter_enabled = 0
 endfunction
 " }}}1
 
@@ -30,4 +33,3 @@ let s:repo = "'" . s:repo . "'"
 execute "NeoBundle " . s:repo . ', ' . string(s:dict)
 execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
 " }}}1
-
