@@ -2,7 +2,7 @@ let g:mudox_vimrc_dir   = g:rc_root . '/vimrc.d'
 let g:mudox_configs_dir = g:mudox_vimrc_dir . '/configs.d'
 let g:mudox_bundles_dir = g:mudox_vimrc_dir . '/bundles.d'
 
-function! mudox#cfg_bundle#EditBundle(name)
+function mudox#cfg_bundle#EditBundle(name)
     let l:file_name = g:mudox_bundles_dir . '/' . a:name
     let l:open_cmd  = mudox#query_open_file#Main() " gvie user chance to cancel.
 
@@ -47,39 +47,89 @@ function! mudox#cfg_bundle#EditBundle(name)
     endif
 endfunction
 
-function! mudox#cfg_bundle#EditConfig(name)
-    let l:file_name = g:mudox_configs_dir . '/' . a:name
-    let l:open_cmd  = mudox#query_open_file#Main() " gvie user chance to cancel.
-
-    if !filereadable(l:file_name)
-        " read template content
-        let l:tmpl = readfile(g:mudox_vimrc_dir . '/config_template')
+function mudox#cfg_bundle#EditConfig(arg)
+    let l:names = split(a:arg, '\s')
+    if len(l:names) > 2
+        echoerr 'Too many arguments, at most 2 arguemnts is needed'
+        return
     endif
 
-    execute  l:open_cmd . l:file_name
+    if len(l:names) == 0 " Edit current config.
+        let l:file_path = g:mudox_configs_dir . '/' . g:mdx_config_name
+        execute mudox#query_open_file#Main() . l:file_path
+    else " edit a new or existing config.
+        let l:file_path = g:mudox_configs_dir . '/' . l:names[0]
 
-    if exists('l:tmpl')
-        setlocal filetype=vim
-        setlocal foldmethod=marker
-        setlocal fileformat=unix
-        call append(0, l:tmpl)
+        if filereadable(l:file_path)
+            execute mudox#query_open_file#Main() . l:file_path
+        else
+            " gvie user chance to cancel.
+            let l:open_cmd  = mudox#query_open_file#Main() 
+
+            " read template content if any.
+            let l:tmpl_path = g:mudox_configs_dir . '/' 
+                        \ . (len(l:names) == 2 ? l:names[1] : '../config_template')
+            echo l:tmpl_path
+
+            if filereadable(l:tmpl_path)
+                let l:tmpl = readfile(l:tmpl_path)
+            else
+                echoerr "Template file " . l:tmpl_path . ' unreadable!'
+                echoerr "creating an empty config ..."
+            endif
+
+            execute  l:open_cmd . l:file_path
+
+            if exists('l:tmpl')
+                setlocal filetype=vim
+                setlocal foldmethod=marker
+                setlocal fileformat=unix
+                call append(0, l:tmpl)
+                normal dd
+            endif
+        endif
     endif
 endfunction
 
 function mudox#cfg_bundle#LoadBundleConfigs()
     for b in g:neo_bundles
         call g:CONFIG_PLUGIN_{b}()
+        unlet! g:CONFIG_PLUGIN_{b}
     endfor
 endfunction
 
 function mudox#cfg_bundle#RegisterBundles()
     let g:neo_bundles = []
 
+
+    " used in configs.d/* to source sub config files.
+    command -nargs=1 MergeConfig  execute 'source ' . g:mudox_configs_dir . '/' . <q-args>
+
     execute "source " . g:mudox_vimrc_dir . '/cur_config'
+
+    " filter g:neo_bundles
+    let l:copy = copy(g:neo_bundles)
+    let g:neo_bundles = []
+    for b in l:copy
+        " no unavailable bundles.
+        if !filereadable(g:mudox_bundles_dir . '/' . b)
+            echoerr 'Unavailabled bundle [' . b . ']'
+            continue
+        endif
+        
+        " no duplicated bundles.
+        if index(g:neo_bundles, b) != -1
+            continue
+        endif
+
+        call add(g:neo_bundles, b)
+    endfor
 
     for b in g:neo_bundles
         execute 'source ' . g:mudox_bundles_dir . '/' . b
     endfor
+
+    delcommand MergeConfig
 endfunction
 
 function! s:ParsePlusReg()
