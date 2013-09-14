@@ -1,15 +1,7 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-let g:config_name = 'light'
-
-let g:neo_bundles = [
+let g:bundle_list = [
             \ 'airline',
-            \ 'autoformat',
-            \ 'colortoy',
-            \ 'ctrlp',
-            \ 'delimitmate',
-            \ 'nerdcommenter',
-            \ 'nerdtree',
-            \ 'repeat',
-            \ 'unimpaired',
             \ ]
+
+call extend(g:neo_bundles, s:bundle_list)
