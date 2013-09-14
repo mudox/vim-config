@@ -7,7 +7,7 @@ cur_config = os.path.expanduser('~/.vim/vimrc.d/cur_config')
 # TODO: fix it to be portable with out extra requirements.
 config_paths = glob.glob(os.path.expanduser('~/.vim/vimrc.d/configs.d/*'))
 config_names = [ os.path.basename(x) for x in config_paths ]
-menu_dict = { idx : name for idx, name in  enumerate(config_names) }
+menu_dict = { idx : name for idx, name in  enumerate(sorted(config_names)) }
 
 print '-------- Vim Configuration Available --------'
 for idx, name in menu_dict.items():
