@@ -27,6 +27,7 @@ endfunction
 
 " WARNING: DO NOT CHANGE   ------------------------------ {{{1
 let s:repo = "'" . s:repo . "'"
-execute "NeoBundle " . s:repo . ', ' . string(s:dict)
+execute "NeoBundle " . s:repo
+call neobundle#config(s:cfg_name, s:dict)
 execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
 " }}}1
