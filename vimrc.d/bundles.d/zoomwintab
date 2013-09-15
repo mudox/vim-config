@@ -21,7 +21,8 @@ let s:repo = 'troydm/zoomwintab.vim'
 " PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
 
 function! s:cfg_func()
-    " <M-O/o> to invoke :ZoomWinTabToggle
+    let g:zoomwintab_remap = 0 " no mapping to <C-W>o and <C-W><C-O>
+    " use <A-O/o> instead.
     nnoremap ï :ZoomWinTabToggle<CR>
     nnoremap Ï :ZoomWinTabToggle<CR>
 endfunction
