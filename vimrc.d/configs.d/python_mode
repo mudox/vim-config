@@ -1,0 +1,34 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let s:common_bundle = [
+            \ 'indent_line'             ,
+            \ 'autoformat'              ,
+            \ 'color_toy'               ,
+            \ 'ctrlp'                   ,
+            \ 'delimitmate'             ,
+            \ 'easy_align'              ,
+            \ 'fugitive'                ,
+            \ 'join'                    ,
+            \ 'mudox_ultisnips_snippets',
+            \ 'nerd_commenter'          ,
+            \ 'nerd_tree'               ,
+            \ 'origami'                 ,
+            \ 'renamer'                 ,
+            \ 'repeat'                  ,
+            \ 'surround'                ,
+            \ 'trailer_trash'           ,
+            \ 'ultisnips'               ,
+            \ 'unimpaired'              ,
+            \ 'vim_proc'                ,
+            \ 'vim_wiki'                ,
+            \ 'xolox_vim_misc'          ,
+            \ 'ycm'                     ,
+            \ 'zoomwintab'              ,
+            \ ]
+
+
+call extend(g:neo_bundles, s:common_bundle)
+
+MergeConfig sub_cfg_python_suite
+MergeConfig sub_cfg_color_suite
+MergeConfig sub_cfg_textobj_suite

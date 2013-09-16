@@ -1,0 +1,12 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let s:python_bundles = [
+            \ 'syntastic'               ,
+            \ 'python_syntax'           ,
+            \ 'python_flake8'           ,
+            \ 'python_rope'             ,
+            \ 'python_interactive'      ,
+            \ 'python_pep8_indent'      ,
+            \ ]
+
+call extend(g:neo_bundles, s:python_bundles)
