@@ -11,7 +11,7 @@ let s:dict.name = s:cfg_name
 
 " Repository Address.
 " use github's shortened form, e.g. 'your_id/repo_name'
-let s:repo = 'tpope/vim-pathoge'
+let s:repo = 'tpope/vim-pathogen'
 
 " More Neobundle Configurations.
     " TODO: any additional NeoBundle configuration goes here ...
