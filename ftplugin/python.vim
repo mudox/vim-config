@@ -21,7 +21,8 @@ function! s:Py3Run( args )
     echo vimproc#system2(l:exeString)
 endfunction
 
-command! -buffer -nargs=* Run call s:Py3Run(<q-args>) 
-command! -buffer -nargs=* Python3RunWithArgs call s:Py3Run(<q-args>) 
+command! -buffer -nargs=* Run call s:Py3Run(<q-args>)
+command! -buffer -nargs=* Python3RunWithArgs call s:Py3Run(<q-args>)
 
-nnoremap <buffer> <leader><leader>r :Python3RunWithArgs<Space>
+" <A-R> to run the current buffer.
+nnoremap <buffer> ò :Python3RunWithArgs<Space>
