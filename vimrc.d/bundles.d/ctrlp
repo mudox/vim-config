@@ -24,15 +24,13 @@ function! s:cfg_func()
     let g:ctrlp_extensions = ['line', 'tag', 'mixed', 'funky',  'rtscript']
 
     " mappings
-    let g:ctrlp_map = 'ð'
-    nnoremap <C-P>r :CtrlPMRUFiles<CR>
+    let g:ctrlp_map = '<Space>P'
     nnoremap <Space>r :CtrlPMRUFiles<CR>
-    nnoremap <C-P>s :CtrlPRTS<CR>
-    nnoremap <C-P>m :CtrlPMixed<CR>
+    nnoremap <Space>s :CtrlPRTS<CR>
     nnoremap <Space>m :CtrlPMixed<CR>
-    nnoremap <C-P>l :CtrlPLine<CR>
-    nnoremap <C-P>c :CtrlPChangeAll<CR>
-    nnoremap <C-P>f :call <SID>Hard()<CR>
+    nnoremap <Space>l :CtrlPLine<CR>
+    nnoremap <Space>c :CtrlPChangeAll<CR>
+    nnoremap <Space>f :call <SID>Hard()<CR>
 
     " cache
     let g:ctrlp_clear_cache_on_exit = 0
