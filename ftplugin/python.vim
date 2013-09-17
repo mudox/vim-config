@@ -24,5 +24,4 @@ endfunction
 command! -buffer -nargs=* Run call s:Py3Run(<q-args>)
 command! -buffer -nargs=* Python3RunWithArgs call s:Py3Run(<q-args>)
 
-" <A-R> to run the current buffer.
-nnoremap <buffer> ò :Python3RunWithArgs<Space>
+nnoremap <buffer> <Enter>r :Python3RunWithArgs<Space>
