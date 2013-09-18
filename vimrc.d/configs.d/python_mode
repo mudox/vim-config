@@ -25,8 +25,8 @@ let s:common_bundle = [
             \ ]
 
 if has('unix')
-    add(s:common_bundle, 'ycm')
-    add(s:common_bundle, 'autoformat')
+    call add(s:common_bundle, 'ycm')
+    call add(s:common_bundle, 'autoformat')
 endif
 call extend(g:neo_bundles, s:common_bundle)
 
