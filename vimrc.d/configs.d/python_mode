@@ -22,11 +22,12 @@ let s:common_bundle = [
             \ 'vim_proc'                ,
             \ 'vim_wiki'                ,
             \ 'xolox_vim_misc'          ,
-            \ 'ycm'                     ,
             \ 'zoomwintab'              ,
             \ ]
 
-
+if has('unix')
+    add(s:common_bundle, 'ycm')
+endif
 call extend(g:neo_bundles, s:common_bundle)
 
 MergeConfig sub_cfg_python_suite
