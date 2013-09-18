@@ -34,7 +34,6 @@ let g:mdx_bundle.neodict.name = g:mdx_bundle.name
 {config}\
 """
 
-n = 1
 for bundle in glob(path.expanduser('~/.vim/vimrc.d/bundles.d/*')):
     with open(bundle, mode='r', encoding='utf_8') as f:
         content = f.read()
@@ -61,14 +60,14 @@ for bundle in glob(path.expanduser('~/.vim/vimrc.d/bundles.d/*')):
     targetLines = templTargetLines.format(
         site=repo_line, neodict=neo_dict_lines, config=config_lines)
 
-    #os.system('cls')
+    # os.system('cls')
     #print(' {} '.format(path.basename(bundle)).center(79, '^'))
-    #print()
-    #print(targetLines)
+    # print()
+    # print(targetLines)
 
     #waitting = input()
 
     # write into file.
-    with open('E:/PYF/DESKTOP/out/{}'.format(path.basename(bundle)),
+    with open('/tmp/out/{}'.format(path.basename(bundle)),
               mode='w', encoding='utf-8') as f:
         f.write(targetLines)
