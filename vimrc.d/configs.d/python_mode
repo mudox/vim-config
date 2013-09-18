@@ -2,7 +2,6 @@
 
 let s:common_bundle = [
             \ 'indent_line'             ,
-            \ 'autoformat'              ,
             \ 'color_toy'               ,
             \ 'ctrlp'                   ,
             \ 'delimitmate'             ,
@@ -27,6 +26,7 @@ let s:common_bundle = [
 
 if has('unix')
     add(s:common_bundle, 'ycm')
+    add(s:common_bundle, 'autoformat')
 endif
 call extend(g:neo_bundles, s:common_bundle)
 
