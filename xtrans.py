@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import re
-import os
+#import os
 #import time
 from os import path
 from glob import glob
@@ -47,7 +47,7 @@ for bundle in glob(path.expanduser('~/.vim/vimrc.d/bundles.d/*')):
     # extract & compose new config function line.
     m = reConfig.search(content)
     config_lines = 'function g:mdx_bundle.config() dict' + \
-            '\n{}\nendfunction'.format(m.groupdict()['config'] if m else '')
+        '\n{}\nendfunction'.format(m.groupdict()['config'] if m else '')
 
     # extract & compose new neobundle dict argument lines.
     foundList = reNeoDict.findall(content)
