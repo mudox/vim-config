@@ -1,26 +1,17 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-" WARNING: DO NOT CHANGE   {{{1
-let s:cfg_name = expand('<sfile>:p:t:r')
+let g:mdx_bundle.name = expand('<sfile>:p:t')
 
-let s:dict = {}
-let s:dict.name = s:cfg_name
-" }}}1
+let g:mdx_bundle.site = 'https://github.com/Raimondi/delimitMate.git'
 
-" TODO: repository address.
-let s:repo = "'Raimondi/delimitMate'"
 
-" TODO: other configurations.
+let g:mdx_bundle.neodict.name = g:mdx_bundle.name
 
-" TODO: config
-function! s:cfg_func()
+
+function g:mdx_bundle.config() dict
     let delimitMate_expand_space       = 1
     let delimitMate_expand_cr          = 1
     let delimitMate_smart_quotes       = 1
     let delimitMate_balance_matchpairs = 1
-endfunction
 
-" WARNING: DO NOT CHANGE   {{{1
-execute "NeoBundle " . s:repo . ', ' . string(s:dict)
-execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
-" }}}1
+endfunction

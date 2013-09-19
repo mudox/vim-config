@@ -1,33 +1,15 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-" WARNING: DO NOT CHANGE   ------------------------------ {{{1
-let s:cfg_name = expand('<sfile>:p:t:r')
+let g:mdx_bundle.name = expand('<sfile>:p:t')
 
-let s:dict = {}
-let s:dict.name = s:cfg_name
-" }}}1
+let g:mdx_bundle.site = 'https://github.com/glts/vim-cottidie.git'
 
-" NEOBUNDLE REGISTRATION   ------------------------------ {{{1
 
-" Repository Address.
-" use github's shortened form, e.g. 'your_id/repo_name'
-let s:repo = 'glts/vim-cottidie'
+let g:mdx_bundle.neodict.name = g:mdx_bundle.name
+let g:mdx_bundle.neodict.lazy = 1
+let g:mdx_bundle.neodict.autoload = { 'commands' : ['CottidieTip'] }
 
-" More Neobundle Configurations.
-let s:dict.lazy = 1
-let s:dict.autoload = { 'commands' : ['CottidieTip'] }
-
-" }}}1
-
-" PLUGIN CONFIGURATIONS.   ------------------------------ {{{1
-
-function! s:cfg_func()
+function g:mdx_bundle.config() dict
     command! Tips CottidieTip
-endfunction
-" }}}1
 
-" WARNING: DO NOT CHANGE   ------------------------------ {{{1
-let s:repo = "'" . s:repo . "'"
-execute "NeoBundle " . s:repo . ', ' . string(s:dict)
-execute 'let g:CONFIG_PLUGIN_' . s:cfg_name . '= function("s:cfg_func")'
-" }}}1
+endfunction
