@@ -28,7 +28,8 @@ if has('unix')
     call add(s:common_bundle, 'ycm')
     call add(s:common_bundle, 'autoformat')
 endif
-call extend(g:neo_bundles, s:common_bundle)
+
+let g:mdx_bundles_to_register = s:common_bundle
 
 MergeConfig sub_cfg_python_suite
 MergeConfig sub_cfg_color_suite

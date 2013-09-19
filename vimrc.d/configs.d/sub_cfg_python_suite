@@ -9,4 +9,4 @@ let s:python_bundles = [
             \ 'python_pep8_indent'      ,
             \ ]
 
-call extend(g:neo_bundles, s:python_bundles)
+let g:mdx_bundles_to_register = s:python_bundles
