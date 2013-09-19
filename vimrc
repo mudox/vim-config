@@ -1,4 +1,4 @@
-" vimrc NOT .vimrc for [G]Vim on Linux / Window   {{{1
+" vimrc NOT .vimrc for [G]Vim on Linux / Window{{{1
 "
 " NOTE:
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
@@ -15,42 +15,13 @@
 let g:vim_config_root = substitute(expand('<sfile>:p:h'), ' ', '\\ ', 'g') " deprecated
 let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 
-" NEOBUNDLE                                       {{{1
-set nocompatible                " Recommend
+" BUNDLE LOADING & CONFIGURATION               {{{1
 
-if has('vim_starting')
-    exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/neobundle/neobundle'
-endif
+call mudox#cfg_bundle#NeoBundleInit()
 
-call neobundle#rc(g:vim_config_root . '/neobundle')
-
-" Let neobundle manage neobundle
-NeoBundleFetch 'Shougo/neobundle.vim' , { 'name' : 'neobundle' }
-
-execute 'NeoBundleLocal ' . escape(g:rc_root, '\ ') . '/bundle'
-
-" Register bundles from under vimrc.d/bundles.d
-call mudox#cfg_bundle#RegisterBundles()
-
-filetype plugin indent on       " Required!
-
-" Installation check.
-NeoBundleCheck
-
-if !has('vim_starting')
-    " Call on_source hook when reloading .vimrc.
-    call neobundle#call_hook('on_source')
-endif
-
-function NeoUpdateLogs()
-    NeoBundleUpdate
-    NeoBundleUpdatesLog
-endfunction
-
-nnoremap \neo :call NeoUpdateLogs()<CR>
 "}}}1
 
-" MAPPINGS                                        {{{1
+" MAPPINGS                                     {{{1
 
 " Toggle syntax feature.
 nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR>
@@ -58,21 +29,21 @@ nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR
 " Default leader key for <leader> mappings
 let g:mapleader = ','
 
-" <C-H/J/K/L> to jump among windows                  {{{2
+" <C-H/J/K/L> to jump among windows            {{{2
 nnoremap <C-H>	   <C-W>h
 nnoremap <C-J>	   <C-W>j
 nnoremap <C-K>	   <C-W>k
 nnoremap <C-L>	   <C-W>l
 "}}}2
 
-" <M-Up/Down/Left/Right> to resize windows           {{{2
+" <M-Up/Down/Left/Right> to resize windows     {{{2
 nnoremap <M-Up> 	5<C-W>+
 nnoremap <M-Down> 	5<C-W>-
 nnoremap <M-Left> 	5<C-W><
 nnoremap <M-Right> 	5<C-W>>
 "}}}2
 
-" <A-H/L> to switch among tabs                       {{{2
+" <A-H/L> to switch among tabs                 {{{2
 nnoremap <silent> ì gt
 nnoremap <silent> è gT
 "}}}2
@@ -125,26 +96,24 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " }}}1
 
-" BUNDLE SETTINGS                                 {{{1
+" BUNDLE SETTINGS                              {{{1
 
-call mudox#cfg_bundle#LoadBundleConfigs()
-
-" [ft-sql]"                                          {{{2
+" [ft-sql]"                                    {{{2
 let g:ftplugin_sql_omni_key_right = '<C-l>'
 let g:ftplugin_sql_omni_key_left  = '<C-h>'
 "}}}2
 
-" [matchparen]"                                      {{{2
+" [matchparen]"                                {{{2
 let loaded_matchparen = 1
 " }}}2
 
-" [mark]                                             {{{2
+" [mark]                                       {{{2
 let g:mwAutoSaveMarks = 0
 let g:mwIgnoreCase = 0
 " let g:mwHistAdd = '/@'
 "}}}2
 
-" [dot_vim]                                          {{{2
+" [dot_vim]                                    {{{2
 
 " let g:mdx_vim_alpha_step = 15
 if has('win32') || has('win64')
@@ -158,17 +127,18 @@ endif
 nnoremap \z   :<C-U>call mudox#z_menu#Main()<CR>
 nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 " }}}2
-"}}}1
-
-" EVENTS                                          {{{1
 
 "}}}1
 
-" ABBREVIATES                                     {{{1
+" EVENTS                                       {{{1
+
+"}}}1
+
+" ABBREVIATES                                  {{{1
 cabbrev ue UltiSnipsEdit
 "}}}1
 
-" SETTINGS                                        {{{1
+" SETTINGS                                     {{{1
 
 " Important
 set nocompatible
@@ -205,7 +175,7 @@ endif
 set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
-if index(g:neo_bundles, 'airline') == -1
+if index(g:mdx_loaded_bundles, 'airline') == -1
     set laststatus=0 " never show statusline.
     set cmdheight=1
     set showmode
@@ -271,11 +241,11 @@ if has('unix')
 endif
 
 
-" multiple windows                                   {{{2
+" multiple windows                             {{{2
 "set hidden " don't unload a buffer when no longer shown in a window.
 "}}}2
 
-" vim files syntax hightlighting                     {{{2
+" vim files syntax hightlighting               {{{2
 let g:vimsyn_embed = 0      " disable all embeding syntax.
 let g:vimsyn_folding = 'af' " enable autofolding of autogroups & functions.
 let g:vimsyn_noerror = 1

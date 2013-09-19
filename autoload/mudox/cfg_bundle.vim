@@ -1,20 +1,102 @@
-let g:mudox_vimrc_dir   = g:rc_root . '/vimrc.d'
-let g:mudox_configs_dir = g:mudox_vimrc_dir . '/configs.d'
-let g:mudox_bundles_dir = g:mudox_vimrc_dir . '/bundles.d'
+if !exists('loaded_cfg_bundle_dot_vim')
+    let g:loaded_cfg_bundle_dot_vim = 1
+else
+    finish
+endif
 
-function mudox#cfg_bundle#EditBundle(name)
-    let l:file_name = g:mudox_bundles_dir . '/' . a:name
-    let l:open_cmd  = mudox#query_open_file#Main() " gvie user chance to cancel.
+let g:mdx_vimrc_dir           = g:rc_root . '/vimrc.d'
+let g:mdx_configs_dir         = g:mdx_vimrc_dir . '/configs.d'
+let g:mdx_bundles_dir         = g:mdx_vimrc_dir . '/bundles.d'
 
-    if !filereadable(l:file_name)
-        " read template content
-        let l:tmpl = readfile(g:mudox_vimrc_dir . '/bundle_template')
+let g:mdx_bundle_manager      = 'NeoBundle'
+let g:mdx_bundle_objs         = []
+let g:mdx_sourced                 = []
+let g:mdx_bundles_to_register = []
+let g:mdx_loaded_bundles      = []
+
+
+function s:MergeConfig(cfg_name)
+    " return if ever sourced beforereturn, else record it.
+    if index(g:mdx_sourced, a:cfg_name) != -1
+        return
+    else
+        call add(g:mdx_sourced, a:cfg_name)
     endif
 
-    if l:open_cmd =~? 'tabnew'
-        execute 'tabnew ' . g:rc_root . '/vimrc'
-        execute 'vnew ' . g:mudox_configs_dir . '/all_old'
-        let l:open_cmd = 'vnew '
+    call s:CommitBundlesIn(g:mdx_bundles_to_register)
+    let g:mdx_bundles_to_register = []
+
+    execute 'source ' . g:mdx_configs_dir . '/' . a:cfg_name
+    call s:CommitBundlesIn(g:mdx_bundles_to_register)
+endfunction
+
+function s:CommitBundlesIn(lst)
+    for b in a:lst
+        if index(g:mdx_loaded_bundles, b) == -1
+            call add(g:mdx_loaded_bundles, b)
+        endif
+    endfor
+endfunction
+
+function s:Register2Neobundle()
+    execute "NeoBundle " . string(g:mdx_bundle.site) . ', ' . string(g:mdx_bundle.neodict)
+    call add(g:mdx_bundle_objs, g:mdx_bundle)
+    unlet g:mdx_bundle
+endfunction
+
+function s:RegisterBundles()
+    " used in configs.d/* to source sub config files.
+    command -nargs=1 MergeConfig  call s:MergeConfig(<q-args>)
+
+    execute "source " . g:mdx_vimrc_dir . '/cur_config'
+
+    call s:CommitBundlesIn(g:mdx_bundles_to_register)
+    unlet g:mdx_bundles_to_register
+
+    for b in g:mdx_loaded_bundles
+        let g:mdx_bundle = {}
+        let g:mdx_bundle.neodict = {}
+        execute 'source ' . g:mdx_bundles_dir . '/' . b
+
+        "call s:Register2{g:mdx_bundle_manager}()
+        call s:Register2Neobundle()
+    endfor
+
+    " clean up functions & commands
+    delcommand MergeConfig
+    delfunction s:MergeConfig
+    delfunction s:CommitBundlesIn
+endfunction
+
+function s:LoadBundleConfigs()
+    for b in g:mdx_bundle_objs
+        call b.config()
+    endfor
+    unlet g:mdx_bundle_objs
+endfunction
+
+function s:ParsePlusReg()
+    "let g:regex = '[^/"' . "']" . '\+\%(github\.com\)\@</\%([^/"' . "'" . ']\%(\.git\)\@\)\+'
+    let g:regex = 'https://github\.com/[^/]\+/[^/]\+\.git'
+
+    for l:x in [@", @+, @*, @a]
+        let g:shortened = matchstr(l:x, g:regex)
+        if len(g:shortened) > 0
+            break
+        endif
+    endfor
+
+    " returns an empty string if parsing failed.
+    return g:shortened
+endfunction
+
+function mudox#cfg_bundle#EditBundle(name)
+    let l:file_name = g:mdx_bundles_dir . '/' . a:name
+    let l:open_cmd  = mudox#query_open_file#Main() " gvie user chance to cancel.
+
+    if filereadable(l:file_name)
+        " read template content
+        let l:tmpl = readfile(g:mdx_vimrc_dir . '/bundle_template')
     endif
 
     execute  l:open_cmd . l:file_name
@@ -55,10 +137,10 @@ function mudox#cfg_bundle#EditConfig(arg)
     endif
 
     if len(l:names) == 0 " Edit current config.
-        let l:file_path = g:mudox_configs_dir . '/' . g:mdx_config_name
+        let l:file_path = g:mdx_configs_dir . '/' . g:mdx_config_name
         execute mudox#query_open_file#Main() . l:file_path
     else " edit a new or existing config.
-        let l:file_path = g:mudox_configs_dir . '/' . l:names[0]
+        let l:file_path = g:mdx_configs_dir . '/' . l:names[0]
 
         if filereadable(l:file_path)
             execute mudox#query_open_file#Main() . l:file_path
@@ -67,14 +149,14 @@ function mudox#cfg_bundle#EditConfig(arg)
             let l:open_cmd  = mudox#query_open_file#Main()
 
             " read template content if any.
-            let l:tmpl_path = g:mudox_configs_dir . '/'
+            let l:tmpl_path = g:mdx_configs_dir . '/'
                         \ . (len(l:names) == 2 ? l:names[1] : '../config_template')
             echo l:tmpl_path
 
             if filereadable(l:tmpl_path)
                 let l:tmpl = readfile(l:tmpl_path)
             else
-                echoerr "Template file " . l:tmpl_path . ' unreadable!'
+                echoerr "Template file " . l:tmpl_path . ' unreadable'
                 echoerr "creating an empty config ..."
             endif
 
@@ -91,57 +173,43 @@ function mudox#cfg_bundle#EditConfig(arg)
     endif
 endfunction
 
-function mudox#cfg_bundle#LoadBundleConfigs()
-    for b in g:neo_bundles
-        call g:CONFIG_PLUGIN_{b}()
-        unlet! g:CONFIG_PLUGIN_{b}
-    endfor
+function mudox#cfg_bundle#VundleInit()
 endfunction
 
-function mudox#cfg_bundle#RegisterBundles()
-    let g:neo_bundles = []
-
-
-    " used in configs.d/* to source sub config files.
-    command -nargs=1 MergeConfig  execute 'source ' . g:mudox_configs_dir . '/' . <q-args>
-
-    execute "source " . g:mudox_vimrc_dir . '/cur_config'
-
-    " filter g:neo_bundles
-    let l:copy = copy(g:neo_bundles)
-    let g:neo_bundles = []
-    for b in l:copy
-        " no unavailable bundles.
-        if !filereadable(g:mudox_bundles_dir . '/' . b)
-            echoerr 'Unavailabled bundle [' . b . ']'
-            continue
-        endif
-
-        " no duplicated bundles.
-        if index(g:neo_bundles, b) != -1
-            continue
-        endif
-
-        call add(g:neo_bundles, b)
-    endfor
-
-    for b in g:neo_bundles
-        execute 'source ' . g:mudox_bundles_dir . '/' . b
-    endfor
-
-    delcommand MergeConfig
+function mudox#cfg_bundle#PathogenInit()
 endfunction
 
-function! s:ParsePlusReg()
-    let g:regex = '\zs[^/"' . "']" . '\+\%(github.com\)\@<!/\%([^/"' . "'" . ']\%(\.git\)\@!\)\+\ze'
+function mudox#cfg_bundle#NeoBundleInit()
+    set nocompatible                " Recommend
 
-    for l:x in [@", @+, @*, @a]
-        let g:shortened = matchstr(l:x, g:regex)
-        if len(g:shortened) > 0
-            break
-        endif
-    endfor
+    if has('vim_starting')
+        exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/neobundle/neobundle'
+    endif
 
-    " returns an empty string if parsing failed.
-    return g:shortened
+    call neobundle#rc(g:vim_config_root . '/neobundle')
+
+    " Let neobundle manage neobundle
+    NeoBundleFetch 'Shougo/neobundle.vim' , { 'name' : 'neobundle' }
+
+    execute 'NeoBundleLocal ' . escape(g:rc_root, '\ ') . '/bundle'
+
+    " * * * * * * * * * * * * * * * * * * *
+    call s:RegisterBundles()
+    " * * * * * * * * * * * * * * * * * * *
+
+    filetype plugin indent on       " Required!
+
+    " Installation check.
+    NeoBundleCheck
+
+    if !has('vim_starting')
+        " Call on_source hook when reloading .vimrc.
+        call neobundle#call_hook('on_source')
+    endif
+
+    " mapping \neo to update and show update log.
+    nnoremap \neo <Esc>:NeoBundleUpdate<CR>:NeoBundleUpdatesLog<CR>
+
+    " load bundle configurations.
+    call s:LoadBundleConfigs()
 endfunction
