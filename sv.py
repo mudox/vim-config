@@ -3,18 +3,20 @@ from os import path
 
 flag = False
 for vimDir in ['.vim', 'vimfiles']:
-    if path.exists(path.expanduser('~/%s' % vimDir)): 
+    if path.exists(path.expanduser('~/%s' % vimDir)):
         configs_dir = path.expanduser('~/%s/vimrc.d/configs.d' % vimDir)
         cur_config = path.expanduser('~/%s/vimrc.d/cur_config' % vimDir)
         if path.exists(configs_dir):
             flag = True
 
 if not flag:
-    print '* vim path tree detection failed *'
+    print '* .vim/vimfiles path detection failed *'
     exit()
 
 config_paths = glob(configs_dir + '/*')
 config_names = [ path.basename(x) for x in config_paths ]
+config_names = filter(lambda n: not n.startswith('sub_cfg_'), config_names)
+
 menu_dict = { idx : name for idx, name in  enumerate(sorted(config_names)) }
 
 print '-------- Vim Configuration Available --------'
