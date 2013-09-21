@@ -1,4 +1,4 @@
-function! s:LoadingStatusDict()
+function! s:ScriptLoadingStatusDcit()
     " get the output of ":scriptnames" in the l:scriptnames_output variable.
     let l:scriptnames_output = ''
     redir => l:scriptnames_output
@@ -8,25 +8,32 @@ function! s:LoadingStatusDict()
     let l:list_of_lines = split(l:scriptnames_output, '\n')
 
     " strip prefix numbers.
-    for i in range(len(l:list_of_lines))
-        let l:list_of_lines[i] = l:list_of_lines[i][5:]
-    endfor
+    call map(l:list_of_lines, 'v:val[5:]')
 
-    " only interested in 'neobundle/' or 'bundle/' lines
-    call filter(l:list_of_lines, 'v:val =~ "neobundle" || v:val =~ "bundle"')
+    " only interested in '~/.vim[vimfiles]/neobundle[bundle]/' lines
+    call filter(l:list_of_lines, 'v:val =~? ' . "'"
+                \ . '\m\c[~][\\/]\%(\.vim\|vimfiles\)[\\/]\%(neobundle\|bundle\)[\\/]'
+                \ . "'")
     call sort(l:list_of_lines)
 
     let l:plugin = ''
     let l:dict_of_scripts = {}
 
     for l:line in l:list_of_lines
-        let l:tmp = matchstr(l:line, '\c\(neobundle\|bundle\)\(\\\|\/\)\zs[^\\/]\+\ze\2')
+        let l:tmp = matchstr(l:line,
+                    \ '\m\c[~][\\/]\%(\.vim\|vimfiles\)[\\/]\%(neobundle\|bundle\)[\\/]\zs[^\\/]\+\ze[\\/]')
+
+        if empty(l:tmp)
+            echoerr 'empty string returned from matchstr()'
+            echoerr 'l:line: ' . l:line
+        endif
+
         if l:plugin != l:tmp
             let l:plugin = l:tmp
             let l:dict_of_scripts[l:plugin] = []
         endif
 
-        let l:file_line = substitute(l:line, '^.\{-}\(neobundle\|bundle\)', '\t', '')
+        let l:file_line = substitute(l:line, '\m\c^.\{-}\%(neobundle\|bundle\)', '\t', '')
         call add(l:dict_of_scripts[l:plugin], l:file_line)
     endfor
 
@@ -38,7 +45,7 @@ function! s:SPrintScriptLoadingStatus()
     let l:nr_file = 0
     let l:retStr = ''
 
-    for [l:script, l:files] in items(s:LoadingStatusDict())
+    for [l:script, l:files] in items(s:ScriptLoadingStatusDcit())
         let l:nr_plug = l:nr_plug + 1
         let l:nr_file = l:nr_file + len(l:files)
         let l:retStr  = l:retStr . printf("\n\n[%03d] -- %s\n", l:nr_plug, l:script)
@@ -95,6 +102,6 @@ function! mudox#scripts_man#LoadingStatus()
     execute mudox#query_open_file#Main() . 'Mudox_SLS_' . s:LoadingStatusBufNum
 
     call s:SetInfoWin()
-    call append(line('$'), split(l:detail, "\n"))
+    call append(0, split(l:detail, "\n"))
     call append(line('$'), split(l:summary, "\n"))
 endfunction
