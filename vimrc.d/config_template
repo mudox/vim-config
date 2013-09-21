@@ -1,7 +1,12 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-let g:bundle_list = [
+let s:bundle_list = [
             \ 'airline',
             \ ]
 
-call extend(g:neo_bundles, s:bundle_list)
+" finally, put all bundles you want into this global variable, then they will be
+" enrolled at an appropriate time.
+let g:mdx_bundles_to_register = s:bundle_list
+
+" use command 'MergeConfig' to load sub config files (i.e. 'configs.d/sub_cfg_*')
+" Mergeconfig sub_cfg_

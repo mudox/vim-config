@@ -16,9 +16,8 @@ let g:vim_config_root = substitute(expand('<sfile>:p:h'), ' ', '\\ ', 'g') " dep
 let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 
 " BUNDLE LOADING & CONFIGURATION               {{{1
-
-call mudox#cfg_bundle#NeoBundleInit()
-
+call mudox#cfg_bundle#GetBundleManager()
+call mudox#cfg_bundle#BundlesInit()
 "}}}1
 
 " MAPPINGS                                     {{{1
