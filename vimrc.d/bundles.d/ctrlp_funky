@@ -9,6 +9,5 @@ let g:mdx_bundle.neodict.name = g:mdx_bundle.name
 
 
 function g:mdx_bundle.config() dict
-    nnoremap <C-P>f :<C-U>CtrlPFunky<CR>
-
+    nnoremap <Space>f :<C-U>CtrlPFunky<CR>
 endfunction

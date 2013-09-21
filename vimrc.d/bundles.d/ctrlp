@@ -18,7 +18,7 @@ function g:mdx_bundle.config() dict
     nnoremap <Space>m :CtrlPMixed<CR>
     nnoremap <Space>l :CtrlPLine<CR>
     nnoremap <Space>c :CtrlPChangeAll<CR>
-    nnoremap <Space>f :call <SID>Hard()<CR>
+    nnoremap <Space>b :CtrlPBuffer<CR>
 
     " cache
     let g:ctrlp_clear_cache_on_exit = 0
