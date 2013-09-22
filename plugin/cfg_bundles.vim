@@ -22,7 +22,7 @@ function! s:CfgInfo()
     echohl Identifier | echon printf("%s\n", g:mdx_config_name) | echohl None
 
     echohl Title | echon printf("%-30s: ", 'Sourced Config Files') | echohl None
-    echohl Identifier | echon printf("%s\n", join(g:mdx_config_sourced, ' ')) | echohl None
+    echohl Identifier | echon printf("%s\n", join(g:mdx_config_sourced, ' | ')) | echohl None
 
     echohl Title | echo printf("%-30s:\n", "Bundles Enrolled") | echohl None
 

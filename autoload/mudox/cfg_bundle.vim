@@ -158,6 +158,7 @@ function mudox#cfg_bundle#PathogenInit()
                 \ )
 
     call pathogen#infect('neobundle/{}')
+    call pathogen#infect('bundle/{}')
 
     syntax enable
     filetype plugin indent on
