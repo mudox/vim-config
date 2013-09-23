@@ -182,7 +182,7 @@ if index(g:mdx_loaded_bundles, 'airline') == -1
 else
     set noshowmode
     set noshowcmd
-    set laststatus=2 
+    set laststatus=2
     set cmdheight=2
 endif
 
