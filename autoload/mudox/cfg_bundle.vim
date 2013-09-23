@@ -146,6 +146,9 @@ function mudox#cfg_bundle#NeoBundleInit()
 endfunction
 
 function mudox#cfg_bundle#PathogenInit()
+    filetype off
+    filetype plugin indent off
+
     let g:pathogen_disabled = []
     if has('vim_starting')
         exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/neobundle/pathogen'
