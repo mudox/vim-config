@@ -1,5 +1,7 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
+let g:mdx_bundle_manager = 'Pathogen'
+
 let s:common_bundle = [
             \ 'indent_line'             ,
             \ 'color_toy'               ,
@@ -31,6 +33,6 @@ endif
 
 let g:mdx_bundles_to_register = s:common_bundle
 
-MergeConfig sub_cfg_python_suite
+MergeConfig sub_cfg_python_lang
 MergeConfig sub_cfg_color_suite
 MergeConfig sub_cfg_textobj_suite

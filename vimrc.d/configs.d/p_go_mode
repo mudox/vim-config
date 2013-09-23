@@ -1,10 +1,12 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
+let g:mdx_bundle_manager = 'Pathogen'
+
 let s:bundle_list = [
-            \ 'airline',
             \ 'autoformat',
             \ 'color_toy',
             \ 'ctrlp',
+            \ 'ctrlp_funky',
             \ 'delimitmate',
             \ 'easy_align',
             \ 'fugitive',
@@ -22,11 +24,11 @@ let s:bundle_list = [
             \ 'vim_proc',
             \ 'vim_wiki',
             \ 'xolox_vim_misc',
-            \ 'ycm',
             \ 'zoomwintab',
             \ ]
 
 let g:mdx_bundles_to_register = s:bundle_list
 
+MergeConfig sub_cfg_go_lang
 MergeConfig sub_cfg_color_suite
 MergeConfig sub_cfg_textobj_suite
