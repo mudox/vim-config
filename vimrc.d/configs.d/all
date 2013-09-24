@@ -1,8 +1,0 @@
-" vim: filetype=vim foldmethod=marker fileformat=unix
-
-let g:mdx_bundle_manager = 'Pathogen'
-
-let s:bundles = glob(g:rc_root . '/vimrc.d/bundles.d/*', 1, 1)
-let s:bundles = map(s:bundles, 'fnamemodify(v:val, ":t:r")')
-
-let g:mdx_bundles_to_register = s:bundles
