@@ -14,14 +14,15 @@ if not flag:
     exit()
 
 config_paths = glob(configs_dir + '/*')
-config_names = [ path.basename(x) for x in config_paths ]
+config_names = [path.basename(x) for x in config_paths]
 config_names = filter(lambda n: not n.startswith('sub_cfg_'), config_names)
 
-menu_dict = { idx : name for idx, name in  enumerate(sorted(config_names)) }
+menu_dict = {idx: name for idx, name in enumerate(sorted(config_names))}
 
 print '-------- Vim Configuration Available --------'
 for idx, name in menu_dict.items():
     print '[{0}] - {1}'.format(idx, name)
+
 print '---------------------------------------------'
 
 try:
@@ -29,13 +30,15 @@ try:
         config_idx = input('Select your configuation: ')
         if config_idx in menu_dict:
             break
-        # TODO: beautify menu interface if got a invalid input.
+        else:
+            print('Oops, invalid input!')
+            # TODO: beautify menu interface if got a invalid input.
 except:
     pass
 else:
     so_line = '''\
-    execute 'source ' . g:rc_root . '/vimrc.d/configs.d/{0}'
-    let g:mdx_config_name = '{0}'
+    \rlet g:mdx_config_name = '{0}'
+    \rexecute 'source ' . g:rc_root . '/vimrc.d/configs.d/{0}'
     '''
 
     with open(cur_config, 'w') as cc:

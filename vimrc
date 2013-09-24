@@ -76,7 +76,7 @@ noremap zi zizz
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
 
-nnoremap <leader>cd :<C-U>lcd %:p:h<CR>
+nnoremap <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
 
 " like UltisniptEdit command, edit main ftplugin config file
 " for current file type.
