@@ -87,7 +87,7 @@ function s:RegisterBundles()
     delfunction g:Register2Pathogen
 endfunction
 
-function s:LoadBundleConfigs()
+function mudox#cfg_bundle#LoadBundleConfigs()
     for b in g:mdx_bundle_objs
         call b.config()
     endfor
@@ -140,9 +140,6 @@ function mudox#cfg_bundle#NeoBundleInit()
 
     " mapping \neo to update and show update log.
     nnoremap \neo <Esc>:NeoBundleUpdate<CR>:NeoBundleUpdatesLog<CR>
-
-    " load bundle configurations.
-    call s:LoadBundleConfigs()
 endfunction
 
 function mudox#cfg_bundle#PathogenInit()
@@ -165,9 +162,6 @@ function mudox#cfg_bundle#PathogenInit()
 
     syntax enable
     filetype plugin indent on
-
-    " load bundle configurations.
-    call s:LoadBundleConfigs()
 endfunction
 
 function mudox#cfg_bundle#EditBundle(name)

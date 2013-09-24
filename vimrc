@@ -97,6 +97,8 @@ command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
 
 " BUNDLE SETTINGS                              {{{1
 
+call mudox#cfg_bundle#LoadBundleConfigs()
+
 " [ft-sql]"                                    {{{2
 let g:ftplugin_sql_omni_key_right = '<C-l>'
 let g:ftplugin_sql_omni_key_left  = '<C-h>'
