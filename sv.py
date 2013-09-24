@@ -24,18 +24,21 @@ for idx, name in menu_dict.items():
     print '[{0}] - {1}'.format(idx, name)
 print '---------------------------------------------'
 
-while 1:
-    config_idx = input('Select your configuation: ')
-    if config_idx in menu_dict:
-        break
-    # TODO: beautify menu interface if got a invalid input.
+try:
+    while 1:
+        config_idx = input('Select your configuation: ')
+        if config_idx in menu_dict:
+            break
+        # TODO: beautify menu interface if got a invalid input.
+except:
+    pass
+else:
+    so_line = '''\
+    execute 'source ' . g:rc_root . '/vimrc.d/configs.d/{0}'
+    let g:mdx_config_name = '{0}'
+    '''
 
-so_line = '''\
-execute 'source ' . g:rc_root . '/vimrc.d/configs.d/{0}'
-let g:mdx_config_name = '{0}'
-'''
+    with open(cur_config, 'w') as cc:
+        cc.write(so_line.format(menu_dict[config_idx]))
 
-with open(cur_config, 'w') as cc:
-    cc.write(so_line.format(menu_dict[config_idx]))
-
-print 'Switched to >> %s << !' % menu_dict[config_idx]
+    print 'Switched to >> %s << !' % menu_dict[config_idx]
