@@ -25,6 +25,7 @@ let s:bundle_list = [
             \ 'xolox_vim_misc',
             \ 'zoomwintab',
             \ ]
+
 if has('unix')
     call add(s:bundle_list, 'ycm')
     call add(s:bundle_list, 'autoformat')

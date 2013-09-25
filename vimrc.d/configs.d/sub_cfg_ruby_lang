@@ -1,6 +1,7 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
 let s:bundle_list = [
+            \ 'endwise',
             \ 'ruby',
             \ ]
 
