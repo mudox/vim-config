@@ -1,4 +1,4 @@
-" vimrc NOT .vimrc for [G]Vim on Linux / Window{{{1
+" vimrc NOT .vimrc for [G]Vim on Linux / Window   {{{1
 "
 " NOTE:
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
@@ -15,12 +15,14 @@
 let g:vim_config_root = substitute(expand('<sfile>:p:h'), ' ', '\\ ', 'g') " deprecated
 let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 
-" BUNDLE LOADING & CONFIGURATION               {{{1
+" BUNDLE LOADING                                  {{{1
+let g:vimball_home = escape(g:rc_root, ' \') . '/bundle/'
+
 call mudox#cfg_bundle#GetBundleManager()
 call mudox#cfg_bundle#BundlesInit()
 "}}}1
 
-" MAPPINGS                                     {{{1
+" MAPPINGS                                        {{{1
 
 " Toggle syntax feature.
 nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR>
@@ -28,21 +30,21 @@ nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR
 " Default leader key for <leader> mappings
 let g:mapleader = ','
 
-" <C-H/J/K/L> to jump among windows            {{{2
+" <C-H/J/K/L> to jump among windows                  {{{2
 nnoremap <C-H>	   <C-W>h
 nnoremap <C-J>	   <C-W>j
 nnoremap <C-K>	   <C-W>k
 nnoremap <C-L>	   <C-W>l
 "}}}2
 
-" <M-Up/Down/Left/Right> to resize windows     {{{2
+" <M-Up/Down/Left/Right> to resize windows           {{{2
 nnoremap <M-Up> 	5<C-W>+
 nnoremap <M-Down> 	5<C-W>-
 nnoremap <M-Left> 	5<C-W><
 nnoremap <M-Right> 	5<C-W>>
 "}}}2
 
-" <A-H/L> to switch among tabs                 {{{2
+" <A-H/L> to switch among tabs                       {{{2
 nnoremap <silent> ì gt
 nnoremap <silent> è gT
 "}}}2
@@ -96,26 +98,26 @@ nnoremap <Enter>f :EditFileType<Space>
 
 " }}}1
 
-" BUNDLE SETTINGS                              {{{1
+" BUNDLE SETTINGS                                 {{{1
 
 call mudox#cfg_bundle#LoadBundleConfigs()
 
-" [ft-sql]"                                    {{{2
+" [ft-sql]"                                          {{{2
 let g:ftplugin_sql_omni_key_right = '<C-l>'
 let g:ftplugin_sql_omni_key_left  = '<C-h>'
 "}}}2
 
-" [matchparen]"                                {{{2
+" [matchparen]"                                      {{{2
 let loaded_matchparen = 1
 " }}}2
 
-" [mark]                                       {{{2
+" [mark]                                             {{{2
 let g:mwAutoSaveMarks = 0
 let g:mwIgnoreCase = 0
 " let g:mwHistAdd = '/@'
 "}}}2
 
-" [dot_vim]                                    {{{2
+" [dot_vim]                                          {{{2
 
 " let g:mdx_vim_alpha_step = 15
 if has('win32') || has('win64')
@@ -132,15 +134,15 @@ nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 
 "}}}1
 
-" EVENTS                                       {{{1
+" EVENTS                                          {{{1
 
 "}}}1
 
-" ABBREVIATES                                  {{{1
+" ABBREVIATES                                     {{{1
 cabbrev ue UltiSnipsEdit
 "}}}1
 
-" SETTINGS                                     {{{1
+" SETTINGS                                        {{{1
 
 " Important
 set nocompatible
@@ -243,11 +245,11 @@ if has('unix')
 endif
 
 
-" multiple windows                             {{{2
+" multiple windows                                   {{{2
 "set hidden " don't unload a buffer when no longer shown in a window.
 "}}}2
 
-" vim files syntax hightlighting               {{{2
+" vim files syntax hightlighting                     {{{2
 let g:vimsyn_embed = 0      " disable all embeding syntax.
 let g:vimsyn_folding = 'af' " enable autofolding of autogroups & functions.
 let g:vimsyn_noerror = 1
