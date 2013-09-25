@@ -1,0 +1,30 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:mdx_bundle_manager = 'Pathogen'
+
+let s:bundle_list = [
+            \ 'airline',
+            \ 'color_toy',
+            \ 'ctrlp',
+            \ 'ctrlp_funky',
+            \ 'easy_align',
+            \ 'fugitive',
+            \ 'join',
+            \ 'nerd_commenter',
+            \ 'nerd_tree',
+            \ 'origami',
+            \ 'renamer',
+            \ 'repeat',
+            \ 'surround',
+            \ 'trailer_trash',
+            \ 'ultisnips',
+            \ 'unimpaired',
+            \ 'vim_proc',
+            \ 'vim_wiki',
+            \ 'xolox_vim_misc',
+            \ 'zoomwintab',
+            \ ]
+
+let g:mdx_bundles_to_register = s:bundle_list
+
+MergeConfig sub_cfg_color_suite
