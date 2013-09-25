@@ -91,7 +91,8 @@ function! EditFileTypeSettings( filetype )
         echohl None
     endif
 endfunction
-command  -nargs=? Eft call EditFileTypeSettings(<q-args>)
+command  -nargs=? EditFileType call EditFileTypeSettings(<q-args>)
+nnoremap <Enter>f :EditFileType<Space>
 
 " }}}1
 

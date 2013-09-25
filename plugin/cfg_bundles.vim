@@ -4,12 +4,14 @@ endif
 let g:vim_bundle_manager = 1
 
 command -nargs=1 -complete=custom,<SID>BundlesAvail EditBundle call mudox#cfg_bundle#EditBundle(<q-args>)
+nnoremap <Enter>b :EditBundle<Space>
 
 function <SID>BundlesAvail(arglead, cmdline, cursorpos)
     return join(mudox#cfg_bundle#BundleListAvail(), "\n")
 endfunction
 
 command -nargs=* -complete=custom,<SID>ConfigAvail EditConfig call mudox#cfg_bundle#EditConfig(<q-args>)
+nnoremap <Enter>c :EditConfig<Space>
 
 function <SID>ConfigAvail(arglead, cmdline, cursorpos)
     return join(mudox#cfg_bundle#ConfigListAvail(), "\n")
