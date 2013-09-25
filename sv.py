@@ -1,5 +1,6 @@
 from glob import glob
 from os import path
+import textwrap
 
 flag = False
 for vimDir in ['.vim', 'vimfiles']:
@@ -36,10 +37,10 @@ try:
 except:
     pass
 else:
-    so_line = '''\
-    \rlet g:mdx_config_name = '{0}'
-    \rexecute 'source ' . g:rc_root . '/vimrc.d/configs.d/{0}'
-    '''
+    so_line = textwrap.dedent('''\
+    let g:mdx_config_name = '{0}'
+    execute 'source ' . g:rc_root . '/vimrc.d/configs.d/{0}'
+    ''')
 
     with open(cur_config, 'w') as cc:
         cc.write(so_line.format(menu_dict[config_idx]))
