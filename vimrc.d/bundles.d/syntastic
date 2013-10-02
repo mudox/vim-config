@@ -41,9 +41,10 @@ function g:mdx_bundle.config() dict
                 \ }
 
     " checker options
-    let g:syntastic_c_checkers = ['ycm']
-    let g:syntastic_cpp_checkers = ['ycm']
+    let g:syntastic_c_checkers          = ['ycm']
+    let g:syntastic_cpp_checkers        = ['ycm']
     let g:syntastic_javascript_checkers = ['jshint']
-    let g:syntastic_python_checkers = [ 'pep8', 'pyflakes', 'python']
+    let g:syntastic_python_checkers     = [ 'pep8', 'pyflakes', 'python']
+    let g:syntastic_go_checkers         = [ 'gofmt', 'govet', 'go', 'golint']
 
 endfunction
