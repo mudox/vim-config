@@ -1,8 +1,12 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
 let s:bundle_list = [
-            \ 'syntastic',
-            \ 'golang',
+            \ 'renamer',
+            \ 'rename',
+            \ 'nerd_tree',
+            \ 'join',
+            \ 'surround',
+            \ 'repeat',
             \ ]
 
 " finally, put all bundles you want into this global variable, then they will be

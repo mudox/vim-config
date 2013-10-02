@@ -1,8 +1,9 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
 let s:bundle_list = [
-            \ 'syntastic',
-            \ 'golang',
+            \ 'vim_proc',
+            \ 'fugitive',
+            \ 'ctrlp',
             \ ]
 
 " finally, put all bundles you want into this global variable, then they will be
