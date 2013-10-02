@@ -26,3 +26,5 @@ command! -buffer -nargs=* RubyRunWithArgs call s:RubyRun(<q-args>)
 
 nnoremap <buffer> <Enter>r :RubyRunWithArgs<Space>
 
+setlocal softtabstop=2
+setlocal shiftwidth=2
