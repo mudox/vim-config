@@ -1,6 +1,6 @@
 function! s:Py3Run( args )
     " save & lcd to current python script file path.
-    w
+    silent write
     lcd %:p:h
 
     if has('win32') || has('win64')
@@ -13,7 +13,7 @@ function! s:Py3Run( args )
             let l:python3_path = 'python3'
             let l:exeString = l:python3_path . ' ' . escape(expand('%'), ' \') . ' ' . a:args
     else
-        echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+        echoerr "Oops! Unknown sysinfo"
     endif
 
     echohl Underlined | echo l:exeString | echohl NONE

@@ -1,7 +1,7 @@
 " go filetype setting.
 function! s:GoRun( args )
     " save & lcd to current python script file path.
-    w
+    silent write
     lcd %:p:h
 
     if has('win32') || has('win64')
