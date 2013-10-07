@@ -82,6 +82,13 @@ nnoremap <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
 
 " like UltisniptEdit command, edit main ftplugin config file
 " for current file type.
+
+function <SID>FileTypesAvail(arglead, cmdline, cursorpos)
+    let l:filetypes = glob(g:rc_root . '/ftplugin/*.vim', 1, 1)
+    call map(l:filetypes, 'fnamemodify(v:val, ":t:r")')
+    return join(l:filetypes, "\n")
+endfunction
+
 function! EditFileTypeSettings( filetype )
     let l:ft = ( a:filetype == '' ) ? &filetype : a:filetype
     if l:ft != ''
@@ -93,7 +100,7 @@ function! EditFileTypeSettings( filetype )
         echohl None
     endif
 endfunction
-command  -nargs=? EditFileType call EditFileTypeSettings(<q-args>)
+command  -nargs=? -complete=custom,<SID>FileTypesAvail EditFileType call EditFileTypeSettings(<q-args>)
 nnoremap <Enter>f :EditFileType<Space>
 
 " }}}1
