@@ -17,4 +17,5 @@ function g:mdx_bundle.config() dict
     let g:UltiSnipsSnippetsDir         = g:rc_root . '/neobundle/mudox_ultisnips_snippets/ultisnips_snippets'
     let g:UltiSnipsSnippetDirectories  = [ "ultisnips_snippets" ]
 
+    cabbrev ue UltiSnipsEdit
 endfunction
