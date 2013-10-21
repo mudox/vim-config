@@ -9,5 +9,5 @@ let g:mdx_bundle.neodict.name = g:mdx_bundle.name
 let g:mdx_bundle.neodict.build = { 'unix' : 'make -f make_unix.mak' }
 
 function g:mdx_bundle.config() dict
-    nnoremap <leader><leader>s :VimProcBang<Space>
+    nnoremap <Enter>v :VimProcBang<Space>
 endfunction
