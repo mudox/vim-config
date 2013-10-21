@@ -16,6 +16,7 @@
 "endfunction
 
 " a polished foldline
+
 function! SnptFoldText()
     let l:preffix    = '^snippet\s\+'
     let l:trigger    = '\(\([[:punct:]]\).\{-}\2\|\S\+\)'
@@ -27,7 +28,7 @@ function! SnptFoldText()
     return l:foldline
 endfunction
 
-set foldmethod=expr
-"set foldexpr=SnptFoldExpr(v:lnum)
-set foldtext=SnptFoldText()
-set foldenable
+"setlocal foldmethod=expr
+"setlocal foldexpr=SnptFoldExpr(v:lnum)
+setlocal foldtext=SnptFoldText()
+setlocal foldenable
