@@ -1,4 +1,5 @@
 " go filetype setting.
+
 function! s:GoRun( args )
     " save & lcd to current python script file path.
     silent write
@@ -18,7 +19,10 @@ function! s:GoRun( args )
 
     echohl Underlined | echo l:exeString | echohl NONE
 
+    let l:old_enc = get(g:, 'stdoutencoding', 'char')
+    let g:stdoutencoding = 'utf8'
     echo vimproc#system2(l:exeString)
+    let g:stdoutencoding = l:old_enc
 endfunction
 
 command! -buffer -nargs=* GoRunWithArgs call s:GoRun(<q-args>)
