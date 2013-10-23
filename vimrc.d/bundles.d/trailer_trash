@@ -10,5 +10,5 @@ let g:mdx_bundle.neodict.lazy = 1
 let g:mdx_bundle.neodict.autoload = { 'commands' : [ 'Trim' ] }
 
 function g:mdx_bundle.config() dict
-
+    nnoremap \tr :Trim<CR>
 endfunction
