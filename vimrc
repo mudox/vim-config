@@ -257,6 +257,7 @@ endif
 "}}}2
 
 " vim files syntax hightlighting                     {{{2
+set regexpengine=1
 let g:vimsyn_embed = 0      " disable all embeding syntax.
 let g:vimsyn_folding = 'af' " enable autofolding of autogroups & functions.
 let g:vimsyn_noerror = 1
