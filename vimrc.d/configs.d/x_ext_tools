@@ -1,0 +1,15 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let s:bundle_list = [
+            \ 'easy_tags',
+            \ 'xolox_vim_misc',
+            \ 'xolox_vim_shell',
+            \ 'multi_cursor',
+            \ ]
+
+" finally, put all bundles you want into this global variable, then they will be
+" enrolled at an appropriate time.
+let g:mdx_bundles_to_register = s:bundle_list
+
+" use command 'MergeConfig' to load sub config files (i.e. 'configs.d/sub_cfg_*')
+" Mergeconfig sub_cfg_
