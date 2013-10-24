@@ -103,6 +103,10 @@ endfunction
 command  -nargs=? -complete=custom,<SID>FileTypesAvail EditFileType call EditFileTypeSettings(<q-args>)
 nnoremap <Enter>f :EditFileType<Space>
 
+" command mode mappings.
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+
 " }}}1
 
 " BUNDLE SETTINGS                                 {{{1
