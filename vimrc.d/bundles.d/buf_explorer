@@ -2,7 +2,7 @@
 
 let g:mdx_bundle.name = expand('<sfile>:p:t')
 
-let g:mdx_bundle.site = 'https://github.com/vim-scripts/bufexplorer.zip.git'
+let g:mdx_bundle.site = 'https://github.com/jlanzarotta/bufexplorer.git'
 
 
 let g:mdx_bundle.neodict.name = g:mdx_bundle.name
