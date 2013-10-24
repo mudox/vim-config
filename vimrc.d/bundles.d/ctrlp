@@ -30,6 +30,7 @@ function g:mdx_bundle.config() dict
     " let g:ctrlp_custom_ignore     = ''
     let g:ctrlp_follow_symlinks     = 1
     let g:ctrlp_by_filename         = 1
+    let g:ctrlp_mruf_case_sensitive = 0
 
     " Single VCS, listing command does not list untracked files:
     let g:ctrlp_user_command = {
