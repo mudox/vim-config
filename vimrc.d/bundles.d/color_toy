@@ -9,8 +9,6 @@ let g:mdx_bundle.neodict.name = g:mdx_bundle.name
 
 
 function g:mdx_bundle.config() dict
-    noremap \cc  :<C-U>call mudox#auto_colo#Toy.shuffleColor()<CR>
-    nnoremap \cn  :<C-U>call mudox#auto_colo#Toy.showCurColors()<CR>
-    autocmd VimEnter * call mudox#auto_colo#ShuffleColor()
-
+    nmap \cc  <Plug>NextColor
+    nmap \cn  <Plug>ShowCurColors
 endfunction
