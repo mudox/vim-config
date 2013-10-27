@@ -3,9 +3,9 @@
 let s:bundle_list = [
             \ 'align',
             \ 'autoformat',
-            \ 'ctrlp_funky',
             \ 'delimitmate',
             \ 'easy_align',
+            \ 'easy_motion',
             \ 'join',
             \ 'mudox_ultisnips_snippets',
             \ 'nerd_commenter',
@@ -16,6 +16,7 @@ let s:bundle_list = [
             \ 'repeat',
             \ 'surround',
             \ 'switch',
+            \ 'syntastic',
             \ 'trailer_trash',
             \ 'ultisnips',
             \ 'unimpaired',
