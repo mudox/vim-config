@@ -4,7 +4,7 @@ let g:mdx_bundle.name = expand('<sfile>:p:t')
 
 let g:mdx_bundle.site = 'https://github.com/Shougo/vimproc.git'
 
-
+" extra settings for neobundle
 let g:mdx_bundle.neodict.name = g:mdx_bundle.name
 let g:mdx_bundle.neodict.build = { 'unix' : 'make -f make_unix.mak' }
 
