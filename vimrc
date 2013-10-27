@@ -160,6 +160,7 @@ set nocompatible
 
 set guioptions=fcaM
 
+
 syntax on
 filetype plugin indent on " 'filetype on' implied
 
@@ -168,7 +169,7 @@ set termencoding=gbk
 
 " color & font
 set background=dark
-colorscheme desert_mdx
+colorscheme desert
 
 if has('win32') || has('win64')
     set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
@@ -255,6 +256,8 @@ if has('unix')
     set wildignorecase "
 endif
 
+" +displaying text+
+set lazyredraw
 
 " multiple windows                                   {{{2
 "set hidden " don't unload a buffer when no longer shown in a window.
