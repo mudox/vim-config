@@ -7,11 +7,14 @@ let g:mdx_bundle.site = 'https://github.com/JazzCore/ctrlp-cmatcher.git'
 " extra settings for neobundle
 let g:mdx_bundle.neodict.name = g:mdx_bundle.name
 let g:mdx_bundle.neodict.build = { 
-            \ 'unix'    : './install_linux.sh',
-            \ 'windows' : 'install_windows.bat'
-            \ }
+      \ 'unix'    : './install_linux.sh',
+      \ 'windows' : 'install_windows.bat'
+      \ }
 
 function g:mdx_bundle.config() dict
-    " TODO: your plugin configuration goes here.
+  " TODO: your plugin configuration goes here.
+  " currently can not compile ctrlp_cmather on windows.
+  if has('unix')
     let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+  endif
 endfunction
