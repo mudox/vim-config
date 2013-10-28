@@ -9,5 +9,13 @@ let g:mdx_bundle.neodict.name = g:mdx_bundle.name
 
 
 function g:mdx_bundle.config() dict
-    nnoremap <Space>f :<C-U>CtrlPFunky<CR>
+  nnoremap <Space>f :<C-U>CtrlPFunky<CR>
+
+  let g:ctrlp_funky_after_jump = {
+        \ 'default' : 'zxzz',
+        \ 'python'  : 'zO',
+        \ 'cpp'     : 'zxzt',
+        \ 'go'      : 'zz',
+        \ 'vim'     : 'zxzz',
+        \ }
 endfunction
