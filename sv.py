@@ -17,6 +17,7 @@ if not flag:
 config_paths = glob(configs_dir + '/*')
 config_names = [path.basename(x) for x in config_paths]
 config_names = filter(lambda n: not n.startswith('sub_cfg_'), config_names)
+config_names = filter(lambda n: not n.startswith('x_'), config_names)
 
 menu_dict = {idx: name for idx, name in enumerate(sorted(config_names))}
 
