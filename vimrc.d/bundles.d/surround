@@ -6,17 +6,12 @@ let g:mdx_bundle.site = 'https://github.com/tpope/vim-surround.git'
 
 
 let g:mdx_bundle.neodict.name = g:mdx_bundle.name
-let g:mdx_bundle.neodict.lazy = 1
-let g:mdx_bundle.neodict.autoload = {
-            \ 'mappings' : ['<Plug>VSurround']
-            \ }
 
 function g:mdx_bundle.config() dict
-    xmap ' <Plug>VSurround'
-    xmap " <Plug>VSurround"
-    xmap ( <Plug>VSurround(
-    xmap ) <Plug>VSurround)
-    xmap { <Plug>VSurround{
-    xmap } <Plug>VSurround}
-
+  xmap ' <Plug>VSurround'
+  xmap " <Plug>VSurround"
+  xmap ( <Plug>VSurround(
+  xmap ) <Plug>VSurround)
+  xmap { <Plug>VSurround{
+  xmap } <Plug>VSurround}
 endfunction
