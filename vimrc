@@ -192,8 +192,8 @@ set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 if index(g:mdx_loaded_bundles, 'airline') == -1
-    set laststatus=0 " never show statusline.
-    set cmdheight=1
+    set laststatus=1 " never show statusline.
+    set cmdheight=2
     set showmode
     set showcmd
 else
