@@ -226,7 +226,7 @@ set smartcase
 " Editor behaviour
 set whichwrap=b,s,<,>,[,],h,l
 set backspace=indent,eol,start
-"set autochdir
+set autochdir
 set sessionoptions=buffers,folds,globals,help,localoptions,options,resize,sesdir,slash,tabpages,unix,winpos,winsize
 set autowriteall
 set viminfo+=!  " save global variables in viminfo files
