@@ -9,6 +9,6 @@ let g:mdx_bundle.neodict.name = g:mdx_bundle.name
 
 
 function g:mdx_bundle.config() dict
-    nmap \cc  <Plug>NextColor
-    nmap \cn  <Plug>ShowCurColors
+    nmap \cc <Plug>(Mdx_Color_Toy_NextColor)
+    nmap \cn <Plug>(Mdx_Color_Toy_ShowCurColors)
 endfunction
