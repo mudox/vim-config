@@ -1,24 +1,31 @@
+setlocal foldmethod=syntax
+setlocal tabstop=8
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal smarttab
+setlocal expandtab
+
 function! s:Py3Run( args )
-    " save & lcd to current python script file path.
-    silent write
-    lcd %:p:h
+  " save & lcd to current python script file path.
+  silent write
+  lcd %:p:h
 
-    if has('win32') || has('win64')
-            let l:python3_path = 'E:/PYF/SDK/Python3/python.exe'
-            let l:exeString = l:python3_path . ' ' . escape(expand('%'), ' \') . ' ' . a:args
-    elseif has('unix')
-            let l:python3_path = 'python3'
-            let l:exeString = l:python3_path . ' ' . escape(expand('%'), ' \') . ' ' . a:args
-    elseif has('mac') || has('macunix')
-            let l:python3_path = 'python3'
-            let l:exeString = l:python3_path . ' ' . escape(expand('%'), ' \') . ' ' . a:args
-    else
-        echoerr "Oops! Unknown sysinfo"
-    endif
+  if has('win32') || has('win64')
+    let python3_path = 'E:/PYF/SDK/Python3/python.exe'
+    let exeString = python3_path . ' ' . escape(expand('%'), ' \') . ' ' . a:args
+  elseif has('unix')
+    let python3_path = 'python3'
+    let exeString = python3_path . ' ' . escape(expand('%'), ' \') . ' ' . a:args
+  elseif has('mac') || has('macunix')
+    let python3_path = 'python3'
+    let exeString = python3_path . ' ' . escape(expand('%'), ' \') . ' ' . a:args
+  else
+    echoerr "Oops! Unknown sysinfo"
+  endif
 
-    echohl Underlined | echo l:exeString | echohl NONE
+  echohl Underlined | echo exeString | echohl NONE
 
-    echo vimproc#system2(l:exeString)
+  echo vimproc#system2(exeString)
 endfunction
 
 command! -buffer -nargs=* Run call s:Py3Run(<q-args>)
