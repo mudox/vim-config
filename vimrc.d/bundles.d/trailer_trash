@@ -6,9 +6,7 @@ let g:mdx_bundle.site = 'https://github.com/csexton/trailertrash.vim.git'
 
 
 let g:mdx_bundle.neodict.name = g:mdx_bundle.name
-let g:mdx_bundle.neodict.lazy = 1
-let g:mdx_bundle.neodict.autoload = { 'commands' : [ 'Trim' ] }
 
 function g:mdx_bundle.config() dict
-    nnoremap \tr :Trim<CR>
+  nnoremap \tr :Trim<CR>
 endfunction
