@@ -1,8 +1,8 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
 let s:bundle_list = [
-            \ 'golang',
-            \ ]
+      \ 'golang',
+      \ ]
 
 " finally, put all bundles you want into this global variable, then they will be
 " enrolled at an appropriate time.
