@@ -2,14 +2,20 @@
 
 let g:mdx_bundle_manager = 'NeoBundle'
 
-let s:bundle_list = [
-      \ 'airline',
+let s:common_bundle = [
       \ ]
 
-let g:mdx_bundles_to_register = s:bundle_list
+if has('unix')
+  call add(s:common_bundle, 'ycm')
+  call add(s:common_bundle, 'autoformat')
+endif
+
+let g:mdx_bundles_to_register = s:common_bundle
 
 MergeConfig x_essential
 MergeConfig x_common
 MergeConfig x_ext_tools
 MergeConfig x_color
 MergeConfig x_textobj
+
+MergeConfig x_python
