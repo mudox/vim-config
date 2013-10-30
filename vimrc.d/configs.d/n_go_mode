@@ -3,7 +3,7 @@
 let g:mdx_bundle_manager = 'NeoBundle'
 
 let s:bundle_list = [
-            \ ]
+      \ ]
 
 let g:mdx_bundles_to_register = s:bundle_list
 

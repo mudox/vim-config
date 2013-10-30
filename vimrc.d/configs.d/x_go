@@ -1,7 +1,6 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
 let s:bundle_list = [
-            \ 'syntastic',
             \ 'golang',
             \ ]
 
