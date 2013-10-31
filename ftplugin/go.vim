@@ -1,10 +1,10 @@
 " go filetype setting.
 setlocal foldmethod=syntax
-setlocal tabstop=8
+setlocal tabstop=2
 setlocal softtabstop=2
 setlocal shiftwidth=2
 setlocal smarttab
-setlocal expandtab
+setlocal noexpandtab
 
 function! s:GoRun( args )
     " save & lcd to current python script file path.
