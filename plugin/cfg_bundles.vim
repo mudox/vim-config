@@ -43,3 +43,14 @@ function! s:CfgInfo()
     endfor
     echohl None
 endfunction
+
+autocmd VimEnter * call <SID>OnVimEnter()
+
+function <SID>OnVimEnter()
+    let title = get(g:, 'mdx_config_title',
+          \ get(g:, 'mdx_config_name', 'Unknown mode')
+          \ )
+
+    silent set title
+    let &titlestring = title
+endfunction

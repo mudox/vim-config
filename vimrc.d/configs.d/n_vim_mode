@@ -1,5 +1,6 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
+let g:mdx_config_title = 'vim mode'
 let g:mdx_bundle_manager = 'NeoBundle'
 
 let s:bundle_list = [

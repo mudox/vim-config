@@ -21,7 +21,7 @@ function s:MergeConfig(cfg_name)
         call add(g:mdx_config_sourced, g:mdx_config_name)
     endif
 
-    " return if ever sourced beforereturn, else record it.
+    " return if ever sourced before return, else record it.
     if index(g:mdx_config_sourced, a:cfg_name) != -1
         return
     else
@@ -87,13 +87,6 @@ function s:RegisterBundles()
     delfunction g:Register2Pathogen
 endfunction
 
-function mudox#cfg_bundle#LoadBundleConfigs()
-    for b in g:mdx_bundle_objs
-        call b.config()
-    endfor
-    unlet g:mdx_bundle_objs
-endfunction
-
 function s:ParsePlusReg()
     let l:regex_for_github    = 'https://github\.com/[^/]\+/[^/]\+\.git'
     let l:regex_for_bitbucket = 'https://bitbucket\.org/[^/]\+/[^/]\+\%(\.git\)\?'
@@ -108,6 +101,13 @@ function s:ParsePlusReg()
 
     " returns an empty string if parsing failed.
     return l:url
+endfunction
+
+function mudox#cfg_bundle#LoadBundleConfigs()
+    for b in g:mdx_bundle_objs
+        call b.config()
+    endfor
+    unlet g:mdx_bundle_objs
 endfunction
 
 function mudox#cfg_bundle#NeoBundleInit()
@@ -255,6 +255,7 @@ function mudox#cfg_bundle#GetBundleManager()
     if index(g:mdx_available_bundle_managers, g:mdx_bundle_manager) == -1
         echoerr 'Unrecognized bundle manager "' . g:mdx_bundle_manager . '"'
     endif
+
     let g:mdx_bundles_to_register = []
     delcommand MergeConfig
 endfunction
