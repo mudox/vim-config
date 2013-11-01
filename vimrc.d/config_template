@@ -1,5 +1,8 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
+let g:mdx_config_title = " TODO: here to input a polished name for you config.
+let g:mdx_bundle_manager = " TODO: 'NeoBundle' or 'Vundle' or 'Pathogen'
+
 let s:bundle_list = [
             \ 'airline',
             \ ]
@@ -9,4 +12,4 @@ let s:bundle_list = [
 let g:mdx_bundles_to_register = s:bundle_list
 
 " use command 'MergeConfig' to load sub config files (i.e. 'configs.d/sub_cfg_*')
-" Mergeconfig sub_cfg_
+" MergeConfig x_
