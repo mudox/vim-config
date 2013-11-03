@@ -7,7 +7,7 @@ let s:Man.manager_avail   = ['Pathogen', 'NeoBundle']
 let s:Man.default_manager = 'Pathogen'
 let s:Man.configs_set     = []
 let s:Man.bundles_set     = []
-let s:Man.bundles_tree    = {}
+let s:Man.tree            = {}
 
 let g:mdx_bundles_to_register       = []  " unlet'ed before vim startup
 let g:mdx_bundle_objs               = []  " unlet'ed before vim startup
@@ -38,22 +38,22 @@ function s:Man.curConfigName() dict "         {{{2
 
 endfunction " }}}2
 
-function s:Man.mergeConfig(sub_cfg_name) dict "   {{{2
+function s:Man.mergeConfig(par_tree, cur_tree) dict "   {{{2
   if empty(self.configs_set)
     call add(self.configs_set, g:mdx_config_name)
   endif
 
   " return if ever sourced before return, else record it.
-  if index(self.configs_set, a:sub_cfg_name) != -1
+  if index(self.configs_set, a:par_tree, cur_tree) != -1
     return
   else
-    call add(self.configs_set, a:sub_cfg_name)
+    call add(self.configs_set, a:par_tree, cur_tree)
   endif
 
   call s:enrollBundle(g:mdx_bundles_to_register)
   let g:mdx_bundles_to_register = []
 
-  execute 'source ' . g:mdx_configs_dir . '/' . a:sub_cfg_name
+  execute 'source ' . g:mdx_configs_dir . '/' . a:par_tree, cur_tree
   call s:enrollBundle(g:mdx_bundles_to_register)
 endfunction " }}}2
 
@@ -65,13 +65,11 @@ function s:Man.enrollBundles(lst) dict "       {{{2
   endfor
 endfunction " }}}2
 
-function s:Man.loadConfigs() dict "       {{{2
-  " FIRST: collect bundles names from cur_config
-
-  let s:cur_dict = self.bundles_tree
-
+function s:Man.buildTree() dict "       {{{2
   " temporary command used in configs.d/* to source sub config files.
-  command -nargs=1 MergeConfig  call self.mergeConfig(<q-args>)
+  " since s:Man.buidTree will be called only once in the start, the command
+  " are guaranteed to be defined and deleted only once.
+  command -nargs=1 MergeConfig  call self.mergeConfig(self.tree, <q-args>)
 
   call self.enrollBundles(g:mdx_bundles_to_register)
   unlet g:mdx_bundles_to_register
@@ -95,6 +93,7 @@ function s:Man.loadConfigs() dict "       {{{2
 
   " clean up functions & commands
   delcommand MergeConfig
+  unlet g:mdx_bundles_to_register
 endfunction " }}}2
 
 function s:Man.bundlesConfigured() dict "     {{{2
