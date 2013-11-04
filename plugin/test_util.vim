@@ -1,5 +1,5 @@
 if exists("loaded_vim_plugin_test_util")
-    finish
+  finish
 endif
 let loaded_vim_plugin_test_util = 1
 
@@ -63,4 +63,9 @@ function SortbyType(lhs, rhs)
   return type(a:lhs[1]) - type(a:rhs[1])
 endfunction
 
-nnoremap <Cr>t : call DumpDict(mdx)<Cr>
+nnoremap <Cr>t1 :call DumpDict(mdx)<Cr>
+nnoremap <Cr>t2 :call Test()<Cr>
+function Test() " {{{2
+  so ~/cfg_man.vim
+  call g:mdx.init()
+endfunction " }}}2
