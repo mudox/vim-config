@@ -1,73 +1,133 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+# encoding: utf-8
 
 import re
-#import os
-#import time
+from os import system
 from os import path
 from glob import glob
-#import textwrap as tw
 
-reRepoAddr = re.compile(
-    r'''^let s:repo = ['"]{1,2}(?P<repo>[^'"]+)['"]{1,2}\s*$''',
-    re.MULTILINE)
+# reget patterns compiled
 
-reConfig = re.compile(
-    r'^function! s:cfg_func\(\)\s*\n(?P<config>.*?)^endfunction',
-    re.MULTILINE | re.DOTALL)
+managerPat = re.compile(
+  r"^\s*let g:mdx_bundle_manager = '(.*)'\s*$",
+  re.MULTILINE
+)
 
-reNeoDict = re.compile(
-    r'^let\s+s:dict\.(?!name)\w+\s+=.*$(?:\n\s*\\.*$)*',
-    re.MULTILINE)
+titlePat = re.compile(
+  r"^\s*let g:mdx_config_title = '(.*)'\s*$",
+  re.MULTILINE
+)
 
-reSub = re.compile(r's:dict')
+varPat = re.compile(
+  r'g:mdx_bundles_to_register',
+  re.MULTILINE
+)
 
-templTargetLines = """\
+assignPat = re.compile(
+  r'^\s*let\s+s:bundle_list\s*=\s*s:bundle_list',
+  re.MULTILINE
+)
+
+mergeConfig = re.compile(
+  r'^\s*MergeConfig\s+(\w+)\s*$',
+  re.MULTILINE
+)
+
+verboseLine = re.compile(
+  r'(^\s*\n){2,}',
+  re.MULTILINE
+)
+
+commentPat = re.compile(
+  r'^\s*"[^"]*?$',
+  re.MULTILINE
+)
+
+# new composed file content
+file_template = """\
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-let g:mdx_bundle.name = expand('<sfile>:p:t')
+" Set Tile & Bundle Manager {{{{{{1
 
-{site}
+{title}
+{manager}
 
-let g:mdx_bundle.neodict.name = g:mdx_bundle.name
-{neodict}
+" }}}}}}1
 
-{config}\
+" Merge Configs {{{{{{1
+
+{merge}
+
+" }}}}}}1
+
+" Bundles in Current Config {{{{{{1
+
+{body}
+
+{add}\
+
+" }}}}}}1\
 """
 
-for bundle in glob(path.expanduser('~/.vim/vimrc.d/bundles.d/*')):
-    with open(bundle, mode='r', encoding='utf_8') as f:
-        content = f.read()
+for bundle in glob(path.expanduser('~/.vim/vimrc.d/configs.d/*')):
+  with open(bundle, mode='r', encoding='utf_8') as f:
+    content = f.read()
 
-    # extract & compose new repo address line.
-    m = reRepoAddr.search(content)
-    repo_line = "let g:mdx_bundle.site = '{}'\n".format(
-        'https://github.com/' + m.groupdict()['repo'] + '.git' if m else '')
+    # compose title if any
+    match = titlePat.search(content)
+    title = "\n\ncall SetTitle('{}')".format(match.group(1)) if match else ''
+    content = titlePat.sub('', content) # remove old line.
 
-    # extract & compose new config function line.
-    m = reConfig.search(content)
-    config_lines = 'function g:mdx_bundle.config() dict' + \
-        '\n{}\nendfunction'.format(m.groupdict()['config'] if m else '')
+    # compose manager if any
+    match = managerPat.search(content)
+    manager = "\n\ncall SetBundleManager('{}')".format(match.group(1)) if match else ''
+    content = managerPat.sub('', content) # remove old line.
 
-    # extract & compose new neobundle dict argument lines.
-    foundList = reNeoDict.findall(content)
-    if foundList:
-        neo_dict_lines = '\n'.join(foundList)
-        neo_dict_lines = reSub.sub('g:mdx_bundle.neodict', neo_dict_lines)
-    else:
-        neo_dict_lines = ''
+    # all 'g:mdx_bundles_to_register' -> 's:bundle_list'.
+    content = varPat.sub('s:bundle_list', content)
 
-    # generate the final content.
-    targetLines = templTargetLines.format(
-        site=repo_line, neodict=neo_dict_lines, config=config_lines)
+    # remove all let 's:bundle_list = s:bundle_list'.
+    content = assignPat.sub('', content)
 
-    # os.system('cls')
-    #print(' {} '.format(path.basename(bundle)).center(79, '^'))
-    # print()
-    # print(targetLines)
+    # insert title & manger settting if any
+    cotent = title + manager + content
 
-    #waitting = input()
+    # compose 'MergeConfigs' command lines.
+    merge_configs = ''
+    matches = mergeConfig.findall(content)
+    if len(matches) != 0:
+      merge_configs = 'MergeConfigs\n' + '\n'.join(
+        map(lambda m: '\t\\ {}'.format(m), matches)
+      )
+
+    # remove old 'MergeConfig' command lines.
+    content = mergeConfig.sub('', content)
+
+    # remove all comment lines.
+    content = commentPat.sub('', content)
+
+    # compose 'AddBundles' function line.
+    add_bundles = '\n\ncall AddBundles(s:bundle_list)'
+
+    content = file_template.format(
+      title   = title,
+      manager = manager,
+      merge   = merge_configs,
+      body    = content,
+      add     = add_bundles
+    )
+
+    # remove redundant empty lines.
+    content = verboseLine.sub('\n', content)
 
     # write into file.
-    with open('/tmp/out/{}'.format(path.basename(bundle)),
-              mode='w', encoding='utf-8') as f:
-        f.write(targetLines)
+    system('cls')
+    #print(bundle.rjust(100, '-'))
+    #print(content)
+    #print('\n\n')
+
+    #out_path = 'F:\Temps\out\{}'.format(path.expanduser(path.basename(bundle)))
+    #with open(out_path, mode='w', encoding='utf-8') as f:
+      #f.write(content)
+
+    #input()
