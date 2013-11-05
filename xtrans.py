@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # encoding: utf-8
 
 import re
@@ -9,38 +9,38 @@ from glob import glob
 # reget patterns compiled
 
 managerPat = re.compile(
-  r"^\s*let g:mdx_bundle_manager = '(.*)'\s*$",
-  re.MULTILINE
+    r"^\s*let g:mdx_bundle_manager = '(.*)'\s*$",
+    re.MULTILINE
 )
 
 titlePat = re.compile(
-  r"^\s*let g:mdx_config_title = '(.*)'\s*$",
-  re.MULTILINE
+    r"^\s*let g:mdx_config_title = '(.*)'\s*$",
+    re.MULTILINE
 )
 
 varPat = re.compile(
-  r'g:mdx_bundles_to_register',
-  re.MULTILINE
+    r'g:mdx_bundles_to_register',
+    re.MULTILINE
 )
 
 assignPat = re.compile(
-  r'^\s*let\s+s:bundle_list\s*=\s*s:bundle_list',
-  re.MULTILINE
+    r'^\s*let\s+s:bundle_list\s*=\s*s:bundle_list',
+    re.MULTILINE
 )
 
 mergeConfig = re.compile(
-  r'^\s*MergeConfig\s+(\w+)\s*$',
-  re.MULTILINE
+    r'^\s*MergeConfig\s+(\w+)\s*$',
+    re.MULTILINE
 )
 
 verboseLine = re.compile(
-  r'(^\s*\n){2,}',
-  re.MULTILINE
+    r'(^\s*\n){2,}',
+    re.MULTILINE
 )
 
 commentPat = re.compile(
-  r'^\s*"[^"]*?$',
-  re.MULTILINE
+    r'^\s*"[^"]*?$',
+    re.MULTILINE
 )
 
 # new composed file content
@@ -70,64 +70,68 @@ file_template = """\
 """
 
 for bundle in glob(path.expanduser('~/.vim/vimrc.d/configs.d/*')):
-  with open(bundle, mode='r', encoding='utf_8') as f:
-    content = f.read()
+    with open(bundle, mode='r', encoding='utf_8') as f:
+        content = f.read()
 
-    # compose title if any
-    match = titlePat.search(content)
-    title = "\n\ncall SetTitle('{}')".format(match.group(1)) if match else ''
-    content = titlePat.sub('', content) # remove old line.
+        # compose title if any
+        match = titlePat.search(content)
+        title = "\n\ncall SetTitle('{}')".format(
+            match.group(1)) if match else ''
+        content = titlePat.sub('', content)  # remove old line.
 
-    # compose manager if any
-    match = managerPat.search(content)
-    manager = "\n\ncall SetBundleManager('{}')".format(match.group(1)) if match else ''
-    content = managerPat.sub('', content) # remove old line.
+        # compose manager if any
+        match = managerPat.search(content)
+        manager = "\n\ncall SetBundleManager('{}')".format(
+            match.group(1)) if match else ''
+        content = managerPat.sub('', content)  # remove old line.
 
-    # all 'g:mdx_bundles_to_register' -> 's:bundle_list'.
-    content = varPat.sub('s:bundle_list', content)
+        # all 'g:mdx_bundles_to_register' -> 's:bundle_list'.
+        content = varPat.sub('s:bundle_list', content)
 
-    # remove all let 's:bundle_list = s:bundle_list'.
-    content = assignPat.sub('', content)
+        # remove all let 's:bundle_list = s:bundle_list'.
+        content = assignPat.sub('', content)
 
-    # insert title & manger settting if any
-    cotent = title + manager + content
+        # insert title & manger settting if any
+        cotent = title + manager + content
 
-    # compose 'MergeConfigs' command lines.
-    merge_configs = ''
-    matches = mergeConfig.findall(content)
-    if len(matches) != 0:
-      merge_configs = 'MergeConfigs\n' + '\n'.join(
-        map(lambda m: '\t\\ {}'.format(m), matches)
-      )
+        # compose 'MergeConfigs' funtion lines.
+        merge_configs = ''
+        matches = mergeConfig.findall(content)
+        if len(matches) != 0:
+            merge_configs = 'let s:sub_configs = [\n' + '\n'.join(
+                map(lambda m: "\t\\ '{}',".format(m), matches)
+            )
+            merge_configs += '\n\t\\ ]'
+            merge_configs += '\n\ncall MergeConfigs(s:sub_configs)'
 
-    # remove old 'MergeConfig' command lines.
-    content = mergeConfig.sub('', content)
+        # remove old 'MergeConfig' command lines.
+        content = mergeConfig.sub('', content)
 
-    # remove all comment lines.
-    content = commentPat.sub('', content)
+        # remove all comment lines.
+        content = commentPat.sub('', content)
 
-    # compose 'AddBundles' function line.
-    add_bundles = '\n\ncall AddBundles(s:bundle_list)'
+        # compose 'AddBundles' function line.
+        add_bundles = '\n\ncall AddBundles(s:bundle_list)'
 
-    content = file_template.format(
-      title   = title,
-      manager = manager,
-      merge   = merge_configs,
-      body    = content,
-      add     = add_bundles
-    )
+        content = file_template.format(
+            title=title,
+            manager=manager,
+            merge=merge_configs,
+            body=content,
+            add=add_bundles
+        )
 
-    # remove redundant empty lines.
-    content = verboseLine.sub('\n', content)
+        # remove redundant empty lines.
+        content = verboseLine.sub('\n', content)
 
-    # write into file.
-    system('cls')
-    #print(bundle.rjust(100, '-'))
-    #print(content)
-    #print('\n\n')
+        # write into file.
+        system('clear')
+        #print(bundle.rjust(100, '-'))
+        # print(content)
+        # print('\n\n')
 
-    #out_path = 'F:\Temps\out\{}'.format(path.expanduser(path.basename(bundle)))
-    #with open(out_path, mode='w', encoding='utf-8') as f:
-      #f.write(content)
+        out_path = '/tmp/out/{}'.format(path.expanduser(path.basename(bundle)))
+        with open(out_path, mode='w', encoding='utf-8') as f:
+            f.write(content)
 
-    #input()
+        # input()
