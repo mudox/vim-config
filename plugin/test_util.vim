@@ -3,7 +3,7 @@ if exists("loaded_vim_plugin_test_util")
 endif
 let loaded_vim_plugin_test_util = 1
 
-function DumpDict(dict, ...)
+function DumpDict(dict, ...) "    {{{2
   if type(a:dict) != type({})
     throw 'DumpDcit(dict) needs a dict'
   endif
@@ -25,6 +25,7 @@ function DumpDict(dict, ...)
 
   call sort(list, 'SortbyType')
 
+  " currently assuming t[0] is always string.
   for t in list
     if type(t[1]) == type({}) " dict
       echohl Directory
@@ -32,40 +33,49 @@ function DumpDict(dict, ...)
       echon t[0] . ':'
       echohl None
       call DumpDict(t[1], ident + 1)
-    elseif type(t[1]) == type(function('sort')) " function or method
-      echohl Function
+    elseif type(t[1]) == type([]) " list
       call PrintIdent(ident)
-      echon t[0] . ' : ' . string(t[1])
+      echon t[0] . ':'
+      echohl Repeat
+      echon string(t[1])
+      echohl None
+    elseif type(t[1]) == type(function('sort')) " function or method
+      call PrintIdent(ident)
+      echon t[0] . ' : '
+      echohl Function
+      echon string(t[1])
       echohl None
     elseif type(t[1]) == type('') " string
-      echohl String
       call PrintIdent(ident)
-      echon t[0] . ' : ' . string(t[1])
+      echon t[0] . ' : '
+      echohl String
+      echon string(t[1])
       echohl None
     elseif type(t[1]) == type(1) || type(t[1]) == type(1.0) " number
-      echohl Number
       call PrintIdent(ident)
-      echon t[0] . ' : ' . string(t[1])
+      echon t[0] . ' : '
+      echohl Number
+      echon string(t[1])
       echohl None
     endif
   endfor
-endfunction
+endfunction " }}}2
 
-function PrintIdent(ident)
+function PrintIdent(ident) "      {{{2
   if a:ident > 0
     exe 'echo printf("%' . a:ident * 4 . 's ", "└")'
   else
     echo ''
   endif
-endfunction
+endfunction " }}}2
 
-function SortbyType(lhs, rhs)
+function SortbyType(lhs, rhs) "   {{{2
   return type(a:lhs[1]) - type(a:rhs[1])
-endfunction
+endfunction " }}}2
 
 nnoremap <Cr>t1 :call DumpDict(mdx)<Cr>
 nnoremap <Cr>t2 :call Test()<Cr>
-function Test() " {{{2
-  so ~/cfg_man.vim
+function Test() " {{{2 "          {{{2
+  so ~/Dropbox/cfg_man.vim
   call g:mdx.init()
 endfunction " }}}2
