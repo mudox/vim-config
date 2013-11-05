@@ -1,9 +1,12 @@
+" tab setting according to PEP8
 setlocal foldmethod=syntax
 setlocal tabstop=8
 setlocal softtabstop=4
 setlocal shiftwidth=4
 setlocal smarttab
 setlocal expandtab
+
+setlocal colorcolumn=80 " PEP8 put a limit a 79
 
 function! s:Py3Run( args )
   " save & lcd to current python script file path.
