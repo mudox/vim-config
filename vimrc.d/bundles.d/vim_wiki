@@ -9,55 +9,61 @@ let g:mdx_bundle.neodict.name = g:mdx_bundle.name
 
 
 function g:mdx_bundle.config() dict
-    let g:vimwiki_hl_cb_checked = 1
-    let g:vimwiki_hl_headers    = 1
-    let g:vimwiki_global_ext    = 0
-    let g:vimwiki_listsyms      = ' .oOX'
+  let g:vimwiki_hl_cb_checked = 1
+  let g:vimwiki_hl_headers    = 1
+  let g:vimwiki_global_ext    = 0
+  let g:vimwiki_listsyms      = ' .oOX'
 
-    let g:vimwiki_list = []
+  let g:vimwiki_list = []
 
-    let s:wiki_root = expand('$MDX_DROPBOX/WIKI.DROP')
-    let s:wiki_nested_syntaxes = {
-                \'python' : 'python',
-                \'c++'    : 'cpp',
-                \'sql'    : 'sql'
-                \}
+  let s:wiki_root = expand('$MDX_DROPBOX/WIKI.DROP')
+  let s:wiki_nested_syntaxes = {
+        \'python' : 'python',
+        \'c++'    : 'cpp',
+        \'sql'    : 'sql'
+        \}
 
-    " Below is my vimviki sections ...
+  nmap == <Plug>VimwikiAddHeaderLevel
+  nmap -- <Plug>VimwikiRemoveHeaderLevel
 
-    " wiki 'misc'
-    let s:wiki               = {}
-    let s:wiki.path          = s:wiki_root . '/misc/'
-    let s:wiki.path_html     = s:wiki_root . '/misc/html/'
-    let s:wiki.nested_syntaxes = s:wiki_nested_syntaxes
-    call add(g:vimwiki_list, s:wiki)
+  " Below is my vimviki sections ...   {{{1
 
-    " wiki 'IT'
-    let s:wiki               = {}
-    let s:wiki.path          = s:wiki_root . '/IT/'
-    let s:wiki.path_html     = s:wiki_root . '/IT/html/'
-    let s:wiki.auto_export   = 1
-    let s:wiki.nested_syntaxes = s:wiki_nested_syntaxes
-    call add(g:vimwiki_list, s:wiki)
+  " wiki 'misc'
+  let s:wiki               = {}
+  let s:wiki.path          = s:wiki_root . '/misc/'
+  let s:wiki.path_html     = s:wiki_root . '/misc/html/'
+  let s:wiki.nested_syntaxes = s:wiki_nested_syntaxes
+  call add(g:vimwiki_list, s:wiki)
 
-    " wiki 'English'
-    let s:wiki               = {}
-    let s:wiki.path          = s:wiki_root . '/English/'
-    let s:wiki.path_html     = s:wiki_root . '/English/html/'
-    let s:wiki.auto_export   = 1
-    call add(g:vimwiki_list, s:wiki)
+  " wiki 'IT'
+  let s:wiki               = {}
+  let s:wiki.path          = s:wiki_root . '/IT/'
+  let s:wiki.path_html     = s:wiki_root . '/IT/html/'
+  let s:wiki.auto_export   = 1
+  let s:wiki.nested_syntaxes = s:wiki_nested_syntaxes
+  call add(g:vimwiki_list, s:wiki)
 
-    " wiki 'Math'
-    let s:wiki               = {}
-    let s:wiki.path          = s:wiki_root . '/Math/'
-    let s:wiki.path_html     = s:wiki_root . '/Math/html/'
-    let s:wiki.auto_export   = 1
-    call add(g:vimwiki_list, s:wiki)
+  " wiki 'English'
+  let s:wiki               = {}
+  let s:wiki.path          = s:wiki_root . '/English/'
+  let s:wiki.path_html     = s:wiki_root . '/English/html/'
+  let s:wiki.auto_export   = 1
+  call add(g:vimwiki_list, s:wiki)
 
-    " wiki 'Todo'
-    let s:wiki               = {}
-    let s:wiki.path          = s:wiki_root . '/Todo/'
-    let s:wiki.path_html     = s:wiki_root . '/Todo/html/'
-    let s:wiki.auto_export   = 1
-    call add(g:vimwiki_list, s:wiki)
+  " wiki 'Math'
+  let s:wiki               = {}
+  let s:wiki.path          = s:wiki_root . '/Math/'
+  let s:wiki.path_html     = s:wiki_root . '/Math/html/'
+  let s:wiki.auto_export   = 1
+  call add(g:vimwiki_list, s:wiki)
+
+  " wiki 'Todo'
+  let s:wiki               = {}
+  let s:wiki.path          = s:wiki_root . '/Todo/'
+  let s:wiki.path_html     = s:wiki_root . '/Todo/html/'
+  let s:wiki.auto_export   = 1
+  call add(g:vimwiki_list, s:wiki)
+
+  "}}}1
+
 endfunction
