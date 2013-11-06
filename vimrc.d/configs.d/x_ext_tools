@@ -7,6 +7,7 @@ let s:bundle_list = [
             \ 'multi_cursor',
             \ 'indent_guides',
             \ 'indent_line',
+            \ 'tagbar',
             \ ]
 
 " finally, put all bundles you want into this global variable, then they will be

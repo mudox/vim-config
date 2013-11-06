@@ -10,6 +10,7 @@ let s:bundle_list = [
             \ 'mudox_ultisnips_snippets',
             \ 'nerd_commenter',
             \ 'nerd_tree',
+            \ 'nrrwrgn',
             \ 'origami',
             \ 'rename',
             \ 'renamer',
