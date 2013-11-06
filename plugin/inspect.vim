@@ -3,7 +3,12 @@ if exists("loaded_vim_plugin_test_util")
 endif
 let loaded_vim_plugin_test_util = 1
 
-" Test Utilities               {{{1
+" dumping structures               {{{1
+
+function DumpList(list, ...) " {{{2
+  throw 'DumpList() unimplemented.'
+endfunction " }}}2
+
 function DumpDict(dict, ...) "    {{{2
   if type(a:dict) != type({})
     throw 'DumpDcit(dict) needs a dict'
@@ -74,10 +79,3 @@ function SortbyType(lhs, rhs) "   {{{2
   return type(a:lhs[1]) - type(a:rhs[1])
 endfunction " }}}2
 "}}}1
-
-nnoremap <Cr>t1 :call DumpDict(mdx)<Cr>
-nnoremap <Cr>t2 :call Test()<Cr>
-
-function Test() " {{{2 "          {{{2
-  so $MDX_DROPBOX\cfg_man.vim
-endfunction " }}}2
