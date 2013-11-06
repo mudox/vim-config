@@ -12,7 +12,7 @@ function g:mdx_bundle.config() dict
     let g:ctrlp_extensions = ['line', 'tag', 'mixed', 'funky',  'rtscript']
 
     " mappings
-    let g:ctrlp_map = '<Space>P'
+    let g:ctrlp_map = '<Space>p'
     nnoremap <Space>r :CtrlPMRUFiles<CR>
     nnoremap <Space>s :CtrlPRTS<CR>
     nnoremap <Space>m :CtrlPMixed<CR>
