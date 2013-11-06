@@ -1,6 +1,7 @@
 from glob import glob
 from os import path
 import textwrap
+import subprocess
 
 flag = False
 for vimDir in ['.vim', 'vimfiles']:
@@ -47,3 +48,5 @@ else:
         cc.write(so_line.format(menu_dict[config_idx]))
 
     print 'Switched to >> %s << !' % menu_dict[config_idx]
+
+    subprocess.Popen('gvim')
