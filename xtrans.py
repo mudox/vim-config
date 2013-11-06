@@ -125,12 +125,15 @@ for bundle in glob(path.expanduser('~/.vim/vimrc.d/configs.d/*')):
         content = verboseLine.sub('\n', content)
 
         # write into file.
-        system('clear')
+        #system('clear')
         #print(bundle.rjust(100, '-'))
         # print(content)
         # print('\n\n')
 
-        out_path = '/tmp/out/{}'.format(path.expanduser(path.basename(bundle)))
+        out_path = 'f:\Temps\out\{}'.format(
+            path.expanduser(path.basename(bundle))
+        )
+
         with open(out_path, mode='w', encoding='utf-8') as f:
             f.write(content)
 
