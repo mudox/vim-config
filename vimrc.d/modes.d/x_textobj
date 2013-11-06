@@ -1,0 +1,19 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" Set Tile & Bundle Manager {{{1
+
+" }}}1
+
+" Merge Configs {{{1
+
+" }}}1
+
+" Bundles in Current Config {{{1
+
+let s:all_textobjs = glob(g:rc_root . '/vimrc.d/bundles.d/textobj_*', 1, 1)
+let s:all_textobjs = map(s:all_textobjs, 'fnamemodify(v:val, ":t:r")')
+
+let s:bundle_list = s:all_textobjs
+
+call AddBundles(s:bundle_list)
+" }}}1

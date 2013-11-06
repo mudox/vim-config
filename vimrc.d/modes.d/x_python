@@ -1,0 +1,25 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" Set Tile & Bundle Manager {{{1
+
+" }}}1
+
+" Merge Configs {{{1
+
+" }}}1
+
+" Bundles in Current Config {{{1
+
+let s:python_bundles = [
+            \ 'syntastic'               ,
+            \ 'python_syntax'           ,
+            \ 'python_flake8'           ,
+            \ 'python_rope'             ,
+            \ 'python_interactive'      ,
+            \ 'python_pep8_indent'      ,
+            \ ]
+
+let s:bundle_list = s:python_bundles
+
+call AddBundles(s:bundle_list)
+" }}}1
