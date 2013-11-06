@@ -6,6 +6,8 @@ setlocal shiftwidth=2
 setlocal smarttab
 setlocal expandtab
 
+setlocal colorcolumn=80
+
 " fold
 setlocal foldmethod=marker
 
