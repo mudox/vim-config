@@ -1,0 +1,21 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:mdx_bundle.name = expand('<sfile>:p:t')
+
+let g:mdx_bundle.site = 'https://github.com/scrooloose/nerdcommenter.git'
+
+
+let g:mdx_bundle.neodict.name = g:mdx_bundle.name
+
+
+function g:mdx_bundle.config() dict
+    let NERDBlockComIgnoreEmpty       = 1
+    let NERDSpaceDelims               = 1
+    let NERDDefaultNesting            = 0
+    "let NERDCommentWholeLinesInVMode = 1
+    "let NERDLPlace                   = "[>"
+    "let NERDRPlace                   = "<]"
+    "let NERDCompactSexyComs          = 1
+    " let NERD_<filetype>_alt_style   = 1
+
+endfunction

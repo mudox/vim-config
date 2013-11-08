@@ -1,0 +1,15 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:mdx_bundle.name = expand('<sfile>:p:t')
+
+let g:mdx_bundle.site = 'https://github.com/Lokaltog/vim-easymotion.git'
+
+
+let g:mdx_bundle.neodict.name = g:mdx_bundle.name
+
+
+function g:mdx_bundle.config() dict
+    let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz12347890'
+    let g:EasyMotion_do_shade = 0
+
+endfunction

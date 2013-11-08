@@ -1,0 +1,15 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:mdx_bundle.name = expand('<sfile>:p:t')
+
+let g:mdx_bundle.site = 'https://github.com/glts/vim-cottidie.git'
+
+
+let g:mdx_bundle.neodict.name = g:mdx_bundle.name
+let g:mdx_bundle.neodict.lazy = 1
+let g:mdx_bundle.neodict.autoload = { 'commands' : ['CottidieTip'] }
+
+function g:mdx_bundle.config() dict
+    command! Tips CottidieTip
+
+endfunction

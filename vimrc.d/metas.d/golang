@@ -1,0 +1,13 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" name and site
+let g:mdx_bundle.name = expand('<sfile>:p:t')
+let g:mdx_bundle.site = 'https://github.com/jnwhiteh/vim-golang.git'
+
+" extra settings for neobundle
+let g:mdx_bundle.neodict.name = g:mdx_bundle.name
+
+function g:mdx_bundle.config() dict
+    " TODO: your plugin configuration goes here.
+
+endfunction

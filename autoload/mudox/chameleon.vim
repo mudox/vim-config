@@ -1,89 +1,94 @@
 if exists("loaded_mdx_chameleon_vim") || &cp || version < 700
-    finish
+  finish
 endif
 let loaded_mdx_chameleon_vim = 1
 
-let s:Man                 = {}
+let s:Cham                 = {}
 
 " supported vim bundle managers.
 " since they have method function to be defined, they must be initialized
-" outside of functions
-let s:Man.vundle          = {}
-let s:Man.pathogen        = {}
-let s:Man.neobundle       = {}
+" outside of functions.
+let s:Cham.vundle          = { 'name' : 'Vundle' }
+let s:Cham.pathogen        = { 'name' : 'Pathogen' }
+let s:Cham.neobundle       = { 'name' : 'NeoBundle' }
 
-" s:Man -- the core object            {{{1
+" s:Cham -- the core object                {{{1
 
-function s:Man.init() dict "             {{{2
+function s:Cham.init() dict "                 {{{2
 
-  " constants                      {{{3
-  let s:Man.man_dir         = g:rc_root . '/vimrc.d'
-  lockvar s:Man.man_dir
+  " constants                       {{{3
+  let self.man_dir         = g:rc_root . '/vimrc.d'
+  lockvar self.man_dir
 
-  let s:Man.repo_dir        = g:rc_root . '/neobundle'
-  lockvar s:Man.repo_dir
+  let self.repo_dir        = g:rc_root . '/neobundle'
+  lockvar self.repo_dir
 
-  let s:Man.metas_dir       = s:Man.man_dir . '/metas.d'
-  lockvar s:Man.metas_dir
+  let self.metas_dir       = self.man_dir . '/metas.d'
+  lockvar self.metas_dir
 
-  let s:Man.modes_dir       = s:Man.man_dir . '/modes.d'
-  lockvar s:Man.modes_dir
+  let self.modes_dir       = self.man_dir . '/modes.d'
+  lockvar self.modes_dir
 
-  let s:Man.globals_dir     = s:Man.man_dir . '/globals.d'
-  lockvar s:Man.globals_dir
+  let self.globals_dir     = self.man_dir . '/globals.d'
+  lockvar self.globals_dir
 
-  let s:Man.manager_avail   = ['Pathogen', 'NeoBundle']
-  lockvar s:Man.manager_avail
+  let self.manager_avail   = ['Pathogen', 'NeoBundle']
+  lockvar self.manager_avail
+
+  let self.prefix          = ' └ '
+  lockvar self.prefix
   "}}}3
 
-  " variables                      {{{3
-  " they will be changed in later initialization
+  " variables                       {{{3
+  " they are all filled and locked in s:Cham.loadMode()
 
-  let s:Man.manager         = self.neobundle
-  let s:Man.title           = ''
-  let s:Man.mode_set        = [] " names of sourced modes.d/* files.
-  let s:Man.modes_duplicate = []
-  let s:Man.meta_set        = [] " names of sourced metas.d/* files.
-  let s:Man.metas_duplicate = []
-  let s:Man.metas           = [] " list of bundle meta dicts.
-  let s:Man.tree            = {} " dict to hold config & bundle hierarchy.
+  let self.manager         = self.neobundle
+  let self.title           = ''
+  let self.mode_set        = [] " names of sourced modes.d/* files.
+  let self.modes_duplicate = []
+  let self.meta_set        = [] " names of sourced metas.d/* files.
+  let self.metas_duplicate = []
+  let self.metas           = [] " list of bundle meta dicts.
+
+  " dict to hold config & bundle hierarchy.
+  let self.tree            = { 'metas' : [], 'modes' : {} }
   "}}}3
 
-  call s:Man.loadMode()
+  call s:Cham.loadMode()
 endfunction " }}}2
 
-function s:Man.modeName() dict "         {{{2
+function s:Cham.modeName() dict "             {{{2
   " check if the appropriate environment variable has valid value.
 
-  if !exists('$MDX_CONFIG_NAME')
-    throw '$MDX_CONFIG_NAME does not exists.'
-  elseif index(self.modesAvail(), $MDX_CONFIG_NAME) == -1
-    throw '$MDX_CONFIG_NAME should be set to a valid manager name: ' .
+  if !exists('$MDX_MODE_NAME')
+    throw '$MDX_MODE_NAME does not exists.'
+  elseif index(self.modesAvail(), $MDX_MODE_NAME) == -1
+    throw '$MDX_MODE_NAME should be set to a valid manager name: ' .
           \ string(self.modesAvail())
   endif
 
-  return $MDX_CONFIG_NAME
+  return $MDX_MODE_NAME
 endfunction " }}}2
 
-function s:Man.addMetas(list) dict "     {{{2
+function s:Cham.addMetas(list) dict "         {{{2
   " make sure bundle list item be properly initialized.
-  let self.tree_ptr.bundles = get(self.tree_ptr, 'bundles', [])
+  let self.tree_ptr.metas = get(self.tree_ptr, 'metas', [])
 
   if empty(a:list) | return | endif
 
   for name in a:list
 
-    " check bundle name's validity.
+    " check meta name's validity.
     if index(self.metasAvail(), name) == -1
-      throw printf("Invalid bundle name: %s", name)
+      throw printf("Invalid meta name: %s", name)
     endif
 
-    " add unique bundle names to current tree.bundles set.
-    if index(self.tree_ptr.bundles, name) == -1
-      call add(self.tree_ptr.bundles, name)
+    " add unique meta names to current tree.metas set.
+    if index(self.tree_ptr.metas, name) == -1
+      call add(self.tree_ptr.metas, name)
     endif
 
-    " add unique bundle names to the centralized set.
+    " add unique meta names to the centralized set.
     if index(self.meta_set, name) == -1
       call add(self.meta_set, name)
     else
@@ -92,7 +97,7 @@ function s:Man.addMetas(list) dict "     {{{2
   endfor
 endfunction " }}}2
 
-function s:Man.mergeModes(list) dict "   {{{2
+function s:Cham.mergeModes(list) dict "       {{{2
   for name in a:list
     " check cyclic or duplicate merging.
     if index(self.mode_set, name) != -1
@@ -103,20 +108,21 @@ function s:Man.mergeModes(list) dict "   {{{2
     endif
 
     " make sure sub-tree item is properly initialized.
-    let self.tree_ptr[name] = get(self.tree_ptr, name,
-          \ { 'bundles' : []})
+    let self.tree_ptr.modes[name] = get(self.tree_ptr.modes, name,
+          \ { 'metas' : [], 'modes' : {} })
 
     let old_ptr = self.tree_ptr
-    let self.tree_ptr = self.tree_ptr[name]
+    let self.tree_ptr = self.tree_ptr.modes[name]
 
     " submerge.
     execute 'source ' . self.modes_dir . '/' . name
 
+    call sort(self.tree_ptr.metas)
     let self.tree_ptr = old_ptr
   endfor
 endfunction " }}}2
 
-function s:Man.loadMode() dict "         {{{2
+function s:Cham.loadMode() dict "             {{{2
   " parse mode files, and fill self.tree, self.meta_set, self.mode_set.
   " all jobs done by the 4 temporary global functions below.
 
@@ -128,10 +134,10 @@ function s:Man.loadMode() dict "         {{{2
   lockvar  self.title
   lockvar  self.manager
   lockvar! self.tree
-  lockvar  self.meta_set
-  lockvar  self.metas_duplicate
-  lockvar  self.mode_set
-  lockvar  self.modes_duplicate
+  call sort(self.meta_set)        | lockvar  self.meta_set
+  call sort(self.metas_duplicate) | lockvar  self.metas_duplicate
+  call sort(self.mode_set)        | lockvar  self.mode_set
+  call sort(self.modes_duplicate) | lockvar  self.modes_duplicate
 
   " clean up functions & commands
   delfunction AddBundles
@@ -141,11 +147,12 @@ function s:Man.loadMode() dict "         {{{2
   unlet self.tree_ptr
 endfunction " }}}2
 
-function s:Man.managerInit() dict "      {{{2
+function s:Cham.managerInit() dict "          {{{2
   call self.manager.init()
 endfunction " }}}2
 
-function s:Man.loadMetas() dict "        {{{2
+" TODO: unimplemented.
+function s:Cham.loadMetas() dict "            {{{2
   for name in self.meta_set
     let g:mdx_bundle = {}
     let g:mdx_bundle.neodict = {}
@@ -157,25 +164,25 @@ function s:Man.loadMetas() dict "        {{{2
   endfor
 endfunction " }}}2
 
-function s:Man.metasAvail() dict "       {{{2
-  let bundles = glob(self.metas_dir . '/*', 1, 1)
-  call map(bundles, 'fnamemodify(v:val, ":t:r")')
-  return bundles
+function s:Cham.metasAvail() dict "           {{{2
+  let metas = glob(self.metas_dir . '/*', 1, 1)
+  call map(metas, 'fnamemodify(v:val, ":t:r")')
+  return metas
 endfunction " }}}2
 
-function s:Man.modesAvail() dict "       {{{2
+function s:Cham.modesAvail() dict "           {{{2
   let configs = glob(self.modes_dir . '/*', 1, 1)
   call map(configs, 'fnamemodify(v:val, ":t:r")')
   return configs
 endfunction " }}}2
 
-function s:Man.repoAvail() dict "        {{{2
-  let bundles_installed = glob(self.repo_dir . '/*', 1, 1)
-  call map(bundles_installed, 'fnamemodify(v:val, ":t:r")')
-  return bundles_installed
+function s:Cham.repoAvail() dict "            {{{2
+  let metas_installed = glob(self.repo_dir . '/*', 1, 1)
+  call map(metas_installed, 'fnamemodify(v:val, ":t:r")')
+  return metas_installed
 endfunction " }}}2
 
-function s:Man.neobundle.init() dict "   {{{2
+function s:Cham.neobundle.init() dict "       {{{2
   set nocompatible                " Recommend
 
   if has('vim_starting')
@@ -190,7 +197,7 @@ function s:Man.neobundle.init() dict "   {{{2
   execute 'NeoBundleLocal ' . escape(g:rc_root, '\ ') . '/bundle'
 
   " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  "for meta in s:Man.metas
+  "for meta in s:Cham.metas
   "execute "NeoBundle " . string(meta.site)
   "\ . ', ' . string(meta.neodict)
   "endfor
@@ -210,7 +217,7 @@ function s:Man.neobundle.init() dict "   {{{2
   nnoremap \neo <Esc>:NeoBundleUpdate<CR>:NeoBundleUpdatesLog<CR>
 endfunction " }}}2
 
-function s:Man.pathogen.init() dict "    {{{2
+function s:Cham.pathogen.init() dict "        {{{2
   filetype off
   filetype plugin indent off
 
@@ -219,7 +226,7 @@ function s:Man.pathogen.init() dict "    {{{2
     exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/neobundle/pathogen'
   endif
 
-  " exclude those bundles not listed in loaded configs.d/* files.
+  " exclude those metas not listed in loaded configs.d/* files.
   let g:pathogen_disabled = filter(
         \ mudox#cfg_bundle#BundleListInstalled(),
         \ 'index(self.meta_set, v:val) == -1'
@@ -232,57 +239,123 @@ function s:Man.pathogen.init() dict "    {{{2
   filetype plugin indent on
 endfunction " }}}2
 
+function s:Cham.info() dict "                 {{{2
+  echohl Title
+  echon printf("%-20s: ", 'Mode')
+  echohl Identifier
+  echon printf("%s\n", self.modeName())
+
+  echohl Title
+  echon printf("%-20s: ", 'Manager')
+  echohl Identifier
+  echon printf("%s\n", self.manager.name)
+
+  echohl Title
+  echon printf("%-20s: ", 'Mode Files')
+  echohl Identifier
+  echon printf("%s\n", join(self.mode_set, ', '))
+
+  echohl Number
+  echon printf("%-3d ", len(self.meta_set))
+  echohl Title
+  echon printf("%-16s:\n", "Meta Files")
+
+  echohl Delimiter
+  echo '-'
+  for n in range(&columns - 2) | echon '-' | endfor
+
+  call self.dumpTree(self.tree, ['.'])
+
+  " must have.
+  echohl None
+endfunction "}}}2
+
+function s:Cham.dumpTree(dict, path) dict "   {{{2
+  " arg path: a list record recursion path.
+
+  let max_width = max(map(self.meta_set[:], 'len(v:val)')) + 2
+  let fields = (&columns - len(self.prefix)) / max_width
+
+  " print tree path.
+  echohl Title
+  echo join(a:path, '/') . ':'
+
+  " print meta list.
+  echohl Special
+
+  if empty(a:dict.metas)
+    echo self.prefix . 'nothing ...'
+  else
+    for i in range(len(a:dict.metas))
+      if i % fields == 0 | echo self.prefix | endif
+      execute 'echon printf("%-' . max_width . 's", a:dict.metas[i])'
+    endfor
+  endif
+
+  " print sub-modes.
+  for [name, mode] in items(a:dict.modes)
+    call self.dumpTree(mode, add(a:path[:], name))
+  endfor
+
+  echohl None
+endfunction " }}}2
+
 " }}}1
 
-" temporary functions                 {{{1
+" temporary functions                    {{{1
 
 " temporary global functions used in modes.d/* to source sub-mode files.
-" since s:Man.loadModes will be called only once on the start, the commands and
+" since s:Cham.loadModes will be called only once on the start, the commands and
 " functions are guaranteed to be defined and deleted properly.
 
-function AddBundles(list) "              {{{2
-  call s:Man.addMetas(a:list)
+function AddBundles(list) "                 {{{2
+  call s:Cham.addMetas(a:list)
 endfunction " }}}2
 
-function MergeConfigs(list) "            {{{2
-  call s:Man.mergeModes(a:list)
+function MergeConfigs(list) "               {{{2
+  call s:Cham.mergeModes(a:list)
 endfunction " }}}2
 
-function SetTitle(name) "                {{{2
+function SetTitle(name) "                   {{{2
   " only top level config file can call this function.
-  if !empty(s:Man.title)
+  if !empty(s:Cham.title)
     return
   endif
 
-  let s:Man.title = a:name
-  lockvar s:Man.title
+  let s:Cham.title = a:name
+  lockvar s:Cham.title
 endfunction " }}}2
 
-function SetBundleManager(name) "        {{{2
-  if index(s:Man.manager_avail, a:name) == -1
-    throw 'Invalid manager name, need ' . string(s:Man.manager_avail)
+function SetBundleManager(name) "           {{{2
+  if index(s:Cham.manager_avail, a:name) == -1
+    throw 'Invalid manager name, need ' . string(s:Cham.manager_avail)
   endif
 
   " only top level config file can call this function.
-  if !empty(s:Man.manager)
+  if !empty(s:Cham.manager)
     return
   endif
 
   if a:name ==# 'NeoBundle'
-    execute 'let s:Man.manager = s:Man.' . tolower(a:name)
+    execute 'let s:Cham.manager = s:Cham.' . tolower(a:name)
   endif
 
-  lockvar s:Man.manager
+  lockvar s:Cham.manager
 endfunction " }}}2
 
 "}}}1
 
-" public interfaces                   {{{1
+" public interfaces                      {{{1
 
-function mudox#chameleon#Init() "        {{{2
-  call s:Man.init()
+function mudox#chameleon#Init() "           {{{2
+  call s:Cham.init()
 endfunction " }}}2
 
-let g:mdx= s:Man
+command -nargs=0 ChamInfo call mudox#chameleon#Info()
+function mudox#chameleon#Info() " {{{2
+  call s:Cham.info()
+endfunction " }}}2
+
+let g:mdx= s:Cham
 
 "}}}1

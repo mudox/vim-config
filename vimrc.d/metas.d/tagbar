@@ -1,0 +1,28 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:mdx_bundle.name = expand('<sfile>:p:t')
+
+let g:mdx_bundle.site = 'https://github.com/majutsushi/tagbar.git'
+
+
+let g:mdx_bundle.neodict.name = g:mdx_bundle.name
+
+
+function g:mdx_bundle.config() dict
+    nnoremap <leader>tb :TagbarToggle<CR>
+    " let g:tagbar_compact = 1
+    " let g:tagbar_indent = 1
+
+    if has('win32') || has('win64')
+        let g:tagbar_iconchars = ['+', '-']
+    elseif has('unix')
+        let g:tagbar_iconchars = ['▾', '▸']
+    elseif has('mac') || has('macunix')
+        let g:tagbar_iconchars = ['▾', '▸']
+    else
+        echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+    endif
+
+    let g:tagbar_autoshowtag = 1
+
+endfunction

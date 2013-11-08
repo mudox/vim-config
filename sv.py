@@ -49,4 +49,5 @@ else:
 
     print 'Switched to >> %s << !' % menu_dict[config_idx]
 
+
     subprocess.Popen('gvim')
