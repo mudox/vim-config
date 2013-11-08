@@ -12,10 +12,7 @@ function g:mdx_bundle.config() dict
   nnoremap <Space>f :<C-U>CtrlPFunky<CR>
 
   let g:ctrlp_funky_after_jump = {
-        \ 'default' : 'zxzz',
-        \ 'python'  : 'zO',
-        \ 'cpp'     : 'zxzt',
-        \ 'go'      : 'zxzt',
-        \ 'vim'     : 'zxzz',
+        \ 'default' : 'zx50%',
+        \ 'vim'     : 'zx20%',
         \ }
 endfunction
