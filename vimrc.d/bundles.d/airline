@@ -16,7 +16,7 @@ function g:mdx_bundle.config() dict
     let g:airline_powerline_fonts            = 1
     let g:airline_theme                      = 'molokai'
     let g:airline_whitespace_symbol          = '!'
-    let g:airline_branch_empty_message       = "I'm Mudox"
+    let g:airline_branch_empty_message       = "Mudox"
     let g:airline_enable_branch              = 1
     let g:airline_enable_syntastic           = 1
     let g:airline_enable_tagbar              = 1
