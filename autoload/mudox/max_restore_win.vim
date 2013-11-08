@@ -10,8 +10,12 @@ function! mudox#max_restore_win#Main()
         " if on the first run.
         let s:old_lines = &lines
         let s:old_columns = &columns
-        set lines=9999
-        set columns=9999
+
+        let &lines = 9999
+        let &lines = &lines - 1
+        let &columns = 9999
+        winpos 0 0
+
         let s:max_lines = &lines
         let s:max_columns = &columns
 
@@ -38,10 +42,14 @@ function! MaximizeWin()
     let s:old_columns = &columns
     let s:old_xpos = getwinposx()
     let s:old_ypos = getwinposy()
-    exe "set lines=" . 9999
-    exe "set columns=" . 9999
-    let s:max_lines = &lines
+
+    let &columns = 9999
+    let &lines = 9999
+    let s:max_lines = &lines - 1
     let s:max_columns = &columns
+    let &lines = s:max_lines
+
+    winpos 0 0
 endfunction
 
 function! RestoreWin()
