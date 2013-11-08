@@ -16,6 +16,6 @@ function g:mdx_bundle.config() dict
         \ 'python'  : 'zO',
         \ 'cpp'     : 'zxzt',
         \ 'go'      : 'zxzt',
-        \ 'vim'     : 'zxzt',
+        \ 'vim'     : 'zxzz',
         \ }
 endfunction
