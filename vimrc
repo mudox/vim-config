@@ -18,6 +18,9 @@ let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 " BUNDLE LOADING                                  {{{1
 let g:vimball_home = escape(g:rc_root, ' \') . '/bundle/'
 
+let $MDX_MODE_NAME = 'n_vim_mode'
+call mudox#chameleon#Init()
+
 call mudox#cfg_bundle#GetBundleManager()
 call mudox#cfg_bundle#BundlesInit()
 "}}}1
@@ -106,7 +109,10 @@ nnoremap <Enter>f :EditFileType<Space>
 " command mode mappings.
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
 
+nnoremap <leader>sb yiw:%s/\C\m<C-R>"//g<Left><Left>``
 " }}}1
 
 " BUNDLE SETTINGS                                 {{{1
