@@ -17,19 +17,19 @@ let s:Cham.neobundle       = { 'name' : 'NeoBundle'}
 function s:Cham.init() dict "                 {{{2
 
   " constants                       {{{3
-  let self.man_dir         = g:rc_root . '/vimrc.d'
-  lockvar self.man_dir
+  let self.cham_dir        = g:rc_root . '/vimrc.d'
+  lockvar self.cham_dir
 
   let self.repo_dir        = g:rc_root . '/neobundle'
   lockvar self.repo_dir
 
-  let self.metas_dir       = self.man_dir . '/metas.d'
+  let self.metas_dir       = self.cham_dir . '/metas.d'
   lockvar self.metas_dir
 
-  let self.modes_dir       = self.man_dir . '/modes.d'
+  let self.modes_dir       = self.cham_dir . '/modes.d'
   lockvar self.modes_dir
 
-  let self.globals_dir     = self.man_dir . '/globals.d'
+  let self.globals_dir     = self.cham_dir . '/globals.d'
   lockvar self.globals_dir
 
   let self.manager_avail   = ['Pathogen', 'NeoBundle']
@@ -67,14 +67,19 @@ endfunction " }}}2
 function s:Cham.modeName() dict "             {{{2
   " check if the appropriate environment variable has valid value.
 
-  if !exists('$MDX_MODE_NAME')
-    throw '$MDX_MODE_NAME does not exists.'
-  elseif index(self.modesAvail(), $MDX_MODE_NAME) == -1
-    throw '$MDX_MODE_NAME should be set to a valid manager name: ' .
-          \ string(self.modesAvail())
+  "if !exists('$MDX_MODE_NAME')
+    "throw '$MDX_MODE_NAME does not exists.'
+  "elseif index(self.modesAvail(), $MDX_MODE_NAME) == -1
+    "throw '$MDX_MODE_NAME should be set to a valid manager name: ' .
+          "\ string(self.modesAvail())
+  "endif
+
+  let name = readfile(self.cham_dir . '/cur_mode')[0]
+  if index(self.modesAvail(), name) == -1
+    throw 'Invalid mode name in ' . self.cham_dir . '/cur_mode'
   endif
 
-  return $MDX_MODE_NAME
+  return name
 endfunction " }}}2
 
 function s:Cham.addMetas(list) dict "         {{{2
@@ -170,7 +175,7 @@ function s:Cham.loadMetas() dict "            {{{2
   lockvar! self.metas
 endfunction " }}}2
 
-function s:Cham.initBundles() dict " {{{2
+function s:Cham.initBundles() dict "          {{{2
   for meta in self.metas
     call meta.config()
   endfor
@@ -213,8 +218,8 @@ function s:Cham.neobundle.init() dict "       {{{2
 
   " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   for meta in s:Cham.metas
-  execute "NeoBundle " . string(meta.site)
-  \ . ', ' . string(meta.neodict)
+    execute "NeoBundle " . string(meta.site)
+          \ . ', ' . string(meta.neodict)
   endfor
   " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
@@ -314,23 +319,100 @@ function s:Cham.dumpTree(dict, path) dict "   {{{2
   echohl None
 endfunction " }}}2
 
+function s:Cham.editMode(arg) dict "          {{{2
+  let names = split(a:arg)
+  if len(names) > 2
+    echoerr 'Too many arguments, at most 2 arguemnts is needed'
+    return
+  endif
+
+  if len(names) == 0 " Edit current mode.
+    let file_path = self.modes_dir . '/' . self.modeName()
+    execute mudox#query_open_file#Main() . file_path
+  else " edit a new or existing mode.
+    let file_path = self.modes_dir . '/' . names[0]
+
+    if filereadable(file_path)
+      execute mudox#query_open_file#Main() . file_path
+    else
+      " gvie user chance to cancel.
+      let open_cmd  = mudox#query_open_file#Main()
+
+      " read template content if any.
+      let tmpl_path = self.modes_dir . '/'
+            \ . (len(names) == 2 ? names[1] : '../mode_template')
+      echo tmpl_path
+
+      if filereadable(tmpl_path)
+        let tmpl = readfile(tmpl_path)
+      else
+        echoerr "Template file " . tmpl_path . ' unreadable'
+        echoerr "creating an empty mode ..."
+      endif
+
+      execute  open_cmd . file_path
+
+      if exists('tmpl')
+        setlocal filetype=vim
+        setlocal foldmethod=marker
+        setlocal fileformat=unix
+        call append(0, tmpl)
+        normal dd
+      endif
+    endif
+  endif
+endfunction " }}}2
+
+function s:Cham.editMeta(name) dict "         {{{2
+  let file_name = self.metas_dir . '/' . a:name
+  let open_cmd  = mudox#query_open_file#Main() " gvie user chance to cancel.
+
+  if !filereadable(file_name)
+    " read template content
+    let tmpl = readfile(self. . '/meta_template')
+  endif
+
+  execute  open_cmd . file_name
+
+  " if it is creating a new meta, fill it with appropriate template.
+  if exists('tmpl')
+    setlocal filetype=vim
+    setlocal foldmethod=marker
+    setlocal fileformat=unix
+
+    " fill with template.
+    " if register + got a valid git repo address, then automatically
+    " insert the shrotened address into appropriate place.
+    let repo_addr = s:ParsePlusReg()
+    if len(repo_addr) > 0
+      let n = match(tmpl, 'let g:this_mode.site = " TODO:')
+      let tmpl[n] = substitute(tmpl[n], '" TODO:.*$', string(repo_addr), '')
+    endif
+
+    call append(0, tmpl)
+    normal dd " delete trailling empty line.
+
+    call cursor(1, 1)
+    call search("let g:this_mode.site = '.", 'e')
+  endif
+endfunction " }}}2
 " }}}1
 
-" temporary functions                    {{{1
+" temporary functions                      {{{1
 
 " temporary global functions used in modes.d/* to source sub-mode files.
 " since s:Cham.loadModes will be called only once on the start, the commands and
 " functions are guaranteed to be defined and deleted properly.
 
-function AddBundles(list) "                 {{{2
+function AddBundles(list) "                   {{{2
   call s:Cham.addMetas(a:list)
 endfunction " }}}2
 
-function MergeConfigs(list) "               {{{2
+function MergeConfigs(list) "                 {{{2
   call s:Cham.mergeModes(a:list)
 endfunction " }}}2
 
-function SetTitle(name) "                   {{{2
+function SetTitle(name) "                     {{{2
   " only top level config file can call this function.
   if !empty(s:Cham.title)
     return
@@ -340,7 +422,7 @@ function SetTitle(name) "                   {{{2
   lockvar s:Cham.title
 endfunction " }}}2
 
-function SetBundleManager(name) "           {{{2
+function SetBundleManager(name) "             {{{2
   if index(s:Cham.manager_avail, a:name) == -1
     throw 'Invalid manager name, need ' . string(s:Cham.manager_avail)
   endif
@@ -359,16 +441,49 @@ endfunction " }}}2
 
 "}}}1
 
-" public interfaces                      {{{1
+" public interfaces                        {{{1
 
-function mudox#chameleon#Init() "           {{{2
+function mudox#chameleon#Init() "             {{{2
   call s:Cham.init()
 endfunction " }}}2
 
+" :ChamInfo                                   {{{2
 command -nargs=0 ChamInfo call mudox#chameleon#Info()
-function mudox#chameleon#Info() " {{{2
+function mudox#chameleon#Info()
   call s:Cham.info()
-endfunction " }}}2
+endfunction
+" }}}2
+
+" :EditMeta & <Enter>b                        {{{2
+command -nargs=1 -complete=custom,<SID>MetasAvail EditMeta
+      \ call s:Cham.editMeta(<q-args>)
+nnoremap <Enter>b :EditMeta<Space>
+
+function <SID>MetasAvail(arglead, cmdline, cursorpos)
+  return join(s:Cham.metasAvail(), "\n")
+endfunction
+" }}}2
+
+" :EditMode & <Enter>c                        {{{2
+command -nargs=* -complete=custom,<SID>modesAvail EditMode
+      \ call s:Cham.editMode(<q-args>)
+nnoremap <Enter>c :EditMode<Space>
+
+function <SID>modesAvail(arglead, cmdline, cursorpos)
+  return join(s:Cham.modesAvail(), "\n")
+endfunction
+" }}}2
+
+" autocmd VimEnter                            {{{2
+autocmd VimEnter * call <SID>OnVimEnter()
+
+function <SID>OnVimEnter()
+  let title = get(s:Cham, 'title', s:Cham.modeName())
+
+  silent set title
+  let &titlestring = title
+endfunction
+" }}}2
 
 let g:mdx= s:Cham
 

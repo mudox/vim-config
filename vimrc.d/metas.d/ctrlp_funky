@@ -4,9 +4,7 @@ let g:this_meta.name = expand('<sfile>:p:t')
 
 let g:this_meta.site = 'https://github.com/tacahiroy/ctrlp-funky.git'
 
-
 let g:this_meta.neodict.name = g:this_meta.name
-
 
 function g:this_meta.config() dict
   nnoremap <Space>f :<C-U>CtrlPFunky<CR>
@@ -18,4 +16,6 @@ function g:this_meta.config() dict
         \ 'go'      : 'zxzt',
         \ 'vim'     : 'zxzt',
         \ }
+
+  set scrolloff=5
 endfunction

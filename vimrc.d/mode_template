@@ -1,0 +1,35 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" Set Tile & Bundle Manager {{{1
+
+call SetTitle('title for the mode') " TODO: give you mode a title
+
+call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
+
+" }}}1
+
+" Merge Configs {{{1
+
+" TODO: put every sub-mode names you need into the list.
+let s:sub_configs = [
+	\ 'x_essential',
+	\ 'x_common',
+	\ 'x_ext_tools',
+	\ 'x_color',
+	\ 'x_textobj',
+	\ 'x_go',
+	\ ]
+
+call MergeConfigs(s:sub_configs)
+
+" }}}1
+
+" Bundles in Current Config {{{1
+
+" TODO: put every meta nemas you need into the list.
+let s:bundle_list = [
+      \ 'ariline',
+      \ ]
+
+call AddBundles(s:bundle_list)
+" }}}1

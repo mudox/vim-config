@@ -6,8 +6,8 @@ import subprocess
 flag = False
 for vimDir in ['.vim', 'vimfiles']:
     if path.exists(path.expanduser('~/%s' % vimDir)):
-        configs_dir = path.expanduser('~/%s/vimrc.d/configs.d' % vimDir)
-        cur_config = path.expanduser('~/%s/vimrc.d/cur_config' % vimDir)
+        configs_dir = path.expanduser('~/%s/vimrc.d/modes.d' % vimDir)
+        cur_config = path.expanduser('~/%s/vimrc.d/cur_mode' % vimDir)
         if path.exists(configs_dir):
             flag = True
 
@@ -39,13 +39,8 @@ try:
 except:
     pass
 else:
-    so_line = textwrap.dedent('''\
-    let g:mdx_config_name = '{0}'
-    execute 'source ' . g:rc_root . '/vimrc.d/configs.d/{0}'
-    ''')
-
     with open(cur_config, 'w') as cc:
-        cc.write(so_line.format(menu_dict[config_idx]))
+        cc.write(menu_dict[config_idx])
 
     print 'Switched to >> %s << !' % menu_dict[config_idx]
 

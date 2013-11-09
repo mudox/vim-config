@@ -18,7 +18,6 @@ let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 " BUNDLE LOADING                                  {{{1
 let g:vimball_home = escape(g:rc_root, ' \') . '/bundle/'
 
-let $MDX_MODE_NAME = 'n_vim_mode'
 call mudox#chameleon#Init()
 
 "call mudox#cfg_bundle#GetBundleManager()
@@ -117,8 +116,6 @@ nnoremap <leader>sb yiw:%s/\C\m<C-R>"//g<Left><Left>``
 
 " BUNDLE SETTINGS                                 {{{1
 
-call mudox#cfg_bundle#LoadBundleConfigs()
-
 " [ft-sql]"                                          {{{2
 let g:ftplugin_sql_omni_key_right = '<C-l>'
 let g:ftplugin_sql_omni_key_left  = '<C-h>'
@@ -136,7 +133,7 @@ let g:mwIgnoreCase = 0
 
 " [dot_vim]                                          {{{2
 
-" let g:mdx_vim_alpha_step = 15
+let g:mdx_vim_alpha_step = 15
 if has('win32') || has('win64')
     nnoremap <silent> <leader>`   :<C-U>call mudox#max_restore_win#Main()<CR>
 
@@ -197,17 +194,17 @@ endif
 set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
-if index(g:mdx_loaded_bundles, 'airline') == -1
+"if index(g:mdx_loaded_bundles, 'airline') == -1
     set laststatus=1 " never show statusline.
     set cmdheight=2
     set showmode
     set showcmd
-else
-    set noshowmode
-    set noshowcmd
-    set laststatus=2
-    set cmdheight=2
-endif
+"else
+    "set noshowmode
+    "set noshowcmd
+    "set laststatus=2
+    "set cmdheight=2
+"endif
 
 " Brace match
 set noshowmatch
