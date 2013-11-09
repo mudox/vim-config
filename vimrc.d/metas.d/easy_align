@@ -1,15 +1,15 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-let g:mdx_bundle.name = expand('<sfile>:p:t')
+let g:this_meta.name = expand('<sfile>:p:t')
 
-let g:mdx_bundle.site = 'https://github.com/junegunn/vim-easy-align.git'
+let g:this_meta.site = 'https://github.com/junegunn/vim-easy-align.git'
 
 
-let g:mdx_bundle.neodict.name = g:mdx_bundle.name
-let g:mdx_bundle.neodict.lazy = 1
-let g:mdx_bundle.neodict.autoload = { 'commands' : ['EasyAlign'] }
+let g:this_meta.neodict.name = g:this_meta.name
+let g:this_meta.neodict.lazy = 1
+let g:this_meta.neodict.autoload = { 'commands' : ['EasyAlign'] }
 
-function g:mdx_bundle.config() dict
+function g:this_meta.config() dict
 vnoremap <silent> <Enter> :EasyAlign<cr>
 
 endfunction

@@ -21,8 +21,8 @@ let g:vimball_home = escape(g:rc_root, ' \') . '/bundle/'
 let $MDX_MODE_NAME = 'n_vim_mode'
 call mudox#chameleon#Init()
 
-call mudox#cfg_bundle#GetBundleManager()
-call mudox#cfg_bundle#BundlesInit()
+"call mudox#cfg_bundle#GetBundleManager()
+"call mudox#cfg_bundle#BundlesInit()
 "}}}1
 
 " MAPPINGS                                        {{{1

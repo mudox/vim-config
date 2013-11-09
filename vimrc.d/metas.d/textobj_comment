@@ -1,15 +1,15 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-let g:mdx_bundle.name = expand('<sfile>:p:t')
+let g:this_meta.name = expand('<sfile>:p:t')
 
-let g:mdx_bundle.site = 'https://github.com/glts/vim-textobj-comment.git'
+let g:this_meta.site = 'https://github.com/glts/vim-textobj-comment.git'
 
 
-let g:mdx_bundle.neodict.name = g:mdx_bundle.name
-let g:mdx_bundle.neodict.lazy = 1
-let g:mdx_bundle.neodict.autoload = { 'mappings' : ['<Plug>(textobj-comment-'] }
+let g:this_meta.neodict.name = g:this_meta.name
+let g:this_meta.neodict.lazy = 1
+let g:this_meta.neodict.autoload = { 'mappings' : ['<Plug>(textobj-comment-'] }
 
-function g:mdx_bundle.config() dict
+function g:this_meta.config() dict
     let g:textobj_comment_no_default_key_mappings = 1
     xmap ax <Plug>(textobj-comment-a)
     omap ax <Plug>(textobj-comment-a)

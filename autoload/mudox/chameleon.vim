@@ -8,9 +8,9 @@ let s:Cham                 = {}
 " supported vim bundle managers.
 " since they have method function to be defined, they must be initialized
 " outside of functions.
-let s:Cham.vundle          = { 'name' : 'Vundle' }
+let s:Cham.vundle          = { 'name' : 'Vundle'   }
 let s:Cham.pathogen        = { 'name' : 'Pathogen' }
-let s:Cham.neobundle       = { 'name' : 'NeoBundle' }
+let s:Cham.neobundle       = { 'name' : 'NeoBundle'}
 
 " s:Cham -- the core object                {{{1
 
@@ -42,19 +42,26 @@ function s:Cham.init() dict "                 {{{2
   " variables                       {{{3
   " they are all filled and locked in s:Cham.loadMode()
 
-  let self.manager         = self.neobundle
+  let self.manager         = self.neobundle " default
   let self.title           = ''
   let self.mode_set        = [] " names of sourced modes.d/* files.
   let self.modes_duplicate = []
   let self.meta_set        = [] " names of sourced metas.d/* files.
   let self.metas_duplicate = []
-  let self.metas           = [] " list of bundle meta dicts.
 
   " dict to hold config & bundle hierarchy.
+  " will fild and locked in self.loadMode()
   let self.tree            = { 'metas' : [], 'modes' : {} }
+
+  " it will filed and locked in self.loadMetas()
+  " and unleted in self.manager.init() after registering.
+  let self.metas           = [] " list of plugin meta dicts.
   "}}}3
 
-  call s:Cham.loadMode()
+  call self.loadMode()
+  call self.loadMetas()
+  call self.manager.init()
+  call self.initBundles()
 endfunction " }}}2
 
 function s:Cham.modeName() dict "             {{{2
@@ -123,17 +130,19 @@ function s:Cham.mergeModes(list) dict "       {{{2
 endfunction " }}}2
 
 function s:Cham.loadMode() dict "             {{{2
-  " parse mode files, and fill self.tree, self.meta_set, self.mode_set.
-  " all jobs done by the 4 temporary global functions below.
+  " parse mode files, and fill self.tree, self.meta_set, self.mode_set ...
+  " virtually, all jobs done by the 4 temporary global functions below.
 
   " temporary pointer tracing current sub tree during traversal.
   let self.tree_ptr = self.tree
 
   execute 'source ' . self.modes_dir . '/' . self.modeName()
 
+  " lock
   lockvar  self.title
   lockvar  self.manager
   lockvar! self.tree
+
   call sort(self.meta_set)        | lockvar  self.meta_set
   call sort(self.metas_duplicate) | lockvar  self.metas_duplicate
   call sort(self.mode_set)        | lockvar  self.mode_set
@@ -147,21 +156,27 @@ function s:Cham.loadMode() dict "             {{{2
   unlet self.tree_ptr
 endfunction " }}}2
 
-function s:Cham.managerInit() dict "          {{{2
-  call self.manager.init()
-endfunction " }}}2
-
-" TODO: unimplemented.
 function s:Cham.loadMetas() dict "            {{{2
   for name in self.meta_set
-    let g:mdx_bundle = {}
-    let g:mdx_bundle.neodict = {}
+    let g:this_meta = {}
+    let g:this_meta.neodict = {}
     execute 'source ' . self.metas_dir . '/' . name
 
-    call add(self.metas, g:mdx_bundle)
+    call add(self.metas, g:this_meta)
 
-    unlet g:mdx_bundle
+    unlet g:this_meta
   endfor
+
+  lockvar! self.metas
+endfunction " }}}2
+
+function s:Cham.initBundles() dict " {{{2
+  for meta in self.metas
+    call meta.config()
+  endfor
+
+  unlock! self.metas
+  unlet self.metas
 endfunction " }}}2
 
 function s:Cham.metasAvail() dict "           {{{2
@@ -197,10 +212,10 @@ function s:Cham.neobundle.init() dict "       {{{2
   execute 'NeoBundleLocal ' . escape(g:rc_root, '\ ') . '/bundle'
 
   " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  "for meta in s:Cham.metas
-  "execute "NeoBundle " . string(meta.site)
-  "\ . ', ' . string(meta.neodict)
-  "endfor
+  for meta in s:Cham.metas
+  execute "NeoBundle " . string(meta.site)
+  \ . ', ' . string(meta.neodict)
+  endfor
   " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
   filetype plugin indent on       " Required!
@@ -226,10 +241,9 @@ function s:Cham.pathogen.init() dict "        {{{2
     exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/neobundle/pathogen'
   endif
 
-  " exclude those metas not listed in loaded configs.d/* files.
+  " exclude those metas not listed in loaded modes.d/* files.
   let g:pathogen_disabled = filter(
-        \ mudox#cfg_bundle#BundleListInstalled(),
-        \ 'index(self.meta_set, v:val) == -1'
+        \ self.metasAvail(), 'index(self.meta_set, v:val) == -1'
         \ )
 
   call pathogen#infect('neobundle/{}')

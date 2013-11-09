@@ -1,14 +1,14 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-let g:mdx_bundle.name = expand('<sfile>:p:t')
+let g:this_meta.name = expand('<sfile>:p:t')
 
-let g:mdx_bundle.site = 'https://github.com/vimwiki/vimwiki.git'
-
-
-let g:mdx_bundle.neodict.name = g:mdx_bundle.name
+let g:this_meta.site = 'https://github.com/vimwiki/vimwiki.git'
 
 
-function g:mdx_bundle.config() dict
+let g:this_meta.neodict.name = g:this_meta.name
+
+
+function g:this_meta.config() dict
   let g:vimwiki_hl_cb_checked = 1
   let g:vimwiki_hl_headers    = 1
   let g:vimwiki_global_ext    = 0
