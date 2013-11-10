@@ -14,8 +14,9 @@ function g:this_meta.config() dict
     let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
     let g:UltiSnipsJumpBackwardTrigger = "<C-S>"
     let g:UltiSnipsNoPythonWarning     = 1
-    let g:UltiSnipsSnippetsDir         = g:rc_root . '/neobundle/mudox_ultisnips_snippets/ultisnips_snippets'
-    let g:UltiSnipsSnippetDirectories  = [ "ultisnips_snippets", "UltiSnips" ]
+    let g:UltiSnipsSnippetDirectories  = [ "UltiSnips" ]
+    let g:UltiSnipsSnippetsDir         = g:rc_root .
+          \ '/neobundle/mudox_ultisnips_snippets/UltiSnips'
 
     cabbrev ue UltiSnipsEdit
 endfunction

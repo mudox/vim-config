@@ -6,21 +6,13 @@ call SetBundleManager('NeoBundle')
 
 " }}}1
 
-" Merge Configs {{{1
 
-" }}}1
-
-" Bundles in Current Config {{{1
-
-let s:bundles = glob(g:rc_root . '/vimrc.d/bundles.d/*', 1, 1)
-let s:bundles = map(s:bundles, 'fnamemodify(v:val, ":t:r")')
+let s:metas = mudox#chameleon#core.metasAvail()
 
 if !has('unix')
-    call filter(s:bundles, 'v:val != "ycm"')
-    call filter(s:bundles, 'v:val != "autoforamt"')
+    call filter(s:metas, 'v:val != "ycm"')
+    call filter(s:metas, 'v:val != "autoforamt"')
 endif
 
-let s:bundle_list = s:bundles
 
-call AddBundles(s:bundle_list)
-" }}}1
+call AddBundles(s:metas)
