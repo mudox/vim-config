@@ -1,3 +1,5 @@
+" vim: foldmarker=<<<,>>>
+
 " tab
 setlocal foldmethod=marker
 setlocal tabstop=8
@@ -11,8 +13,10 @@ setlocal colorcolumn=80
 " fold
 setlocal foldmethod=marker
 
-nnoremap <buffer> <leader><leader>rl <Esc>YY:@"<CR>
-nnoremap <buffer> <Enter>r :<C-U>w<CR>:so %<CR>
+nnoremap <buffer> <leader><leader>rl <Esc>YY:@"<Cr>
+nnoremap <buffer> <Enter>r :<C-U>w<Cr>:so %<Cr>
+
+nnoremap <buffer> <C-F>fa :call mudox#vim#add_vim_func_fold_marker()<Cr>
 
 " syntax hightlighting
 let g:vimsyn_embed = 0      " disable all embeding syntax.
