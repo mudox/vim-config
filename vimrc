@@ -194,17 +194,18 @@ endif
 set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
-"if index(g:mdx_loaded_bundles, 'airline') == -1
+
+if index(mudox#chameleon#core.meta_set, 'airline') == -1
     set laststatus=1 " never show statusline.
     set cmdheight=2
     set showmode
     set showcmd
-"else
-    "set noshowmode
-    "set noshowcmd
-    "set laststatus=2
-    "set cmdheight=2
-"endif
+else
+    set noshowmode
+    set noshowcmd
+    set laststatus=2
+    set cmdheight=2
+endif
 
 " Brace match
 set noshowmatch
