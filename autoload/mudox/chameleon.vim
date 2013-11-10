@@ -68,10 +68,10 @@ function s:Cham.modeName() dict "             {{{2
   " check if the appropriate environment variable has valid value.
 
   "if !exists('$MDX_MODE_NAME')
-    "throw '$MDX_MODE_NAME does not exists.'
+  "throw '$MDX_MODE_NAME does not exists.'
   "elseif index(self.modesAvail(), $MDX_MODE_NAME) == -1
-    "throw '$MDX_MODE_NAME should be set to a valid manager name: ' .
-          "\ string(self.modesAvail())
+  "throw '$MDX_MODE_NAME should be set to a valid manager name: ' .
+  "\ string(self.modesAvail())
   "endif
 
   let name = readfile(self.cham_dir . '/cur_mode')[0]
@@ -259,30 +259,38 @@ function s:Cham.pathogen.init() dict "        {{{2
 endfunction " }}}2
 
 function s:Cham.info() dict "                 {{{2
+  " mode name
   echohl Title
-  echon printf("%-20s: ", 'Mode')
+  echon printf("%-14s ", 'Mode:')
+  echohl Identifier
+  echon printf("%s\n", self.title)
+
+  " mode file name
+  echohl Title
+  echon printf("%-14s ", 'Mode file:')
   echohl Identifier
   echon printf("%s\n", self.modeName())
 
+  " bundle manager name
   echohl Title
-  echon printf("%-20s: ", 'Manager')
+  echon printf("%-14s ", 'Manager:')
   echohl Identifier
   echon printf("%s\n", self.manager.name)
 
-  echohl Title
-  echon printf("%-20s: ", 'Mode Files')
-  echohl Identifier
-  echon printf("%s\n", join(self.mode_set, ', '))
-
+  " long delimiter line.
   echohl Number
   echon printf("%-3d ", len(self.meta_set))
   echohl Title
-  echon printf("%-16s:\n", "Meta Files")
+  echon printf("%-14s ", "Metas Enrolled")
 
   echohl Delimiter
-  echo '-'
-  for n in range(&columns - 2) | echon '-' | endfor
+  echon '-'
+  for n in range(&columns - 38) | echon '-' | endfor
 
+  echohl Number
+  echon printf(" in %2d ", len(self.mode_set))
+  echohl Title
+  echon "Mode files"
   call self.dumpTree(self.tree, ['.'])
 
   " must have.
@@ -369,7 +377,7 @@ function s:Cham.editMeta(name) dict "         {{{2
 
   if !filereadable(file_name)
     " read template content
-    let tmpl = readfile(self. . '/meta_template')
+    let tmpl = readfile(self.cham_dir . '/meta_template')
   endif
 
   execute  open_cmd . file_name
@@ -383,9 +391,9 @@ function s:Cham.editMeta(name) dict "         {{{2
     " fill with template.
     " if register + got a valid git repo address, then automatically
     " insert the shrotened address into appropriate place.
-    let repo_addr = s:ParsePlusReg()
+    let repo_addr = self.peekUrl()
     if len(repo_addr) > 0
-      let n = match(tmpl, 'let g:this_mode.site = " TODO:')
+      let n = match(tmpl, 'let g:this_meta.site = " TODO:')
       let tmpl[n] = substitute(tmpl[n], '" TODO:.*$', string(repo_addr), '')
     endif
 
@@ -395,6 +403,23 @@ function s:Cham.editMeta(name) dict "         {{{2
     call cursor(1, 1)
     call search("let g:this_mode.site = '.", 'e')
   endif
+endfunction " }}}2
+
+function s:Cham.peekUrl() dict "              {{{2
+  " currently only support github & bitbucket address.
+  let github_pat    = 'https://github\.com/[^/]\+/[^/]\+\.git'
+  let bitbucket_pat = 'https://bitbucket\.org/[^/]\+/[^/]\+\%(\.git\)\?'
+  let url_pat = bitbucket_pat . '\|' . github_pat
+
+  for reg in [@", @+, @*, @a]
+    let url = matchstr(reg, url_pat)
+    if !empty(url)
+      break
+    endif
+  endfor
+
+  " will returns an empty string if parsing failed.
+  return url
 endfunction " }}}2
 " }}}1
 
@@ -485,6 +510,7 @@ function <SID>OnVimEnter()
 endfunction
 " }}}2
 
-let g:mdx= s:Cham
+let g:mdx = s:Cham
+let mudox#chameleon#core = s:Cham
 
 "}}}1
