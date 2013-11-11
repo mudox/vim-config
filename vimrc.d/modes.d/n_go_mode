@@ -26,6 +26,7 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
+      \ 'syntastic',
       \ ]
 
 call AddBundles(s:bundle_list)

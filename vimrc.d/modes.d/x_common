@@ -28,7 +28,6 @@ let s:bundle_list = [
       \ 'repeat',
       \ 'surround',
       \ 'switch',
-      \ 'syntastic',
       \ 'trailer_trash',
       \ 'unimpaired',
       \ 'vim_wiki',

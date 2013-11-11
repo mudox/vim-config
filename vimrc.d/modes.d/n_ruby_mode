@@ -26,6 +26,8 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:common_bundle = [
+      \ 'syntastic',
+      \ 'dbgp',
       \ ]
 
 let s:bundle_list = s:common_bundle
