@@ -8,7 +8,7 @@ let g:this_meta.site = 'https://github.com/vimwiki/vimwiki.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 
-function g:this_meta.config() dict
+function g:this_meta.config()
   let g:vimwiki_hl_cb_checked = 1
   let g:vimwiki_hl_headers    = 1
   let g:vimwiki_global_ext    = 0

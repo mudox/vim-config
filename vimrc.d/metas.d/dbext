@@ -9,7 +9,7 @@ let g:this_meta.neodict.name = g:this_meta.name
 let g:this_meta.neodict.lazy = 1
 let g:this_meta.neodict.autoload = { 'filetypes' : ['sql'] }
 
-function g:this_meta.config() dict
+function g:this_meta.config()
     let g:dbext_default_buffer_lines          = 10
     let g:dbext_default_use_sep_result_buffer = 0
     let g:dbext_default_history_file          = '~/.dbext_sql_history'

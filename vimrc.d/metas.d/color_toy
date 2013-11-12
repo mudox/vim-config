@@ -8,7 +8,7 @@ let g:this_meta.site = 'https://github.com/mudox/ColorToy.vim.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 
-function g:this_meta.config() dict
+function g:this_meta.config()
     nmap \cc <Plug>(Mdx_Color_Toy_NextColor)
     nmap \cn <Plug>(Mdx_Color_Toy_ShowCurColors)
 endfunction

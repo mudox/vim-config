@@ -9,7 +9,7 @@ let g:this_meta.neodict.name = g:this_meta.name
 let g:this_meta.neodict.lazy = 1
 let g:this_meta.neodict.autoload = { 'commands' : ['EasyAlign'] }
 
-function g:this_meta.config() dict
-vnoremap <silent> <Enter> :EasyAlign<cr>
+function g:this_meta.config()
+  vnoremap <silent> <Enter> :EasyAlign<cr>
 
 endfunction

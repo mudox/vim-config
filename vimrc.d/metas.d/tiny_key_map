@@ -7,6 +7,6 @@ let g:this_meta.site = 'https://github.com/tomtom/tinykeymap_vim.git'
 " extra settings for neobundle
 let g:this_meta.neodict.name = g:this_meta.name
 
-function g:this_meta.config() dict
+function g:this_meta.config()
     " TODO: your plugin configuration goes here.
 endfunction

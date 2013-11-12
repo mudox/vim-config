@@ -9,7 +9,7 @@ let g:this_meta.neodict.name = g:this_meta.name
 let g:this_meta.neodict.lazy = 1
 let g:this_meta.neodict.autoload = { 'mappings' : ['<Plug>(textobj-comment-'] }
 
-function g:this_meta.config() dict
+function g:this_meta.config()
     let g:textobj_comment_no_default_key_mappings = 1
     xmap ax <Plug>(textobj-comment-a)
     omap ax <Plug>(textobj-comment-a)

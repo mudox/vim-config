@@ -8,7 +8,7 @@ let g:this_meta.site = 'https://github.com/kien/rainbow_parentheses.vim.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 
-function g:this_meta.config() dict
+function g:this_meta.config()
     nnoremap \rb :<C-U>RainbowParenthesesToggleAll<CR>
 
 endfunction

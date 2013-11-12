@@ -11,7 +11,7 @@ let g:this_meta.neodict.build = {
       \ 'windows' : 'install_windows.bat'
       \ }
 
-function g:this_meta.config() dict
+function g:this_meta.config()
   " TODO: your plugin configuration goes here.
   " currently can not compile ctrlp_cmather on windows.
   if has('unix')

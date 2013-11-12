@@ -8,6 +8,6 @@ let g:this_meta.site = 'https://github.com/Shougo/vimproc.git'
 let g:this_meta.neodict.name = g:this_meta.name
 let g:this_meta.neodict.build = { 'unix' : 'make -f make_unix.mak' }
 
-function g:this_meta.config() dict
+function g:this_meta.config()
     nnoremap <Enter>v :VimProcBang<Space>
 endfunction

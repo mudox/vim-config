@@ -9,7 +9,7 @@ let g:this_meta.neodict.name = g:this_meta.name
 let g:this_meta.neodict.lazy = 1
 let g:this_meta.neodict.autoload = { 'commands' : ['Autoformat'] }
 
-function g:this_meta.config() dict
+function g:this_meta.config()
     nnoremap \af :<C-U>Autoformat<CR>
 
 endfunction

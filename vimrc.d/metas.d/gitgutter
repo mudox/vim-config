@@ -8,10 +8,10 @@ let g:this_meta.site = 'https://github.com/airblade/vim-gitgutter.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 
-function g:this_meta.config() dict
+function g:this_meta.config()
     nnoremap \gg :<C-U>GitGutterToggle<CR>
-    nnoremap <leader>ggn :GitGutterNextHunk<CR>
-    nnoremap <leader>ggp :GitGutterPrevHunk<CR>
+    nnoremap ,ggn :GitGutterNextHunk<CR>
+    nnoremap ,ggp :GitGutterPrevHunk<CR>
     let g:gitgutter_enabled = 0
 
 endfunction

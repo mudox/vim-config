@@ -11,6 +11,6 @@ let g:this_meta.neodict.autoload = {
             \ 'commands' : ['J', 'Join']
             \ }
 
-function g:this_meta.config() dict
+function g:this_meta.config()
 
 endfunction
