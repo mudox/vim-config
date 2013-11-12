@@ -15,8 +15,6 @@ let s:bundle_list = [
             \ 'xolox_vim_misc',
             \ 'xolox_vim_shell',
             \ 'multi_cursor',
-            \ 'indent_guides',
-            \ 'indent_line',
             \ 'tagbar',
             \ ]
 

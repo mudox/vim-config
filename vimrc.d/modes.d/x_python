@@ -11,12 +11,15 @@
 " Bundles in Current Config {{{1
 
 let s:python_bundles = [
-            \ 'syntastic'               ,
-            \ 'python_syntax'           ,
-            \ 'python_flake8'           ,
-            \ 'python_rope'             ,
-            \ 'python_interactive'      ,
-            \ 'python_pep8_indent'      ,
+            \ 'indent_guides'     ,
+            \ 'indent_line'       ,
+            \ 'python_flake8'     ,
+            \ 'python_interactive',
+            \ 'python_pep8_indent',
+            \ 'python_rope'       ,
+            \ 'python_syntax'     ,
+            \ 'syntastic'         ,
+            \ 'dbgp'              ,
             \ ]
 
 let s:bundle_list = s:python_bundles
