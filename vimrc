@@ -111,7 +111,7 @@ cnoremap <C-N> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 
-nnoremap <leader>sb yiw:%s/\C\m<C-R>"//g<Left><Left>``
+nnoremap <leader>sb yiw:%s/\C\m<C-R>"//g<Left><Left>
 " }}}1
 
 " BUNDLE SETTINGS                                 {{{1
