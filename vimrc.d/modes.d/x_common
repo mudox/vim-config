@@ -14,7 +14,6 @@ call MergeConfigs(s:sub_configs)
 
 let s:bundle_list = [
       \ 'align',
-      \ 'autoformat',
       \ 'delimitmate',
       \ 'easy_align',
       \ 'easy_motion',
@@ -27,12 +26,15 @@ let s:bundle_list = [
       \ 'renamer',
       \ 'repeat',
       \ 'surround',
-      \ 'switch',
       \ 'trailer_trash',
       \ 'unimpaired',
       \ 'vim_wiki',
       \ 'zoomwintab',
       \ ]
+
+if has('win32') || has('win64')
+    call add(s:bundle_list, 'autoformat')
+endif
 
 call AddBundles(s:bundle_list)
 " }}}1
