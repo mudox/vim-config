@@ -1,3 +1,6 @@
+" tab setting.
+setlocal noexpandtab
+
 "function! SnptFoldExpr(lnum)
     "if a:lnum == 1
         "let b:InFold = 0
