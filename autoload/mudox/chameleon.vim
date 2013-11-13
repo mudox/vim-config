@@ -165,7 +165,10 @@ function s:Cham.loadMetas() dict "            {{{2
   for name in self.meta_set
     let g:this_meta = {}
     let g:this_meta.neodict = {}
+
     execute 'source ' . self.metas_dir . '/' . name
+
+    let g:this_meta.neodict.name = g:this_meta.name
 
     call add(self.metas, g:this_meta)
 
