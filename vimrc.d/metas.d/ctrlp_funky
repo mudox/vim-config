@@ -2,7 +2,7 @@
 
 let g:this_meta.name = expand('<sfile>:p:t')
 
-let g:this_meta.site = 'git@github.com:Mudox/ctrlp-funky.git'
+let g:this_meta.site = 'https://github.com/tacahiroy/ctrlp-funky.git'
 
 let g:this_meta.neodict.name = g:this_meta.name
 
