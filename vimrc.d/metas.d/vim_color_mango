@@ -5,6 +5,7 @@ let g:this_meta.name = expand('<sfile>:p:t')
 let g:this_meta.site = 'https://github.com/goatslacker/mango.vim.git'
 
 let g:this_meta.neodict.rev = '74ab57d'
+let g:this_meta.neodict.stay_same = 1
 
 
 function g:this_meta.config()
