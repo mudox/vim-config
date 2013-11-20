@@ -12,8 +12,9 @@
 
 let s:bundle_list = [
             \ 'ctrlp',
-            \ 'ctrlp_funky',
             \ 'ctrlp_cmatcher',
+            \ 'ctrlp_cmd',
+            \ 'ctrlp_funky',
             \ ]
 
 call AddBundles(s:bundle_list)

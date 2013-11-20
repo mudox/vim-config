@@ -18,6 +18,7 @@ let s:python_bundles = [
             \ 'python_pep8_indent',
             \ 'python_rope'       ,
             \ 'python_syntax'     ,
+            \ 'python_isort'      ,
             \ 'syntastic'         ,
             \ 'dbgp'              ,
             \ ]
