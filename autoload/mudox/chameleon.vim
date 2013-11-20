@@ -67,13 +67,6 @@ endfunction " }}}2
 function s:Cham.modeName() dict "             {{{2
   " check if the appropriate environment variable has valid value.
 
-  "if !exists('$MDX_MODE_NAME')
-  "throw '$MDX_MODE_NAME does not exists.'
-  "elseif index(self.modesAvail(), $MDX_MODE_NAME) == -1
-  "throw '$MDX_MODE_NAME should be set to a valid manager name: ' .
-  "\ string(self.modesAvail())
-  "endif
-
   let name = readfile(self.cham_dir . '/cur_mode')[0]
   if index(self.modesAvail(), name) == -1
     throw 'Invalid mode name in ' . self.cham_dir . '/cur_mode'
@@ -92,7 +85,8 @@ function s:Cham.addMetas(list) dict "         {{{2
 
     " check meta name's validity.
     if index(self.metasAvail(), name) == -1
-      throw printf("Invalid meta name: %s", name)
+      echoerr printf("Invalid meta name: %s", name)
+      break
     endif
 
     " add unique meta names to current tree.metas set.
