@@ -13,27 +13,28 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-      \ 'align',
-      \ 'delimitmate',
-      \ 'easy_align',
-      \ 'easy_motion',
-      \ 'join',
+      \ 'align'         ,
+      \ 'calendar'      ,
+      \ 'delimitmate'   ,
+      \ 'easy_align'    ,
+      \ 'easy_motion'   ,
+      \ 'join'          ,
       \ 'nerd_commenter',
-      \ 'nerd_tree',
-      \ 'nrrwrgn',
-      \ 'origami',
-      \ 'rename',
-      \ 'renamer',
-      \ 'repeat',
-      \ 'surround',
-      \ 'trailer_trash',
-      \ 'unimpaired',
-      \ 'vim_wiki',
-      \ 'zoomwintab',
+      \ 'nerd_tree'     ,
+      \ 'nrrwrgn'       ,
+      \ 'origami'       ,
+      \ 'rename'        ,
+      \ 'renamer'       ,
+      \ 'repeat'        ,
+      \ 'surround'      ,
+      \ 'trailer_trash' ,
+      \ 'unimpaired'    ,
+      \ 'vim_wiki'      ,
+      \ 'zoomwintab'    ,
       \ ]
 
 if has('win32') || has('win64')
-    call add(s:bundle_list, 'autoformat')
+  call add(s:bundle_list, 'autoformat')
 endif
 
 call AddBundles(s:bundle_list)
