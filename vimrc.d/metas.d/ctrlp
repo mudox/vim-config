@@ -13,12 +13,12 @@ function g:this_meta.config()
 
     " mappings
     let g:ctrlp_map = '<Space>p'
-    nnoremap <Space>r :CtrlPMRUFiles<CR>
-    nnoremap <Space>s :CtrlPRTS<CR>
-    nnoremap <Space>m :CtrlPMixed<CR>
-    nnoremap <Space>l :CtrlPLine<CR>
-    nnoremap <Space>c :CtrlPChangeAll<CR>
-    nnoremap <Space>b :CtrlPBuffer<CR>
+    nnoremap <Space>r :silent CtrlPMRUFiles<CR>
+    nnoremap <Space>s :silent CtrlPRTS<CR>
+    nnoremap <Space>m :silent CtrlPMixed<CR>
+    nnoremap <Space>l :silent CtrlPLine<CR>
+    nnoremap <Space>c :silent CtrlPChangeAll<CR>
+    nnoremap <Space>b :silent CtrlPBuffer<CR>
 
     " cache
     " let g:ctrlp_custom_ignore     = ''
