@@ -1,20 +1,22 @@
+" vim: foldmethod=marker
+
 if exists("loaded_mdx_chameleon_vim") || &cp || version < 700
   finish
 endif
 let loaded_mdx_chameleon_vim = 1
 
-let s:Cham                 = {}
+let s:cham                 = {}
 
 " supported vim bundle managers.
 " since they have method function to be defined, they must be initialized
 " outside of functions.
-let s:Cham.vundle          = { 'name' : 'Vundle'   }
-let s:Cham.pathogen        = { 'name' : 'Pathogen' }
-let s:Cham.neobundle       = { 'name' : 'NeoBundle'}
+let s:cham.vundle          = { 'name' : 'Vundle'   }
+let s:cham.pathogen        = { 'name' : 'Pathogen' }
+let s:cham.neobundle       = { 'name' : 'NeoBundle'}
 
-" s:Cham -- the core object                {{{1
+" s:cham -- the core object                {{{1
 
-function s:Cham.init() dict "                 {{{2
+function s:cham.init() dict "                 {{{2
 
   " constants                       {{{3
   let self.cham_dir        = g:rc_root . '/vimrc.d'
@@ -40,7 +42,7 @@ function s:Cham.init() dict "                 {{{2
   "}}}3
 
   " variables                       {{{3
-  " they are all filled and locked in s:Cham.loadMode()
+  " they are all filled and locked in s:cham.loadMode()
 
   let self.manager         = self.neobundle " default
   let self.title           = ''
@@ -64,7 +66,7 @@ function s:Cham.init() dict "                 {{{2
   call self.initBundles()
 endfunction " }}}2
 
-function s:Cham.modeName() dict "             {{{2
+function s:cham.modeName() dict "             {{{2
   " check if the appropriate environment variable has valid value.
 
   let name = readfile(self.cham_dir . '/cur_mode')[0]
@@ -75,7 +77,7 @@ function s:Cham.modeName() dict "             {{{2
   return name
 endfunction " }}}2
 
-function s:Cham.addMetas(list) dict "         {{{2
+function s:cham.addMetas(list) dict "         {{{2
   " make sure bundle list item be properly initialized.
   let self.tree_ptr.metas = get(self.tree_ptr, 'metas', [])
 
@@ -103,7 +105,7 @@ function s:Cham.addMetas(list) dict "         {{{2
   endfor
 endfunction " }}}2
 
-function s:Cham.mergeModes(list) dict "       {{{2
+function s:cham.mergeModes(list) dict "       {{{2
   for name in a:list
     " check cyclic or duplicate merging.
     if index(self.mode_set, name) != -1
@@ -128,7 +130,7 @@ function s:Cham.mergeModes(list) dict "       {{{2
   endfor
 endfunction " }}}2
 
-function s:Cham.loadMode() dict "             {{{2
+function s:cham.loadMode() dict "             {{{2
   " parse mode files, and fill self.tree, self.meta_set, self.mode_set ...
   " virtually, all jobs done by the 4 temporary global functions below.
 
@@ -155,7 +157,7 @@ function s:Cham.loadMode() dict "             {{{2
   unlet self.tree_ptr
 endfunction " }}}2
 
-function s:Cham.loadMetas() dict "            {{{2
+function s:cham.loadMetas() dict "            {{{2
   for name in self.meta_set
     let g:this_meta = {}
     let g:this_meta.neodict = {}
@@ -172,7 +174,7 @@ function s:Cham.loadMetas() dict "            {{{2
   lockvar! self.metas
 endfunction " }}}2
 
-function s:Cham.initBundles() dict "          {{{2
+function s:cham.initBundles() dict "          {{{2
   for meta in self.metas
     call meta.config()
   endfor
@@ -181,25 +183,25 @@ function s:Cham.initBundles() dict "          {{{2
   unlet self.metas
 endfunction " }}}2
 
-function s:Cham.metasAvail() dict "           {{{2
+function s:cham.metasAvail() dict "           {{{2
   let metas = glob(self.metas_dir . '/*', 1, 1)
   call map(metas, 'fnamemodify(v:val, ":t:r")')
   return metas
 endfunction " }}}2
 
-function s:Cham.modesAvail() dict "           {{{2
+function s:cham.modesAvail() dict "           {{{2
   let configs = glob(self.modes_dir . '/*', 1, 1)
   call map(configs, 'fnamemodify(v:val, ":t:r")')
   return configs
 endfunction " }}}2
 
-function s:Cham.repoAvail() dict "            {{{2
+function s:cham.repoAvail() dict "            {{{2
   let metas_installed = glob(self.repo_dir . '/*', 1, 1)
   call map(metas_installed, 'fnamemodify(v:val, ":t:r")')
   return metas_installed
 endfunction " }}}2
 
-function s:Cham.neobundle.init() dict "       {{{2
+function s:cham.neobundle.init() dict "       {{{2
   set nocompatible                " Recommend
 
   if has('vim_starting')
@@ -214,7 +216,7 @@ function s:Cham.neobundle.init() dict "       {{{2
   execute 'NeoBundleLocal ' . escape(g:rc_root, '\ ') . '/bundle'
 
   " * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  for meta in s:Cham.metas
+  for meta in s:cham.metas
     execute "NeoBundle " . string(meta.site)
           \ . ', ' . string(meta.neodict)
   endfor
@@ -234,7 +236,7 @@ function s:Cham.neobundle.init() dict "       {{{2
   nnoremap \neo <Esc>:NeoBundleUpdate<CR>:NeoBundleUpdatesLog<CR>
 endfunction " }}}2
 
-function s:Cham.pathogen.init() dict "        {{{2
+function s:cham.pathogen.init() dict "        {{{2
   filetype off
   filetype plugin indent off
 
@@ -255,7 +257,7 @@ function s:Cham.pathogen.init() dict "        {{{2
   filetype plugin indent on
 endfunction " }}}2
 
-function s:Cham.info() dict "                 {{{2
+function s:cham.info() dict "                 {{{2
   " mode name
   echohl Title
   echon printf("%-14s ", 'Mode:')
@@ -294,7 +296,7 @@ function s:Cham.info() dict "                 {{{2
   echohl None
 endfunction "}}}2
 
-function s:Cham.dumpTree(dict, path) dict "   {{{2
+function s:cham.dumpTree(dict, path) dict "   {{{2
   " arg path: a list record recursion path.
 
   let max_width = max(map(self.meta_set[:], 'len(v:val)')) + 2
@@ -324,7 +326,7 @@ function s:Cham.dumpTree(dict, path) dict "   {{{2
   echohl None
 endfunction " }}}2
 
-function s:Cham.editMode(arg) dict "          {{{2
+function s:cham.editMode(arg) dict "          {{{2
   let names = split(a:arg)
   if len(names) > 2
     echoerr 'Too many arguments, at most 2 arguemnts is needed'
@@ -368,7 +370,7 @@ function s:Cham.editMode(arg) dict "          {{{2
   endif
 endfunction " }}}2
 
-function s:Cham.editMeta(name) dict "         {{{2
+function s:cham.editMeta(name) dict "         {{{2
   let file_name = self.metas_dir . '/' . a:name
   let open_cmd  = mudox#query_open_file#Main() " gvie user chance to cancel.
 
@@ -402,7 +404,7 @@ function s:Cham.editMeta(name) dict "         {{{2
   endif
 endfunction " }}}2
 
-function s:Cham.peekUrl() dict "              {{{2
+function s:cham.peekUrl() dict "              {{{2
   " currently only support github & bitbucket address.
   let github_pat    = 'https://github\.com/[^/]\+/[^/]\+\.git'
   let bitbucket_pat = 'https://bitbucket\.org/[^/]\+/[^/]\+\%(\.git\)\?'
@@ -423,42 +425,42 @@ endfunction " }}}2
 " temporary functions                      {{{1
 
 " temporary global functions used in modes.d/* to source sub-mode files.
-" since s:Cham.loadModes will be called only once on the start, the commands and
+" since s:cham.loadModes will be called only once on the start, the commands and
 " functions are guaranteed to be defined and deleted properly.
 
 function AddBundles(list) "                   {{{2
-  call s:Cham.addMetas(a:list)
+  call s:cham.addMetas(a:list)
 endfunction " }}}2
 
 function MergeConfigs(list) "                 {{{2
-  call s:Cham.mergeModes(a:list)
+  call s:cham.mergeModes(a:list)
 endfunction " }}}2
 
 function SetTitle(name) "                     {{{2
   " only top level config file can call this function.
-  if !empty(s:Cham.title)
+  if !empty(s:cham.title)
     return
   endif
 
-  let s:Cham.title = a:name
-  lockvar s:Cham.title
+  let s:cham.title = a:name
+  lockvar s:cham.title
 endfunction " }}}2
 
 function SetBundleManager(name) "             {{{2
-  if index(s:Cham.manager_avail, a:name) == -1
-    throw 'Invalid manager name, need ' . string(s:Cham.manager_avail)
+  if index(s:cham.manager_avail, a:name) == -1
+    throw 'Invalid manager name, need ' . string(s:cham.manager_avail)
   endif
 
   " only top level config file can call this function.
-  if !empty(s:Cham.manager)
+  if !empty(s:cham.manager)
     return
   endif
 
   if a:name ==# 'NeoBundle'
-    execute 'let s:Cham.manager = s:Cham.' . tolower(a:name)
+    execute 'let s:cham.manager = s:cham.' . tolower(a:name)
   endif
 
-  lockvar s:Cham.manager
+  lockvar s:cham.manager
 endfunction " }}}2
 
 "}}}1
@@ -466,33 +468,33 @@ endfunction " }}}2
 " public interfaces                        {{{1
 
 function mudox#chameleon#Init() "             {{{2
-  call s:Cham.init()
+  call s:cham.init()
 endfunction " }}}2
 
 " :ChamInfo                                   {{{2
 command -nargs=0 ChamInfo call mudox#chameleon#Info()
 function mudox#chameleon#Info()
-  call s:Cham.info()
+  call s:cham.info()
 endfunction
 " }}}2
 
 " :EditMeta & <Enter>b                        {{{2
 command -nargs=1 -complete=custom,<SID>MetasAvail EditMeta
-      \ call s:Cham.editMeta(<q-args>)
+      \ call s:cham.editMeta(<q-args>)
 nnoremap <Enter>b :EditMeta<Space>
 
 function <SID>MetasAvail(arglead, cmdline, cursorpos)
-  return join(s:Cham.metasAvail(), "\n")
+  return join(s:cham.metasAvail(), "\n")
 endfunction
 " }}}2
 
 " :EditMode & <Enter>c                        {{{2
 command -nargs=* -complete=custom,<SID>modesAvail EditMode
-      \ call s:Cham.editMode(<q-args>)
+      \ call s:cham.editMode(<q-args>)
 nnoremap <Enter>c :EditMode<Space>
 
 function <SID>modesAvail(arglead, cmdline, cursorpos)
-  return join(s:Cham.modesAvail(), "\n")
+  return join(s:cham.modesAvail(), "\n")
 endfunction
 " }}}2
 
@@ -500,14 +502,14 @@ endfunction
 autocmd VimEnter * call <SID>OnVimEnter()
 
 function <SID>OnVimEnter()
-  let title = get(s:Cham, 'title', s:Cham.modeName())
+  let title = get(s:cham, 'title', s:cham.modeName())
 
   silent set title
   let &titlestring = title
 endfunction
 " }}}2
 
-let g:mdx = s:Cham
-let mudox#chameleon#core = s:Cham
+let g:mdx = s:cham
+let mudox#chameleon#core = s:cham
 
 "}}}1
