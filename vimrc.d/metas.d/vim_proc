@@ -9,5 +9,40 @@ let g:this_meta.neodict.name = g:this_meta.name
 let g:this_meta.neodict.build = { 'unix' : 'make -f make_unix.mak' }
 
 function g:this_meta.config()
-    nnoremap <Enter>v :VimProcBang<Space>
+    nnoremap <Cr>v :VimProcBang<Space>
 endfunction
+
+nnoremap <Cr>a :VPRCommand<Space>
+command -nargs=+ VPRCommand call <SID>vimProcReadView(<q-args>)
+
+let s:buf_nr = -1
+function <SID>vimProcReadView(cmd) "   {{{2
+  if empty(a:cmd) | return | endif
+
+  " no buffer named [VimProcRead] exists.
+  if !bufexists(s:buf_nr)
+    call mudox#query_open_file#New()
+    file `="[VimProcRead]"`
+    let s:buf_nr = bufnr('%')
+  " already has a [VimProcRead] buffer, but hiddened.
+  elseif bufwinnr(s:buf_nr) == -1
+    call mudox#query_open_file#New()
+    execute s:buf_nr . 'buffer'
+  " jump to that window.
+  elseif bufwinnr(s:buf_nr) != bufwinnr('%')
+    execute bufwinnr(s:buf_nr) . 'wincmd w'
+  endif
+
+  setlocal filetype=godoc
+  setlocal bufhidden=delete
+  setlocal buftype=nofile
+  setlocal noswapfile
+  setlocal nobuflisted
+  setlocal modifiable
+  setlocal nocursorline
+  setlocal nocursorcolumn
+
+  %delete _
+  execute 'VimProcRead ' . a:cmd
+  delete _
+endfunction "}}}2
