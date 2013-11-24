@@ -8,8 +8,9 @@ let g:this_meta.site = 'git@github.com:Mudox/vim-kaleidoscope.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config() dict
-    " TODO: your plugin configuration goes here.
-    nmap \cc <Plug>(Mdx_Kaleidoscope_NextColor)
-    nmap \cn <Plug>(Mdx_Kaleidoscope_ShowCurColors)
-
+  " TODO: your plugin configuration goes here.
+  nmap \cc <Plug>(Mdx_Kaleidoscope_NextColor)
+  nmap \cn <Plug>(Mdx_Kaleidoscope_ShowCurColors)
+  nmap \cv <Plug>(Mdx_Kaleidoscope_View)
+  nmap \ca <Plug>(Mdx_Kaleidoscope_View_All)
 endfunction
