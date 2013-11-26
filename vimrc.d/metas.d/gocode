@@ -2,7 +2,7 @@
 
 " name and site
 let g:this_meta.name = expand('<sfile>:p:t')
-let g:this_meta.site = 'https://github.com/nsf/gocode.git'
+let g:this_meta.site = 'https://github.com/Blackrush/vim-gocode.git'
 
 " extra settings for neobundle
 let g:this_meta.neodict.name = g:this_meta.name
