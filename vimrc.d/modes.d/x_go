@@ -12,6 +12,7 @@
 
 let s:bundle_list = [
       \ 'go',
+      \ 'gocode',
       \ ]
 
 call AddBundles(s:bundle_list)
