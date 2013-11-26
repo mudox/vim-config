@@ -9,7 +9,7 @@ let g:this_meta.neodict.name = g:this_meta.name
 let g:this_meta.neodict.build = { 'unix' : 'make -f make_unix.mak' }
 
 function g:this_meta.config()
-    nnoremap <Cr>v :VimProcBang<Space>
+  nnoremap <Cr>v :VimProcBang<Space>
 endfunction
 
 nnoremap <Cr>a :VPRCommand<Space>
@@ -24,11 +24,11 @@ function <SID>vimProcReadView(cmd) "   {{{2
     call mudox#query_open_file#New()
     file `="[VimProcRead]"`
     let s:buf_nr = bufnr('%')
-  " already has a [VimProcRead] buffer, but hiddened.
+    " already has a [VimProcRead] buffer, but hiddened.
   elseif bufwinnr(s:buf_nr) == -1
     call mudox#query_open_file#New()
     execute s:buf_nr . 'buffer'
-  " jump to that window.
+    " jump to that window.
   elseif bufwinnr(s:buf_nr) != bufwinnr('%')
     execute bufwinnr(s:buf_nr) . 'wincmd w'
   endif
@@ -43,6 +43,12 @@ function <SID>vimProcReadView(cmd) "   {{{2
   setlocal nocursorcolumn
 
   %delete _
-  execute 'VimProcRead ' . a:cmd
-  delete _
+  if a:cmd =~ '/'
+    execute 'r !' . a:cmd
+  else
+    execute 'VimProcRead ' . a:cmd
+  endif
+
+  call mudox#util#trim#head_tail_empty_lines()
+  call cursor(1, 1)
 endfunction "}}}2
