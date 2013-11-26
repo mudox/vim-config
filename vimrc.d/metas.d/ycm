@@ -22,6 +22,7 @@ function g:this_meta.config()
                 \ 'cpp'    : 1,
                 \ 'c'      : 1,
                 \ 'python' : 1,
+                \ 'go'     : 1,
                 \ }
 
     let g:ycm_collect_identifiers_from_tags_files           = 1
