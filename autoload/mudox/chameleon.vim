@@ -31,6 +31,12 @@ function s:cham.init() dict "                 ♫ 2
   let self.modes_dir       = self.cham_dir . '/modes.d'
   lockvar self.modes_dir
 
+  let self.meta_tmpl       = self.cham_dir . '/skel/meta_template'
+  lockvar self.meta_tmpl
+
+  let self.mode_tmpl       = self.cham_dir . '/skel/mode_template'
+  lockvar self.mode_tmpl
+
   let self.globals_dir     = self.cham_dir . '/globals.d'
   lockvar self.globals_dir
 
@@ -359,25 +365,21 @@ function s:cham.editMode(arg) dict "          ♫ 2
       let open_cmd  = mudox#query_open_file#Main()
 
       " read template content if any.
-      let tmpl_path = self.modes_dir . '/'
-            \ . (len(names) == 2 ? names[1] : '../mode_template')
-      echo tmpl_path
-
-      if filereadable(tmpl_path)
-        let tmpl = readfile(tmpl_path)
+      if filereadable(self.mode_tmpl)
+        let tmpl = readfile(self.mode_tmpl)
       else
-        echoerr "Template file " . tmpl_path . ' unreadable'
+        echoerr 'Template file [' . self.mode_tmpl . '] unreadable'
         echoerr "creating an empty mode ..."
       endif
 
       execute  open_cmd . file_path
+      setlocal filetype=vim
+      setlocal foldmethod=marker
+      setlocal fileformat=unix
 
       if exists('tmpl')
-        setlocal filetype=vim
-        setlocal foldmethod=marker
-        setlocal fileformat=unix
         call append(0, tmpl)
-        normal dd
+        delete _
       endif
     endif
   endif
@@ -390,7 +392,12 @@ function s:cham.editMeta(name) dict "         ♫ 2
 
   if !filereadable(file_name)
     " read template content
-    let tmpl = readfile(self.cham_dir . '/meta_template')
+    if filereadable(self.meta_tmpl)
+      let tmpl = readfile(self.meta_tmpl)
+    else
+      echoerr 'Mode template file [' . self.meta_tmpl . '] unreadable'
+      echoerr "creating an empty meta ..."
+    endif
   endif
 
   execute  open_cmd . file_name
@@ -411,7 +418,7 @@ function s:cham.editMeta(name) dict "         ♫ 2
     endif
 
     call append(0, tmpl)
-    normal dd " delete trailling empty line.
+    delete _
 
     call cursor(1, 1)
     call search("let g:this_mode.site = '.", 'e')
