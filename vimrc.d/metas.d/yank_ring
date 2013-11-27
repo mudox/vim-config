@@ -9,7 +9,7 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config()
     let g:yankring_min_element_length = 2
-    let yankring_history_dir          = g:vim_config_root
+    let yankring_history_dir          = g:rc_root
     let g:yankring_history_file       = 'yankring_hist'
     let yankring_replace_n_nkey       = '<Down>'
     let yankring_replace_n_pkey       = '<Up>'
