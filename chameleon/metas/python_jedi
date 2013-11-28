@@ -1,0 +1,18 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:this_meta.name = expand('<sfile>:p:t')
+
+let g:this_meta.site = 'https://github.com/davidhalter/jedi-vim.git'
+
+
+let g:this_meta.neodict.name = g:this_meta.name
+let g:this_meta.neodict.lazy = 1
+let g:this_meta.neodict.autoload = { 'filetypes' : [ 'python' ] }
+
+function g:this_meta.config()
+    let g:jedi#pydoc                    = ",k"
+    let g:jedi#popup_select_first       = 0
+    let g:jedi#auto_vim_configuration   = 0
+    let g:jedi#show_function_definition = 0
+
+endfunction

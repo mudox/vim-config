@@ -1,0 +1,34 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:this_meta.name = expand('<sfile>:p:t')
+
+let g:this_meta.site = 'https://github.com/Yggdroot/indentLine.git'
+
+
+let g:this_meta.neodict.name = g:this_meta.name
+
+function g:this_meta.config()
+    nnoremap ,il :<C-U>IndentLinesToggle<Cr>
+
+    let g:indentLine_enabled = 0
+    let g:indentLine_fileType = [
+                \ 'c',
+                \ 'cpp',
+                \ 'python',
+                \ 'make'
+                \ ]
+    let g:indentLine_fileTypeExclude = [
+                \ 'text',
+                \ 'help',
+                \ ''
+                \]
+    let g:indentLine_bufNameExclude = [
+                \ 'h_.*',
+                \ 'hNERD_tree.*',
+                \ '.*\doc\.txt'
+                \]
+
+    " let g:indentLine_char = '.'
+    " let g:indentLine_color_term = 239
+    " let g:indentLine_color_gui = '#389900'
+endfunction

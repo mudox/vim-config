@@ -1,0 +1,13 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:this_meta.name = expand('<sfile>:p:t')
+
+let g:this_meta.site = 'https://github.com/hynek/vim-python-pep8-indent.git'
+
+
+let g:this_meta.neodict.name = g:this_meta.name
+
+
+function g:this_meta.config()
+
+endfunction

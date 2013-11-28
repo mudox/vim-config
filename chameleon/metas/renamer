@@ -1,0 +1,15 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:this_meta.name = expand('<sfile>:p:t')
+
+let g:this_meta.site = 'https://github.com/vim-scripts/renamer.vim.git'
+
+
+let g:this_meta.neodict.name = g:this_meta.name
+let g:this_meta.neodict.lazy = 1
+let g:this_meta.neodict.autoload = { 'commands' : [ 'Renamer' ] }
+
+function g:this_meta.config()
+    " TODO: your plugin configuration goes here.
+
+endfunction

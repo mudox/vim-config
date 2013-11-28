@@ -1,0 +1,53 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:this_meta.name = expand('<sfile>:p:t')
+
+let g:this_meta.site = 'https://github.com/kien/ctrlp.vim.git'
+
+
+let g:this_meta.neodict.name = g:this_meta.name
+
+
+function g:this_meta.config()
+    let g:ctrlp_extensions = ['line', 'tag', 'mixed', 'funky',  'rtscript']
+
+    " mappings
+    let g:ctrlp_map = '<Space>p'
+    nnoremap <Space>r :silent CtrlPMRUFiles<Cr>
+    nnoremap <Space>s :silent CtrlPRTS<Cr>
+    nnoremap <Space>m :silent CtrlPMixed<Cr>
+    nnoremap <Space>l :silent CtrlPLine<Cr>
+    nnoremap <Space>c :silent CtrlPChangeAll<Cr>
+    nnoremap <Space>b :silent CtrlPBuffer<Cr>
+
+    " cache
+    " let g:ctrlp_custom_ignore     = ''
+    " let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
+    " let g:ctrlp_root_markers      = ['']
+    let g:ctrlp_by_filename         = 1
+    let g:ctrlp_cache_dir           = $HOME . '/.cache/ctrlp'
+    let g:ctrlp_clear_cache_on_exit = 0
+    let g:ctrlp_follow_symlinks     = 1
+    let g:ctrlp_mruf_case_sensitive = 0
+    let g:ctrlp_regexp              = 0
+    let g:ctrlp_show_hidden         = 0
+    let g:ctrlp_working_path_mode   = 'ra'
+
+    " Single VCS, listing command does not list untracked files:
+    let g:ctrlp_user_command = {
+                \ 'types':
+                \   {
+                \     1: ['.git', 'cd %s && git ls-files'],
+                \     2: ['.hg', 'hg --cwd %s locate -I .'],
+                \   }
+                \ }
+    if has('win32') || has('win64')
+        let g:ctrlp_user_command.fallback = 'dir %s /-n /b /s /a-d'
+    elseif has('unix')
+        let g:ctrlp_user_command.fallback = 'find %s -type f'
+    elseif has('mac') || has('macunix')
+    else
+        echoerr echo "Oops! Unknown sysinfo"
+    endif
+
+endfunction

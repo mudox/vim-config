@@ -1,0 +1,19 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" Set Tile & Bundle Manager {{{1
+
+" }}}1
+
+" Merge Configs {{{1
+
+" }}}1
+
+" Bundles in Current Config {{{1
+
+let s:bundle_list = [
+            \ 'dbext',
+            \ 'sql_utilities',
+            \ ]
+
+call AddBundles(s:bundle_list)
+" }}}1

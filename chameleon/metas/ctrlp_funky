@@ -1,0 +1,21 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:this_meta.name = expand('<sfile>:p:t')
+
+let g:this_meta.site = 'https://github.com/tacahiroy/ctrlp-funky.git'
+
+let g:this_meta.neodict.name = g:this_meta.name
+
+function g:this_meta.config()
+  nnoremap <Space>f :<C-U>CtrlPFunky<CR>
+
+  let g:ctrlp_funky_after_jump = {
+        \ 'default' : 'zxzz',
+        \ 'python'  : 'zO',
+        \ 'cpp'     : 'zxzt',
+        \ 'go'      : 'zxzt',
+        \ 'vim'     : 'zxzt',
+        \ }
+
+  set scrolloff=5
+endfunction
