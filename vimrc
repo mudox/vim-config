@@ -157,6 +157,7 @@ nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 
 " ABBREVIATES                                     {{{1
 cabbrev ue UltiSnipsEdit
+cabbrev git Git
 "}}}1
 
 " SETTINGS                                        {{{1
