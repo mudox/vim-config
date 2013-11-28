@@ -5,4 +5,4 @@ bundle/
 neobundle/
 view/
 spell/
-vimrc.d/cur_mode
+chameleon/cur_mode
