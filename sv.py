@@ -1,7 +1,7 @@
+import subprocess
+import textwrap
 from glob import glob
 from os import path
-import textwrap
-import subprocess
 
 flag = False
 for vimDir in ['.vim', 'vimfiles']:
@@ -30,19 +30,31 @@ print '---------------------------------------------'
 
 try:
     while 1:
-        config_idx = input('Select your configuation: ')
-        if config_idx in menu_dict:
-            break
+        which = raw_input('your choice: ')
+        if isinstance(which, str):
+            for full_string in menu_dict.values():
+                if which in full_string:
+                    which = full_string
+                    break  # break for
+            if which in menu_dict.values():
+                break  # break while 1
         else:
-            print('Oops, invalid input!')
-            # TODO: beautify menu interface if got a invalid input.
+            try:
+                which = int(which)
+            except:
+                break
+            else:
+                if which in menu_dict:
+                    which = menu_dict[which]
+                    break
+                else:
+                    print('Oops, invalid input!')
 except:
-    pass
+    print('Oops ...')
 else:
     with open(cur_config, 'w') as cc:
-        cc.write(menu_dict[config_idx])
+        cc.write(which)
 
-    print 'Switched to >> %s << !' % menu_dict[config_idx]
-
+    print 'Switched to >> %s << !' % which
 
     subprocess.Popen('gvim')
