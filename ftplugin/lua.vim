@@ -23,7 +23,7 @@ function! s:LuaRun( args )
     echo vimproc#system2(l:exeString)
 endfunction
 
-command! -buffer -nargs=* Run call s:LuaRun(<q-args>) 
-command! -buffer -nargs=* LuaRunWithArgs call s:LuaRun(<q-args>) 
+command! -buffer -nargs=* Run call s:LuaRun(<q-args>)
+command! -buffer -nargs=* LuaRunWithArgs call s:LuaRun(<q-args>)
 
 nnoremap <buffer> <leader><leader>r :LuaRunWithArgs<Space>
