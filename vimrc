@@ -16,6 +16,11 @@ let g:vim_config_root = substitute(expand('<sfile>:p:h'), ' ', '\\ ', 'g') " dep
 let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 
 " BUNDLE LOADING                                  {{{1
+
+if has('vim_starting')
+  exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/neobundle/chameleon'
+endif
+
 let g:vimball_home = escape(g:rc_root, ' \') . '/bundle/'
 
 call mudox#chameleon#Init()
@@ -86,21 +91,21 @@ nnoremap <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
 " for current file type.
 
 function <SID>FileTypesAvail(arglead, cmdline, cursorpos)
-    let l:filetypes = glob(g:rc_root . '/ftplugin/*.vim', 1, 1)
-    call map(l:filetypes, 'fnamemodify(v:val, ":t:r")')
-    return join(l:filetypes, "\n")
+  let l:filetypes = glob(g:rc_root . '/ftplugin/*.vim', 1, 1)
+  call map(l:filetypes, 'fnamemodify(v:val, ":t:r")')
+  return join(l:filetypes, "\n")
 endfunction
 
 function! EditFileTypeSettings( filetype )
-    let l:ft = ( a:filetype == '' ) ? &filetype : a:filetype
-    if l:ft != ''
-        let l:setting_file = g:vim_config_root . '/ftplugin/' . l:ft . '.vim'
-        exe mudox#query_open_file#Main() . ' ' . l:setting_file
-    else
-        echohl ErrorMsg
-        echo "* No filetype *"
-        echohl None
-    endif
+  let l:ft = ( a:filetype == '' ) ? &filetype : a:filetype
+  if l:ft != ''
+    let l:setting_file = g:vim_config_root . '/ftplugin/' . l:ft . '.vim'
+    exe mudox#query_open_file#Main() . ' ' . l:setting_file
+  else
+    echohl ErrorMsg
+    echo "* No filetype *"
+    echohl None
+  endif
 endfunction
 command  -nargs=? -complete=custom,<SID>FileTypesAvail EditFileType call EditFileTypeSettings(<q-args>)
 nnoremap <Enter>f :EditFileType<Space>
@@ -133,11 +138,11 @@ let g:mwIgnoreCase = 0
 
 let g:mdx_vim_alpha_step = 15
 if has('win32') || has('win64')
-    nnoremap <silent> <leader>`   :<C-U>call mudox#max_restore_win#Main()<CR>
+  nnoremap <silent> <leader>`   :<C-U>call mudox#max_restore_win#Main()<CR>
 
-    " Alt + < / > to decrease or increase transparency of vim win.
-    " nnoremap <silent> ® :<C-U>call trans_win#AlphaStep(g:mdx_vim_alpha_step)<CR>
-    " nnoremap <silent> ¬ :<C-U>call trans_win#AlphaStep(-g:mdx_vim_alpha_step)<CR>
+  " Alt + < / > to decrease or increase transparency of vim win.
+  " nnoremap <silent> ® :<C-U>call trans_win#AlphaStep(g:mdx_vim_alpha_step)<CR>
+  " nnoremap <silent> ¬ :<C-U>call trans_win#AlphaStep(-g:mdx_vim_alpha_step)<CR>
 
 endif
 nnoremap \z   :<C-U>call mudox#z_menu#Main()<CR>
@@ -173,19 +178,19 @@ set background=dark
 colorscheme desert
 
 if has('win32') || has('win64')
-    set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
-    set linespace=0
-    autocmd ColorScheme * set linespace=0
+  set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
+  set linespace=0
+  autocmd ColorScheme * set linespace=0
 elseif has('unix')
-    " under infinality style: winxp
-    set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.5
-    set linespace=0
-    autocmd ColorScheme * set linespace=0
+  " under infinality style: winxp
+  set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.5
+  set linespace=0
+  autocmd ColorScheme * set linespace=0
 elseif has('mac') || has('macunix') " oops!, I have no Mac OS ...
-    " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
-    " set linespace=1
+  " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
+  " set linespace=1
 else
-    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+  echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
 endif
 
 " Editor interface
@@ -194,15 +199,15 @@ set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 
 if index(mudox#chameleon#core.meta_set, 'airline') == -1
-    set laststatus=1 " never show statusline.
-    set cmdheight=2
-    set showmode
-    set showcmd
+  set laststatus=1 " never show statusline.
+  set cmdheight=2
+  set showmode
+  set showcmd
 else
-    set noshowmode
-    set noshowcmd
-    set laststatus=2
-    set cmdheight=2
+  set noshowmode
+  set noshowcmd
+  set laststatus=2
+  set cmdheight=2
 endif
 
 " Brace match
@@ -243,11 +248,11 @@ set dictionary+=/usr/share/dict/words
 " Fold behaviour
 set foldtext=MyFoldText()
 function! MyFoldText()
-    let l:firstline = getline(v:foldstart)
-    let l:sub = substitute(l:firstline, '\s*"\|"/\*\|\*/\|{\{3}.*', '', 'g')
-    let l:prefix = '» '
-    let l:foldline = l:prefix . l:sub
-    return l:foldline
+  let l:firstline = getline(v:foldstart)
+  let l:sub = substitute(l:firstline, '\s*"\|"/\*\|\*/\|{\{3}.*', '', 'g')
+  let l:prefix = '» '
+  let l:foldline = l:prefix . l:sub
+  return l:foldline
 endfunction
 
 " Command line completion
@@ -255,7 +260,7 @@ set history=30
 set wildmenu
 
 if has('unix')
-    set wildignorecase "
+  set wildignorecase "
 endif
 
 " +displaying text+

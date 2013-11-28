@@ -6,8 +6,8 @@ import subprocess
 flag = False
 for vimDir in ['.vim', 'vimfiles']:
     if path.exists(path.expanduser('~/%s' % vimDir)):
-        configs_dir = path.expanduser('~/%s/vimrc.d/modes.d' % vimDir)
-        cur_config = path.expanduser('~/%s/vimrc.d/cur_mode' % vimDir)
+        configs_dir = path.expanduser('~/%s/chameleon/modes.d' % vimDir)
+        cur_config = path.expanduser('~/%s/chameleon/cur_mode' % vimDir)
         if path.exists(configs_dir):
             flag = True
 
