@@ -6,20 +6,18 @@
 
 " Merge Configs {{{1
 
-let s:sub_configs = [
-	\ 'x_ctrlp',
-	\ ]
-
-call MergeConfigs(s:sub_configs)
-
 " }}}1
 
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-            \ 'vim_proc',
-            \ 'fugitive',
-            \ ]
+      \ 'go',
+      \ 'gocode',
+      \ ]
+
+if has('unix')
+    call add(s:bundle_list, 'ycm')
+endif
 
 call AddBundles(s:bundle_list)
 " }}}1
