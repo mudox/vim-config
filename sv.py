@@ -1,5 +1,4 @@
 import subprocess
-import textwrap
 from glob import glob
 from os import path
 
@@ -31,25 +30,23 @@ print '---------------------------------------------'
 try:
     while 1:
         which = raw_input('your choice: ')
-        if isinstance(which, str):
+        try:
+            which = int(which)
+        except:
             for full_string in menu_dict.values():
                 if which in full_string:
                     which = full_string
                     break  # break for
+
             if which in menu_dict.values():
                 break  # break while 1
         else:
-            try:
-                which = int(which)
-            except:
-                break
+            if which in menu_dict:
+                which = menu_dict[which]
+                break  # break while 1
             else:
-                if which in menu_dict:
-                    which = menu_dict[which]
-                    break
-                else:
-                    print('Oops, invalid input!')
-except:
+                print('invalid input!')
+except:  # got a EOF or Cancel key press.
     print('Oops ...')
 else:
     with open(cur_config, 'w') as cc:
