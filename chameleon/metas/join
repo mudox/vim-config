@@ -12,5 +12,6 @@ let g:this_meta.neodict.autoload = {
             \ }
 
 function g:this_meta.config()
+  cabbrev J, Join ', '
 
 endfunction
