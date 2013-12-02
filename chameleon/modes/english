@@ -23,6 +23,7 @@ let s:bundle_list = [
         \ 'surround',
         \ 'join',
         \ 'align',
+        \ 'unimpaired',
       \ ]
 
 call AddBundles(s:bundle_list)
