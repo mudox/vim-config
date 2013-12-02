@@ -1,8 +1,0 @@
-" vim: filetype=vim foldmethod=marker fileformat=unix
-
-let s:bundle_list = [
-      \ 'ultisnips',
-      \ 'mudox_ultisnips_snippets',
-      \ ]
-
-call AddBundles(s:bundle_list)
