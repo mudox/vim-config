@@ -7,7 +7,6 @@
 " Merge Configs {{{1
 
 let s:sub_configs = [
-      \ 'x_ctrlp',
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -18,8 +17,9 @@ call MergeConfigs(s:sub_configs)
 
 let s:bundle_list = [
       \ 'chameleon',
-      \ 'vim_proc',
-      \ 'fugitive',
+      \ 'vim_proc' ,
+      \ 'fugitive' ,
+      \ 'ctrlp'    ,
       \ ]
 
 call AddBundles(s:bundle_list)
