@@ -2,7 +2,7 @@
 
 " Set Tile & Bundle Manager {{{1
 
-call SetTitle('web dev') " TODO: give you mode a title
+call SetTitle('title for the mode') " TODO: give you mode a title
 
 call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
 
@@ -11,17 +11,11 @@ call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
 " Merge Configs {{{1
 
 " TODO: put every sub-mode names you need into the list.
-let s:sub_configs = [
-      \ 'x_essential' ,
-      \ 'x_common'    ,
-      \ 'x_ext_tools' ,
-      \ 'x_color'     ,
-      \ 'x_textobj'   ,
-      \ 'x_css'       ,
-      \ 'x_javascript',
-      \ ]
+"let s:sub_configs = [
+      ""\ 'x_essential'
+      "\ ]
 
-call MergeConfigs(s:sub_configs)
+"call MergeConfigs(s:sub_configs)
 
 " }}}1
 
@@ -29,9 +23,9 @@ call MergeConfigs(s:sub_configs)
 
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
-      \ 'syntastic',
-      \ 'emmet'    ,
-      \ 'colorv'   ,
+      \ 'javascript',
+      \ 'javascript_library_syntax',
+      \ 'json',
       \ ]
 
 call AddBundles(s:bundle_list)
