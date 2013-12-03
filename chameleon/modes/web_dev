@@ -19,6 +19,7 @@ let s:sub_configs = [
       \ 'x_textobj'   ,
       \ 'x_css'       ,
       \ 'x_javascript',
+      \ 'x_html'      ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
