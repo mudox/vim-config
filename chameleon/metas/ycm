@@ -23,6 +23,8 @@ function g:this_meta.config()
                 \ 'c'      : 1,
                 \ 'python' : 1,
                 \ 'go'     : 1,
+                \ 'css'    : 1,
+                \ 'html'   : 1,
                 \ }
 
     let g:ycm_collect_identifiers_from_tags_files           = 1
