@@ -1,4 +1,4 @@
-" vim: foldmarker=<<<,>>>
+" vim: foldmarker=<<<,>>> foldmethod=marker
 
 " tab   <<<1
 setlocal foldmethod=marker
