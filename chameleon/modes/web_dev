@@ -35,5 +35,8 @@ let s:bundle_list = [
       \ 'colorv'   ,
       \ ]
 
+if has('unix')
+    call add(s:bundle_list, 'ycm')
+endif
 call AddBundles(s:bundle_list)
 " }}}1
