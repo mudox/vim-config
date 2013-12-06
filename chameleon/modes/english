@@ -24,6 +24,7 @@ let s:bundle_list = [
         \ 'join',
         \ 'align',
         \ 'unimpaired',
+        \ 'zoomwintab',
       \ ]
 
 call AddBundles(s:bundle_list)
