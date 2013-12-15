@@ -1,3 +1,5 @@
+setlocal colorcolumn=80
+
 " Tab
 setlocal foldmethod=syntax
 setlocal tabstop=8
@@ -7,7 +9,6 @@ setlocal smarttab
 setlocal noexpandtab
 
 nnoremap <buffer> <Enter>r <ESC>:w<CR>:!bash %<CR>
-
 function! s:BashRun( args )
   " save & lcd to current python script file path.
   silent write

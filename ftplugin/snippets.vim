@@ -1,25 +1,10 @@
 " tab setting.
 setlocal noexpandtab
-
-"function! SnptFoldExpr(lnum)
-    "if a:lnum == 1
-        "let b:InFold = 0
-    "endif
-
-    "if getline(a:lnum) =~ '^snippet.*$'
-        "let b:InFold = 1
-        "return 1
-    "elseif getline(a:lnum) =~ '^endsnippet\s*$'
-        "let b:InFold = 0
-        "return 1
-    "else
-        "return b:InFold
-    "endif
-
-"endfunction
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
 
 " a polished foldline
-
 function! SnptFoldText()
     let l:preffix    = '^snippet\s\+'
     let l:trigger    = '\(\([[:punct:]]\).\{-}\2\|\S\+\)'
@@ -31,7 +16,5 @@ function! SnptFoldText()
     return l:foldline
 endfunction
 
-"setlocal foldmethod=expr
-"setlocal foldexpr=SnptFoldExpr(v:lnum)
 setlocal foldtext=SnptFoldText()
 setlocal foldenable
