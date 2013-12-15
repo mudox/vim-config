@@ -11,8 +11,9 @@
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
+            \ 'rvm'    ,
             \ 'endwise',
-            \ 'ruby',
+            \ 'ruby'   ,
             \ ]
 
 call AddBundles(s:bundle_list)
