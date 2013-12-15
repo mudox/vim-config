@@ -35,6 +35,7 @@ let s:bundle_list = [
       \ 'unimpaired'       ,
       \ 'vim_wiki'         ,
       \ 'zoomwintab'       ,
+      \ 'ctrl_space'      ,
       \ ]
 
 if has('win32') || has('win64')
