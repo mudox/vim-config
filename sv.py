@@ -1,3 +1,6 @@
+#!/usr/bin/env python2
+# encoding: utf-8
+
 import subprocess
 from glob import glob
 from os import path
@@ -11,7 +14,7 @@ for vimDir in ['.vim', 'vimfiles']:
             flag = True
 
 if not flag:
-    print '* .vim/vimfiles path detection failed *'
+    print('* .vim/vimfiles path detection failed *')
     exit()
 
 config_paths = glob(configs_dir + '/*')
@@ -21,11 +24,11 @@ config_names = filter(lambda n: not n.startswith('x_'), config_names)
 
 menu_dict = {idx: name for idx, name in enumerate(sorted(config_names))}
 
-print '-------- Vim Configuration Available --------'
+print('-------- Vim Configuration Available --------')
 for idx, name in menu_dict.items():
-    print '[{0}] - {1}'.format(idx, name)
+    print('[{0}] - {1}'.format(idx, name))
 
-print '---------------------------------------------'
+print('---------------------------------------------')
 
 try:
     while 1:
@@ -46,12 +49,12 @@ try:
                 break  # break while 1
             else:
                 print('invalid input!')
-except:  # got a EOF or Cancel key press.
-    print('Oops ...')
+except Exception as e:  # got a EOF or Cancel key press.
+    print('Oops ... ' + e)
 else:
     with open(cur_config, 'w') as cc:
         cc.write(which)
 
-    print 'Switched to >> %s << !' % which
+    print('Switched to >> %s << !' % which)
 
     subprocess.Popen('gvim')
