@@ -12,10 +12,13 @@
 
 let s:bundle_list = [
             \ 'ctrlp',
-            \ 'ctrlp_cmatcher',
             \ 'ctrlp_cmd',
             \ 'ctrlp_funky',
             \ ]
+
+if has('win32') || has('win64')
+    call add(s:bundle_list, 'ctrlp_cmatcher')
+endif
 
 call AddBundles(s:bundle_list)
 " }}}1
