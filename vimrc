@@ -250,7 +250,7 @@ set dictionary+=/usr/share/dict/words
 set foldtext=MyFoldText()
 function! MyFoldText()
   let l:firstline = getline(v:foldstart)
-  let l:sub = substitute(l:firstline, '\s*"\|"/\*\|\*/\|{\{3}.*', '', 'g')
+  let l:sub = substitute(l:firstline, '\s*"\|"/\*\|\*/\|{\{3}.*', ' ', 'g')
   let l:prefix = '» '
   let l:foldline = l:prefix . l:sub
   return l:foldline
