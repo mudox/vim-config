@@ -9,5 +9,6 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config() dict
   let g:ctrlspace_use_tabline = 1
+  let g:ctrlspace_default_mapping_key = '<Space>w'
 
 endfunction
