@@ -1,4 +1,15 @@
-function! s:LuaRun( args )
+" vim: foldmethod=marker
+
+" tab {{{1
+setlocal foldmethod=syntax
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal smarttab
+setlocal expandtab
+" }}}1
+
+function! s:LuaRun( args ) " {{{1
     " save & lcd to current python script file path.
     silent write
     lcd %:p:h
@@ -21,7 +32,7 @@ function! s:LuaRun( args )
     echohl Underlined | echo l:exeString | echohl NONE
 
     echo vimproc#system2(l:exeString)
-endfunction
+endfunction " }}}1
 
 command! -buffer -nargs=* Run call s:LuaRun(<q-args>)
 command! -buffer -nargs=* LuaRunWithArgs call s:LuaRun(<q-args>)
