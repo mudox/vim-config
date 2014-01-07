@@ -11,12 +11,12 @@ call SetBundleManager('NeoBundle')
 " Merge Configs {{{1
 
 let s:sub_configs = [
-	\ 'x_essential',
-	\ 'x_common',
-	\ 'x_ext_tools',
-	\ 'x_color',
-	\ 'x_textobj',
-	\ ]
+      \ 'x_essential',
+      \ 'x_common',
+      \ 'x_ext_tools',
+      \ 'x_color',
+      \ 'x_textobj',
+      \ ]
 
 call MergeConfigs(s:sub_configs)
 
@@ -25,7 +25,8 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-            \ ]
+      \ 'rainbow_oblitum'
+      \ ]
 
 call AddBundles(s:bundle_list)
 " }}}1
