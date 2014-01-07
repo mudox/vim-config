@@ -13,4 +13,5 @@ function g:this_meta.config() dict
   nmap \cn <Plug>(Mdx_Kaleidoscope_ShowCurColors)
   nmap \cv <Plug>(Mdx_Kaleidoscope_View)
   nmap \ca <Plug>(Mdx_Kaleidoscope_View_All)
+  nmap \ch <Plug>(Mdx_Kaleidoscope_Hate)
 endfunction
