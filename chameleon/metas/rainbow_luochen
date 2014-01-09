@@ -9,5 +9,18 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config() dict
   let g:rainbow_active = 1
-
+  let g:rainbow_conf = {
+        \   'separately' : {
+        \     'vim' : {
+        \       'parentheses': [
+        \         ['for','endfor'],
+        \         ['while', 'endwhile'],
+        \         ['if','_else_','endif'],
+        \         ['(',')'],
+        \         ['\[','\]'],
+        \         ['{','}']
+        \       ],
+        \     }
+        \   }
+        \ }
 endfunction
