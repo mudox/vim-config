@@ -32,11 +32,11 @@ call MergeConfigs(s:sub_configs)
 let s:bundle_list = [
       \ 'syntastic',
       \ 'emmet'    ,
-      \ 'colorv'   ,
+      \ 'rainbow_oblitum',
       \ ]
 
 if has('unix')
-    call add(s:bundle_list, 'ycm')
+  call add(s:bundle_list, 'ycm')
 endif
 call AddBundles(s:bundle_list)
 " }}}1
