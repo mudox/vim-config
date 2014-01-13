@@ -6,7 +6,7 @@ let loaded_mdx_autoload_mudox_query_open_file_vim = 1
 " Usage: execute mudox#query_open_file#Main() . " " . <YOUR FILE>
 
 function! mudox#query_open_file#Main()
-  let promt = "[]Edit," .
+  let promt = "[e]dit, [E]edit!" .
         \ " [k]Above, [j]Below, [K]Top, [J]Bottom," .
         \ " [h]Left-Side, [r]Right-Side, [H]Left-Most, [L]Right-Most," .
         \ " [t]Tabnew: "
@@ -23,17 +23,25 @@ function! mudox#query_open_file#Main()
   let openways['H'] = 'topleft vnew'    . "\x20"
   let openways['L'] = 'botright vnew'   . "\x20"
   let openways['t'] = 'tabnew'          . "\x20"
+  let openways['E'] = 'edit!'           . "\x20"
 
   while 1
-    let open = input(promt, 'edit')
+    let open = input(promt, 'e')
     let open = substitute(open, '\s\+', '', 'g') " strip spaces in open
 
-    if open == ''
+    if open == '' " <Esc> or <C-C> pressed, user canceled.
       return ''
+    elseif open == 'e'
+      if &modified
+        echo "\nCurrent buffer has unsaved change, input E to abandon changes."
+        continue
+      else
+        return "edit\x20"
+      endif
     elseif open =~ '^[jkJKhlHLt]$'
       return openways[open]
     else
-      call EchoError("\nInvalid input, need [k,j,K,J,h,l,H,L,t or empty]")
+      echoerr "\nInvalid input, need [k,j,K,J,h,l,H,L,t or empty]"
     endif
   endw
 endfunction
