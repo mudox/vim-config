@@ -8,6 +8,6 @@ let g:this_meta.site = 'https://github.com/oblitum/rainbow.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config() dict
-    " TODO: your plugin configuration goes here.
+  nnoremap ,rb :RainbowToggle<Cr>
 
 endfunction

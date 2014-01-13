@@ -23,4 +23,6 @@ function g:this_meta.config() dict
         \     }
         \   }
         \ }
+
+  nnoremap ,rb :RainbowToggle<Cr>
 endfunction
