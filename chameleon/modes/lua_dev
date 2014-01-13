@@ -17,7 +17,6 @@ let s:sub_configs = [
       \ 'x_ext_tools',
       \ 'x_color',
       \ 'x_textobj',
-      \ 'x_python',
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -29,7 +28,6 @@ call MergeConfigs(s:sub_configs)
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
       \ 'syntastic',
-      \ 'rainbow_oblitum',
       \ ]
 
 if has('unix')

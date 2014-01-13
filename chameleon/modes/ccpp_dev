@@ -2,7 +2,7 @@
 
 " Set Tile & Bundle Manager {{{1
 
-call SetTitle('python mode')
+call SetTitle('C/C++ mode')
 
 call SetBundleManager('NeoBundle')
 
@@ -12,12 +12,11 @@ call SetBundleManager('NeoBundle')
 
 " TODO: put every sub-mode names you need into the list.
 let s:sub_configs = [
-      \ 'x_essential',
+      \ 'x_essential'
       \ 'x_common',
       \ 'x_ext_tools',
       \ 'x_color',
       \ 'x_textobj',
-      \ 'x_python',
       \ ]
 
 call MergeConfigs(s:sub_configs)
