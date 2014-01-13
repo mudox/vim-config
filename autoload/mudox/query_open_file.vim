@@ -25,11 +25,11 @@ function! mudox#query_open_file#Main()
   let openways['t'] = 'tabnew'          . "\x20"
 
   while 1
-    let open = input(promt)
+    let open = input(promt, 'edit')
     let open = substitute(open, '\s\+', '', 'g') " strip spaces in open
 
     if open == ''
-      return "edit\x20"
+      return ''
     elseif open =~ '^[jkJKhlHLt]$'
       return openways[open]
     else
@@ -38,7 +38,7 @@ function! mudox#query_open_file#Main()
   endw
 endfunction
 
-function mudox#query_open_file#New(...) " {{{2
+function mudox#query_open_file#New(...)   " {{{2
   if a:0 > 1
     echoerr 'invalid argument number for mudox#query_open_file#New(), need 0 or 1 arguments.'
     return
@@ -50,8 +50,12 @@ function mudox#query_open_file#New(...) " {{{2
   endif
 
   let open_cmd = mudox#query_open_file#Main()
+  if open_cmd == ''
+    return
+  endif
+
   if a:0 == 1
-    execute open_cmd . " " . path
+    execute open_cmd . " " . a:1
   else
     if (open_cmd =~ 'edit') && empty(bufname('%'))
       return
