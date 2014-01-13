@@ -31,14 +31,14 @@ function! mudox#query_open_file#Main()
 
     if open == '' " <Esc> or <C-C> pressed, user canceled.
       return ''
-    elseif open == 'e'
+    elseif open ==# 'e'
       if &modified
         echo "\nCurrent buffer has unsaved change, input E to abandon changes."
         continue
       else
         return "edit\x20"
       endif
-    elseif open =~ '^[jkJKhlHLt]$'
+    elseif open =~ '^[EjkJKhlHLt]$'
       return openways[open]
     else
       echoerr "\nInvalid input, need [k,j,K,J,h,l,H,L,t or empty]"
