@@ -6,10 +6,11 @@ let loaded_mdx_autoload_mudox_query_open_file_vim = 1
 " Usage: execute mudox#query_open_file#Main() . " " . <YOUR FILE>
 
 function! mudox#query_open_file#Main()
-  let promt = "[e]dit, [E]edit!" .
+  let prompt_long = "[e]dit, [E]edit!" .
         \ " [k]Above, [j]Below, [K]Top, [J]Bottom," .
         \ " [h]Left-Side, [r]Right-Side, [H]Left-Most, [L]Right-Most," .
         \ " [t]Tabnew: "
+  let prompt_short = 'Where to open? [EhHlLjJkKt] and ? for help: '
 
   let openways = {}
 
@@ -24,47 +25,42 @@ function! mudox#query_open_file#Main()
   let openways['L'] = 'botright vnew'   . "\x20"
   let openways['t'] = 'tabnew'          . "\x20"
   let openways['E'] = 'edit!'           . "\x20"
+  let openways['e'] = 'edit'            . "\x20"
 
   while 1
-    let open = input(promt, 'e')
-    let open = substitute(open, '\s\+', '', 'g') " strip spaces in open
+    echohl Special | echon prompt_short | echohl None
+    let key = getchar()
 
-    if open == '' " <Esc> or <C-C> pressed, user canceled.
-      return ''
-    elseif open ==# 'e'
-      if &modified
-        echo "\nCurrent buffer has unsaved change, input E to abandon changes."
-        continue
-      else
-        return "edit\x20"
-      endif
-    elseif open =~ '^[EjkJKhlHLt]$'
-      return openways[open]
+    if key == 13 || key == char2nr('e') " Enter or 'e' pressed.
+      return openways['e']
+    elseif key == 27 || key == 3 " <Esc> or <C-C> pressed.
+      throw 'mudox#query_open_file: Canceled'
+    elseif index(keys(openways), nr2char(key)) != -1 " other valid key pressed.
+      return openways[nr2char(key)]
     else
-      echoerr "\nInvalid input, need [k,j,K,J,h,l,H,L,t or empty]"
+      echoerr "Invalid input need [kjKJhlHLt? or enter]"
+      continue
     endif
-  endw
+  endwhile
 endfunction
 
 function mudox#query_open_file#New(...)   " {{{2
   if a:0 > 1
-    echoerr 'invalid argument number for mudox#query_open_file#New(), need 0 or 1 arguments.'
-    return
-  elseif a:0 == 1
-    if type(a:1) != type('')
-      echoerr 'invalid argument type for mudox#query_open_file#New(), need a path string.'
-      return
-    endif
+    throw "Invalid argument number for mudox#query_open_file#New(), need 0 or 1 arguments."
+  elseif a:0 == 1 && type(a:1) != type('')
+    throw "Invalid argument type for mudox#query_open_file#New(), need a path string."
   endif
 
-  let open_cmd = mudox#query_open_file#Main()
-  if open_cmd == ''
+  try
+    let open_cmd = mudox#query_open_file#Main()
+  catch /^mudox#query_open_file: Canceled$/
+    echo '* Canceled! *'
     return
-  endif
+  endtry
 
-  if a:0 == 1
-    execute open_cmd . " " . a:1
-  else
+  if a:0 == 1 " with a path.
+    execute open_cmd . "\x20" . a:1
+  else " open an unnamed buffer.
     if (open_cmd =~ 'edit') && empty(bufname('%'))
       return
     endif
