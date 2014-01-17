@@ -1,15 +1,13 @@
-if exists("loaded_mdx_autoload_mudox_query_open_file_vim") || &cp || version < 700
+if exists("s:loaded") || &cp || version < 700
   finish
 endif
-let loaded_mdx_autoload_mudox_query_open_file_vim = 1
+let s:loaded = 1
 
 " it only return a vim's open way command, according to user's keypress.
-" it will handle <Esc> & <C-C> key pressing properly, by throw an exception.
+" it will handle <Esc> & <C-C> key pressing properly, by throwing an exception:
+" /^mudox#query_open_file: Canceled$/
 function! mudox#query_open_file#Main()
-  let prompt_long = "[e]dit, [E]edit!" .
-        \ " [k]Above, [j]Below, [K]Top, [J]Bottom," .
-        \ " [h]Left-Side, [r]Right-Side, [H]Left-Most, [L]Right-Most," .
-        \ " [t]Tabnew: "
+  let prompt_long = "TODO: ..."
   let prompt_short = 'Where to open? [EhHlLjJkKt] and ? for help: '
 
   let openways = {}
@@ -47,7 +45,7 @@ function! mudox#query_open_file#Main()
 endfunction
 
 " without argument, it open a unnamed emtpy buffer.
-" without one argument that specifies a file name, it open a named new buffer
+" with one argument that specifies a file name, it open a named new buffer
 " or existing file.
 function mudox#query_open_file#New(...)   " {{{2
   if a:0 > 1
@@ -58,12 +56,7 @@ function mudox#query_open_file#New(...)   " {{{2
           \ . " need a path string."
   endif
 
-  try
-    let open_cmd = mudox#query_open_file#Main()
-  catch /^mudox#query_open_file: Canceled$/
-    echo '* Canceled! *'
-    return
-  endtry
+  let open_cmd = mudox#query_open_file#Main()
 
   if a:0 == 1 " with a path.
     execute open_cmd . "\x20" . a:1
