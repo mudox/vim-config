@@ -91,23 +91,29 @@ nnoremap <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
 " for current file type.
 
 function <SID>FileTypesAvail(arglead, cmdline, cursorpos)
-  let l:filetypes = glob(g:rc_root . '/ftplugin/*.vim', 1, 1)
-  call map(l:filetypes, 'fnamemodify(v:val, ":t:r")')
-  return join(l:filetypes, "\n")
+  let filetypes = glob(g:rc_root . '/ftplugin/*.vim', 1, 1)
+  call map(filetypes, 'fnamemodify(v:val, ":t:r")')
+  return join(filetypes, "\n")
 endfunction
 
 function! EditFileTypeSettings( filetype )
-  let l:ft = ( a:filetype == '' ) ? &filetype : a:filetype
-  if l:ft != ''
-    let l:setting_file = g:vim_config_root . '/ftplugin/' . l:ft . '.vim'
-    exe mudox#query_open_file#Main() . ' ' . l:setting_file
-  else
-    echohl ErrorMsg
-    echo "* No filetype *"
-    echohl None
-  endif
+  let ft = ( a:filetype == '' ) ? &filetype : a:filetype
+  try
+    if ft != ''
+      let setting_file = g:vim_config_root . '/ftplugin/' . ft . '.vim'
+      call mudox#query_open_file#New(setting_file)
+    else
+      echohl ErrorMsg
+      echo "* No filetype *"
+      echohl None
+    endif
+  catch /^mudox#query_open_file: Canceled$/
+    echohl WarningMsg | echo '* EditFileTypeSettings: Canceled *' | echohl None
+    return
+  endtry
 endfunction
-command  -nargs=? -complete=custom,<SID>FileTypesAvail EditFileType call EditFileTypeSettings(<q-args>)
+command  -nargs=? -complete=custom,<SID>FileTypesAvail EditFileType
+      \ call EditFileTypeSettings(<q-args>)
 nnoremap <Enter>f :EditFileType<Space>
 
 " command mode mappings.
@@ -249,11 +255,11 @@ set dictionary+=/usr/share/dict/words
 " Fold behaviour
 set foldtext=MyFoldText()
 function! MyFoldText()
-  let l:firstline = getline(v:foldstart)
-  let l:sub = substitute(l:firstline, '\s*"\|"/\*\|\*/\|{\{3}.*', ' ', 'g')
-  let l:prefix = '» '
-  let l:foldline = l:prefix . l:sub
-  return l:foldline
+  let firstline = getline(v:foldstart)
+  let sub = substitute(firstline, '\s*"\|"/\*\|\*/\|{\{3}.*', ' ', 'g')
+  let prefix = '» '
+  let foldline = prefix . sub
+  return foldline
 endfunction
 
 " Command line completion
