@@ -36,6 +36,7 @@ let s:bundle_list = [
       \ 'trailer_trash'      ,
       \ 'unimpaired'         ,
       \ 'vim_wiki'           ,
+      \ 'vimcaps'            ,
       \ 'zoomwintab'         ,
       \ ]
 
