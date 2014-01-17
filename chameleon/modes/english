@@ -9,8 +9,8 @@ call SetBundleManager('Pathogen')
 " Merge Configs {{{1
 
 let s:sub_configs = [
-	\ 'x_color',
-	\ ]
+      \ 'x_color',
+      \ ]
 
 call MergeConfigs(s:sub_configs)
 
@@ -19,12 +19,13 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-        \ 'ctrlp',
-        \ 'surround',
-        \ 'join',
-        \ 'align',
-        \ 'unimpaired',
-        \ 'zoomwintab',
+      \ 'ctrlp',
+      \ 'surround',
+      \ 'join',
+      \ 'align',
+      \ 'unimpaired',
+      \ 'zoomwintab',
+      \ 'airline',
       \ ]
 
 call AddBundles(s:bundle_list)
