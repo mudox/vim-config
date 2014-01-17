@@ -91,17 +91,25 @@ function! s:SetInfoWin()
 endfunction
 
 function! mudox#scripts_man#LoadingStatus()
-    let [l:detail, l:summary] = s:SPrintScriptLoadingStatus()
+  let [l:detail, l:summary] = s:SPrintScriptLoadingStatus()
 
-    if !exists('s:LoadingStatusBufNum')
-        let s:LoadingStatusBufNum = 0
-    endif
+  " get unique buffer name
+  if !exists('s:LoadingStatusBufNum')
+    let s:LoadingStatusBufNum = 0
+  endif
 
-    let s:LoadingStatusBufNum = s:LoadingStatusBufNum + 1
+  let s:LoadingStatusBufNum = s:LoadingStatusBufNum + 1
 
-    execute mudox#query_open_file#Main() . 'Mudox_SLS_' . s:LoadingStatusBufNum
+  try
+    call mudox#query_open_file#New('Mudox_SLS_' . s:LoadingStatusBufNum)
+  catch /^mudox#query_open_file: Canceled$/
+    echohl WarningMsg
+    echo '* mudox#scripts_man#LoadingStatus: Canceled *'
+    echohl None
+    return
+  endtry
 
-    call s:SetInfoWin()
-    call append(0, split(l:detail, "\n"))
-    call append(line('$'), split(l:summary, "\n"))
+  call s:SetInfoWin()
+  call append(0, split(l:detail, "\n"))
+  call append(line('$'), split(l:summary, "\n"))
 endfunction
