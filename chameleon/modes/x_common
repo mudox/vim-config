@@ -38,6 +38,8 @@ let s:bundle_list = [
       \ 'vim_wiki'           ,
       \ 'vimcaps'            ,
       \ 'zoomwintab'         ,
+      \ 'indent_guides'      ,
+      \ 'indent_line'        ,
       \ ]
 
 if has('win32') || has('win64')
