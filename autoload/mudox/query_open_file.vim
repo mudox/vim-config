@@ -3,8 +3,8 @@ if exists("loaded_mdx_autoload_mudox_query_open_file_vim") || &cp || version < 7
 endif
 let loaded_mdx_autoload_mudox_query_open_file_vim = 1
 
-" Usage: execute mudox#query_open_file#Main() . " " . <YOUR FILE>
-
+" it only return a vim's open way command, according to user's keypress.
+" it will handle <Esc> & <C-C> key pressing properly, by throw an exception.
 function! mudox#query_open_file#Main()
   let prompt_long = "[e]dit, [E]edit!" .
         \ " [k]Above, [j]Below, [K]Top, [J]Bottom," .
@@ -38,17 +38,24 @@ function! mudox#query_open_file#Main()
     elseif index(keys(openways), nr2char(key)) != -1 " other valid key pressed.
       return openways[nr2char(key)]
     else
-      echoerr "Invalid input need [kjKJhlHLt? or enter]"
+      echohl ErrorMsg
+      echo "Invalid input need [kjKJhlHLt? or enter]\n"
+      echohl None
       continue
     endif
   endwhile
 endfunction
 
+" without argument, it open a unnamed emtpy buffer.
+" without one argument that specifies a file name, it open a named new buffer
+" or existing file.
 function mudox#query_open_file#New(...)   " {{{2
   if a:0 > 1
-    throw "Invalid argument number for mudox#query_open_file#New(), need 0 or 1 arguments."
+    throw "Invalid argument number for mudox#query_open_file#New(),"
+          \ . " need 0 or 1 arguments."
   elseif a:0 == 1 && type(a:1) != type('')
-    throw "Invalid argument type for mudox#query_open_file#New(), need a path string."
+    throw "Invalid argument type for mudox#query_open_file#New(),"
+          \ . " need a path string."
   endif
 
   try
