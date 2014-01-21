@@ -26,6 +26,7 @@ let s:bundle_list = [
       \ 'unimpaired',
       \ 'zoomwintab',
       \ 'airline',
+      \ 'trailer_trash',
       \ ]
 
 call AddBundles(s:bundle_list)
