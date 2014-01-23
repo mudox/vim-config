@@ -192,14 +192,14 @@ elseif has('unix')
   " Awsome WM on ArchLinux without infinality.
 
   " suit for default theme of awesome on archlinux.
-  "set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.8
-  "set linespace=1
-  "autocmd ColorScheme * set linespace=1
+  set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.8
+  set linespace=1
+  autocmd ColorScheme * set linespace=1
 
   " suit for zenburn theme of awesome on archlinux.
-  set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.5
-  set linespace=0
-  autocmd ColorScheme * set linespace=0
+  "set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.5
+  "set linespace=0
+  "autocmd ColorScheme * set linespace=0
 elseif has('mac') || has('macunix') " oops!, I have no Mac OS ...
   " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
   " set linespace=1
