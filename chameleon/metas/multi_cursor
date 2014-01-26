@@ -9,6 +9,10 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 
 function g:this_meta.config()
-    " TODO: your plugin configuration goes here.
+    " default mapping conflicts with yank_ring.
+    let g:multi_cursor_start_key = '<C-j>'
+    let g:multi_cursor_next_key  = '<C-j>'
+    let g:multi_cursor_prev_key  = '<C-k>'
+    let g:multi_cursor_skip_key  = '<C-l>'
 
 endfunction
