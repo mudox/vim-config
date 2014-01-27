@@ -1,0 +1,15 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" name and site
+let g:this_meta.name = expand('<sfile>:p:t')
+let g:this_meta.site = 'https://github.com/t9md/vim-choosewin.git'
+
+" extra settings for neobundle
+let g:this_meta.neodict.name = g:this_meta.name
+
+function g:this_meta.config() dict
+  nmap  <A-w> <Plug>(choosewin)
+
+  let g:choosewin_overlay_enable          = 1
+  let g:choosewin_overlay_clear_multibyte = 1
+endfunction
