@@ -11,9 +11,11 @@
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-            \ 'rvm'    ,
-            \ 'endwise',
-            \ 'ruby'   ,
+            \ 'endwise'  ,
+            \ 'ruby'     ,
+            \ 'rvm'      ,
+            \ 'splitjoin',
+            \ 'switch'   ,
             \ ]
 
 call AddBundles(s:bundle_list)
