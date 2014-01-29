@@ -34,7 +34,7 @@ function g:this_meta.config()
     " let g:syntastic_ignore_files=['^/usr/include/', '\c\.h$']
     let g:syntastic_mode_map = {
                 \ 'mode': 'passive',
-                \ 'active_filetypes': ['ruby', 'php', 'javascript', 'vim'],
+                \ 'active_filetypes': ['ruby', 'php', 'javascript'],
                 \ 'passive_filetypes': ['puppet']
                 \ }
 
