@@ -15,7 +15,7 @@ call MergeConfigs(s:sub_configs)
 
 let s:bundle_list = [
       \ 'align'              ,
-      \ 'calendar'           ,
+      \ 'mattn_calendar'     ,
       \ 'ctrl_space'         ,
       \ 'dbext'              ,
       \ 'delimitmate'        ,
