@@ -28,7 +28,7 @@ function g:this_meta.config()
     " let syntastic_style_error_symbol
     " let syntastic_style_warning_symbol
     let g:syntastic_always_populate_loc_list = 1
-    " let g:syntastic_auto_jump=1
+    let g:syntastic_auto_jump=2
     " let g:syntastic_auto_loc_list=1
     let g:syntastic_loc_list_height=5
     " let g:syntastic_ignore_files=['^/usr/include/', '\c\.h$']
