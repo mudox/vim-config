@@ -12,7 +12,6 @@
 "}}}1
 
 " get the full path of .vim or vimfiles.
-let g:vim_config_root = substitute(expand('<sfile>:p:h'), ' ', '\\ ', 'g') " deprecated
 let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 
 " BUNDLE LOADING                                  {{{1
@@ -260,14 +259,25 @@ set completeopt=menu
 set dictionary+=/usr/share/dict/words
 
 " Fold behaviour
-set foldtext=MyFoldText()
-function! MyFoldText()
-  let firstline = getline(v:foldstart)
-  let sub = substitute(firstline, '\s*"\|"/\*\|\*/\|{\{3}.*', ' ', 'g')
-  let prefix = '» '
-  let foldline = prefix . sub
+let g:foldline_fancy_symbol = '» '
+
+function! GlobalFoldText()
+  let foldline = getline(v:foldstart)
+
+  " remove fold marker.
+  if &foldmethod ==# 'marker'
+    let [mk_open, mk_close] = split(&foldmarker, ',')
+    let foldline = substitute(foldline, '\M\C' . mk_open . '\.\*$', '', 'g')
+    let foldline = substitute(foldline, '\M\C' . mk_close . '\.\*$', '', 'g')
+  endif
+
+  " prefix a fancy symbol.
+  let foldline = g:foldline_fancy_symbol . foldline
+
   return foldline
 endfunction
+
+set foldtext=GlobalFoldText()
 
 " Command line completion
 set history=30
