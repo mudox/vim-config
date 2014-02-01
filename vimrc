@@ -5,7 +5,7 @@
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
 "
 " TODO:
-" 1. the use of variables g:vim_config_root is not conventional, and error-prone.
+" 1. the use of variables g:rc_root is not conventional, and error-prone.
 " 2. regrouping the vim options setttings in 'SETTINGS' section.
 " 3. fix the issues:
 "   * cursor hopping between current insertting position and the line end.
@@ -99,7 +99,7 @@ function! EditFileTypeSettings( filetype )
   let ft = ( a:filetype == '' ) ? &filetype : a:filetype
   try
     if ft != ''
-      let setting_file = g:vim_config_root . '/ftplugin/' . ft . '.vim'
+      let setting_file = g:rc_root . '/ftplugin/' . ft . '.vim'
       call mudox#query_open_file#New(setting_file)
     else
       echohl ErrorMsg
