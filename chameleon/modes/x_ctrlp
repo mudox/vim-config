@@ -11,9 +11,10 @@
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-            \ 'ctrlp',
-            \ 'ctrlp_cmd',
+            \ 'ctrlp'      ,
+            \ 'ctrlp_cmd'  ,
             \ 'ctrlp_funky',
+            \ 'omnimenu'   ,
             \ ]
 
 if has('win32') || has('win64')
