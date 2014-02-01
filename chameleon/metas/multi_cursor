@@ -10,9 +10,9 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config()
     " default mapping conflicts with yank_ring.
-    let g:multi_cursor_start_key = '<C-j>'
-    let g:multi_cursor_next_key  = '<C-j>'
-    let g:multi_cursor_prev_key  = '<C-k>'
-    let g:multi_cursor_skip_key  = '<C-l>'
+    let g:multi_cursor_start_key = '<M-j>'
+    let g:multi_cursor_next_key  = '<M-j>'
+    let g:multi_cursor_prev_key  = '<M-k>'
+    let g:multi_cursor_skip_key  = '<M-l>'
 
 endfunction
