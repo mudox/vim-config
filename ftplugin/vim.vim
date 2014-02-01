@@ -25,7 +25,7 @@ let g:vimsyn_noerror = 1
 let g:vimsyn_folding = 'af' " enable autofolding of autogroups & functions.
 
 " foldtext
-function VimFoldText() " <<<2
+function! VimFoldText() " <<<2
   let foldline = getline(v:foldstart)
 
   " remove fold marker.
