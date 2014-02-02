@@ -15,7 +15,7 @@ call SetBundleManager('Pathogen')
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-            \ 'ctrlp',
+            \ 'omnimenu',
             \ ]
 
 call AddBundles(s:bundle_list)
