@@ -2,7 +2,7 @@
 
 " Set Tile & Bundle Manager {{{1
 
-call SetTitle('python mode')
+call SetTitle('lua mode')
 
 call SetBundleManager('NeoBundle')
 
