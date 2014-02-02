@@ -211,7 +211,7 @@ set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 
-if index(mudox#chameleon#core.meta_set, 'airline') == -1
+if index(g:chameleon.meta_set, 'airline') == -1
   set laststatus=1 " never show statusline.
   set cmdheight=2
   set showmode
@@ -257,27 +257,6 @@ set whichwrap=b,s,<,>,[,],h,l
 set backspace=indent,eol,start
 set completeopt=menu
 set dictionary+=/usr/share/dict/words
-
-" Fold behaviour
-let g:foldline_fancy_symbol = '» '
-
-function! GlobalFoldText()
-  let foldline = getline(v:foldstart)
-
-  " remove fold marker.
-  if &foldmethod ==# 'marker'
-    let [mk_open, mk_close] = split(&foldmarker, ',')
-    let foldline = substitute(foldline, '\M\C' . mk_open . '\.\*$', '', 'g')
-    let foldline = substitute(foldline, '\M\C' . mk_close . '\.\*$', '', 'g')
-  endif
-
-  " prefix a fancy symbol.
-  let foldline = g:foldline_fancy_symbol . foldline
-
-  return foldline
-endfunction
-
-set foldtext=GlobalFoldText()
 
 " Command line completion
 set history=30

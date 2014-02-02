@@ -40,7 +40,7 @@ let s:bundle_list = [
       \ 'zoomwintab'         ,
       \ 'indent_guides'      ,
       \ 'indent_line'        ,
-      \ 'yank_ring'          ,
+      \ 'foldtext'           ,
       \ ]
 
 if has('win32') || has('win64')
