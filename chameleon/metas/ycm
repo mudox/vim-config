@@ -37,7 +37,8 @@ function g:this_meta.config()
     let g:ycm_max_diagnostics_to_display                    = 14
     let g:ycm_autoclose_preview_window_after_completion     = 1
     let g:ycm_autoclose_preview_window_after_insertion      = 1
-    let g:ycm_global_ycm_extra_conf                         = g:vim_config_root . '/neobundle/youcompleteme/cpp/ycm/.ycm_extra_conf.py'
+    let g:ycm_global_ycm_extra_conf                         = g:rc_root
+     \ . '/neobundle/youcompleteme/cpp/ycm/.ycm_extra_conf.py'
     let g:ycm_allow_changing_updatetime                     = 0
     let g:ycm_register_as_syntastic_checker                 = 1
     let g:ycm_key_list_select_completion                    = ['<Down>']
