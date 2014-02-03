@@ -9,5 +9,5 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 
 function g:this_meta.config()
-  nmap <M-f> =af''
+  nmap <M-f> m'=af`'
 endfunction
