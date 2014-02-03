@@ -49,6 +49,9 @@ endif
 
 if has('unix')
   call add (s:bundle_list, 'sudo_edit')
+  if !has('gui_running')
+    call add(s:bundle_list, 'togglecursor')
+  endif
 endif
 
 call AddBundles(s:bundle_list)
