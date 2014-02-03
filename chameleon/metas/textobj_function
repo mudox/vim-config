@@ -9,6 +9,5 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 
 function g:this_meta.config()
-    " TODO: your plugin configuration goes here.
-
+  nmap <M-f> =af''
 endfunction
