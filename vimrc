@@ -24,8 +24,6 @@ let g:vimball_home = escape(g:rc_root, ' \') . '/bundle/'
 
 call mudox#chameleon#Init()
 
-"call mudox#cfg_bundle#GetBundleManager()
-"call mudox#cfg_bundle#BundlesInit()
 "}}}1
 
 " MAPPINGS                                        {{{1
@@ -211,7 +209,7 @@ set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 
-if index(g:chameleon.meta_set, 'airline') == -1
+if index(g:mdx_chameleon.meta_set, 'airline') == -1
   set laststatus=1 " never show statusline.
   set cmdheight=2
   set showmode
