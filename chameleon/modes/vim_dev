@@ -11,11 +11,12 @@ call SetBundleManager('NeoBundle')
 " Merge Configs {{{1
 
 let s:sub_configs = [
+      \ 'x_color'    ,
+      \ 'x_common'   ,
       \ 'x_essential',
-      \ 'x_common',
       \ 'x_ext_tools',
-      \ 'x_color',
-      \ 'x_textobj',
+      \ 'x_git'      ,
+      \ 'x_textobj'  ,
       \ ]
 
 call MergeConfigs(s:sub_configs)

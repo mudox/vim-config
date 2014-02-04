@@ -18,7 +18,6 @@ call MergeConfigs(s:sub_configs)
 let s:bundle_list = [
       \ 'chameleon',
       \ 'vim_proc' ,
-      \ 'fugitive' ,
       \ 'ctrlp'    ,
       \ ]
 
