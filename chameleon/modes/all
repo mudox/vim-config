@@ -7,7 +7,7 @@ call SetBundleManager('NeoBundle')
 " }}}1
 
 
-let s:metas = g:chameleon.metasAvail()
+let s:metas = g:mdx_chameleon.metasAvail()
 
 if !has('unix')
     call filter(s:metas, 'v:val != "ycm"')
