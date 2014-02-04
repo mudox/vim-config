@@ -2,6 +2,8 @@
 
 " Set Tile & Bundle Manager {{{1
 
+call SetTitle('Learn English')
+
 call SetBundleManager('Pathogen')
 
 " }}}1

@@ -16,6 +16,7 @@ call SetBundleManager('Pathogen')
 
 let s:bundle_list = [
             \ 'omnimenu',
+            \ 'chameleon',
             \ ]
 
 call AddBundles(s:bundle_list)

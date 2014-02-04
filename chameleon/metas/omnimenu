@@ -8,6 +8,5 @@ let g:this_meta.site = 'git@github.com:Mudox/vim-omnimenu.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config() dict
-  nmap <Space>x <Plug>(OmniMenu_ChamStartup)
   nmap <C-Space> <Plug>(OmniMenu_TopMenu)
 endfunction

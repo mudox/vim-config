@@ -13,4 +13,6 @@ function g:this_meta.config() dict
 
   nnoremap <silent> <Enter>C :EditMode<Space>
   nmap <silent> <Enter>c <Plug>(Chameleon_Edit_Mode_OmniMenu)
+
+  nmap <Space>x <Plug>(OmniMenu_ChamNewInstance)
 endfunction
