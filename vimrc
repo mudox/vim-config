@@ -264,8 +264,13 @@ if has('unix')
   set wildignorecase "
 endif
 
-" +displaying text+
+" displaying text
 set lazyredraw
+
+" backup
+set nobackup
+set noswapfile
+set nowritebackup
 
 " multiple windows                                   {{{2
 "set hidden " don't unload a buffer when no longer shown in a window.
