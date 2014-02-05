@@ -14,6 +14,7 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
+      \ 'vim_proc'           ,
       \ 'align'              ,
       \ 'mattn_calendar'     ,
       \ 'ctrl_space'         ,
