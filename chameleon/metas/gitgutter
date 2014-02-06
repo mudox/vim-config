@@ -15,4 +15,5 @@ function g:this_meta.config()
 
   let g:gitgutter_enabled = 0
   let g:gitgutter_realtime = 0
+  hi! link SignColumn Normal
 endfunction
