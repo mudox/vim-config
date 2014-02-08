@@ -5,6 +5,7 @@
 let s:sub_configs = [
       \ 'x_ultisnips',
       \ 'x_ctrlp',
+      \ 'x_xolox',
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -14,17 +15,19 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-      \ 'vim_proc'           ,
       \ 'align'              ,
-      \ 'mattn_calendar'     ,
-      \ 'ctrl_space'         ,
+      \ 'ctrlspace'          ,
       \ 'dbext'              ,
       \ 'delimitmate'        ,
-      \ 'easy_align'         ,
-      \ 'easy_motion'        ,
+      \ 'easyalign'          ,
+      \ 'easymotion'         ,
+      \ 'foldtext'           ,
+      \ 'indentguides'       ,
+      \ 'indentline'         ,
       \ 'init_scripts_syntax',
       \ 'join'               ,
       \ 'mark'               ,
+      \ 'mattn_calendar'     ,
       \ 'nerd_commenter'     ,
       \ 'nerd_tree'          ,
       \ 'nrrwrgn'            ,
@@ -34,14 +37,12 @@ let s:bundle_list = [
       \ 'repeat'             ,
       \ 'surround'           ,
       \ 'text_manip'         ,
-      \ 'trailer_trash'      ,
+      \ 'trailertrash'       ,
       \ 'unimpaired'         ,
-      \ 'vim_wiki'           ,
       \ 'vimcaps'            ,
+      \ 'vimproc'            ,
+      \ 'vimwiki'            ,
       \ 'zoomwintab'         ,
-      \ 'indent_guides'      ,
-      \ 'indent_line'        ,
-      \ 'foldtext'           ,
       \ ]
 
 if has('win32') || has('win64')

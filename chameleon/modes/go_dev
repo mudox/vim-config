@@ -12,7 +12,6 @@ call SetBundleManager('NeoBundle')
 
 let s:sub_configs = [
       \ 'x_common'   ,
-      \ 'x_ext_tools',
       \ 'x_color'    ,
       \ 'x_textobj'  ,
       \ 'x_go'       ,

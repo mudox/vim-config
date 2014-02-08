@@ -10,7 +10,7 @@
 
 " Bundles in Current Config {{{1
 
-let s:all_colors = glob(expand('<sfile>:p:h:h') . '/metas/vim_color_*', 1, 1)
+let s:all_colors = glob(expand('<sfile>:p:h:h') . '/metas/vc_*', 1, 1)
 let s:all_colors = map(s:all_colors, 'fnamemodify(v:val, ":t:r")')
 
 let s:bundle_list = add(s:all_colors, 'kaleidoscope')

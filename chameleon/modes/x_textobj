@@ -10,7 +10,7 @@
 
 " Bundles in Current Config {{{1
 
-let s:all_textobjs = glob(expand('<sfile>:p:h:h') . '/metas/textobj_*', 1, 1)
+let s:all_textobjs = glob(expand('<sfile>:p:h:h') . '/metas/to_*', 1, 1)
 let s:all_textobjs = map(s:all_textobjs, 'fnamemodify(v:val, ":t:r")')
 
 let s:bundle_list = s:all_textobjs
