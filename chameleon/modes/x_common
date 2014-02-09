@@ -28,6 +28,7 @@ let s:bundle_list = [
       \ 'join'               ,
       \ 'mark'               ,
       \ 'mattn_calendar'     ,
+      \ 'multi_cursor'       ,
       \ 'nerd_commenter'     ,
       \ 'nerd_tree'          ,
       \ 'nrrwrgn'            ,
