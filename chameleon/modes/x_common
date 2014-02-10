@@ -37,6 +37,7 @@ let s:bundle_list = [
       \ 'renamer'            ,
       \ 'repeat'             ,
       \ 'surround'           ,
+      \ 'tagbar'             ,
       \ 'text_manip'         ,
       \ 'trailertrash'       ,
       \ 'unimpaired'         ,
