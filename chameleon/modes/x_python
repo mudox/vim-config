@@ -11,16 +11,16 @@
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-            \ 'indent_guides'     ,
-            \ 'indent_line'       ,
-            \ 'python_flake8'     ,
-            \ 'python_interactive',
-            \ 'python_pep8_indent',
-            \ 'python_rope'       ,
-            \ 'python_syntax'     ,
-            \ 'python_isort'      ,
-            \ 'syntastic'         ,
-            \ 'dbgp'              ,
+            \ 'indentguides'  ,
+            \ 'indentline'    ,
+            \ 'py_flake8'     ,
+            \ 'py_interactive',
+            \ 'py_pep8_indent',
+            \ 'py_rope'       ,
+            \ 'py_syntax'     ,
+            \ 'py_isort'      ,
+            \ 'syntastic'     ,
+            \ 'dbgp'          ,
             \ ]
 
 call AddBundles(s:bundle_list)

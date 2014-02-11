@@ -3,8 +3,8 @@
 " Bundles in Current Config {{{1
 let s:bundle_list = [
       \ 'easytags',
-      \ 'xolox_vim_misc',
-      \ 'xolox_vim_shell',
+      \ 'xolox_misc',
+      \ 'xolox_shell',
       \ ]
 
 call AddBundles(s:bundle_list)

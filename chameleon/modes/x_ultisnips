@@ -2,7 +2,7 @@
 
 let s:bundle_list = [
       \ 'ultisnips',
-      \ 'mudox_ultisnips_snippets',
+      \ 'usnippets',
       \ ]
 
 call AddBundles(s:bundle_list)
