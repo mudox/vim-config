@@ -21,16 +21,16 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-      \ 'chameleon',
-      \ 'omnimenu',
-      \ 'ctrlp',
-      \ 'surround',
-      \ 'join',
-      \ 'align',
-      \ 'unimpaired',
-      \ 'zoomwintab',
-      \ 'airline',
-      \ 'trailer_trash',
+      \ 'chameleon'   ,
+      \ 'omnimenu'    ,
+      \ 'ctrlp'       ,
+      \ 'surround'    ,
+      \ 'join'        ,
+      \ 'align'       ,
+      \ 'unimpaired'  ,
+      \ 'zoomwintab'  ,
+      \ 'airline'     ,
+      \ 'trailertrash',
       \ ]
 
 call AddBundles(s:bundle_list)
