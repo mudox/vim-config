@@ -1,0 +1,8 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let s:bundle_list = [
+      \ 'easymotion',
+      \ 'cleverf'   ,
+      \ ]
+
+call AddBundles(s:bundle_list)

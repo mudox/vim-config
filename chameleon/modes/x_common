@@ -4,8 +4,9 @@
 
 let s:sub_configs = [
       \ 'x_ultisnips',
-      \ 'x_ctrlp',
-      \ 'x_xolox',
+      \ 'x_ctrlp'    ,
+      \ 'x_xolox'    ,
+      \ 'x_motion'   ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -20,7 +21,6 @@ let s:bundle_list = [
       \ 'dbext'         ,
       \ 'delimitmate'   ,
       \ 'easyalign'     ,
-      \ 'easymotion'    ,
       \ 'foldtext'      ,
       \ 'indentguides'  ,
       \ 'indentline'    ,
