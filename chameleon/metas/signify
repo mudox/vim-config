@@ -8,6 +8,7 @@ let g:this_meta.site = 'https://github.com/mhinz/vim-signify.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config() dict
-    " TODO: your plugin configuration goes here.
+    let g:signify_disable_by_default = 1
+    
 
 endfunction
