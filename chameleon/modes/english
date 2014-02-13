@@ -11,7 +11,8 @@ call SetBundleManager('Pathogen')
 " Merge Configs {{{1
 
 let s:sub_configs = [
-      \ 'x_color',
+      \ 'x_color' ,
+      \ 'x_motion',
       \ ]
 
 call MergeConfigs(s:sub_configs)
