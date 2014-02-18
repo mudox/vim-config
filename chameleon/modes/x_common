@@ -52,7 +52,8 @@ if has('win32') || has('win64')
 endif
 
 if has('unix')
-  call add (s:bundle_list, 'sudo_edit')
+  call add (s:bundle_list, 'sudoedit')
+
   if !has('gui_running')
     call add(s:bundle_list, 'togglecursor')
   endif
