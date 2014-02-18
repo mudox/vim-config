@@ -11,5 +11,6 @@ let g:this_meta.neodict.name = g:this_meta.name
 function g:this_meta.config()
     let g:OrigamiPadding          = 3
     let g:OrigamiStaggeredSpacing = 3
-
+    let g:OrigamiIncAllLines      = 1
+    let g:OrigamiFoldAtCol        = 85
 endfunction

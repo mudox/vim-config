@@ -1,4 +1,4 @@
-" vimrc NOT .vimrc for [G]Vim on Linux / Window   {{{1
+" vimrc NOT .vimrc for [G]Vim on Linux / Window                                                       {{{1
 "
 " NOTE:
 " ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
@@ -14,7 +14,7 @@
 " get the full path of .vim or vimfiles.
 let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 
-" BUNDLE LOADING                                  {{{1
+" BUNDLE LOADING                                                                                      {{{1
 
 if has('vim_starting')
   exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/neobundle/chameleon'
@@ -26,7 +26,7 @@ call mudox#chameleon#Init()
 
 "}}}1
 
-" MAPPINGS                                        {{{1
+" MAPPINGS                                                                                            {{{1
 
 " Toggle syntax feature.
 nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR>
@@ -34,21 +34,21 @@ nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR
 " Default leader key for <leader> mappings
 let g:mapleader = ','
 
-" <C-H/J/K/L> to jump among windows                  {{{2
+" <C-H/J/K/L> to jump among windows                                                                      {{{2
 nnoremap <C-H>	   <C-W>h
 nnoremap <C-J>	   <C-W>j
 nnoremap <C-K>	   <C-W>k
 nnoremap <C-L>	   <C-W>l
 "}}}2
 
-" <M-Up/Down/Left/Right> to resize windows           {{{2
+" <M-Up/Down/Left/Right> to resize windows                                                               {{{2
 nnoremap <M-Up> 	5<C-W>+
 nnoremap <M-Down> 	5<C-W>-
 nnoremap <M-Left> 	5<C-W><
 nnoremap <M-Right> 	5<C-W>>
 "}}}2
 
-" <A-H/L> to switch among tabs                       {{{2
+" <A-H/L> to switch among tabs                                                                           {{{2
 nnoremap <silent> ì gt
 nnoremap <silent> è gT
 "}}}2
@@ -120,24 +120,24 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 " }}}1
 
-" BUNDLE SETTINGS                                 {{{1
+" BUNDLE SETTINGS                                                                                     {{{1
 
-" [ft-sql]"                                          {{{2
+" [ft-sql]                                                                                             " {{{2
 let g:ftplugin_sql_omni_key_right = '<C-l>'
 let g:ftplugin_sql_omni_key_left  = '<C-h>'
 "}}}2
 
-" [matchparen]"                                      {{{2
+" [matchparen]                                                                                         " {{{2
 let loaded_matchparen = 1
 " }}}2
 
-" [mark]                                             {{{2
+" [mark]                                                                                                 {{{2
 let g:mwAutoSaveMarks = 0
 let g:mwIgnoreCase = 0
 " let g:mwHistAdd = '/@'
 "}}}2
 
-" [dot_vim]                                          {{{2
+" [dot_vim]                                                                                              {{{2
 
 let g:mdx_vim_alpha_step = 15
 if has('win32') || has('win64')
@@ -154,16 +154,16 @@ nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 
 "}}}1
 
-" EVENTS                                          {{{1
+" EVENTS                                                                                              {{{1
 
 "}}}1
 
-" ABBREVIATES                                     {{{1
+" ABBREVIATES                                                                                         {{{1
 cabbrev ue UltiSnipsEdit
 cabbrev git Git
 "}}}1
 
-" SETTINGS                                        {{{1
+" SETTINGS                                                                                            {{{1
 
 " Important
 set nocompatible
@@ -272,7 +272,7 @@ set nobackup
 set noswapfile
 set nowritebackup
 
-" multiple windows                                   {{{2
+" multiple windows                                                                                       {{{2
 "set hidden " don't unload a buffer when no longer shown in a window.
 "}}}2
 
