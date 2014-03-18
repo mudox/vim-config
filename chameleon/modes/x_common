@@ -45,6 +45,7 @@ let s:bundle_list = [
       \ 'vimproc'       ,
       \ 'vimwiki'       ,
       \ 'zoomwintab'    ,
+      \ 'omnimenu'      ,
       \ ]
 
 if has('win32') || has('win64')
