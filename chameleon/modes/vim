@@ -26,7 +26,8 @@ call MergeConfigs(s:sub_configs)
 let s:bundle_list = [
       \ 'syntastic',
       \ 'vimparser',
-      \ 'vimlint',
+      \ 'vimlint'  ,
+      \ 'airline'  ,
       \ ]
 
 call AddBundles(s:bundle_list)
