@@ -12,9 +12,10 @@ call SetBundleManager('NeoBundle')
 
 " TODO: put every sub-mode names you need into the list.
 let s:sub_configs = [
-      \ 'x_common',
-      \ 'x_color',
+      \ 'x_common' ,
+      \ 'x_color'  ,
       \ 'x_textobj',
+      \ 'x_git'    ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
