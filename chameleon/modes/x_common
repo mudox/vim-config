@@ -7,6 +7,7 @@ let s:sub_configs = [
       \ 'x_ctrlp'    ,
       \ 'x_xolox'    ,
       \ 'x_motion'   ,
+      \ 'x_database' ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -18,7 +19,6 @@ call MergeConfigs(s:sub_configs)
 let s:bundle_list = [
       \ 'align'         ,
       \ 'ctrlspace'     ,
-      \ 'dbext'         ,
       \ 'delimitmate'   ,
       \ 'easyalign'     ,
       \ 'foldtext'      ,
