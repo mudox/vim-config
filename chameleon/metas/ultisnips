@@ -16,7 +16,7 @@ function g:this_meta.config()
     let g:UltiSnipsNoPythonWarning     = 1
     let g:UltiSnipsSnippetDirectories  = [ "UltiSnips" ]
     let g:UltiSnipsSnippetsDir         = g:rc_root .
-          \ '/neobundle/mudox_ultisnips_snippets/UltiSnips'
+          \ '/neobundle/mdxsnippets/UltiSnips'
 
     cabbrev ue UltiSnipsEdit
 endfunction
