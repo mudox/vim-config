@@ -11,22 +11,22 @@ function g:this_meta.config()
     nnoremap ,il :<C-U>IndentLinesToggle<Cr>
 
     let g:indentLine_enabled = 0
-    let g:indentLine_fileType = [
-                \ 'c',
-                \ 'cpp',
-                \ 'python',
-                \ 'make'
-                \ ]
-    let g:indentLine_fileTypeExclude = [
-                \ 'text',
-                \ 'help',
-                \ ''
-                \]
-    let g:indentLine_bufNameExclude = [
-                \ 'h_.*',
-                \ 'hNERD_tree.*',
-                \ '.*\doc\.txt'
-                \]
+    "let g:indentLine_fileType = [
+                "\ 'c',
+                "\ 'cpp',
+                "\ 'python',
+                "\ 'make'
+                "\ ]
+    "let g:indentLine_fileTypeExclude = [
+                "\ 'text',
+                "\ 'help',
+                "\ ''
+                "\]
+    "let g:indentLine_bufNameExclude = [
+                "\ 'h_.*',
+                "\ 'hNERD_tree.*',
+                "\ '.*\doc\.txt'
+                "\]
 
     " let g:indentLine_char = '.'
     " let g:indentLine_color_term = 239
