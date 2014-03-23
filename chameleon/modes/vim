@@ -27,8 +27,11 @@ let s:bundle_list = [
       \ 'syntastic',
       \ 'vimparser',
       \ 'vimlint'  ,
-      \ 'airline'  ,
       \ ]
+
+if has('win32') || has('win64')
+  call add(s:bundle_list, 'airline')
+endif
 
 call AddBundles(s:bundle_list)
 " }}}1
