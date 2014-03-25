@@ -3,7 +3,6 @@
 let s:bundle_list = [
       \ 'ultisnips'  ,
       \ 'mdxsnippets',
-      \ 'snippets'   ,
       \ ]
 
 call AddBundles(s:bundle_list)
