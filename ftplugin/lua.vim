@@ -20,7 +20,7 @@ function! s:LuaRun( args ) " {{{1
             let l:cur_file = substitute(expand('%'), ' ', '\\ ', 'g')
             let l:exeString = l:lua_interp . ' ' . l:cur_file . ' ' . a:args
     elseif has('unix')
-            let l:lua_interp = 'luajit'
+            let l:lua_interp = 'lua'
             let l:exeString = l:lua_interp . ' ' . expand('%') . ' ' . a:args
     elseif has('mac') || has('macunix')
             let l:lua_interp = 'lua'

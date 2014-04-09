@@ -34,3 +34,7 @@ endfunction
 command! -buffer -nargs=* GoRunWithArgs call s:GoRun(<q-args>)
 
 nnoremap <buffer> <Enter>r :GoRunWithArgs<Space>
+
+if executable('goimports')
+  let g:gofmt_command = 'goimports'
+endif
