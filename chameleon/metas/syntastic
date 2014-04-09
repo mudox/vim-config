@@ -7,43 +7,43 @@ let g:this_meta.site = 'https://github.com/scrooloose/syntastic.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config()
-    nnoremap <Cr>x :<C-U>w<Cr>:SyntasticCheck<Cr>
+  nnoremap <Cr>x :<C-U>w<Cr>:SyntasticCheck<Cr>
 
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_enable_signs = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_enable_signs = 1
 
-    if has('win32') || has('win64')
-        let syntastic_error_symbol = 'x'
-        let syntastic_warning_symbol = '!'
-    elseif has('unix')
-        let syntastic_error_symbol = '✗'
-        let syntastic_warning_symbol = '⚠'
-    elseif has('mac') || has('macunix')
-        let syntastic_error_symbol = '✗'
-        let syntastic_warning_symbol = '⚠'
-    else
-        echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
-    endif
+  if has('win32') || has('win64')
+    let syntastic_error_symbol = 'x'
+    let syntastic_warning_symbol = '!'
+  elseif has('unix')
+    let syntastic_error_symbol = '✗'
+    let syntastic_warning_symbol = '⚠'
+  elseif has('mac') || has('macunix')
+    let syntastic_error_symbol = '✗'
+    let syntastic_warning_symbol = '⚠'
+  else
+    echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
+  endif
 
-    " let syntastic_style_error_symbol
-    " let syntastic_style_warning_symbol
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_jump=2
-    " let g:syntastic_auto_loc_list=1
-    let g:syntastic_loc_list_height=5
-    " let g:syntastic_ignore_files=['^/usr/include/', '\c\.h$']
-    let g:syntastic_mode_map = {
-                \ 'mode': 'passive',
-                \ 'active_filetypes': ['ruby', 'php', 'javascript'],
-                \ 'passive_filetypes': ['puppet']
-                \ }
+  " let syntastic_style_error_symbol
+  " let syntastic_style_warning_symbol
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_jump=2
+  " let g:syntastic_auto_loc_list=1
+  let g:syntastic_loc_list_height=5
+  " let g:syntastic_ignore_files=['^/usr/include/', '\c\.h$']
+  let g:syntastic_mode_map = {
+        \ 'mode': 'passive',
+        \ 'active_filetypes': ['ruby', 'php', 'javascript'],
+        \ 'passive_filetypes': ['puppet']
+        \ }
 
-    " checker options
-    let g:syntastic_c_checkers          = ['ycm']
-    let g:syntastic_cpp_checkers        = ['ycm']
-    let g:syntastic_javascript_checkers = ['jshint']
-    let g:syntastic_python_checkers     = ['pep8', 'pyflakes', 'python']
-    let g:syntastic_go_checkers         = ['gofmt', 'govet', 'go', 'golint']
-    let g:syntastic_vim_checkers        = ['vimlint']
+  " checker options
+  let g:syntastic_c_checkers          = ['ycm']
+  let g:syntastic_cpp_checkers        = ['ycm']
+  let g:syntastic_javascript_checkers = ['jshint']
+  let g:syntastic_python_checkers     = ['pep8', 'pyflakes', 'python']
+  let g:syntastic_go_checkers         = ['gofmt', 'govet', 'go', 'golint']
+  let g:syntastic_vim_checkers        = ['vimlint']
 
 endfunction
