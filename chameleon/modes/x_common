@@ -22,7 +22,6 @@ let s:bundle_list = [
       \ 'delimitmate'   ,
       \ 'easyalign'     ,
       \ 'foldtext'      ,
-      \ 'indentguides'  ,
       \ 'indentline'    ,
       \ 'confsyntax'    ,
       \ 'join'          ,
