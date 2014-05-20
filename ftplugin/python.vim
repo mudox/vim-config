@@ -1,14 +1,18 @@
-" tab setting according to PEP8
-setlocal foldmethod=syntax
-setlocal tabstop=8
-setlocal softtabstop=4
-setlocal shiftwidth=4
-setlocal smarttab
-setlocal expandtab
+" vim: foldmethod=marker
 
 setlocal colorcolumn=80 " PEP8 put a limit a 79
 
-function! s:Py3Run( args )
+" tab setting according to PEP8 {{{ 1
+setlocal foldmethod=syntax
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal smarttab
+setlocal expandtab
+" }}}1
+
+" run buffer {{{1
+function! s:Py3Run( args ) " {{{2
   " save & lcd to current python script file path.
   silent write
   lcd %:p:h
@@ -29,9 +33,28 @@ function! s:Py3Run( args )
   echohl Underlined | echo exeString | echohl NONE
 
   echo vimproc#system2(exeString)
-endfunction
+endfunction  " }}}2
 
 command! -buffer -nargs=* Run call s:Py3Run(<q-args>)
 command! -buffer -nargs=* Python3RunWithArgs call s:Py3Run(<q-args>)
 
 nnoremap <buffer> <Enter>r :Python3RunWithArgs<Space>
+" }}}1
+
+" remap \af to format current buffer by autopep8. {{{1
+function! <SID>:Autopep8() " {{{2
+  if !executable('autopep8')
+    echoerr "need <autopep8>, try 'sudo pip install autopep8' to get it."
+  endif
+
+  normal! mx
+  %!autopep8 --aggressive --aggressive --experimental --max-line-length 79
+        \ --indent-size 4 -
+  normal! `x
+
+
+endfunction "  }}}2
+
+nnoremap <buffer> \fa :call <SID>:Autopep8()<Cr>
+nnoremap <buffer> \af :call <SID>:Autopep8()<Cr>
+"}}}1
