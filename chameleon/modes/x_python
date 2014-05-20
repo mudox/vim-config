@@ -19,6 +19,7 @@ let s:bundle_list = [
             \ 'py_rope'       ,
             \ 'py_syntax'     ,
             \ 'py_isort'      ,
+            \ 'py_fold'       ,
             \ 'syntastic'     ,
             \ 'dbgp'          ,
             \ ]
