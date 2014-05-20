@@ -4,11 +4,6 @@ setlocal colorcolumn=80 " PEP8 put a limit a 79
 
 " tab setting according to PEP8 {{{ 1
 setlocal foldmethod=syntax
-setlocal tabstop=2
-setlocal softtabstop=2
-setlocal shiftwidth=2
-setlocal smarttab
-setlocal expandtab
 " }}}1
 
 " run buffer {{{1
