@@ -11,7 +11,7 @@ function g:this_meta.config()
 
   let g:ctrlp_funky_after_jump = {
         \ 'default' : 'zxzz',
-        \ 'python'  : 'zO',
+        \ 'python'  : 'zxzt',
         \ 'cpp'     : 'zxzt',
         \ 'go'      : 'zxzt',
         \ 'vim'     : 'zxzt',
