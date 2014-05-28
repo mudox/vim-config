@@ -37,7 +37,7 @@ nnoremap <buffer> <Enter>r :Python3RunWithArgs<Space>
 " }}}1
 
 " remap \af to format current buffer by autopep8. {{{1
-function! <SID>:Autopep8() " {{{2
+function! <SID>Autopep8() " {{{2
   if !executable('autopep8')
     echoerr "need <autopep8>, try 'sudo pip install autopep8' to get it."
   endif
@@ -50,6 +50,6 @@ function! <SID>:Autopep8() " {{{2
 
 endfunction "  }}}2
 
-nnoremap <buffer> \fa :call <SID>:Autopep8()<Cr>
-nnoremap <buffer> \af :call <SID>:Autopep8()<Cr>
+nnoremap <buffer> \fa :call <SID>Autopep8()<Cr>
+nnoremap <buffer> \af :call <SID>Autopep8()<Cr>
 "}}}1

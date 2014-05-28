@@ -16,7 +16,6 @@ let s:bundle_list = [
             \ 'py_flake8'     ,
             \ 'py_interactive',
             \ 'py_pep8_indent',
-            \ 'py_rope'       ,
             \ 'py_syntax'     ,
             \ 'py_isort'      ,
             \ 'py_fold'       ,
