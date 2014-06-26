@@ -15,11 +15,10 @@ let s:bundle_list = [
       \ 'ctrlp_cmd'  ,
       \ 'ctrlp_funky',
       \ ]
-
-if has('win32') || has('win64')
-  call add(s:bundle_list, 'ctrlp_cmatcher')
-elseif has('unix')
+if has('unix') && !has('mac') && !has('macunix')
   call add(s:bundle_list, 'ctrlp_pymatcher')
+else
+  call add(s:bundle_list, 'ctrlp_cmatcher')
 endif
 
 call AddBundles(s:bundle_list)
