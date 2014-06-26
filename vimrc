@@ -181,11 +181,14 @@ set termencoding=gbk
 set background=dark
 colorscheme desert
 
-if has('win32') || has('win64')
+if has('win32') || has('win64')                         " windows
   set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
   set linespace=0
   autocmd ColorScheme * set linespace=0
-elseif has('unix')
+elseif has('mac') || has('macunix')                     " mac os x
+   set guifont=Monaco:h11
+   set linespace=0
+elseif has('unix')                                      " other *nix
   " Awsome WM on ArchLinux without infinality.
 
   " suit for default theme of awesome on archlinux.
@@ -197,9 +200,6 @@ elseif has('unix')
   "set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.5
   "set linespace=0
   "autocmd ColorScheme * set linespace=0
-elseif has('mac') || has('macunix') " oops!, I have no Mac OS ...
-  " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
-  " set linespace=1
 else
   echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
 endif
