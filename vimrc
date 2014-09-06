@@ -68,11 +68,6 @@ noremap L 
 noremap H 
 "}}}2
 
-" :noh is frequently used, but typing it is a chore.
-nnoremap z/ :noh<CR>
-nnoremap z? :set hlsearch!<CR>
-
-
 " Toggle tab line
 nnoremap \t :exe "set showtabline=" . (&showtabline+1)%2<CR>
 
@@ -163,7 +158,8 @@ nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 "}}}1
 
 " EVENTS                                                                                              {{{1
-
+" force vim into recognising all *.md as markdown instead of Modula-2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "}}}1
 
 " ABBREVIATES                                                                                         {{{1
