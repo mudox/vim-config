@@ -190,7 +190,7 @@ if has('win32') || has('win64')                         " windows
   set linespace=0
   autocmd ColorScheme * set linespace=0
 elseif has('mac') || has('macunix')                     " mac os x
-   set guifont=Monaco:h11
+   set guifont=Monaco\ for\ Powerline:h11
    set linespace=0
 elseif has('unix')                                      " other *nix
   " Awsome WM on ArchLinux without infinality.
