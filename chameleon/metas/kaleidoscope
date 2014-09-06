@@ -15,4 +15,7 @@ function g:this_meta.config() dict
   nmap \ca <Plug>(Mdx_Kaleidoscope_View_All)
   nmap \ch <Plug>(Mdx_Kaleidoscope_Hate)
   nmap \ce <Plug>(Mdx_Kaleidoscope_Edit_Current_Color)
+
+  " always use dark versions of color scheme
+  autocmd ColorScheme * set background=dark
 endfunction
