@@ -16,7 +16,7 @@ function g:this_meta.config()
 
   let g:vimwiki_list = []
 
-  let s:wiki_root = expand('$MDX_DROPBOX/WIKI.DROP')
+  let s:wiki_root = expand('${DROPBOX_ROOT}/WIKI.DROP')
   let s:wiki_nested_syntaxes = {
         \'python' : 'python',
         \'c++'    : 'cpp',
