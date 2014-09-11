@@ -8,5 +8,5 @@ let g:this_meta.site = 'https://github.com/csexton/trailertrash.vim.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config()
-  nnoremap \tr :Trim<CR>
+  nnoremap \tr :TrailerTrim<CR>
 endfunction
