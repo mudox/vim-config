@@ -17,11 +17,14 @@ let s:bundle_list = [
             \ 'py_interactive',
             \ 'py_pep8_indent',
             \ 'py_syntax'     ,
-            \ 'py_isort'      ,
             \ 'py_fold'       ,
             \ 'syntastic'     ,
             \ 'dbgp'          ,
             \ ]
 
 call AddBundles(s:bundle_list)
+
+if has('unix')
+  call add(s:bundle_list, 'py_isort')
+endif
 " }}}1
