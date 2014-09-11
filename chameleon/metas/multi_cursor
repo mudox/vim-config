@@ -10,9 +10,23 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config()
     " default mapping conflicts with yank_ring.
-    let g:multi_cursor_start_key = '<M-j>'
-    let g:multi_cursor_next_key  = '<M-j>'
-    let g:multi_cursor_prev_key  = '<M-k>'
-    let g:multi_cursor_skip_key  = '<M-l>'
+    if has('win32') || has('win64')
+      let g:multi_cursor_start_key = '<M-j>'
+      let g:multi_cursor_next_key  = '<M-j>'
+      let g:multi_cursor_prev_key  = '<M-k>'
+      let g:multi_cursor_skip_key  = '<M-l>'
+    elseif has('mac') || has('macunix')
+      let g:multi_cursor_start_key = '∆'
+      let g:multi_cursor_next_key  = '∆'
+      let g:multi_cursor_prev_key  = '˚'
+      let g:multi_cursor_skip_key  = '¬'
+    elseif has('unix')
+      let g:multi_cursor_start_key = '<M-j>'
+      let g:multi_cursor_next_key  = '<M-j>'
+      let g:multi_cursor_prev_key  = '<M-k>'
+      let g:multi_cursor_skip_key  = '<M-l>'
+    else
+      echoerr echo "Oops! Unknown sysinfo"
+    endif
 
 endfunction

@@ -49,8 +49,16 @@ nnoremap <M-Right> 	5<C-W>>
 "}}}2
 
 " <A-H/L> to switch among tabs                                                                           {{{2
-nnoremap <silent> ì gt
-nnoremap <silent> è gT
+if has('win32') || has('win64')
+  nnoremap <silent> ì gt
+  nnoremap <silent> è gT
+elseif has('mac') || has('macunix')
+  nnoremap <silent> ˙ gt
+  nnoremap <silent> ¬ gT
+elseif has('unix')
+  nnoremap <silent> ì gt
+  nnoremap <silent> è gT
+endif
 "}}}2
 
 " In case you leave CapLock key pressed inadvertently, which will mess you up.
@@ -59,11 +67,6 @@ noremap <silent> K @='8k'<CR>
 noremap L 
 noremap H 
 "}}}2
-
-" :noh is frequently used, but typing it is a chore.
-nnoremap z/ :noh<CR>
-nnoremap z? :set hlsearch!<CR>
-
 
 " Toggle tab line
 nnoremap \t :exe "set showtabline=" . (&showtabline+1)%2<CR>
@@ -155,7 +158,8 @@ nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 "}}}1
 
 " EVENTS                                                                                              {{{1
-
+" force vim into recognising all *.md as markdown instead of Modula-2
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "}}}1
 
 " ABBREVIATES                                                                                         {{{1
@@ -181,11 +185,14 @@ set termencoding=gbk
 set background=dark
 colorscheme desert
 
-if has('win32') || has('win64')
+if has('win32') || has('win64')                         " windows
   set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
   set linespace=0
   autocmd ColorScheme * set linespace=0
-elseif has('unix')
+elseif has('mac') || has('macunix')                     " mac os x
+   set guifont=Monaco\ for\ Powerline:h11
+   set linespace=0
+elseif has('unix')                                      " other *nix
   " Awsome WM on ArchLinux without infinality.
 
   " suit for default theme of awesome on archlinux.
@@ -197,9 +204,6 @@ elseif has('unix')
   "set guifont=Ubuntu\ Mono\ for\ Powerline\ 11.5
   "set linespace=0
   "autocmd ColorScheme * set linespace=0
-elseif has('mac') || has('macunix') " oops!, I have no Mac OS ...
-  " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
-  " set linespace=1
 else
   echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
 endif

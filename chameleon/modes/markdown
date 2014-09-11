@@ -2,9 +2,9 @@
 
 " Set Tile & Bundle Manager {{{1
 
-call SetTitle('C/C++ mode')
+call SetTitle('title for the mode') " TODO: give you mode a title
 
-call SetBundleManager('NeoBundle')
+call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
 
 " }}}1
 
@@ -12,10 +12,10 @@ call SetBundleManager('NeoBundle')
 
 " TODO: put every sub-mode names you need into the list.
 let s:sub_configs = [
-      \ 'x_common',
-      \ 'x_color',
-      \ 'x_textobj',
-      \ 'x_git',
+      \ 'x_color'    ,
+      \ 'x_common'   ,
+      \ 'x_git'      ,
+      \ 'x_textobj'  ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -26,14 +26,8 @@ call MergeConfigs(s:sub_configs)
 
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
-      \ 'syntastic',
-      \ 'rainbow_oblitum',
+      \ 'markdown',
       \ ]
-
-if has('unix')
-  call add(s:bundle_list, 'ycm')
-  call add(s:bundle_list, 'autoformat')
-endif
 
 call AddBundles(s:bundle_list)
 " }}}1
