@@ -9,6 +9,6 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 
 function g:this_meta.config()
-    nnoremap \st <Esc>:Gstatus<CR>
-
+  cabbrev git Git
+  nnoremap \st <Esc>:Gstatus<CR>
 endfunction
