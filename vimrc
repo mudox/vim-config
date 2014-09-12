@@ -131,7 +131,7 @@ let g:ftplugin_sql_omni_key_left  = '<C-h>'
 "}}}2
 
 " [matchparen]                                                                                         " {{{2
-let loaded_matchparen = 1
+"let loaded_matchparen = 1
 " }}}2
 
 " [mark]                                                                                                 {{{2
@@ -163,8 +163,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "}}}1
 
 " ABBREVIATES                                                                                         {{{1
-cabbrev ue UltiSnipsEdit
-cabbrev git Git
 "}}}1
 
 " SETTINGS                                                                                            {{{1
