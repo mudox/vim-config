@@ -26,6 +26,7 @@ call MergeConfigs(s:sub_configs)
 let s:bundle_list = [
       \ 'syntastic',
       \ 'swift_runtime',
+      \ 'rainbow_oblitum',
       \ ]
 
 call AddBundles(s:bundle_list)
