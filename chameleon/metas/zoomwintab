@@ -11,8 +11,8 @@ let g:this_meta.neodict.name = g:this_meta.name
 function g:this_meta.config()
   let g:zoomwintab_remap = 0 " no mapping to <C-W>o and <C-W><C-O>
   if has('win32') || has('win64')
-    nnoremap ø :ZoomWinTabToggle<CR>
-    nnoremap Ø :ZoomWinTabToggle<CR>
+    nnoremap ï :ZoomWinTabToggle<CR>
+    nnoremap ï :ZoomWinTabToggle<CR>
   elseif has('mac') || has('macunix')
     nnoremap ø :ZoomWinTabToggle<CR>
     nnoremap Ø :ZoomWinTabToggle<CR>
