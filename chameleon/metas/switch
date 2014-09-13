@@ -9,6 +9,42 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 
 function g:this_meta.config()
-    " TODO: your plugin configuration goes here.
+  nnoremap - :Switch<Cr>
+
+  " all nameing convention below consist of
+  " [head] + [body]
+  " where [body] = [section]+
+
+  let s:camelCase                         = '\<\(\l\+\)\(\u\l\+\)\+\>'
+  let s:camelCase_2_PascalCase            = '\=toupper(submatch(0)[0]) . submatch(0)[1:]'
+
+  let s:PascalCase                        = '\<\(\u\l\+\)\(\u\l\+\)\+\>'
+  let s:PascalCase_2_camelCase            = '\=tolower(submatch(0)[0]) . submatch(0)[1:]'
+  "let s:PascalCase_2_underscore_lowercase = '\=tolower(substitute(str, "\\u", "_&", "g")[1:])'
+
+  let s:underscore_lowercase              = '\<\(\l\+\)\(_\l\+\)\+\>'
+  let s:underscore_lowercase_2_UPPERCASE  = '\=toupper(submatch(0))'
+
+  let s:UNDERSCORE_UPPERCASE              = '\<\(\u\+\)\(_\u\+\)\+\>'
+  let s:UNDERSCORE_UPPERCASE_2_lowercase  = '\=tolower(submatch(0))'
+
+  "let s:HungarianNotation                 = '\<\(\l\)\(\l\+\(\u\l\+\)\+\)\>'
+  "let s:hyphen_lowercase                  = '\<\(\l\+\)\(-\l\+\)\+\>'
+
+  let s:camelCase_PascalCase =  {
+        \ s:camelCase  : s:camelCase_2_PascalCase,
+        \ s:PascalCase : s:PascalCase_2_camelCase,
+        \ }
+
+  let s:underscore_lowercase_UPPERCASE = {
+        \ s:underscore_lowercase : s:underscore_lowercase_2_UPPERCASE,
+        \ s:UNDERSCORE_UPPERCASE : s:UNDERSCORE_UPPERCASE_2_lowercase,
+        \ }
+
+  let g:switch_custom_definitions = [
+        \ s:camelCase_PascalCase,
+        \ s:underscore_lowercase_UPPERCASE,
+        \ ['YES', 'NO'],
+        \ ]
 
 endfunction
