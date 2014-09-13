@@ -16,15 +16,15 @@ function g:this_meta.config()
 
   let g:vimwiki_list = []
 
-  let s:wiki_root = expand('${DROPBOX_ROOT}/WIKI.DROP')
+  let s:wiki_root = expand('${DROPBOX}/WIKI.DROP')
   let s:wiki_nested_syntaxes = {
         \'python' : 'python',
         \'c++'    : 'cpp',
         \'sql'    : 'sql'
         \}
 
-  nmap == <Plug>VimwikiAddHeaderLevel
-  nmap -- <Plug>VimwikiRemoveHeaderLevel
+  autocmd FileType *.wiki  nnoremap ,> <Plug>VimwikiAddHeaderLevel
+  autocmd FileType *.wiki  nnoremap ,< <Plug>VimwikiRemoveHeaderLevel
 
   " Below is my vimviki sections ...   {{{1
 
