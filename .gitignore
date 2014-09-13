@@ -1,7 +1,6 @@
 *.swp
 .VimballRecord
 *yankring*
-bundle/
 neobundle/
 view/
 spell/
