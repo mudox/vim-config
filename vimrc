@@ -20,8 +20,6 @@ if has('vim_starting')
   exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/neobundle/chameleon'
 endif
 
-let g:vimball_home = escape(g:rc_root, ' \') . '/bundle/'
-
 call mudox#chameleon#Init()
 
 "}}}1
