@@ -27,6 +27,7 @@ let s:bundle_list = [
       \ 'syntastic',
       \ 'swift_runtime',
       \ 'rainbow_oblitum',
+      \ 'switch',
       \ ]
 
 call AddBundles(s:bundle_list)
