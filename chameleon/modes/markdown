@@ -2,7 +2,7 @@
 
 " Set Tile & Bundle Manager {{{1
 
-call SetTitle('title for the mode') " TODO: give you mode a title
+call SetTitle('markdown mode') " TODO: give you mode a title
 
 call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
 
@@ -12,10 +12,8 @@ call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
 
 " TODO: put every sub-mode names you need into the list.
 let s:sub_configs = [
-      \ 'x_color'    ,
       \ 'x_common'   ,
       \ 'x_git'      ,
-      \ 'x_textobj'  ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -26,7 +24,6 @@ call MergeConfigs(s:sub_configs)
 
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
-      \ 'markdown',
       \ ]
 
 call AddBundles(s:bundle_list)

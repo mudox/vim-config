@@ -2,19 +2,18 @@
 
 " Set Tile & Bundle Manager {{{1
 
-call SetTitle('C/C++ mode')
+call SetTitle('title for the mode') " TODO: give you mode a title
 
-call SetBundleManager('NeoBundle')
+call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
 
 " }}}1
 
 " Merge Configs {{{1
 
 " TODO: put every sub-mode names you need into the list.
-let s:sub_configs = [
-      \ 'x_common',
-      \ 'x_git',
-      \ ]
+"let s:sub_configs = [
+      "\ 'x_essential'
+      "\ ]
 
 call MergeConfigs(s:sub_configs)
 
@@ -24,14 +23,14 @@ call MergeConfigs(s:sub_configs)
 
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
-      \ 'syntastic',
-      \ 'rainbow_oblitum',
+      \ 'rt_go',
+      \ 'rt_perl',
+      \ 'rt_json',
+      \ 'rt_markdown',
+      \ 'rt_ruby'
+      \ 'rt_swift',
+      \ 'rt_toml',
       \ ]
-
-if has('unix')
-  call add(s:bundle_list, 'ycm')
-  call add(s:bundle_list, 'autoformat')
-endif
 
 call AddBundles(s:bundle_list)
 " }}}1

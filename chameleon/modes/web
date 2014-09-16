@@ -13,8 +13,6 @@ call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
 " TODO: put every sub-mode names you need into the list.
 let s:sub_configs = [
       \ 'x_common'    ,
-      \ 'x_color'     ,
-      \ 'x_textobj'   ,
       \ 'x_css'       ,
       \ 'x_javascript',
       \ 'x_html'      ,

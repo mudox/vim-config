@@ -8,6 +8,8 @@ let s:sub_configs = [
       \ 'x_xolox'    ,
       \ 'x_motion'   ,
       \ 'x_database' ,
+      \ 'x_color'    ,
+      \ 'x_textobj'  ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -17,24 +19,25 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
+      \ 'confsyntax'    ,
       \ 'ctrlspace'     ,
       \ 'delimitmate'   ,
       \ 'easyalign'     ,
       \ 'foldtext'      ,
       \ 'indentline'    ,
-      \ 'confsyntax'    ,
       \ 'join'          ,
-      \ 'mark'          ,
       \ 'mattn_calendar',
       \ 'multi_cursor'  ,
       \ 'nerdcommenter' ,
       \ 'nerdtree'      ,
       \ 'nrrwrgn'       ,
+      \ 'omnimenu'      ,
       \ 'origami'       ,
       \ 'rename'        ,
       \ 'renamer'       ,
       \ 'repeat'        ,
       \ 'surround'      ,
+      \ 'switch'        ,
       \ 'tagbar'        ,
       \ 'textmanip'     ,
       \ 'trailertrash'  ,
@@ -42,7 +45,6 @@ let s:bundle_list = [
       \ 'vimproc'       ,
       \ 'vimwiki'       ,
       \ 'zoomwintab'    ,
-      \ 'omnimenu'      ,
       \ ]
 
 if !has('win32') || has('win64')

@@ -3,7 +3,6 @@
 let s:bundle_list = [
       \ 'js_runtime',
       \ 'js_libsyntax',
-      \ 'json',
       \ ]
 
 call AddBundles(s:bundle_list)

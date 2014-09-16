@@ -12,10 +12,8 @@
 
 let s:bundle_list = [
             \ 'endwise'  ,
-            \ 'ruby'     ,
             \ 'rvm'      ,
             \ 'splitjoin',
-            \ 'switch'   ,
             \ ]
 
 call AddBundles(s:bundle_list)

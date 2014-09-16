@@ -3,6 +3,7 @@
 let s:bundle_list = [
       \ 'easymotion',
       \ 'cleverf'   ,
+      \ 'sideways'  ,
       \ ]
 
 call AddBundles(s:bundle_list)
