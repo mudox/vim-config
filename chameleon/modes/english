@@ -26,7 +26,6 @@ let s:bundle_list = [
       \ 'ctrlp'       ,
       \ 'surround'    ,
       \ 'join'        ,
-      \ 'align'       ,
       \ 'unimpaired'  ,
       \ 'zoomwintab'  ,
       \ 'airline'     ,
