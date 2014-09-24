@@ -211,7 +211,7 @@ set nocursorline
 
 if index(g:mdx_chameleon.meta_set, 'airline') == -1
   set laststatus=1 " never show statusline.
-  set cmdheight=2
+  set cmdheight=1
   set showmode
   set showcmd
 else
