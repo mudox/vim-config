@@ -8,11 +8,7 @@ let g:this_meta.site = 'git@github.com:Mudox/vim-chameleon.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config() dict
-  nnoremap <silent> <Enter>B :EditMeta<Space>
   nmap <silent> <Enter>b <Plug>(Chameleon_Edit_Meta_OmniMenu)
-
-  nnoremap <silent> <Enter>C :EditMode<Space>
   nmap <silent> <Enter>c <Plug>(Chameleon_Edit_Mode_OmniMenu)
-
-  nmap <Space>x <Plug>(OmniMenu_ChamNewInstance)
+  nmap <silent> <Space>x <Plug>(OmniMenu_ChamNewInstance)
 endfunction
