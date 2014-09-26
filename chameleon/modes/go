@@ -11,8 +11,8 @@ call SetBundleManager('NeoBundle')
 " Merge Configs {{{1
 
 let s:sub_configs = [
-      \ 'x_common'   ,
-      \ 'x_go'       ,
+      \ 'x_common',
+      \ 'x_git'   ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -22,8 +22,13 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
+      \ 'rt_go'    ,
       \ 'syntastic',
       \ ]
+
+if has('unix')
+    call add(s:bundle_list, 'ycm')
+endif
 
 call AddBundles(s:bundle_list)
 " }}}1
