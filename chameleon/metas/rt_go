@@ -8,6 +8,11 @@ let g:this_meta.site = 'https://github.com/fatih/vim-go'
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config()
-    " TODO: your plugin configuration goes here.
+  let g:go_doc_keywordprg_enabled = 0 " not override my K mapping.
 
+  " syntax hightlight
+  let g:go_highlight_operators = 0
+  let g:go_highlight_methods = 0
+  let g:go_highlight_structs = 0
+  let g:go_highlight_functions = 0
 endfunction
