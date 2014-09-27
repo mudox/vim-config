@@ -33,6 +33,7 @@ let s:bundle_list = [
       \ 'nrrwrgn'       ,
       \ 'omnimenu'      ,
       \ 'origami'       ,
+      \ 'over'          ,
       \ 'rename'        ,
       \ 'renamer'       ,
       \ 'repeat'        ,
