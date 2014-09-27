@@ -8,6 +8,7 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config()
   nnoremap <Cr>x :<C-U>w<Cr>:SyntasticCheck<Cr>
+  nnoremap <Cr>X :<C-U>w<Cr>:SyntasticToggleMode<Cr>
 
   let g:syntastic_check_on_wq = 0
   let g:syntastic_enable_signs = 1
@@ -15,10 +16,10 @@ function g:this_meta.config()
   if has('win32') || has('win64')
     let syntastic_error_symbol = 'x'
     let syntastic_warning_symbol = '!'
-  elseif has('unix')
+  elseif has('mac') || has('macunix')
     let syntastic_error_symbol = '✗'
     let syntastic_warning_symbol = '⚠'
-  elseif has('mac') || has('macunix')
+  elseif has('unix')
     let syntastic_error_symbol = '✗'
     let syntastic_warning_symbol = '⚠'
   else
