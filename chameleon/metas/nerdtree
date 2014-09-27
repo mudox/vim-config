@@ -16,5 +16,5 @@ function g:this_meta.config()
     " close vim if the only window left open is a NERDTree
     autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-    nnoremap \nt :NERDTree<Space>
+    nnoremap <Enter>e :NERDTree<Space>
 endfunction
