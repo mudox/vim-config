@@ -25,6 +25,7 @@ let s:bundle_list = [
       \ 'syntastic',
       \ 'vimparser',
       \ 'vimlint'  ,
+      \ 'airline'  ,
       \ ]
 
 call AddBundles(s:bundle_list)
