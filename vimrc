@@ -1,14 +1,7 @@
 " vimrc NOT .vimrc for [G]Vim on Linux / Window                                                       {{{1
 "
-" NOTE:
-" ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
-" ------- ------- ------- ------- ------- ------- ------- ------- ------- ------- -------
-"
 " TODO:
-" 1. the use of variables g:rc_root is not conventional, and error-prone.
 " 2. regrouping the vim options setttings in 'SETTINGS' section.
-" 3. fix the issues:
-"   * cursor hopping between current insertting position and the line end.
 "}}}1
 
 " get the full path of .vim or vimfiles.
@@ -31,6 +24,8 @@ nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR
 
 " Default leader key for <leader> mappings
 let g:mapleader = ','
+
+nnoremap <Enter>w :w<Cr>
 
 " <C-H/J/K/L> to jump among windows                                                                      {{{2
 nnoremap <C-H>	   <C-W>h
