@@ -15,4 +15,7 @@ function g:this_meta.config()
   let g:go_highlight_methods = 0
   let g:go_highlight_structs = 0
   let g:go_highlight_functions = 0
+
+  autocmd FileType go nnoremap <buffer> <silent> ˚ :GoDoc<Cr>
+  autocmd FileType go nnoremap <buffer> <silent>  :GoDocBrowser<Cr>
 endfunction
