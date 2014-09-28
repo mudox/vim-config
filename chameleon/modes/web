@@ -13,8 +13,6 @@ call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
 " TODO: put every sub-mode names you need into the list.
 let s:sub_configs = [
       \ 'x_common'    ,
-      \ 'x_css'       ,
-      \ 'x_javascript',
       \ 'x_html'      ,
       \ ]
 
@@ -26,9 +24,15 @@ call MergeConfigs(s:sub_configs)
 
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
-      \ 'syntastic',
-      \ 'emmet'    ,
+      \ 'syntastic'      ,
       \ 'rainbow_oblitum',
+      \ ]
+
+" javascript & css plugins.
+let s:bundle_list = s:bundle_list + [
+      \ 'rt_js'       ,
+      \ 'js_libsyntax',
+      \ 'css_syntax'  ,
       \ ]
 
 if has('unix')
