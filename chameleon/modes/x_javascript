@@ -1,8 +1,0 @@
-" vim: filetype=vim foldmethod=marker fileformat=unix
-
-let s:bundle_list = [
-      \ 'js_runtime',
-      \ 'js_libsyntax',
-      \ ]
-
-call AddBundles(s:bundle_list)

@@ -24,6 +24,7 @@ call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
       \ 'breeze',
+      \ 'emmet' ,
       \ ]
 
 call AddBundles(s:bundle_list)
