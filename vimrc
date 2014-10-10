@@ -164,6 +164,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 set nocompatible
 
 set guioptions=fcaM
+set t_Co=256 " 256 color support on some terminals.
 
 
 syntax on
