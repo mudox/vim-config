@@ -24,27 +24,16 @@ call MergeConfigs(s:sub_configs)
 
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
+      \ 'rt_js'          ,
+      \ 'js_libsyntax'   ,
+      \ 'css_syntax'     ,
+      \ 'rt_toml'        ,
       \ 'syntastic'      ,
       \ 'rainbow_oblitum',
       \ 'emmet'          ,
       \ 'breeze'         ,
       \ ]
 
-" javascript & css plugins.
-let s:bundle_list = s:bundle_list + [
-      \ 'rt_js'       ,
-      \ 'js_libsyntax',
-      \ 'css_syntax'  ,
-      \ ]
-
-" mardown related.
-let s:bundle_list = s:bundle_list + [
-      \ 'rt_markdown',
-      \ 'rt_toml',
-]
-
-if has('unix')
-  call add(s:bundle_list, 'ycm')
-endif
+let g:mdx_list = s:bundle_list
 call AddBundles(s:bundle_list)
 " }}}1
