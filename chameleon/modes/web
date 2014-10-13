@@ -13,7 +13,7 @@ call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
 " TODO: put every sub-mode names you need into the list.
 let s:sub_configs = [
       \ 'x_common'    ,
-      \ 'x_html'      ,
+      \ 'x_git'       ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -34,6 +34,12 @@ let s:bundle_list = s:bundle_list + [
       \ 'js_libsyntax',
       \ 'css_syntax'  ,
       \ ]
+
+" mardown related.
+let s:bundle_list = s:bundle_list + [
+      \ 'rt_markdown',
+      \ 'rt_toml',
+]
 
 if has('unix')
   call add(s:bundle_list, 'ycm')
