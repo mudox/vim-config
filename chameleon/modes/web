@@ -12,8 +12,8 @@ call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
 
 " TODO: put every sub-mode names you need into the list.
 let s:sub_configs = [
-      \ 'x_common'    ,
-      \ 'x_git'       ,
+      \ 'x_common',
+      \ 'x_git'   ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -26,6 +26,8 @@ call MergeConfigs(s:sub_configs)
 let s:bundle_list = [
       \ 'syntastic'      ,
       \ 'rainbow_oblitum',
+      \ 'emmet'          ,
+      \ 'breeze'         ,
       \ ]
 
 " javascript & css plugins.
