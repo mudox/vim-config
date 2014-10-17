@@ -9,6 +9,12 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 
 function g:this_meta.config()
-    " TODO: your plugin configuration goes here.
+  let g:user_emmet_expandabbr_key = '<M-e>'
+  let g:user_emmet_next_key       = '<M-f>'
+  let g:user_emmet_prev_key       = '<M-s>'
+
+  let g:user_emmet_settings = {
+        \ 'indentation' : ' '
+        \ }
 
 endfunction
