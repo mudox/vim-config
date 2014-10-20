@@ -34,6 +34,10 @@ let s:bundle_list = [
       \ 'breeze'         ,
       \ ]
 
+if has('unix')
+  call add(s:bundle_list, 'ycm')
+endif
+
 let g:mdx_list = s:bundle_list
 call AddBundles(s:bundle_list)
 " }}}1
