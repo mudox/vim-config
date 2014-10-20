@@ -8,5 +8,21 @@ let g:this_meta.site = 'https://github.com/tomtom/tinykeymap_vim.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config()
-    " TODO: your plugin configuration goes here.
+
+let g:tinykeymaps_default = [
+      \ 'mdx_tabs',
+      \ ]
+
+" tabs mode {{{1
+call tinykeymap#EnterMap('mdx_tabs', 'gt', {'name': "mdx tabs mode"})
+call tinykeymap#Map('mdx_tabs', 'n', 'tabnew')
+call tinykeymap#Map('mdx_tabs', 'l', 'norm! gt')
+call tinykeymap#Map('mdx_tabs', 'h', 'norm! gT')
+call tinykeymap#Map('mdx_tabs', "L", 'exec "tabmove+<count1>"')
+call tinykeymap#Map('mdx_tabs', "H", 'exec "tabmove-<count1>"')
+call tinykeymap#Map("mdx_tabs", "a", "tabfirst")
+call tinykeymap#Map("mdx_tabs", "e", "tablast")
+call tinykeymap#Map("mdx_tabs", "x", "tabclose")
+call tinykeymap#Map("mdx_tabs", "p", "call tinykeymap#tabs#Previous()", {'desc': 'Previous tab'})
+" }}}1
 endfunction
