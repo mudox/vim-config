@@ -9,20 +9,139 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config()
 
-let g:tinykeymaps_default = [
-      \ 'mdx_tabs',
-      \ ]
 
-" tabs mode {{{1
-call tinykeymap#EnterMap('mdx_tabs', 'gt', {'name': "mdx tabs mode"})
-call tinykeymap#Map('mdx_tabs', 'n', 'tabnew')
-call tinykeymap#Map('mdx_tabs', 'l', 'norm! gt')
-call tinykeymap#Map('mdx_tabs', 'h', 'norm! gT')
-call tinykeymap#Map('mdx_tabs', "L", 'exec "tabmove+<count1>"')
-call tinykeymap#Map('mdx_tabs', "H", 'exec "tabmove-<count1>"')
-call tinykeymap#Map("mdx_tabs", "a", "tabfirst")
-call tinykeymap#Map("mdx_tabs", "e", "tablast")
-call tinykeymap#Map("mdx_tabs", "x", "tabclose")
-call tinykeymap#Map("mdx_tabs", "p", "call tinykeymap#tabs#Previous()", {'desc': 'Previous tab'})
-" }}}1
+  " tabs mode {{{1
+  let id_of_tabs_mode = 'tabs'
+  let map_of_tabs_mdoe = 'gt'
+  call tinykeymap#EnterMap(id_of_tabs_mode, map_of_tabs_mdoe, {
+        \ 'name': "mdx tabs mode",
+        \ 'resolution' : 1,
+        \ })
+
+  call tinykeymap#Map(id_of_tabs_mode, 'n', 'tabnew')
+  call tinykeymap#Map(id_of_tabs_mode, 'l', 'norm! gt')
+  call tinykeymap#Map(id_of_tabs_mode, 'h', 'norm! gT')
+  call tinykeymap#Map(id_of_tabs_mode, "L", 'exec "tabmove+<count1>"')
+  call tinykeymap#Map(id_of_tabs_mode, "H", 'exec "tabmove-<count1>"')
+  call tinykeymap#Map(id_of_tabs_mode, "a", "tabfirst")
+  call tinykeymap#Map(id_of_tabs_mode, "e", "tablast")
+  call tinykeymap#Map(id_of_tabs_mode, "x", "tabclose")
+  call tinykeymap#Map(id_of_tabs_mode, "p",
+        \ "call tinykeymap#tabs#Previous()", {'desc': 'Previous tab'})
+  " }}}1
+
+  " windows mode {{{1
+  let id_of_windows_mode = 'windows mode'
+  let map_of_windows_mdoe = '<C-W>'
+  call tinykeymap#EnterMap(id_of_windows_mode, map_of_windows_mdoe, {
+        \ 'name'       : 'windows mode',
+        \ 'message'    : 'winnr() . ": " . bufname("%")',
+        \ 'resolution' : 1,
+        \ })
+
+  " adjust window width. {{{2
+  call tinykeymap#Map(id_of_windows_mode, 'f',
+        \ 'vertical resize +<count1>',
+        \ {'desc': 'Increase window width'})
+  call tinykeymap#Map(id_of_windows_mode, 's',
+        \ 'vertical resize -<count1>',
+        \ {'desc': 'Decrease window width'})
+  call tinykeymap#Map(id_of_windows_mode, 'F',
+        \ 'exec "vertical resize +" . (5 * <count1>)',
+        \ {'desc': 'Increase window width in big step'})
+  call tinykeymap#Map(id_of_windows_mode, 'S',
+        \ 'exec "vertical resize -" . (5 * <count1>)',
+        \ {'desc': 'Decrease window width in big step'})
+  call tinykeymap#Map(id_of_windows_mode, '|',
+        \ 'vertical resize <count>',
+        \ {'desc': 'Set window width'})
+  " }}}2
+
+  " adjust window height. {{{2
+  call tinykeymap#Map(id_of_windows_mode, 'e',
+        \ 'resize +<count1>',
+        \ {'desc': 'Increase window height'})
+  call tinykeymap#Map(id_of_windows_mode, 'd',
+        \ 'resize -<count1>',
+        \ {'desc': 'Decrease window height'})
+  call tinykeymap#Map(id_of_windows_mode, 'E',
+        \ 'exec "resize +" . (5 * <count1>)',
+        \ {'desc': 'Increase window height in big step'})
+  call tinykeymap#Map(id_of_windows_mode, 'D',
+        \ 'exec "resize -" . (5 * <count1>)',
+        \ {'desc': 'Decrease window height in big step'})
+  call tinykeymap#Map(id_of_windows_mode, '_',
+        \ 'resize <count>',
+        \ {'desc': 'Set window height'})
+
+  call tinykeymap#Map(id_of_windows_mode, 'q', 'wincmd =',
+        \ {'desc': 'Make equally high and wide'})
+  " }}}2
+
+  " jump between windows {{{2
+  call tinykeymap#Map(id_of_windows_mode, 'h',
+        \ '<count>wincmd h',
+        \ {'desc': 'Window above'})
+  call tinykeymap#Map(id_of_windows_mode, 'j',
+        \ '<count>wincmd j',
+        \ {'desc': 'Window below'})
+  call tinykeymap#Map(id_of_windows_mode, 'k',
+        \ '<count>wincmd k',
+        \ {'desc': 'Left window'})
+  call tinykeymap#Map(id_of_windows_mode, 'l',
+        \ '<count>wincmd l',
+        \ {'desc': 'Right window'})
+  " }}}2
+
+  " move windows around {{{2
+  call tinykeymap#Map(id_of_windows_mode, 'K',
+        \ 'wincmd K',
+        \ {'desc': 'Move current window to the top'})
+  call tinykeymap#Map(id_of_windows_mode, 'J',
+        \ 'wincmd J',
+        \ {'desc': 'Move current window to the bottom'})
+  call tinykeymap#Map(id_of_windows_mode, 'H',
+        \ 'wincmd H',
+        \ {'desc': 'Move current window to the left'})
+  call tinykeymap#Map(id_of_windows_mode, 'L',
+        \ 'wincmd L',
+        \ {'desc': 'Move current window to the right'})
+  " }}}2
+
+
+
+  " call tinykeymap#Map(id_of_windows_mode, 'r', 'wincmd r', {'desc': 'Rotate window
+  " downwards/rightwards'})
+  " " call tinykeymap#Map(id_of_windows_mode, 'R', 'wincmd R', {'desc': 'Rotate window
+  " upwards/leftwards'})
+  " " call tinykeymap#Map(id_of_windows_mode, 'x', '<count>wincmd x', {'desc': 'Exchange
+  " windows'})
+  " " call tinykeymap#Map(id_of_windows_mode, 'T', 'wincmd T', {'desc': 'Move current
+  " window to a new tab page'})
+  " " call tinykeymap#Map(id_of_windows_mode, 'w', '<count>wincmd w', {'desc':
+  " 'Below-right window'})
+  " " call tinykeymap#Map(id_of_windows_mode, 'W', '<count>wincmd W', {'desc':
+  " 'Above-left window'})
+  " " call tinykeymap#Map(id_of_windows_mode, 't', 'wincmd t', {'desc': 'Top-left
+  " window'})
+  " " call tinykeymap#Map(id_of_windows_mode, 'b', 'wincmd b', {'desc': 'Bottom-right
+  " window'})
+  " " call tinykeymap#Map(id_of_windows_mode, 'p', 'wincmd p', {'desc': 'Previous
+  " window'})
+  " " call tinykeymap#Map(id_of_windows_mode, 'P', 'wincmd P', {'desc': 'Preview
+  " window'})
+  " " call tinykeymap#Map(id_of_windows_mode, 'c', 'wincmd c', {'desc': 'Close window'})
+  " " call tinykeymap#Map(id_of_windows_mode, 'o', 'wincmd o', {'desc': 'Make the only
+  " window', 'exit': 1})
+  " call tinykeymap#Map(id_of_windows_mode, 's', 'split')
+  " call tinykeymap#Map(id_of_windows_mode, 'v', 'vert split')
+  " call tinykeymap#Map(id_of_windows_mode, "<Up>", 'wincmd W', {'exit': 1})
+  " call tinykeymap#Map(id_of_windows_mode, "<Down>", 'wincmd w', {'exit': 1})
+  "
+  " }}}1
+
+  let g:tinykeymaps_default = [
+        \ id_of_tabs_mode   ,
+        \ id_of_windows_mode,
+        \ ]
 endfunction
