@@ -19,6 +19,7 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
+      \ 'ag'            ,
       \ 'confsyntax'    ,
       \ 'ctrlspace'     ,
       \ 'delimitmate'   ,
@@ -41,6 +42,7 @@ let s:bundle_list = [
       \ 'switch'        ,
       \ 'tagbar'        ,
       \ 'textmanip'     ,
+      \ 'tinykeymap'    ,
       \ 'trailertrash'  ,
       \ 'unimpaired'    ,
       \ 'vimproc'       ,
