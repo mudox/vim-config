@@ -15,7 +15,7 @@ function g:this_meta.config()
   let map_of_tabs_mdoe = 'gt'
   call tinykeymap#EnterMap(id_of_tabs_mode, map_of_tabs_mdoe, {
         \ 'name': "mdx tabs mode",
-        \ 'resolution' : 1,
+        \ 'resolution' : 50,
         \ })
 
   call tinykeymap#Map(id_of_tabs_mode, 'n', 'tabnew')
@@ -36,7 +36,7 @@ function g:this_meta.config()
   call tinykeymap#EnterMap(id_of_windows_mode, map_of_windows_mdoe, {
         \ 'name'       : 'windows mode',
         \ 'message'    : 'winnr() . ": " . bufname("%")',
-        \ 'resolution' : 1,
+        \ 'resolution' : 50,
         \ })
 
   " adjust window width. {{{2
@@ -74,70 +74,60 @@ function g:this_meta.config()
         \ 'resize <count>',
         \ {'desc': 'Set window height'})
 
+  " 'q' to layout all windows equally.
   call tinykeymap#Map(id_of_windows_mode, 'q', 'wincmd =',
         \ {'desc': 'Make equally high and wide'})
   " }}}2
 
   " jump between windows {{{2
-  call tinykeymap#Map(id_of_windows_mode, 'h',
-        \ '<count>wincmd h',
+  call tinykeymap#Map(id_of_windows_mode, 'h', '<count>wincmd h',
         \ {'desc': 'Window above'})
-  call tinykeymap#Map(id_of_windows_mode, 'j',
-        \ '<count>wincmd j',
+  call tinykeymap#Map(id_of_windows_mode, 'j', '<count>wincmd j',
         \ {'desc': 'Window below'})
-  call tinykeymap#Map(id_of_windows_mode, 'k',
-        \ '<count>wincmd k',
+  call tinykeymap#Map(id_of_windows_mode, 'k', '<count>wincmd k',
         \ {'desc': 'Left window'})
-  call tinykeymap#Map(id_of_windows_mode, 'l',
-        \ '<count>wincmd l',
+  call tinykeymap#Map(id_of_windows_mode, 'l', '<count>wincmd l',
         \ {'desc': 'Right window'})
+  call tinykeymap#Map(id_of_windows_mode, 'w', '<count>wincmd w',
+        \ {'desc': 'Below-right window'})
+  call tinykeymap#Map(id_of_windows_mode, 'W', '<count>wincmd W',
+        \ {'desc': 'Above-left window'})
+  call tinykeymap#Map(id_of_windows_mode, 't', 'wincmd t',
+        \ {'desc': 'Top-left window'})
+  call tinykeymap#Map(id_of_windows_mode, 'b', 'wincmd b',
+        \ {'desc': 'Bottom-right window'})
+  call tinykeymap#Map(id_of_windows_mode, 'p', 'wincmd p',
+        \ {'desc': 'Previous window'})
+  call tinykeymap#Map(id_of_windows_mode, 'P', 'wincmd P',
+        \ {'desc': 'Preview window'})
   " }}}2
 
   " move windows around {{{2
-  call tinykeymap#Map(id_of_windows_mode, 'K',
-        \ 'wincmd K',
+  call tinykeymap#Map(id_of_windows_mode, 'K', 'wincmd K',
         \ {'desc': 'Move current window to the top'})
-  call tinykeymap#Map(id_of_windows_mode, 'J',
-        \ 'wincmd J',
+  call tinykeymap#Map(id_of_windows_mode, 'J', 'wincmd J',
         \ {'desc': 'Move current window to the bottom'})
-  call tinykeymap#Map(id_of_windows_mode, 'H',
-        \ 'wincmd H',
+  call tinykeymap#Map(id_of_windows_mode, 'H', 'wincmd H',
         \ {'desc': 'Move current window to the left'})
-  call tinykeymap#Map(id_of_windows_mode, 'L',
-        \ 'wincmd L',
+  call tinykeymap#Map(id_of_windows_mode, 'L', 'wincmd L',
         \ {'desc': 'Move current window to the right'})
+  call tinykeymap#Map(id_of_windows_mode, 'r', 'wincmd r',
+        \ {'desc': 'Rotate window downwards/rightwards'})
+  call tinykeymap#Map(id_of_windows_mode, 'R', 'wincmd R',
+        \ {'desc': 'Rotate window upwards/leftwards'})
+  call tinykeymap#Map(id_of_windows_mode, 'x', '<count>wincmd x',
+        \ {'desc': 'Exchange windows'})
+  call tinykeymap#Map(id_of_windows_mode, 'T', 'wincmd T',
+        \ {'desc': 'Move current "window to a new tab page'})
   " }}}2
 
+  " create windows {{{2
+  call tinykeymap#Map(id_of_windows_mode, 'c', 'wincmd c',
+        \ {'desc': 'Close window'})
+  call tinykeymap#Map(id_of_windows_mode, 'o', 'wincmd o',
+        \ {'desc': 'Make the only window', 'exit': 1})
+  " }}}2
 
-
-  " call tinykeymap#Map(id_of_windows_mode, 'r', 'wincmd r', {'desc': 'Rotate window
-  " downwards/rightwards'})
-  " " call tinykeymap#Map(id_of_windows_mode, 'R', 'wincmd R', {'desc': 'Rotate window
-  " upwards/leftwards'})
-  " " call tinykeymap#Map(id_of_windows_mode, 'x', '<count>wincmd x', {'desc': 'Exchange
-  " windows'})
-  " " call tinykeymap#Map(id_of_windows_mode, 'T', 'wincmd T', {'desc': 'Move current
-  " window to a new tab page'})
-  " " call tinykeymap#Map(id_of_windows_mode, 'w', '<count>wincmd w', {'desc':
-  " 'Below-right window'})
-  " " call tinykeymap#Map(id_of_windows_mode, 'W', '<count>wincmd W', {'desc':
-  " 'Above-left window'})
-  " " call tinykeymap#Map(id_of_windows_mode, 't', 'wincmd t', {'desc': 'Top-left
-  " window'})
-  " " call tinykeymap#Map(id_of_windows_mode, 'b', 'wincmd b', {'desc': 'Bottom-right
-  " window'})
-  " " call tinykeymap#Map(id_of_windows_mode, 'p', 'wincmd p', {'desc': 'Previous
-  " window'})
-  " " call tinykeymap#Map(id_of_windows_mode, 'P', 'wincmd P', {'desc': 'Preview
-  " window'})
-  " " call tinykeymap#Map(id_of_windows_mode, 'c', 'wincmd c', {'desc': 'Close window'})
-  " " call tinykeymap#Map(id_of_windows_mode, 'o', 'wincmd o', {'desc': 'Make the only
-  " window', 'exit': 1})
-  " call tinykeymap#Map(id_of_windows_mode, 's', 'split')
-  " call tinykeymap#Map(id_of_windows_mode, 'v', 'vert split')
-  " call tinykeymap#Map(id_of_windows_mode, "<Up>", 'wincmd W', {'exit': 1})
-  " call tinykeymap#Map(id_of_windows_mode, "<Down>", 'wincmd w', {'exit': 1})
-  "
   " }}}1
 
   let g:tinykeymaps_default = [
