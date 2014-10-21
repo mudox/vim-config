@@ -12,10 +12,11 @@ function g:this_meta.config()
 
   " tabs mode {{{1
   let id_of_tabs_mode = 'tabs'
-  let map_of_tabs_mdoe = 'gt'
+  let map_of_tabs_mdoe = ',mt'
   call tinykeymap#EnterMap(id_of_tabs_mode, map_of_tabs_mdoe, {
-        \ 'name': "tabs mode",
-        \ 'resolution' : 50,
+        \ 'name': 'tabs mode',
+        \ 'start': 'set showtabline=1',
+        \ 'stop' : 'set showtabline=0',
         \ })
 
   call tinykeymap#Map(id_of_tabs_mode, 'n', 'tabnew')
@@ -32,11 +33,10 @@ function g:this_meta.config()
 
   " windows mode {{{1
   let id_of_windows_mode = 'windows mode'
-  let map_of_windows_mdoe = '<C-W>'
+  let map_of_windows_mdoe = ',mw'
   call tinykeymap#EnterMap(id_of_windows_mode, map_of_windows_mdoe, {
         \ 'name'       : 'windows mode',
         \ 'message'    : 'winnr() . ": " . bufname("%")',
-        \ 'resolution' : 50,
         \ })
 
   " adjust window width. {{{2
