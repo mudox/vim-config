@@ -14,7 +14,7 @@ function g:this_meta.config()
   let id_of_tabs_mode = 'tabs'
   let map_of_tabs_mdoe = 'gt'
   call tinykeymap#EnterMap(id_of_tabs_mode, map_of_tabs_mdoe, {
-        \ 'name': "mdx tabs mode",
+        \ 'name': "tabs mode",
         \ 'resolution' : 50,
         \ })
 

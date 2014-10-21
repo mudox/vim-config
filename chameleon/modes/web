@@ -32,6 +32,7 @@ let s:bundle_list = [
       \ 'rainbow_oblitum',
       \ 'emmet'          ,
       \ 'breeze'         ,
+      \ 'matchtagalways' ,
       \ ]
 
 if has('unix')
