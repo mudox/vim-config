@@ -9,6 +9,17 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 
 function g:this_meta.config()
-    "let breeze_jump_to_angle_bracket = 1
+    " jump to all visible opening tags after the cursor position
+    nmap g> <Plug>(breeze-jump-tag-forward)
 
+    " jump to all visible opening tags before the cursor position
+    nmap g< <Plug>(breeze-jump-tag-backward)
+
+    " jump to all visible HTML attributes after the cursor position
+    nmap ,g> <Plug>(breeze-jump-attribute-forward)
+
+    " jump to all visible HTML attributes before the cursor position
+    nmap ,g< <Plug>(breeze-jump-attribute-backward)
+
+  " }}}1
 endfunction
