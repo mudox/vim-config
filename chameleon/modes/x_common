@@ -23,6 +23,7 @@ let s:bundle_list = [
       \ 'confsyntax'    ,
       \ 'ctrlspace'     ,
       \ 'delimitmate'   ,
+      \ 'expandregion'  ,
       \ 'easyalign'     ,
       \ 'foldtext'      ,
       \ 'indentline'    ,
