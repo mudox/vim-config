@@ -14,9 +14,9 @@ function g:this_meta.config()
   let id_of_tabs_mode = 'tabs'
   let map_of_tabs_mdoe = ',mt'
   call tinykeymap#EnterMap(id_of_tabs_mode, map_of_tabs_mdoe, {
-        \ 'name': 'tabs mode',
-        \ 'start': 'set showtabline=1',
-        \ 'stop' : 'set showtabline=0',
+        \ 'name'  : 'tabs mode',
+        \ 'start' : 'set showtabline=1',
+        \ 'stop'  : 'set showtabline=0',
         \ })
 
   call tinykeymap#Map(id_of_tabs_mode, 'n', 'tabnew')
@@ -35,8 +35,8 @@ function g:this_meta.config()
   let id_of_windows_mode = 'windows mode'
   let map_of_windows_mdoe = ',mw'
   call tinykeymap#EnterMap(id_of_windows_mode, map_of_windows_mdoe, {
-        \ 'name'       : 'windows mode',
-        \ 'message'    : 'winnr() . ": " . bufname("%")',
+        \ 'name'    : 'windows mode',
+        \ 'message' : 'winnr() . "    : " . bufname("%")',
         \ })
 
   " adjust window width. {{{2
@@ -130,8 +130,46 @@ function g:this_meta.config()
 
   " }}}1
 
+  " loc mode {{{1
+  let id_of_loc_mode     = 'loc mode'
+  let map_of_loc_mdoe    = ',ml'
+  let option_of_loc_mode = {
+        \ 'timeout' : 0,
+        \ 'start'   : 'lwindow | setlocal number',
+        \ 'stop'    : 'lclose | setlocal nonumber',
+        \ }
+
+  if exists('g:loaded_tlib')
+    let option_of_loc_mode.after = 'call tlib#buffer#ViewLine(line("."))'
+    let option_of_loc_mode.start .= ' | call tlib#buffer#ViewLine(line("."))'
+  else
+    let option_of_loc_mode.after = 'norm! zz'
+  endif
+
+  call tinykeymap#EnterMap(id_of_loc_mode, map_of_loc_mode, option_of_loc_mode)
+
+  let bang = &hidden ? '!' : ''
+  call tinykeymap#Map(id_of_loc_mode, '<CR>'      , 'll'. bang . ' <count>',
+        \ {'exit': 1})
+  call tinykeymap#Map(id_of_loc_mode, 'n'         , '<count>lnext'. bang)
+  call tinykeymap#Map(id_of_loc_mode, 'p'         , '<count>lNext'. bang)
+  call tinykeymap#Map(id_of_loc_mode, 'j'         , '<count>lnext'. bang)
+  call tinykeymap#Map(id_of_loc_mode, 'k'         , '<count>lNext'. bang)
+  call tinykeymap#Map(id_of_loc_mode, 'l'         , '<count>lnfile'. bang)
+  call tinykeymap#Map(id_of_loc_mode, 'h'         , '<count>lNfile'. bang)
+  call tinykeymap#Map(id_of_loc_mode, '^'         , 'lrewind'. bang .' <count>')
+  call tinykeymap#Map(id_of_loc_mode, '$'         , 'llast'. bang .' <count>')
+  call tinykeymap#Map(id_of_loc_mode, '<C-B>'     , 'lolder <count>')
+  call tinykeymap#Map(id_of_loc_mode, '<C-F>'     , 'lnewer <count>')
+  call tinykeymap#Map(id_of_loc_mode, '<Space>'   , 'llist')
+  call tinykeymap#Map(id_of_loc_mode, 'w'         , 'lwindow <count>')
+  call tinykeymap#Map(id_of_loc_mode, 'W'         , 'lclose')
+
+  " }}}1
+
   let g:tinykeymaps_default = [
         \ id_of_tabs_mode   ,
         \ id_of_windows_mode,
+        \ id_of_loc_mode    ,
         \ ]
 endfunction
