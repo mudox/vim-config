@@ -61,7 +61,7 @@ noremap L 
 noremap H 
 "}}}2
 
-" <C-X> system shortcuts {{{1
+" <C-X> system shortcuts {{{2
 if has('win32') || has('win64')
 
 elseif has('mac') || has('macunix')
@@ -70,7 +70,7 @@ elseif has('unix')
 
 endif
 
-" }}}1
+" }}}2
 
 " Toggle tab line
 nnoremap \t :exe "set showtabline=" . (&showtabline+1)%2<CR>
