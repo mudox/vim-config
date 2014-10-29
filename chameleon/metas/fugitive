@@ -10,5 +10,5 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config()
   cabbrev git Git
-  nnoremap \st :Gstatus<CR>
+  nnoremap gst :Gstatus<CR>
 endfunction
