@@ -15,7 +15,9 @@ function! <SID>Beautify() " {{{2
     echoerr 'can not find executable js-beautify.'
   endif
 
+  let view = winsaveview()
   %!js-beautify --type=js --file -
         \ --indent-size=2
+  call winrestview(view)
 endfunction "  }}}2
 " }}}1
