@@ -23,17 +23,24 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 " TODO: put every meta nemas you need into the list.
+
+" common plugins
 let s:bundle_list = [
-      \ 'rt_js'          ,
-      \ 'js_libsyntax'   ,
+      \ 'breeze'         ,
       \ 'css_syntax'     ,
+      \ 'emmet'          ,
+      \ 'matchtagalways' ,
+      \ 'rainbow_oblitum',
       \ 'rt_toml'        ,
       \ 'syntastic'      ,
-      \ 'rainbow_oblitum',
-      \ 'emmet'          ,
-      \ 'breeze'         ,
-      \ 'matchtagalways' ,
       \ ]
+
+" javascript plugins
+call extend(s:bundle_list, [
+      \ 'rt_js',
+      \ 'js_libsyntax',
+      \ 'js_tern',
+      \ ])
 
 if has('unix')
   call add(s:bundle_list, 'ycm')
