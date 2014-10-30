@@ -30,7 +30,6 @@ let s:bundle_list = [
       \ 'css_syntax'     ,
       \ 'emmet'          ,
       \ 'matchtagalways' ,
-      \ 'rainbow_oblitum',
       \ 'rt_toml'        ,
       \ 'syntastic'      ,
       \ ]
