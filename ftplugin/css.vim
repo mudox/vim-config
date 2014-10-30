@@ -22,14 +22,14 @@ function! CSSFoldText()
 endfunction
 
 
-nnoremap <buffer> \af <Esc><Esc>:call CssAlignGlobal()<Cr>
 function! CssAlignGlobal() " {{{2
 endfunction "  }}}1
 
 " beautify css files {{{1
 nnoremap <buffer> \ff :call <SID>Beautify()<Cr>
+nnoremap <buffer> \fa :call <SID>Beautify(1)<Cr>
 
-function! <SID>Beautify() " {{{2
+function! <SID>Beautify(align) " {{{2
   if !executable('js-beautify')
     echoerr 'can not find executable js-beautify.'
   endif
@@ -39,10 +39,12 @@ function! <SID>Beautify() " {{{2
   %!js-beautify --type=css --file -
         \ --indent-size=2
 
-  AlignCtrl wrl:g :[^:]\+;\s*$
-  AlignPush
-  g/{\(\_[^{]\)\{-}}/Align :
-  AlignPop
+  if a:align == 1
+    AlignCtrl Irl:g :[^:]\+;\s*$
+    AlignPush
+    g/{\(\_[^{]\)\{-}}/Align :
+    AlignPop
+  endif
 
   call winrestview(view)
 endfunction "  }}}2
