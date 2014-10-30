@@ -12,8 +12,8 @@ function g:this_meta.config()
 
   " tabs mode {{{1
   let id_of_tabs_mode = 'tabs'
-  let map_of_tabs_mdoe = ',mt'
-  call tinykeymap#EnterMap(id_of_tabs_mode, map_of_tabs_mdoe, {
+  let map_of_tabs_mode = ',mt'
+  call tinykeymap#EnterMap(id_of_tabs_mode, map_of_tabs_mode, {
         \ 'name'  : 'tabs mode',
         \ 'start' : 'set showtabline=1',
         \ 'stop'  : 'set showtabline=0',
@@ -33,8 +33,8 @@ function g:this_meta.config()
 
   " windows mode {{{1
   let id_of_windows_mode = 'windows mode'
-  let map_of_windows_mdoe = ',mw'
-  call tinykeymap#EnterMap(id_of_windows_mode, map_of_windows_mdoe, {
+  let map_of_windows_mode = ',mw'
+  call tinykeymap#EnterMap(id_of_windows_mode, map_of_windows_mode, {
         \ 'name'    : 'windows mode',
         \ 'message' : 'winnr() . "    : " . bufname("%")',
         \ })
@@ -132,7 +132,7 @@ function g:this_meta.config()
 
   " loc mode {{{1
   let id_of_loc_mode     = 'loc mode'
-  let map_of_loc_mdoe    = ',ml'
+  let map_of_loc_mode    = ',ml'
   let option_of_loc_mode = {
         \ 'timeout' : 0,
         \ 'start'   : 'lwindow | setlocal number',
