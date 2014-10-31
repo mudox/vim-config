@@ -16,9 +16,9 @@ function! <SID>Beautify() " {{{2
   endif
 
   let view = winsaveview()
-  %!js-beautify --type=js --file -
+  %!js-beautify --file -
         \ --indent-size=2
-        \ --brace-style=end-expand  " [none | expand | end-expand | collapse]
+        \ --brace-style=end-expand
         \ --keep-array-indentation
         \ --break-chained-methods
         \ --space-in-paren
