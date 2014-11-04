@@ -9,32 +9,25 @@ setlocal smarttab
 setlocal expandtab
 " }}}1
 
-function! s:LuaRun( args ) " {{{1
-    " save & lcd to current python script file path.
-    silent write
-    lcd %:p:h
+" run buffer {{{1
 
-    if has('win32') || has('win64')
-            let l:lua_interp = 'lua'
-            let l:cur_file = substitute(expand('%'), '\\', '/', 'g')
-            let l:cur_file = substitute(expand('%'), ' ', '\\ ', 'g')
-            let l:exeString = l:lua_interp . ' ' . l:cur_file . ' ' . a:args
-    elseif has('unix')
-            let l:lua_interp = 'lua'
-            let l:exeString = l:lua_interp . ' ' . expand('%') . ' ' . a:args
-    elseif has('mac') || has('macunix')
-            let l:lua_interp = 'lua'
-            let l:exeString = l:lua_interp . ' ' . expand('%') . ' ' . a:args
-    else
-        echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
-    endif
+function! s:RunBuffer( args ) " {{{2
+  " save & lcd to current python script file path.
+  silent write
+  lcd %:p:h
 
-    echohl Underlined | echo l:exeString | echohl NONE
+  if !executable('lua')
+    echoerr 'missing executable "lua"!'
+    return
+  endif
 
-    echo vimproc#system2(l:exeString)
-endfunction " }}}1
+  let exeString = 'lua ' . escape(expand('%'), ' \') . ' ' . a:args
+  echohl Underlined | echo exeString | echohl NONE
 
-command! -buffer -nargs=* Run call s:LuaRun(<q-args>)
-command! -buffer -nargs=* LuaRunWithArgs call s:LuaRun(<q-args>)
+  echo vimproc#system2(exeString)
+endfunction " }}}2
 
-nnoremap <buffer> <Enter>r :LuaRunWithArgs<Space>
+command! -buffer -nargs=* RunBufferWithArgs call s:RunBuffer(<q-args>)
+nnoremap <buffer> <Enter>r :RunBufferWithArgs<Space>
+" }}}1
+
