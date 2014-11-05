@@ -26,7 +26,7 @@ function! CssAlignGlobal() " {{{2
 endfunction "  }}}1
 
 " beautify css files {{{1
-nnoremap <buffer> \ff :call <SID>Beautify()<Cr>
+nnoremap <buffer> \ff :call <SID>Beautify(0)<Cr>
 nnoremap <buffer> \fa :call <SID>Beautify(1)<Cr>
 
 function! <SID>Beautify(align) " {{{2
