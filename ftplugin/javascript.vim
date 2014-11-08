@@ -49,3 +49,7 @@ endfunction  " }}}2
 command! -buffer -nargs=* RunBuffer call <SID>RunBuffer(<q-args>)
 nnoremap <buffer> <Enter>r :RunBuffer<Space>
 " }}}1
+
+" insert mode mappings {{{1
+inoremap <buffer> ;; <C-O>A;
+inoremap <buffer> ,, <C-O>A,
