@@ -85,9 +85,10 @@ nnoremap <C-Q> Q
 
 noremap zi zizz
 
-" Move in insert mode
+" insert mode {{{3
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
+" }}}3
 
 nnoremap <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
 
