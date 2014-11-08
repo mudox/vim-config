@@ -12,7 +12,7 @@ nnoremap <buffer> \ff :call <SID>Beautify()<Cr>
 
 function! <SID>Beautify() " {{{2
   if !executable('js-beautify')
-    echoerr 'can not find executable js-beautify.'
+    echoerr 'missing executable js-beautify.'
   endif
 
   let view = winsaveview()
