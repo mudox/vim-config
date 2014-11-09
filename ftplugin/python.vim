@@ -42,10 +42,10 @@ function! <SID>Autopep8() " {{{2
     echoerr "need <autopep8>, try 'sudo pip install autopep8' to get it."
   endif
 
-  normal! mx
+  let view = winsaveview()
   %!autopep8 --aggressive --aggressive --experimental --max-line-length 79
         \ --indent-size 4 -
-  normal! `x
+  call winrestview(view)
 
 
 endfunction "  }}}2
