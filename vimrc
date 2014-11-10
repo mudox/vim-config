@@ -182,6 +182,7 @@ set t_Co=256 " 256 color support on some terminals.
 syntax on
 filetype plugin indent on " 'filetype on' implied
 
+set fileformat=unix
 set encoding=utf8
 set termencoding=gbk
 
