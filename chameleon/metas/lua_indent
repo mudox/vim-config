@@ -2,11 +2,12 @@
 
 " name and site
 let g:this_meta.name = expand('<sfile>:p:t')
-let g:this_meta.site = 'https://github.com/xolox/vim-lua-ftplugin.git'
+let g:this_meta.site = 'https://github.com/dantezhu/lua_indent.git'
 
 " extra settings for neobundle
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config() dict
+    " TODO: your plugin configuration goes here.
 
 endfunction

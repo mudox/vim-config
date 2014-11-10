@@ -24,8 +24,10 @@ call MergeConfigs(s:sub_configs)
 
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
-      \ 'syntastic',
+      \ 'syntastic'      ,
       \ 'rainbow_luochen',
+      \ 'rt_lua'         ,
+      \ 'lua_indent'     ,
       \ ]
 
 if has('unix')
