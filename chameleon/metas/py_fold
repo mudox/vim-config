@@ -9,5 +9,5 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config() dict
      let g:SimpylFold_docstring_preview = 1
-     let g:SimpylFold_fold_docstring = 0
+     let g:SimpylFold_fold_docstring = 1
 endfunction
