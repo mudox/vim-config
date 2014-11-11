@@ -1,6 +1,6 @@
 " vim: foldmethod=marker
 
-" tab   {{{1
+" tab                                                                                  {{{1
 setlocal foldmethod=marker
 setlocal tabstop=8
 setlocal softtabstop=2
@@ -9,6 +9,7 @@ setlocal smarttab
 setlocal expandtab
 " }}}1
 
+" fold                                                                                 {{{1
 setlocal foldmethod=syntax
 setlocal foldenable
 
@@ -20,16 +21,13 @@ function! CSSFoldText()
   let l:foldline = l:prefix . l:sub
   return l:foldline
 endfunction
+" }}}1
 
-
-function! CssAlignGlobal() " {{{2
-endfunction "  }}}1
-
-" beautify css files {{{1
+" beautifier                                                                           {{{1
 nnoremap <buffer> \ff :call <SID>Beautify(0)<Cr>
 nnoremap <buffer> \fa :call <SID>Beautify(1)<Cr>
 
-function! <SID>Beautify(align) " {{{2
+function! <SID>Beautify(align)                                                          " {{{2
   if !executable('js-beautify')
     echoerr 'can not find executable js-beautify.'
   endif
