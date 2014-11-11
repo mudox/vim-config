@@ -37,7 +37,8 @@ function! <SID>Autopep8() " {{{2
         \ --aggressive
         \ --experimental
         \ --max-line-length 79
-        \ --indent-size 4 -
+        \ --indent-size 4
+        \ -
   call winrestview(view)
 
 
