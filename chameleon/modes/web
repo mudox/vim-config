@@ -36,10 +36,16 @@ let s:bundle_list = [
 
 " javascript plugins
 call extend(s:bundle_list, [
-      \ 'rt_js',
+      \ 'rt_js'       ,
       \ 'js_libsyntax',
-      \ 'js_tern',
+      \ 'js_tern'     ,
       \ ])
+
+" coffescript plugins
+call extend(s:bundle_list, [
+      \ 'rt_coffeescript',
+      \ ])
+
 
 if has('unix')
   call add(s:bundle_list, 'ycm')
