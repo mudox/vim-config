@@ -26,7 +26,7 @@ call MergeConfigs(s:sub_configs)
 let s:bundle_list = [
       \ 'syntastic'      ,
       \ 'rainbow_luochen',
-      \ 'rt_lua'         ,
+      "\ 'rt_lua'         ,
       \ 'lua_indent'     ,
       \ ]
 
