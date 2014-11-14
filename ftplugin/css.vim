@@ -10,7 +10,7 @@ setlocal expandtab
 " }}}1
 
 " fold                                                                                 {{{1
-setlocal foldmethod=syntax
+setlocal foldmethod=marker
 setlocal foldenable
 
 setlocal foldtext=CSSFoldText()
