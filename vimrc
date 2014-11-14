@@ -147,6 +147,7 @@ let g:mwIgnoreCase = 0
 
 " [dot_vim]                                                                                              {{{2
 nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
+nnoremap ,`  :<C-U>call mudox#max_restore_win#Main()<CR>
 " }}}2
 
 "}}}1

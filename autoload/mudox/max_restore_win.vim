@@ -57,4 +57,3 @@ function! RestoreWin()
     exe "set columns=" . s:old_columns
     exe "winpos " . s:old_xpos . " " . s:old_ypos
 endfunction
-
