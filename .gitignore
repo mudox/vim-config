@@ -6,3 +6,4 @@ view/
 spell/
 chameleon/cur_mode
 *.pyc
+nvimrc
