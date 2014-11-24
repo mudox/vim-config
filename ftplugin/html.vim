@@ -32,8 +32,7 @@ function! <SID>RunBuffer() " {{{2
   let file_name = escape(expand('%:p'), ' \')
 
   py import webbrowser
-  py ff = webbrowser.get('firefox')
-  execute "py ff.open('file:///" . file_name . "')"
+  execute "py  webbrowser.open('file:///" . file_name . "')"
 
 endfunction  " }}}2
 
