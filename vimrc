@@ -25,7 +25,14 @@ nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR
 " Default leader key for <leader> mappings
 let g:mapleader = ','
 
+" quick save.
 nnoremap <Enter>w :w<Cr>
+
+" easily move around in wrapped long line.
+nnoremap k gk
+nnoremap j gj
+nmap gk <Nop>
+nmap gj <Nop>
 
 " <C-H/J/K/L> to jump among windows                                                                      {{{2
 nnoremap <C-H>	   <C-W>h
