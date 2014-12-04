@@ -80,7 +80,7 @@ endif
 " }}}2
 
 " Toggle tab line
-nnoremap \t :exe "set showtabline=" . (&showtabline+1)%2<CR>
+nnoremap cot :exe "set showtabline=" . (&showtabline+1)%2<CR>
 
 " key q is too easy to touch, but is needed infrequently
 nnoremap q <Nop>
