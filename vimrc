@@ -26,7 +26,7 @@ nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR
 let g:mapleader = ','
 
 " quick save.
-nnoremap <Enter>w :w<Cr>
+nnoremap <BS>w :w<Cr>
 
 " easily move around in wrapped long line.
 nnoremap k gk
@@ -126,7 +126,7 @@ function! EditFileTypeSettings( filetype )
 endfunction
 command  -nargs=? -complete=custom,<SID>FileTypesAvail EditFileType
       \ call EditFileTypeSettings(<q-args>)
-nnoremap <Enter>f :EditFileType<Space>
+nnoremap <BS>f :EditFileType<Space>
 
 " command mode mappings.
 cnoremap <C-P> <Up>
