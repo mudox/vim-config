@@ -9,10 +9,10 @@ let g:this_meta.neodict.name = g:this_meta.name
 let g:this_meta.neodict.build = { 'unix' : 'make -f make_unix.mak' }
 
 function g:this_meta.config()
-  nnoremap <Cr>v :VimProcBang<Space>
+  nnoremap <BS>v :VimProcBang<Space>
 endfunction
 
-nnoremap <Cr>a :VPRCommand<Space>
+nnoremap <BS>a :VPRCommand<Space>
 command -nargs=+ VPRCommand call <SID>vimProcReadView(<q-args>)
 
 let s:buf_nr = -1
