@@ -37,5 +37,5 @@ function! <SID>RunBuffer() " {{{2
 endfunction  " }}}2
 
 command! -buffer -nargs=* RunBuffer call <SID>RunBuffer()
-nnoremap <buffer> <Enter>r :RunBuffer<Cr>
+nnoremap <buffer> <BS>r :RunBuffer<Cr>
 " }}}1

@@ -22,7 +22,7 @@ endfunction  " }}}2
 command! -buffer -nargs=* Run call s:RunBuffer(<q-args>)
 command! -buffer -nargs=* RunWithArgs call s:RunBuffer(<q-args>)
 
-nnoremap <buffer> <Enter>r :RunWithArgs<Space>
+nnoremap <buffer> <BS>r :RunWithArgs<Space>
 " }}}1
 
 " remap \af to format current buffer by autopep8. {{{1

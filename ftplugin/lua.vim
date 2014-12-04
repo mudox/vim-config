@@ -28,6 +28,6 @@ function! s:RunBuffer( args ) " {{{2
 endfunction " }}}2
 
 command! -buffer -nargs=* RunBufferWithArgs call s:RunBuffer(<q-args>)
-nnoremap <buffer> <Enter>r :RunBufferWithArgs<Space>
+nnoremap <buffer> <BS>r :RunBufferWithArgs<Space>
 " }}}1
 

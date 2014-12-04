@@ -1,1 +1,1 @@
-nnoremap <buffer> <Enter>r <Esc>:w<Cr>:!xrdb %<Cr>
+nnoremap <buffer> <BS>r <Esc>:w<Cr>:!xrdb %<Cr>

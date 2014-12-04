@@ -8,7 +8,7 @@ setlocal shiftwidth=2
 setlocal smarttab
 setlocal noexpandtab
 
-nnoremap <buffer> <Enter>r <ESC>:w<CR>:!bash %<CR>
+nnoremap <buffer> <BS>r <ESC>:w<CR>:!bash %<CR>
 function! s:BashRun( args )
   " save & lcd to current python script file path.
   silent write
@@ -37,4 +37,4 @@ endfunction
 command! -buffer -nargs=* Run call s:BashRun(<q-args>)
 command! -buffer -nargs=* BashRunWithArgs call s:BashRun(<q-args>)
 
-nnoremap <buffer> <Enter>r :BashRunWithArgs<Space>
+nnoremap <buffer> <BS>r :BashRunWithArgs<Space>

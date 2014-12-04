@@ -17,7 +17,7 @@ setlocal foldmethod=syntax
 " source current line.
 nnoremap <buffer> <leader><leader>cl <Esc>YY:@"<Cr>
 " source %
-nnoremap <buffer> <Enter>r :<C-U>w<Cr>:so %<Cr>
+nnoremap <buffer> <BS>r :<C-U>w<Cr>:so %<Cr>
 
 " syntax hightlighting
 let g:vimsyn_embed   = 0    " disable all embeding syntax.

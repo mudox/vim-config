@@ -24,7 +24,7 @@ endfunction
 
 command! -buffer -nargs=* RubyRunWithArgs call s:RubyRun(<q-args>)
 
-nnoremap <buffer> <Enter>r :RubyRunWithArgs<Space>
+nnoremap <buffer> <BS>r :RubyRunWithArgs<Space>
 
 setlocal softtabstop=2
 setlocal shiftwidth=2
