@@ -1,1 +1,1 @@
-nnoremap <Cr>r <Esc>:Gw<Cr>
+nnoremap <BS>r <Esc>:Gw<Cr>
