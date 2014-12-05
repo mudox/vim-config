@@ -8,10 +8,5 @@ let g:this_meta.site = 'https://github.com/tpope/vim-surround.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config()
-  xmap ' <Plug>VSurround'
-  xmap " <Plug>VSurround"
-  xmap ( <Plug>VSurround(
-  xmap ) <Plug>VSurround)
-  xmap { <Plug>VSurround{
-  xmap } <Plug>VSurround}
+  xmap <Space> <Plug>VSurround
 endfunction
