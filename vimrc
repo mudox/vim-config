@@ -28,24 +28,18 @@ let g:mapleader = ','
 " quick save.
 nnoremap <BS>w :w<Cr>
 
-" easily move around in wrapped long line.
+" j, k to easily move around in wrapped long line. {{{2
 nnoremap k gk
 nnoremap j gj
 nmap gk <Nop>
 nmap gj <Nop>
+" }}}2
 
 " <C-H/J/K/L> to jump among windows                                                                      {{{2
 nnoremap <C-H>	   <C-W>h
 nnoremap <C-J>	   <C-W>j
 nnoremap <C-K>	   <C-W>k
 nnoremap <C-L>	   <C-W>l
-"}}}2
-
-" <M-Up/Down/Left/Right> to resize windows                                                               {{{2
-nnoremap <M-Up> 	5<C-W>+
-nnoremap <M-Down> 	5<C-W>-
-nnoremap <M-Left> 	5<C-W><
-nnoremap <M-Right> 	5<C-W>>
 "}}}2
 
 " <A-H/L> to switch among tabs                                                                           {{{2
