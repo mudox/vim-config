@@ -38,6 +38,7 @@ let s:bundle_list = [
       \ 'over'          ,
       \ 'rename'        ,
       \ 'renamer'       ,
+      \ 'rengbang'      ,
       \ 'repeat'        ,
       \ 'surround'      ,
       \ 'switch'        ,
