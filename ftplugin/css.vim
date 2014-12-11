@@ -32,10 +32,13 @@ function! <SID>Beautify(align)                                                  
     echoerr 'can not find executable js-beautify.'
   endif
 
+  if !executable('autoprefixer')
+    echoerr 'can not find executable autoprefixer.'
+  endif
+
   let view = winsaveview()
 
-  %!js-beautify --type=css --file -
-        \ --indent-size=2
+  silent execute '%!js-beautify --type=css --indent-size=2 --file -'
 
   if a:align == 1
     AlignCtrl Irl:g :[^:]\+;\s*$
@@ -43,6 +46,8 @@ function! <SID>Beautify(align)                                                  
     g/{\(\_[^{]\)\{-}}/Align :
     AlignPop
   endif
+
+  silent execute '%!autoprefixer'
 
   call winrestview(view)
 endfunction "  }}}2
