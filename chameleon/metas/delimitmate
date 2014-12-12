@@ -9,9 +9,9 @@ let g:this_meta.neodict.name = g:this_meta.name
 
 
 function g:this_meta.config()
-    let delimitMate_expand_space       = 1
-    let delimitMate_expand_cr          = 1
-    let delimitMate_smart_quotes       = 1
-    let delimitMate_balance_matchpairs = 1
+    let g:delimitMate_expand_space       = 1
+    let g:delimitMate_expand_cr          = 1
+    let g:delimitMate_smart_quotes       = 1
+    let g:delimitMate_balance_matchpairs = 1
 
 endfunction
