@@ -26,6 +26,7 @@ call MergeConfigs(s:sub_configs)
 
 " common plugins
 let s:bundle_list = [
+      \ 'rt_html'        ,
       \ 'breeze'         ,
       \ 'css_syntax'     ,
       \ 'emmet'          ,
@@ -38,7 +39,6 @@ let s:bundle_list = [
 call extend(s:bundle_list, [
       \ 'rt_js'       ,
       \ 'js_libsyntax',
-      \ 'js_tern'     ,
       \ ])
 
 " coffescript plugins
