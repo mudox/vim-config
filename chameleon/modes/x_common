@@ -41,6 +41,7 @@ let s:bundle_list = [
       \ 'rengbang'      ,
       \ 'repeat'        ,
       \ 'surround'      ,
+      \ 'yank_ring'      ,
       \ 'switch'        ,
       \ 'tagbar'        ,
       \ 'textmanip'     ,
