@@ -3,6 +3,7 @@
 " TODO:
 " 2. regrouping the vim options setttings in 'SETTINGS' section.
 "}}}1
+ scriptencoding utf-8
 
 " get the full path of .vim or vimfiles.
 let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
@@ -96,7 +97,13 @@ nnoremap <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
 " like UltisniptEdit command, edit main ftplugin config file
 " for current file type.
 
-function <SID>FileTypesAvail(arglead, cmdline, cursorpos)
+function! <SID>FileTypesAvail(arglead, cmdline, cursorpos)
+  " depress vilint warnings.
+  let _ = a:arglead
+  let _ = a:cmdline
+  let _ = a:cursorpos
+  let _ = _
+
   let filetypes = glob(g:rc_root . '/ftplugin/*.vim', 1, 1)
   call map(filetypes, 'fnamemodify(v:val, ":t:r")')
   return join(filetypes, "\n")
@@ -118,6 +125,7 @@ function! EditFileTypeSettings( filetype )
     return
   endtry
 endfunction
+
 command  -nargs=? -complete=custom,<SID>FileTypesAvail EditFileType
       \ call EditFileTypeSettings(<q-args>)
 nnoremap <BS>f :EditFileType<Space>
