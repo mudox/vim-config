@@ -33,11 +33,6 @@ function! <SID>Beautify(align)                                                  
     return
   endif
 
-  if !executable('autoprefixer')
-    echoerr 'can not find executable autoprefixer, proceeding without vendor'
-    'prefixing.'
-  endif
-
   let view = winsaveview()
 
   silent execute '%!js-beautify --type=css --indent-size=2 --file -'
@@ -49,7 +44,19 @@ function! <SID>Beautify(align)                                                  
     AlignPop
   endif
 
-  silent execute '%!autoprefixer'
+  if !executable('autoprefixer')
+    echoerr 'can not find executable *autoprefixer*, proceeds without vendor'
+          \ 'prefixing.'
+  else
+    silent execute '%!autoprefixer'
+  endif
+
+  if exists(':TrailerTrim') != 2
+    echoerr 'plugin TrailerTrash command *:TrailerTrim* not available,'
+          \ 'proceeds without trailing space trim'
+  else
+    TrailerTrim
+  endif
 
   call winrestview(view)
 endfunction "  }}}2
