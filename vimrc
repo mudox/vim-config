@@ -169,11 +169,13 @@ set nocompatible
 set guioptions=fcaM
 set t_Co=256 " 256 color support on some terminals.
 
-
 syntax on
 filetype plugin indent on " 'filetype on' implied
 
+" force all files to be of unix format.
 set fileformat=unix
+autocmd FileType * setlocal fileformat=unix
+
 set encoding=utf8
 set termencoding=gbk
 
