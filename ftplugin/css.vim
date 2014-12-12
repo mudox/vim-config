@@ -30,10 +30,12 @@ nnoremap <buffer> \fa :call <SID>Beautify(1)<Cr>
 function! <SID>Beautify(align)                                                          " {{{2
   if !executable('js-beautify')
     echoerr 'can not find executable js-beautify.'
+    return
   endif
 
   if !executable('autoprefixer')
-    echoerr 'can not find executable autoprefixer.'
+    echoerr 'can not find executable autoprefixer, proceeding without vendor'
+    'prefixing.'
   endif
 
   let view = winsaveview()
