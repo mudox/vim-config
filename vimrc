@@ -56,8 +56,8 @@ endif
 "}}}2
 
 " In case you leave CapLock key pressed inadvertently, which will mess you up.
-noremap <silent> J @='8j'<CR>
-noremap <silent> K @='8k'<CR>
+noremap <silent> J @='8gj'<CR>
+noremap <silent> K @='8gk'<CR>
 noremap L 
 noremap H 
 "}}}2
