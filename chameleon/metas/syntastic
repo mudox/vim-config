@@ -35,7 +35,7 @@ function g:this_meta.config()
 
   let g:syntastic_mode_map = {
         \ 'mode': 'passive',
-        \ 'active_filetypes': ['ruby', 'php'],
+        \ 'active_filetypes': [],
         \ 'passive_filetypes': ['puppet']
         \ }
 
