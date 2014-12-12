@@ -173,8 +173,33 @@ syntax on
 filetype plugin indent on " 'filetype on' implied
 
 " force all files to be of unix format.
-set fileformat=unix
-autocmd FileType * setlocal fileformat=unix
+function! s:ff_unix() " {{{2
+  if &l:readonly || !&l:modifiable || &l:fileformat == 'unix'
+    return
+  endif
+
+  while 1
+    echohl Special
+    echon "\nfileformat=" . &l:fileformat . ', convert?[y] '
+    echohl None
+
+    let key = getchar()
+    if key == char2nr('y') ||
+          \ key == char2nr('Y') ||
+          \ key == char2nr(' ') ||
+          \ key == 13 " <Cr> key
+      setlocal fileformat=unix
+      return
+    elseif key == char2nr('n') ||
+          \ key == char2nr('N') ||
+          \ key == 27 " <Esc> key ||
+          \ key == 3 " Ctrl-C key
+      return
+    endif
+  endwhile
+endfunction "  }}}2
+
+autocmd FileType * call s:ff_unix()
 
 set encoding=utf8
 set termencoding=gbk
@@ -188,8 +213,8 @@ if has('win32') || has('win64')                         " windows
   set linespace=0
   autocmd ColorScheme * set linespace=0
 elseif has('mac') || has('macunix')                     " mac os x
-   set guifont=Monaco\ for\ Powerline:h11
-   set linespace=0
+  set guifont=Monaco\ for\ Powerline:h11
+  set linespace=0
 elseif has('unix')                                      " other *nix
   " Awsome WM on ArchLinux without infinality.
 
