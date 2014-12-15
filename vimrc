@@ -3,7 +3,7 @@
 " TODO:
 " 2. regrouping the vim options setttings in 'SETTINGS' section.
 "}}}1
- scriptencoding utf-8
+scriptencoding utf-8
 
 " get the full path of .vim or vimfiles.
 let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
@@ -98,7 +98,7 @@ nnoremap <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
 " for current file type.
 
 function! <SID>FileTypesAvail(arglead, cmdline, cursorpos)
-  " depress vilint warnings.
+  " suppress vilint warnings.
   let _ = a:arglead
   let _ = a:cmdline
   let _ = a:cursorpos
@@ -182,7 +182,7 @@ filetype plugin indent on " 'filetype on' implied
 
 " force all files to be of unix format.
 function! s:ff_unix() " {{{2
-  if &l:readonly || !&l:modifiable || &l:fileformat == 'unix'
+  if &l:buftype == '' || &l:readonly || !&l:modifiable || &l:fileformat == 'unix'
     return
   endif
 
@@ -207,7 +207,14 @@ function! s:ff_unix() " {{{2
   endwhile
 endfunction "  }}}2
 
-autocmd FileType * call s:ff_unix()
+let s:unix_ff_file_types = [
+      \ 'c', 'cpp', 'python', 'ruby',
+      \ 'sh', 'bash', 'zsh',
+      \ 'php', 'perl', 'html', 'css',
+      \ ]
+for f in s:unix_ff_file_types
+  execute 'autocmd FileType ' . f . ' call s:ff_unix()'
+endfor
 
 set encoding=utf8
 set termencoding=gbk
