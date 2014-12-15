@@ -7,17 +7,18 @@ setlocal shiftwidth=2
 setlocal smarttab
 setlocal expandtab
 
+setlocal fileformat=unix
+
 " beautify html files {{{1
 nnoremap <buffer> \ff :call <SID>Beautify()<Cr>
 
 function! <SID>Beautify() " {{{2
   if !executable('js-beautify')
-    echoerr 'missing executable js-beautify.'
+    echoerr 'missing executable js-beautify, quit...'
   endif
 
   let view = winsaveview()
-  %!js-beautify --type=html --file -
-        \ --indent-size=2
+  %!js-beautify --type=html --indent-size=2 --file -
   call winrestview(view)
 endfunction "  }}}2
 " }}}1
@@ -29,10 +30,8 @@ function! <SID>RunBuffer() " {{{2
   " save & lcd to current python script file path.
   silent write
 
-  let file_name = escape(expand('%:p'), ' \')
-
   py import webbrowser
-  execute "py  webbrowser.open('file:///" . file_name . "')"
+  execute "py webbrowser.open('file:///" . expand('%:p') . "')"
 
 endfunction  " }}}2
 
