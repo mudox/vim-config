@@ -63,3 +63,6 @@ function! <SID>Beautify(align)                                                  
   call winrestview(view)
 endfunction "  }}}2
 " }}}1
+
+" for css properties such as box-shadow, vertical align ...
+setlocal iskeyword+=-
