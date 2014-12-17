@@ -8,9 +8,5 @@ let g:this_meta.site = 'https://github.com/FelikZ/ctrlp-py-matcher.git'
 let g:this_meta.neodict.name = g:this_meta.name
 
 function g:this_meta.config() dict
-  if !has('python')
-    echo 'In order to use pymatcher plugin, you need +python compiled vim'
-  else
-    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-  endif
+  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 endfunction
