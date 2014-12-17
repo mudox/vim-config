@@ -64,12 +64,20 @@ noremap H 
 "}}}2
 
 " <C-X> system shortcuts {{{2
+inoremap <M-j> <C-N>
+inoremap <M-J> <C-N>
+inoremap <M-k> <C-P>
+inoremap <M-K> <C-P>
 if has('win32') || has('win64')
 
 elseif has('mac') || has('macunix')
   inoremap ø <C-X><C-O>
 elseif has('unix')
-
+  " o<A-J>
+  inoremap <M-o><M-j> <C-X><C-O>
+  inoremap <M-O><M-J> <C-X><C-O>
+  inoremap <M-o><M-k> <C-X><C-O>
+  inoremap <M-O><M-K> <C-X><C-O>
 endif
 
 " }}}2
