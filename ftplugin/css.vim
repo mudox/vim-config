@@ -29,7 +29,7 @@ nnoremap <buffer> \fa :call <SID>Beautify(1)<Cr>
 
 function! <SID>Beautify(align)                                                          " {{{2
   if !executable('csscomb')
-    echoerr 'can not find executable js-beautify.'
+    echoerr 'can not find executable csscomb, quit...'
     return
   endif
 
