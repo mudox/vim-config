@@ -84,7 +84,7 @@ let s:unix_ff_file_types = [
 augroup Mudox_ff_fix
   autocmd!
 
-  for f in s:unix_ff_file_types
+  for s:f in s:unix_ff_file_types
     execute 'autocmd FileType ' . f . ' call Mudox_ff_unix()'
   endfor
 augroup END
