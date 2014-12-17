@@ -15,6 +15,7 @@ if has('vim_starting')
 endif
 
 call mudox#chameleon#Init()
+call mudox#chameleon#InitBundles()
 
 "}}}1
 
@@ -45,22 +46,11 @@ nnoremap ,`  :<C-U>call mudox#max_restore_win#Main()<CR>
 " EVENTS                                                                                              {{{1
 " force vim into recognising all *.md as markdown instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-"}}}1
-
-" SETTINGS                                                                                            {{{1
-
-" Important
-set nocompatible
-
-set guioptions=fcaM
-set t_Co=256 " 256 color support on some terminals.
-
-syntax on
-filetype plugin indent on " 'filetype on' implied
 
 " force all files to be of unix format.
-function! s:ff_unix() " {{{2
-  if &l:buftype == '' || &l:readonly || !&l:modifiable || &l:fileformat == 'unix'
+function! Mudox_ff_unix() " {{{2
+  if !&l:buftype == '' || ! &l:modifiable || &l:readonly ||
+        \ &l:fileformat == 'unix'
     return
   endif
 
@@ -90,9 +80,27 @@ let s:unix_ff_file_types = [
       \ 'sh', 'bash', 'zsh',
       \ 'php', 'perl', 'html', 'css',
       \ ]
-for f in s:unix_ff_file_types
-  execute 'autocmd FileType ' . f . ' call s:ff_unix()'
-endfor
+
+augroup Mudox_ff_fix
+  autocmd!
+
+  for f in s:unix_ff_file_types
+    execute 'autocmd FileType ' . f . ' call Mudox_ff_unix()'
+  endfor
+augroup END
+"}}}1
+
+" SETTINGS                                                                                            {{{1
+
+" Important
+set nocompatible
+
+set guioptions=fcaM
+set t_Co=256 " 256 color support on some terminals.
+
+syntax on
+filetype plugin indent on " 'filetype on' implied
+
 
 set encoding=utf8
 set termencoding=gbk
