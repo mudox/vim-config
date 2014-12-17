@@ -18,133 +18,6 @@ call mudox#chameleon#Init()
 
 "}}}1
 
-" MAPPINGS                                                                                            {{{1
-
-" Toggle syntax feature.
-nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR>
-
-" Default leader key for <leader> mappings
-let g:mapleader = ','
-
-" quick save.
-nnoremap <BS>w :w<Cr>
-
-" j, k to easily move around in wrapped long line. {{{2
-nnoremap k gk
-nnoremap j gj
-nmap gk <Nop>
-nmap gj <Nop>
-" }}}2
-
-" <C-H/J/K/L> to jump among windows                                                                      {{{2
-nnoremap <C-H>	   <C-W>h
-nnoremap <C-J>	   <C-W>j
-nnoremap <C-K>	   <C-W>k
-nnoremap <C-L>	   <C-W>l
-"}}}2
-
-" <A-H/L> to switch among tabs                                                                           {{{2
-if has('win32') || has('win64')
-  nnoremap <silent> ì gt
-  nnoremap <silent> è gT
-elseif has('mac') || has('macunix')
-  nnoremap <silent> ˙ gt
-  nnoremap <silent> ¬ gT
-elseif has('unix')
-  nnoremap <silent> ì gt
-  nnoremap <silent> è gT
-endif
-"}}}2
-
-" In case you leave CapLock key pressed inadvertently, which will mess you up.
-noremap <silent> J @='8gj'<CR>
-noremap <silent> K @='8gk'<CR>
-noremap L 
-noremap H 
-"}}}2
-
-" <C-X> system shortcuts {{{2
-inoremap <M-j> <C-N>
-inoremap <M-J> <C-N>
-inoremap <M-k> <C-P>
-inoremap <M-K> <C-P>
-if has('win32') || has('win64')
-
-elseif has('mac') || has('macunix')
-  inoremap ø <C-X><C-O>
-elseif has('unix')
-  " o<A-J>
-  inoremap <M-o><M-j> <C-X><C-O>
-  inoremap <M-O><M-J> <C-X><C-O>
-  inoremap <M-o><M-k> <C-X><C-O>
-  inoremap <M-O><M-K> <C-X><C-O>
-endif
-
-" }}}2
-
-" Toggle tab line
-nnoremap cot :exe "set showtabline=" . (&showtabline+1)%2<CR>
-
-" key q is too easy to touch, but is needed infrequently
-nnoremap q <Nop>
-nnoremap _q q
-
-" key Q is too easy to touch, but is needed infrequently
-nnoremap Q <Nop>
-nnoremap <C-Q> Q
-
-noremap zi zizz
-
-" insert mode {{{3
-inoremap <C-H> <Left>
-inoremap <C-L> <Right>
-" }}}3
-
-nnoremap <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
-
-" like UltisniptEdit command, edit main ftplugin config file
-" for current file type.
-
-function! <SID>FileTypesAvail(arglead, cmdline, cursorpos)
-  " suppress vilint warnings.
-  let _ = a:arglead
-  let _ = a:cmdline
-  let _ = a:cursorpos
-  let _ = _
-
-  let filetypes = glob(g:rc_root . '/ftplugin/*.vim', 1, 1)
-  call map(filetypes, 'fnamemodify(v:val, ":t:r")')
-  return join(filetypes, "\n")
-endfunction
-
-function! EditFileTypeSettings( filetype )
-  let ft = ( a:filetype == '' ) ? &filetype : a:filetype
-  try
-    if ft != ''
-      let setting_file = g:rc_root . '/ftplugin/' . ft . '.vim'
-      call mudox#query_open_file#New(setting_file)
-    else
-      echohl ErrorMsg
-      echo "* No filetype *"
-      echohl None
-    endif
-  catch /^mudox#query_open_file: Canceled$/
-    echohl WarningMsg | echo '* EditFileTypeSettings: Canceled *' | echohl None
-    return
-  endtry
-endfunction
-
-command  -nargs=? -complete=custom,<SID>FileTypesAvail EditFileType
-      \ call EditFileTypeSettings(<q-args>)
-nnoremap <BS>f :EditFileType<Space>
-
-" command mode mappings.
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
-cnoremap <C-h> <Left>
-cnoremap <C-l> <Right>
-" }}}1
-
 " BUNDLE SETTINGS                                                                                     {{{1
 
 " [ft-sql]                                                                                             " {{{2
@@ -172,9 +45,6 @@ nnoremap ,`  :<C-U>call mudox#max_restore_win#Main()<CR>
 " EVENTS                                                                                              {{{1
 " force vim into recognising all *.md as markdown instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-"}}}1
-
-" ABBREVIATES                                                                                         {{{1
 "}}}1
 
 " SETTINGS                                                                                            {{{1
@@ -327,6 +197,131 @@ set nowritebackup
 "}}}2
 
 set regexpengine=1
+"}}}1
+
+" MAPPINGS                                                                                            {{{1
+
+" Toggle syntax feature.
+nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR>
+
+" Default leader key for <leader> mappings
+let g:mapleader = ','
+
+" quick save.
+nnoremap <BS>w :w<Cr>
+
+" j, k to easily move around in wrapped long line. {{{2
+nnoremap k gk
+nnoremap j gj
+nmap gk <Nop>
+nmap gj <Nop>
+" }}}2
+
+" <C-H/J/K/L> to jump among windows                                                                      {{{2
+nnoremap <C-H>	   <C-W>h
+nnoremap <C-J>	   <C-W>j
+nnoremap <C-K>	   <C-W>k
+nnoremap <C-L>	   <C-W>l
+"}}}2
+
+" <A-H/L> to switch among tabs                                                                           {{{2
+if has('win32') || has('win64')
+  nnoremap <silent> ì gt
+  nnoremap <silent> è gT
+elseif has('mac') || has('macunix')
+  nnoremap <silent> ˙ gt
+  nnoremap <silent> ¬ gT
+elseif has('unix')
+  nnoremap <silent> ì gt
+  nnoremap <silent> è gT
+endif
+"}}}2
+
+" In case you leave CapLock key pressed inadvertently, which will mess you up.
+noremap <silent> J @='8gj'<CR>
+noremap <silent> K @='8gk'<CR>
+noremap L 
+noremap H 
+"}}}2
+
+" <C-X> system shortcuts {{{2
+inoremap <M-j> <C-N>
+inoremap <M-J> <C-N>
+inoremap <M-k> <C-P>
+inoremap <M-K> <C-P>
+
+" <M-O><A-J>
+inoremap <M-o><M-j> <C-X><C-O>
+inoremap <M-O><M-J> <C-X><C-O>
+inoremap <M-o><M-k> <C-X><C-O>
+inoremap <M-O><M-K> <C-X><C-O>
+
+" }}}2
+
+" Toggle tab line
+nnoremap cot :exe "set showtabline=" . (&showtabline+1)%2<CR>
+
+" key q is too easy to touch, but is needed infrequently
+nnoremap q <Nop>
+nnoremap _q q
+
+" key Q is too easy to touch, but is needed infrequently
+nnoremap Q <Nop>
+nnoremap <C-Q> Q
+
+noremap zi zizz
+
+" insert mode {{{3
+inoremap <C-H> <Left>
+inoremap <C-L> <Right>
+" }}}3
+
+nnoremap <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
+
+" like UltisniptEdit command, edit main ftplugin config file
+" for current file type.
+
+function! <SID>FileTypesAvail(arglead, cmdline, cursorpos)
+  " suppress vilint warnings.
+  let _ = a:arglead
+  let _ = a:cmdline
+  let _ = a:cursorpos
+  let _ = _
+
+  let filetypes = glob(g:rc_root . '/ftplugin/*.vim', 1, 1)
+  call map(filetypes, 'fnamemodify(v:val, ":t:r")')
+  return join(filetypes, "\n")
+endfunction
+
+function! EditFileTypeSettings( filetype )
+  let ft = ( a:filetype == '' ) ? &filetype : a:filetype
+  try
+    if ft != ''
+      let setting_file = g:rc_root . '/ftplugin/' . ft . '.vim'
+      call mudox#query_open_file#New(setting_file)
+    else
+      echohl ErrorMsg
+      echo "* No filetype *"
+      echohl None
+    endif
+  catch /^mudox#query_open_file: Canceled$/
+    echohl WarningMsg | echo '* EditFileTypeSettings: Canceled *' | echohl None
+    return
+  endtry
+endfunction
+
+command  -nargs=? -complete=custom,<SID>FileTypesAvail EditFileType
+      \ call EditFileTypeSettings(<q-args>)
+nnoremap <BS>f :EditFileType<Space>
+
+" command mode mappings.
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+" }}}1
+
+" ABBREVIATES                                                                                         {{{1
 "}}}1
 
 " vim: foldmethod=marker fileformat=unix foldmethod=marker
