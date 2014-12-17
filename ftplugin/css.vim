@@ -28,21 +28,21 @@ nnoremap <buffer> \ff :call <SID>Beautify(0)<Cr>
 nnoremap <buffer> \fa :call <SID>Beautify(1)<Cr>
 
 function! <SID>Beautify(align)                                                          " {{{2
-  if !executable('js-beautify')
+  if !executable('csscomb')
     echoerr 'can not find executable js-beautify.'
     return
   endif
 
   let view = winsaveview()
 
-  silent execute '%!js-beautify --type=css --indent-size=2 --file -'
+  "silent execute '%!js-beautify --type=css --indent-size=2 --file -'
 
-  if a:align == 1
-    AlignCtrl Irl:g :[^:]\+;\s*$
-    AlignPush
-    g/{\(\_[^{]\)\{-}}/Align :
-    AlignPop
-  endif
+  "if a:align == 1
+    "AlignCtrl Irl:g :[^:]\+;\s*$
+    "AlignPush
+    "g/{\(\_[^{]\)\{-}}/Align :
+    "AlignPop
+  "endif
 
   if !executable('autoprefixer')
     echoerr 'can not find executable *autoprefixer*, proceeds without vendor'
@@ -57,6 +57,8 @@ function! <SID>Beautify(align)                                                  
   else
     TrailerTrim
   endif
+
+  silent execute '!csscomb %'
 
   call winrestview(view)
 endfunction "  }}}2
