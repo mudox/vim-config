@@ -58,7 +58,15 @@ function! <SID>Beautify(align)                                                  
     TrailerTrim
   endif
 
-  silent execute '!csscomb %'
+
+  " need a 'css' extension to make csscomb work
+  let tmpfile = escape(tempname() . '.css', ' \')
+  silent execute 'write! ' . tmpfile
+  echo '!csscomb ' . tmpfile . '...'
+  silent execute '!csscomb ' . tmpfile
+  norm! ggdG
+  silent execute 'read ' . tmpfile
+  1delete _
 
   call winrestview(view)
 endfunction "  }}}2
