@@ -26,6 +26,7 @@ let s:bundle_list = [
       \ 'easyalign'     ,
       \ 'expandregion'  ,
       \ 'foldtext'      ,
+      \ 'incsearch'     ,
       \ 'indentline'    ,
       \ 'join'          ,
       \ 'mattn_calendar',
@@ -41,8 +42,8 @@ let s:bundle_list = [
       \ 'rengbang'      ,
       \ 'repeat'        ,
       \ 'surround'      ,
-      \ 'yank_ring'      ,
       \ 'switch'        ,
+      \ 'swoop'         ,
       \ 'tagbar'        ,
       \ 'textmanip'     ,
       \ 'tinykeymap'    ,
@@ -50,6 +51,7 @@ let s:bundle_list = [
       \ 'trailertrash'  ,
       \ 'unimpaired'    ,
       \ 'vimproc'       ,
+      \ 'yank_ring'     ,
       \ 'zoomwintab'    ,
       \ ]
 
