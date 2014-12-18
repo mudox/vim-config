@@ -62,8 +62,7 @@ function! <SID>Beautify(align)                                                  
   " need a 'css' extension to make csscomb work
   let tmpfile = escape(tempname() . '.css', ' \')
   silent execute 'write! ' . tmpfile
-  echo '!csscomb ' . tmpfile . '...'
-  silent execute '!csscomb ' . tmpfile
+  silent execute '!csscomb --config ' . $MDX_DOT_FILES . '/csscomb.json ' . tmpfile
   norm! ggdG
   silent execute 'read ' . tmpfile
   1delete _
