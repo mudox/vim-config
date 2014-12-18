@@ -28,12 +28,6 @@ let g:ftplugin_sql_omni_key_left  = '<C-h>'
 "let loaded_matchparen = 1
 " }}}2
 
-" [mark]                                                                                                 {{{2
-let g:mwAutoSaveMarks = 0
-let g:mwIgnoreCase = 0
-" let g:mwHistAdd = '/@'
-"}}}2
-
 " [dot_vim]                                                                                              {{{2
 nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 nnoremap ,`  :<C-U>call mudox#max_restore_win#Main()<CR>
