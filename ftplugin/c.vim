@@ -7,20 +7,42 @@ setlocal cinoptions=g0 "indent for public:, protected:, private: in C++ file
 " Fold
 setlocal foldmethod=syntax
 
-"{{{1 ctags
-"setlocal tags+=~/.ctags/cpp/libstdc++        " C++ Standard Library
+" ctags                                                                                {{{1
+" setlocal tags+=~/.ctags/cpp/libstdc++        " C++ Standard Library
 " setlocal tags+=~/.ctags/cpp/gl             " OpenGL
 " setlocal tags+=~/.ctags/cpp/qt4            " Qt4
 
-" Build tags of your own project with Ctrl-F12
+" Build tags of your own project
 " Recursively travel through the entire tree rooted on current directory.
 nnoremap <buffer> \tag :!ctags -R --sort=yes --fields=+iaS --extra=+q .<CR>
 "}}}1
 
-"{{{1 tab
+"tab                                                                                   {{{1
 setlocal foldmethod=marker
 setlocal tabstop=8
 setlocal softtabstop=2
 setlocal shiftwidth=2
 setlocal smarttab
 setlocal expandtab
+"}}}1
+
+" beautifier                                                                           {{{1
+nnoremap <buffer> \ff :call <SID>Beautify()<Cr>
+
+function! <SID>Beautify()                                                               " {{{2
+  if !executable('uncrustify')
+    echoerr 'can not find executable uncrustify, quit...'
+    return
+  endif
+
+  let view = winsaveview()
+
+  " need a 'css' extension to make uncrustify work
+  silent execute '%!uncrustify -q -c' . $MDX_DOT_FILES . '/uncrustify.cfg'
+
+  call winrestview(view)
+endfunction "  }}}2
+" }}}1
+
+inoremap <buffer> <M-.> ->
+inoremap <buffer> ;; <C-O>A;
