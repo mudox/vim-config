@@ -14,8 +14,8 @@ function g:this_meta.config()
   nnoremap ]g :GitGutterNextHunk<CR>
   nnoremap [g :GitGutterPrevHunk<CR>
 
-  nnoremap [s :GitGutterStageHunk<CR>
-  nnoremap ]s :GitGutterRevertHunk<CR>
+  nnoremap [h :GitGutterStageHunk<CR>
+  nnoremap ]h :GitGutterRevertHunk<CR>
 
   nnoremap cogh :GitGutterLineHighlightsToggle<CR>
 
