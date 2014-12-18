@@ -1,4 +1,4 @@
-" vimrc NOT .vimrc for [G]Vim on Linux / Window                                                       {{{1
+" vimrc NOT .vimrc for [G]Vim on Linux / Window                                        {{{1
 "
 " TODO:
 " 2. regrouping the vim options setttings in 'SETTINGS' section.
@@ -8,7 +8,7 @@ scriptencoding utf-8
 " get the full path of .vim or vimfiles.
 let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 
-" BUNDLE LOADING                                                                                      {{{1
+" BUNDLE LOADING                                                                       {{{1
 
 if has('vim_starting')
   exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/neobundle/chameleon'
@@ -17,30 +17,30 @@ endif
 call mudox#chameleon#Init()
 "}}}1
 
-" BUNDLE SETTINGS                                                                                     {{{1
+" BUNDLE SETTINGS                                                                      {{{1
 
-" [ft-sql]                                                                                             " {{{2
+" [ft-sql]                                                                              " {{{2
 let g:ftplugin_sql_omni_key_right = '<C-l>'
 let g:ftplugin_sql_omni_key_left  = '<C-h>'
 "}}}2
 
-" [matchparen]                                                                                         " {{{2
+" [matchparen]                                                                          " {{{2
 "let loaded_matchparen = 1
 " }}}2
 
-" [dot_vim]                                                                                              {{{2
+" [dot_vim]                                                                               {{{2
 nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
 nnoremap ,`  :<C-U>call mudox#max_restore_win#Main()<CR>
 " }}}2
 
 "}}}1
 
-" EVENTS                                                                                              {{{1
+" EVENTS                                                                               {{{1
 " force vim into recognising all *.md as markdown instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " force all files to be of unix format.
-function! Mudox_ff_unix() " {{{2
+function! Mudox_ff_unix()                                                               " {{{2
   if !&l:buftype == '' || ! &l:modifiable || &l:readonly ||
         \ &l:fileformat == 'unix'
     return
@@ -82,7 +82,7 @@ augroup Mudox_ff_fix
 augroup END
 "}}}1
 
-" SETTINGS                                                                                            {{{1
+" SETTINGS                                                                             {{{1
 
 " Important
 set nocompatible
@@ -192,14 +192,14 @@ set nobackup
 set noswapfile
 set nowritebackup
 
-" multiple windows                                                                                       {{{2
+" multiple windows                                                                        {{{2
 "set hidden " don't unload a buffer when no longer shown in a window.
 "}}}2
 
 set regexpengine=1
 "}}}1
 
-" MAPPINGS                                                                                            {{{1
+" MAPPINGS                                                                             {{{1
 
 " Toggle syntax feature.
 nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR>
@@ -210,21 +210,21 @@ let g:mapleader = ','
 " quick save.
 nnoremap <BS>w :w<Cr>
 
-" j, k to easily move around in wrapped long line. {{{2
+" j, k to easily move around in wrapped long line.                                        {{{2
 nnoremap k gk
 nnoremap j gj
 nmap gk <Nop>
 nmap gj <Nop>
 " }}}2
 
-" <C-H/J/K/L> to jump among windows                                                                      {{{2
+" <C-H/J/K/L> to jump among windows                                                       {{{2
 nnoremap <C-H>	   <C-W>h
 nnoremap <C-J>	   <C-W>j
 nnoremap <C-K>	   <C-W>k
 nnoremap <C-L>	   <C-W>l
 "}}}2
 
-" <A-H/L> to switch among tabs                                                                           {{{2
+" <A-H/L> to switch among tabs                                                            {{{2
 if has('win32') || has('win64')
   nnoremap <silent> ì gt
   nnoremap <silent> è gT
@@ -244,7 +244,7 @@ noremap L 
 noremap H 
 "}}}2
 
-" <C-X> system shortcuts {{{2
+" <C-X> system shortcuts                                                                  {{{2
 inoremap <M-j> <C-N>
 inoremap <M-J> <C-N>
 inoremap <M-k> <C-P>
@@ -271,7 +271,7 @@ nnoremap <C-Q> Q
 
 noremap zi zizz
 
-" insert mode {{{3
+" insert mode                                                                                {{{3
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
 " }}}3
@@ -321,7 +321,7 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 " }}}1
 
-" ABBREVIATES                                                                                         {{{1
+" ABBREVIATES                                                                          {{{1
 "}}}1
 
 call mudox#chameleon#InitBundles()
