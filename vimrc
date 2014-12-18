@@ -15,8 +15,6 @@ if has('vim_starting')
 endif
 
 call mudox#chameleon#Init()
-call mudox#chameleon#InitBundles()
-
 "}}}1
 
 " BUNDLE SETTINGS                                                                                     {{{1
@@ -85,7 +83,7 @@ augroup Mudox_ff_fix
   autocmd!
 
   for s:f in s:unix_ff_file_types
-    execute 'autocmd FileType ' . f . ' call Mudox_ff_unix()'
+    execute 'autocmd FileType ' . s:f . ' call Mudox_ff_unix()'
   endfor
 augroup END
 "}}}1
@@ -331,5 +329,7 @@ cnoremap <C-l> <Right>
 
 " ABBREVIATES                                                                                         {{{1
 "}}}1
+
+call mudox#chameleon#InitBundles()
 
 " vim: foldmethod=marker fileformat=unix foldmethod=marker
