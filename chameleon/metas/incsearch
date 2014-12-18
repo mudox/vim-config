@@ -10,7 +10,6 @@ let g:this_meta.neodict.name = g:this_meta.name
 function g:this_meta.config() dict
   map /  <Plug>(incsearch-forward)
   map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
 
   let g:incsearch#auto_nohlsearch = 1
   map n  <Plug>(incsearch-nohl-n)
@@ -20,10 +19,10 @@ function g:this_meta.config() dict
   map g* <Plug>(incsearch-nohl-g*)
   map g# <Plug>(incsearch-nohl-g#)
 
-  let g:incsearch#consistent_n_direction = 1
+  let g:incsearch#consistent_n_direction            = 1
   let g:incsearch#do_not_save_error_message_history = 1
-  let g:incsearch#magic = '\v' " very magic
-  let g:incsearch#smart_backward_word = 1
+  let g:incsearch#magic                             = '\v' " very magic
+  let g:incsearch#smart_backward_word               = 1
 
   let g:incsearch#separate_highlight = 1
   highlight IncSearchCursor ctermfg=0 ctermbg=9 guifg=#000000 guibg=#FF0000
