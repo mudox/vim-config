@@ -1,11 +1,9 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-let g:this_meta.name = expand('<sfile>:p:t')
 
 let g:this_meta.site = 'https://github.com/chriskempson/tomorrow-theme.git'
 
 
-let g:this_meta.neodict.name = g:this_meta.name
 let g:this_meta.neodict.rtp = 'vim'
 
 function g:this_meta.config()

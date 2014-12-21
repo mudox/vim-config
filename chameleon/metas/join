@@ -1,11 +1,9 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-let g:this_meta.name = expand('<sfile>:p:t')
 
 let g:this_meta.site = 'https://github.com/sk1418/Join.git'
 
 
-let g:this_meta.neodict.name = g:this_meta.name
 let g:this_meta.neodict.lazy = 1
 let g:this_meta.neodict.autoload = {
             \ 'commands' : ['J', 'Join']
