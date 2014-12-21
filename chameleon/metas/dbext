@@ -1,8 +1,6 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-
 let g:this_meta.site = 'https://github.com/vim-scripts/dbext.vim.git'
-
 
 let g:this_meta.neodict.lazy = 1
 let g:this_meta.neodict.autoload = { 'filetypes' : ['sql'] }

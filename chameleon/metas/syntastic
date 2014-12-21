@@ -1,8 +1,6 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-
 let g:this_meta.site = 'https://github.com/scrooloose/syntastic.git'
-
 
 function g:this_meta.config()
   nnoremap <BS>x :<C-U>w<Cr>:SyntasticCheck<Cr>

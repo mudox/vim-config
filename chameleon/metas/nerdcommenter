@@ -1,10 +1,6 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-
 let g:this_meta.site = 'https://github.com/scrooloose/nerdcommenter.git'
-
-
-
 
 function g:this_meta.config()
     let NERDBlockComIgnoreEmpty       = 1

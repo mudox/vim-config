@@ -1,6 +1,5 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-
 let g:this_meta.site = 'https://github.com/Shougo/vimproc.git'
 
 " extra settings for neobundle

@@ -1,9 +1,6 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-
 let g:this_meta.site = 'https://github.com/tpope/vim-surround.git'
-
-
 
 function g:this_meta.config()
   xmap <Space> <Plug>VSurround

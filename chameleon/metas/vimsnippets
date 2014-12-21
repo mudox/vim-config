@@ -7,5 +7,4 @@ let g:this_meta.site = 'https://github.com/honza/vim-snippets.git'
 
 function g:this_meta.config() dict
 
-
 endfunction

@@ -1,9 +1,6 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-
 let g:this_meta.site = 'https://github.com/mattn/emmet-vim.git'
-
-
 
 function g:this_meta.config()
     let g:user_emmet_next_key       = '<C-f>'

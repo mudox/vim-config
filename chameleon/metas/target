@@ -7,5 +7,4 @@ let g:this_meta.site = 'https://github.com/wellle/targets.vim.git'
 
 function g:this_meta.config() dict
 
-
 endfunction

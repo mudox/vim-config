@@ -1,10 +1,6 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-
 let g:this_meta.site = 'https://github.com/xolox/vim-easytags.git'
-
-
-
 
 function g:this_meta.config()
   set updatetime=4000

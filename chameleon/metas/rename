@@ -3,12 +3,10 @@
 " name and site
 let g:this_meta.site = 'https://github.com/henrik/rename.vim.git'
 
-
 " extra settings for neobundle
 
 let g:this_meta.neodict.lazy = 1
 let g:this_meta.neodict.autoload = { 'commands' : [ 'Rename' ] }
-
 
 function g:this_meta.config()
     " TODO: your plugin configuration goes here.

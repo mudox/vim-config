@@ -7,7 +7,6 @@ let g:this_meta.site = 'https://github.com/tomtom/tinykeymap_vim.git'
 
 function g:this_meta.config()
 
-
   " tabs mode {{{1
   let id_of_tabs_mode = 'tabs'
   let map_of_tabs_mode = ',mt'
