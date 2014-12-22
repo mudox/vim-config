@@ -1,11 +1,10 @@
 *.swp
 .VimballRecord
 *yankring*
-neobundle/
-view/
-spell/
-chameleon/cur_mode
+/neobundle
+/spell
+/chameleon/cur_mode
 *.pyc
-nvimrc
+/nvimrc
 
-swoopBuf
+/sessions
