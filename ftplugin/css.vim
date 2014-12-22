@@ -44,6 +44,7 @@ function! <SID>Beautify(align)                                                  
     "AlignPop
   "endif
 
+  normal! zn
   if !executable('autoprefixer')
     echoerr 'can not find executable *autoprefixer*, proceeds without vendor'
           \ 'prefixing.'
@@ -63,7 +64,7 @@ function! <SID>Beautify(align)                                                  
   let tmpfile = escape(tempname() . '.css', ' \')
   silent execute 'write! ' . tmpfile
   silent execute '!csscomb --config ' . $MDX_DOT_FILES . '/csscomb.json ' . tmpfile
-  norm! ggdG
+  %d " clear whole buffer.
   silent execute 'read ' . tmpfile
   1delete _
 
