@@ -11,4 +11,5 @@ function g:this_meta.config()
     autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
     nnoremap <BS>e :NERDTree<Space>
+    nnoremap coe <Esc><Esc>:NERDTreeToggle<Cr>
 endfunction
