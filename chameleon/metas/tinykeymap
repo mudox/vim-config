@@ -7,9 +7,9 @@ let g:this_meta.site = 'https://github.com/tomtom/tinykeymap_vim.git'
 
 function g:this_meta.config()
 
-  " tabs mode {{{1
+  " tabs mode                                                                          {{{1
   let id_of_tabs_mode = 'tabs'
-  let map_of_tabs_mode = ',mt'
+  let map_of_tabs_mode = ',t<Space>'
   call tinykeymap#EnterMap(id_of_tabs_mode, map_of_tabs_mode, {
         \ 'name'  : 'tabs mode',
         \ 'start' : 'set showtabline=1',
@@ -21,116 +21,117 @@ function g:this_meta.config()
   call tinykeymap#Map(id_of_tabs_mode, 'h', 'norm! gT')
   call tinykeymap#Map(id_of_tabs_mode, "L", 'exec "tabmove+<count1>"')
   call tinykeymap#Map(id_of_tabs_mode, "H", 'exec "tabmove-<count1>"')
-  call tinykeymap#Map(id_of_tabs_mode, "a", "tabfirst")
-  call tinykeymap#Map(id_of_tabs_mode, "e", "tablast")
-  call tinykeymap#Map(id_of_tabs_mode, "x", "tabclose")
+  call tinykeymap#Map(id_of_tabs_mode, "a", 'tabfirst')
+  call tinykeymap#Map(id_of_tabs_mode, "e", 'tablast')
+  call tinykeymap#Map(id_of_tabs_mode, "x", 'tabclose')
   call tinykeymap#Map(id_of_tabs_mode, "p",
-        \ "call tinykeymap#tabs#Previous()", {'desc': 'Previous tab'})
+        \ "call tinykeymap#tabs#Previous()", {'desc': 'previous tab'})
   " }}}1
 
-  " windows mode {{{1
+  " windows mode                                                                       {{{1
   let id_of_windows_mode = 'windows mode'
-  let map_of_windows_mode = ',mw'
+  let map_of_windows_mode = ',w<Space>'
   call tinykeymap#EnterMap(id_of_windows_mode, map_of_windows_mode, {
         \ 'name'    : 'windows mode',
         \ 'message' : 'winnr() . "    : " . bufname("%")',
         \ })
 
-  " adjust window width. {{{2
+  " adjust window width.                                                                  {{{2
   call tinykeymap#Map(id_of_windows_mode, 'f',
         \ 'vertical resize +<count1>',
-        \ {'desc': 'Increase window width'})
+        \ {'desc': 'increase window width'})
   call tinykeymap#Map(id_of_windows_mode, 's',
         \ 'vertical resize -<count1>',
-        \ {'desc': 'Decrease window width'})
+        \ {'desc': 'decrease window width'})
   call tinykeymap#Map(id_of_windows_mode, 'F',
         \ 'exec "vertical resize +" . (5 * <count1>)',
-        \ {'desc': 'Increase window width in big step'})
+        \ {'desc': 'increase window width in big step'})
   call tinykeymap#Map(id_of_windows_mode, 'S',
         \ 'exec "vertical resize -" . (5 * <count1>)',
-        \ {'desc': 'Decrease window width in big step'})
+        \ {'desc': 'decrease window width in big step'})
   call tinykeymap#Map(id_of_windows_mode, '|',
         \ 'vertical resize <count>',
-        \ {'desc': 'Set window width'})
+        \ {'desc': 'set window width'})
   " }}}2
 
-  " adjust window height. {{{2
+  " adjust window height.                                                                 {{{2
   call tinykeymap#Map(id_of_windows_mode, 'e',
         \ 'resize +<count1>',
-        \ {'desc': 'Increase window height'})
+        \ {'desc': 'increase window height'})
   call tinykeymap#Map(id_of_windows_mode, 'd',
         \ 'resize -<count1>',
-        \ {'desc': 'Decrease window height'})
+        \ {'desc': 'decrease window height'})
   call tinykeymap#Map(id_of_windows_mode, 'E',
         \ 'exec "resize +" . (5 * <count1>)',
-        \ {'desc': 'Increase window height in big step'})
+        \ {'desc': 'increase window height in big step'})
   call tinykeymap#Map(id_of_windows_mode, 'D',
         \ 'exec "resize -" . (5 * <count1>)',
-        \ {'desc': 'Decrease window height in big step'})
+        \ {'desc': 'decrease window height in big step'})
   call tinykeymap#Map(id_of_windows_mode, '_',
         \ 'resize <count>',
-        \ {'desc': 'Set window height'})
+        \ {'desc': 'set window height'})
 
   " 'q' to layout all windows equally.
   call tinykeymap#Map(id_of_windows_mode, 'q', 'wincmd =',
-        \ {'desc': 'Make equally high and wide'})
+        \ {'desc': 'make equally high and wide'})
   " }}}2
 
-  " jump between windows {{{2
+  " jump between windows                                                                  {{{2
   call tinykeymap#Map(id_of_windows_mode, 'h', '<count>wincmd h',
-        \ {'desc': 'Window above'})
+        \ {'desc': 'window above'})
   call tinykeymap#Map(id_of_windows_mode, 'j', '<count>wincmd j',
-        \ {'desc': 'Window below'})
+        \ {'desc': 'window below'})
   call tinykeymap#Map(id_of_windows_mode, 'k', '<count>wincmd k',
-        \ {'desc': 'Left window'})
+        \ {'desc': 'left window'})
   call tinykeymap#Map(id_of_windows_mode, 'l', '<count>wincmd l',
-        \ {'desc': 'Right window'})
+        \ {'desc': 'right window'})
   call tinykeymap#Map(id_of_windows_mode, 'w', '<count>wincmd w',
-        \ {'desc': 'Below-right window'})
+        \ {'desc': 'below-right window'})
   call tinykeymap#Map(id_of_windows_mode, 'W', '<count>wincmd W',
-        \ {'desc': 'Above-left window'})
+        \ {'desc': 'above-left window'})
   call tinykeymap#Map(id_of_windows_mode, 't', 'wincmd t',
-        \ {'desc': 'Top-left window'})
+        \ {'desc': 'top-left window'})
   call tinykeymap#Map(id_of_windows_mode, 'b', 'wincmd b',
-        \ {'desc': 'Bottom-right window'})
+        \ {'desc': 'bottom-right window'})
   call tinykeymap#Map(id_of_windows_mode, 'p', 'wincmd p',
-        \ {'desc': 'Previous window'})
+        \ {'desc': 'previous window'})
   call tinykeymap#Map(id_of_windows_mode, 'P', 'wincmd P',
-        \ {'desc': 'Preview window'})
+        \ {'desc': 'preview window'})
   " }}}2
 
-  " move windows around {{{2
+  " move windows around                                                                   {{{2
   call tinykeymap#Map(id_of_windows_mode, 'K', 'wincmd K',
-        \ {'desc': 'Move current window to the top'})
+        \ {'desc': 'move current window to the top'})
   call tinykeymap#Map(id_of_windows_mode, 'J', 'wincmd J',
-        \ {'desc': 'Move current window to the bottom'})
+        \ {'desc': 'move current window to the bottom'})
   call tinykeymap#Map(id_of_windows_mode, 'H', 'wincmd H',
-        \ {'desc': 'Move current window to the left'})
+        \ {'desc': 'move current window to the left'})
   call tinykeymap#Map(id_of_windows_mode, 'L', 'wincmd L',
-        \ {'desc': 'Move current window to the right'})
+        \ {'desc': 'move current window to the right'})
   call tinykeymap#Map(id_of_windows_mode, 'r', 'wincmd r',
-        \ {'desc': 'Rotate window downwards/rightwards'})
+        \ {'desc': 'rotate window downwards/rightwards'})
   call tinykeymap#Map(id_of_windows_mode, 'R', 'wincmd R',
-        \ {'desc': 'Rotate window upwards/leftwards'})
+        \ {'desc': 'rotate window upwards/leftwards'})
   call tinykeymap#Map(id_of_windows_mode, 'x', '<count>wincmd x',
-        \ {'desc': 'Exchange windows'})
+        \ {'desc': 'exchange windows'})
   call tinykeymap#Map(id_of_windows_mode, 'T', 'wincmd T',
-        \ {'desc': 'Move current "window to a new tab page'})
+        \ {'desc': 'move current "window to a new tab page'})
   " }}}2
 
-  " create windows {{{2
+  " create windows                                                                        {{{2
   call tinykeymap#Map(id_of_windows_mode, 'c', 'wincmd c',
-        \ {'desc': 'Close window'})
+        \ {'desc': 'close window'})
   call tinykeymap#Map(id_of_windows_mode, 'o', 'wincmd o',
-        \ {'desc': 'Make the only window', 'exit': 1})
+        \ {'desc': 'make the only window', 'exit': 1})
   " }}}2
 
   " }}}1
 
-  " loc mode {{{1
+  " loc mode                                                                           {{{1
   let id_of_loc_mode     = 'loc mode'
-  let map_of_loc_mode    = ',ml'
+  let map_of_loc_mode    = ',l<Space>'
   let option_of_loc_mode = {
+        \ 'name'    : 'location list mode',
         \ 'timeout' : 0,
         \ 'start'   : 'lwindow | setlocal number',
         \ 'stop'    : 'lclose | setlocal nonumber',
@@ -161,6 +162,126 @@ function g:this_meta.config()
   call tinykeymap#Map(id_of_loc_mode, '<Space>'   , 'llist')
   call tinykeymap#Map(id_of_loc_mode, 'w'         , 'lwindow <count>')
   call tinykeymap#Map(id_of_loc_mode, 'W'         , 'lclose')
+
+  " }}}1
+
+  " vim win mode                                                                       {{{1
+  let id_of_xwin_mode     = 'xwin mode'
+  let map_of_xwin_mode    = ',x<Space>'
+  let option_of_xwin_mode = {
+        \ 'name'    : 'MR mode',
+        \ 'timeout' : 0,
+        \ 'message' : 'g:MdxVimWinMsg()',
+        \ }
+
+  call tinykeymap#EnterMap(id_of_xwin_mode, map_of_xwin_mode, option_of_xwin_mode)
+
+  let g:MdxVimWinStep = 15
+
+  function! g:MdxVimWinMsg()                                                            " {{{2
+    return printf('[%d, %d, %d, %d] step:%3d',
+          \   getwinposx(),
+          \   getwinposy(),
+          \   &lines,
+          \   &columns,
+          \   g:MdxVimWinStep
+          \ )
+  endfunction "  }}}2
+
+  function! g:MdxMoveWin(dx, dy)                                                        " {{{2
+    let x = getwinposx()
+    let y = getwinposy()
+    let x = max([x + a:dx, 0])
+    let y = max([y + a:dy, 0])
+    execute 'winpos ' . x . ' ' . y
+  endfunction "  }}}2
+
+  function! g:MdxResizeWin(dw, dh)                                                      " {{{2
+    let w = &lines
+    let h = &columns
+    let w = max([w + a:dw, 1])
+    let h = max([h + a:dh, 1])
+    let [&lines, &columns] = [w, h]
+  endfunction "  }}}2
+
+  function! g:AdjustStep(new_value, delta)                                              " {{{2
+    if a:new_value != 0
+      let g:MdxVimWinStep = a:new_value
+    else
+      let g:MdxVimWinStep += a:delta
+    endif
+    let g:MdxVimWinStep = max([g:MdxVimWinStep, 1])
+    let g:MdxVimWinStep = min([g:MdxVimWinStep, 100])
+  endfunction "  }}}2
+
+  " move in small steps.                                                                  {{{2
+  call tinykeymap#Map(id_of_xwin_mode, 'l',
+        \ 'call MdxMoveWin(g:MdxVimWinStep, 0)',
+        \ { 'desc' : 'move vim window left' })
+  call tinykeymap#Map(id_of_xwin_mode, 'h',
+        \ 'call MdxMoveWin(-g:MdxVimWinStep, 0)',
+        \ { 'desc' : 'move vim window right' })
+  call tinykeymap#Map(id_of_xwin_mode, 'k',
+        \ 'call MdxMoveWin(0, -g:MdxVimWinStep)',
+        \ { 'desc' : 'move vim window up' })
+  call tinykeymap#Map(id_of_xwin_mode, 'j',
+        \ 'call MdxMoveWin(0, g:MdxVimWinStep)',
+        \ { 'desc' : 'move vim window down' })
+  " }}}2
+
+  " move in bigger steps.                                                                 {{{2
+  call tinykeymap#Map(id_of_xwin_mode, 'L',
+        \ 'call MdxMoveWin(3 * g:MdxVimWinStep, 0)',
+        \ { 'desc' : 'move vim window left in bigger steps' })
+  call tinykeymap#Map(id_of_xwin_mode, 'H',
+        \ 'call MdxMoveWin(-3 * g:MdxVimWinStep, 0)',
+        \ { 'desc' : 'move vim window right in bigger steps' })
+  call tinykeymap#Map(id_of_xwin_mode, 'K',
+        \ 'call MdxMoveWin(0, -3 * g:MdxVimWinStep)',
+        \ { 'desc' : 'move vim window up in bigger steps' })
+  call tinykeymap#Map(id_of_xwin_mode, 'J',
+        \ 'call MdxMoveWin(0, 3 * g:MdxVimWinStep)',
+        \ { 'desc' : 'move vim window down in bigger steps' })
+  " }}}2
+
+  " resize in small steps.                                                                  {{{2
+  call tinykeymap#Map(id_of_xwin_mode, 'e',
+        \ 'call MdxResizeWin(g:MdxVimWinStep, 0)',
+        \ { 'desc' : 'increase vim window height' })
+  call tinykeymap#Map(id_of_xwin_mode, 'd',
+        \ 'call MdxResizeWin(-g:MdxVimWinStep, 0)',
+        \ { 'desc' : 'decrease vim window height' })
+  call tinykeymap#Map(id_of_xwin_mode, 'f',
+        \ 'call MdxResizeWin(0, g:MdxVimWinStep)',
+        \ { 'desc' : 'increase vim window width' })
+  call tinykeymap#Map(id_of_xwin_mode, 's',
+        \ 'call MdxResizeWin(0, -g:MdxVimWinStep)',
+        \ { 'desc' : 'decrease vim window width' })
+  " }}}2
+
+  " resize in bigger steps.                                                                  {{{2
+  call tinykeymap#Map(id_of_xwin_mode, 'e',
+        \ 'call MdxResizeWin(3 * -g:MdxVimWinStep, 0)',
+        \ { 'desc' : 'increase vim window height in bigger steps' })
+  call tinykeymap#Map(id_of_xwin_mode, 'd',
+        \ 'call MdxResizeWin(3 * g:MdxVimWinStep, 0)',
+        \ { 'desc' : 'decrease vim window height in bigger steps' })
+  call tinykeymap#Map(id_of_xwin_mode, 'f',
+        \ 'call MdxResizeWin(0, 3 * g:MdxVimWinStep)',
+        \ { 'desc' : 'increase vim window width in bigger steps' })
+  call tinykeymap#Map(id_of_xwin_mode, 's',
+        \ 'call MdxResizeWin(0, 3 * -g:MdxVimWinStep)',
+        \ { 'desc' : 'decrease vim window width in bigger steps' })
+  " }}}2
+
+  " adjust step value.                                                                    {{{2
+  call tinykeymap#Map(id_of_xwin_mode, 'i',
+        \ 'call AdjustStep(<count0>, -5)',
+        \ { 'desc' : 'set new step to <count>, or decrease by 5' })
+  call tinykeymap#Map(id_of_xwin_mode, 'I',
+        \ 'call AdjustStep(<count0>, 5)',
+        \ { 'desc' : 'set new step to <count>, or increase by 5' })
+  " }}}2
 
   " }}}1
 
