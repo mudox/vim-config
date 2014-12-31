@@ -226,8 +226,8 @@ nnoremap <C-L>	   <C-W>l
 
 " <A-H/L> to switch among tabs                                                            {{{2
 if has('win32') || has('win64')
-  nnoremap <silent> ì gt
-  nnoremap <silent> è gT
+  nnoremap <silent> <A-,> gt
+  nnoremap <silent> <A-.> gT
 elseif has('mac') || has('macunix')
   nnoremap <silent> ˙ gt
   nnoremap <silent> ¬ gT
