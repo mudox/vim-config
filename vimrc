@@ -71,6 +71,7 @@ let s:unix_ff_file_types = [
       \ 'c', 'cpp', 'python', 'ruby',
       \ 'sh', 'bash', 'zsh',
       \ 'php', 'perl', 'html', 'css',
+      \ 'vim',
       \ ]
 
 augroup Mudox_ff_fix
