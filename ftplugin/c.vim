@@ -37,9 +37,9 @@ function! <SID>Beautify()                                                       
 
   let view = winsaveview()
 
-  " need a 'css' extension to make uncrustify work
-  silent execute '%!uncrustify -q -c "' . shellescape($MDX_DOT_FILES .
-        \ '\uncrustify.cfg"', 1)
+  " need a extension to make uncrustify work
+  silent execute '%!uncrustify -q -c ' . shellescape($MDX_DOT_FILES .
+        \ '/uncrustify.cfg', 1)
 
   call winrestview(view)
 endfunction "  }}}2
