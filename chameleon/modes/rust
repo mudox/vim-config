@@ -1,0 +1,31 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" Set Tile & Bundle Manager {{{1
+
+call SetTitle('rust mode')
+
+call SetBundleManager('NeoBundle')
+
+" }}}1
+
+" Merge Configs {{{1
+
+" TODO: put every sub-mode names you need into the list.
+let s:sub_configs = [
+      \ 'x_common',
+      \ 'x_git',
+      \ ]
+
+call MergeConfigs(s:sub_configs)
+
+" }}}1
+
+" Bundles in Current Config {{{1
+
+" TODO: put every meta nemas you need into the list.
+let s:bundle_list = [
+      \ 'rt_rust',
+      \ ]
+
+call AddBundles(s:bundle_list)
+" }}}1
