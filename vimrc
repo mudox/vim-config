@@ -226,15 +226,14 @@ nnoremap <C-L>	   <C-W>l
 "}}}2
 
 " <A-H/L> to switch among tabs                                                            {{{2
-if has('win32') || has('win64') || has('unix')
   nnoremap <silent> <M-l> gt
   nnoremap <silent> <M-h> gT
   nnoremap <silent> <M-L> gt
   nnoremap <silent> <M-H> gT
-elseif has('mac') || has('macunix')
+  nnoremap <silent> Ó gt
+  nnoremap <silent> Ò gT
   nnoremap <silent> ˙ gt
   nnoremap <silent> ¬ gT
-endif
 "}}}2
 
 " In case you leave CapLock key pressed inadvertently, which will mess you up.
