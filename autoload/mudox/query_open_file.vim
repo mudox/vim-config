@@ -7,7 +7,6 @@ let s:loaded = 1
 " it will handle <Esc> & <C-C> key pressing properly, by throwing an exception:
 " /^mudox#query_open_file: Canceled$/
 function! mudox#query_open_file#Main()
-  let prompt_long = "TODO: ..."
   let prompt_short = 'Where to open? [EhHlLjJkKt] and ? for help: '
 
   let openways = {}
