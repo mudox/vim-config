@@ -1,8 +1,4 @@
-" vimrc NOT .vimrc for [G]Vim on Linux / Window                                        {{{1
-"
-" TODO:
-" 2. regrouping the vim options setttings in 'SETTINGS' section.
-"}}}1
+
 scriptencoding utf-8
 
 " get the full path of .vim or vimfiles.
@@ -130,14 +126,13 @@ set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 
+set noshowcmd
 if index(g:mdx_chameleon.meta_set, 'airline') == -1
   set laststatus=1 " never show statusline.
   set cmdheight=1
   set showmode
-  set showcmd
 else
   set noshowmode
-  set noshowcmd
   set laststatus=2
   set cmdheight=2
 endif
@@ -186,7 +181,7 @@ if has('unix')
 endif
 
 " displaying text
-set lazyredraw
+set nolazyredraw
 
 " backup
 set nobackup
@@ -270,11 +265,12 @@ nnoremap <C-Q> Q
 
 noremap zi zizz
 
-" insert mode                                                                                {{{3
+" insert mode                                                                                {{{2
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
-" }}}3
+" }}}2
 
+" change cwd to current file path.
 nnoremap <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
 
 " like UltisniptEdit command, edit main ftplugin config file
@@ -318,6 +314,10 @@ cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
+
+" quickly fix previous spelling error with the first candidate.
+nnoremap <s [sz=1<Cr><Cr>''
+
 " }}}1
 
 " ABBREVIATES                                                                          {{{1
