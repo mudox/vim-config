@@ -19,6 +19,7 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
+      \ 'asterisk'      ,
       \ 'ag'            ,
       \ 'argwrap'       ,
       \ 'confsyntax'    ,
@@ -53,6 +54,8 @@ let s:bundle_list = [
       \ 'yank_ring'     ,
       \ 'zoomwintab'    ,
       \ ]
+
+
 
 if !has('win32') || has('win64')
   call add(s:bundle_list, 'autoformat')
