@@ -14,11 +14,9 @@ function! s:GoRun( args )
     if has('win32') || has('win64')
             let l:go_path = 'go'
             let l:exeString = l:go_path . ' run ' . escape(expand('%'), ' \') . ' ' . a:args
-    elseif has('unix')
+    elseif has('unix') " also works on Mac OSX
             let l:go_path = 'go'
             let l:exeString = l:go_path . ' run ' . escape(expand('%'), ' \') . ' ' . a:args
-    elseif has('mac') || has('macunix')
-            echoerr 'go run on Mac OS not implemented!'
     else
         echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
     endif
