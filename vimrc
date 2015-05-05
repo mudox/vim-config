@@ -216,7 +216,6 @@ nmap gj <Nop>
 " <C-H/J/K/L> to jump among windows                                                       {{{2
 nnoremap <C-H>	   <C-W>h
 nnoremap <C-J>	   <C-W>j
-nnoremap <C-K>	   <C-W>k
 nnoremap <C-L>	   <C-W>l
 "}}}2
 
@@ -266,6 +265,8 @@ nnoremap <C-Q> Q
 noremap zi zizz
 
 " insert mode                                                                                {{{2
+inoremap <C-K> <Up>
+inoremap <C-J> <Down>
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
 " }}}2
@@ -322,6 +323,7 @@ nnoremap <s [sz=1<Cr><Cr>''
 
 " ABBREVIATES                                                                          {{{1
 "}}}1
+
 
 call mudox#chameleon#InitBundles()
 
