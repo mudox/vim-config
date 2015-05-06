@@ -265,7 +265,6 @@ nnoremap <C-Q> Q
 noremap zi zizz
 
 " insert mode                                                                                {{{2
-inoremap <C-K> <Up>
 inoremap <C-J> <Down>
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
