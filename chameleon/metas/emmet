@@ -3,8 +3,8 @@
 let g:this_meta.site = 'https://github.com/mattn/emmet-vim.git'
 
 function g:this_meta.config()
-    let g:user_emmet_next_key       = '<C-f>'
-    let g:user_emmet_prev_key       = '<C-s>'
+    let g:user_emmet_next_key       = '<C-Y>l'
+    let g:user_emmet_prev_key       = '<C-Y>h'
 
   let g:user_emmet_settings = {
         \ 'indentation' : ' '
