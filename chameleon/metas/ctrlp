@@ -16,8 +16,9 @@ function g:this_meta.config()
   " cache
   let g:ctrlp_custom_ignore = {
         \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-        \ 'file': '\v\.(exe|so|dll|DS_Store$',
+        \ 'file': '\v\.(exe|so|dll|DS_Store|pyc)$',
         \ }
+
   " let g:ctrlp_match_window      = 'bottom , order:btt , min:5 , max:15 , results:15'
   " let g:ctrlp_root_markers      = ['']
   let g:ctrlp_by_filename         = 1
@@ -35,8 +36,12 @@ function g:this_meta.config()
   " determine fallback command outside of a repo.
   if executable("ag")
     set grepprg=ag\ --nogroup\ --nocolor
-    let fallback_command = 'ag %s -i --nocolor --nogroup --ignore .git '
-          \ . ' --ignore .DS_Store --ignore node_modules --hidden -g ""'
+    let fallback_command = 'ag %s -i --nocolor --nogroup '
+          \ . ' --ignore .git '
+          \ . ' --ignore .DS_Store'
+          \ . ' --ignore node_modules'
+          \ . ' --ignore .pyc'
+          \ . ' --hidden -g ""'
   else
     if has('win32') || has('win64')
       let fallback_command= 'dir %s /-n /b /s /a-d'
