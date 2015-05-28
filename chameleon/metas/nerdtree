@@ -4,8 +4,8 @@ let g:this_meta.site = 'https://github.com/scrooloose/nerdtree.git'
 
 function g:this_meta.config()
     let NERDTreeMinimalUI = 1 " No ? tips line, no bookmark headline.
+    let NERDTreeIgnore=['\.pyc$', '\~$']
     " let NERDTreeSortOrder = ['\.vim$', '\.c$', '\.h$', '*', 'foobar']
-    " let NERDTreeWinPos = "left" or "right"
 
     " close vim if the only window left open is a NERDTree
     autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
