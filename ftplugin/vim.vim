@@ -15,8 +15,9 @@ setlocal colorcolumn=80
 setlocal foldmethod=syntax
 
 " source current line.
-nnoremap <buffer> <leader><leader>cl <Esc>YY:@"<Cr>
-" source %
+nnoremap <buffer> <BS>R <Esc>YY:@"<Cr>
+
+" source (and will run) %
 nnoremap <buffer> <BS>r :<C-U>w<Cr>:so %<Cr>
 
 " syntax hightlighting
