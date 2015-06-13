@@ -19,16 +19,18 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-      \ 'asterisk'      ,
-      \ 'airline'       ,
       \ 'ag'            ,
+      \ 'airline'       ,
       \ 'argwrap'       ,
+      \ 'asterisk'      ,
+      \ 'fzf'           ,
       \ 'confsyntax'    ,
       \ 'ctrlspace'     ,
       \ 'delimitmate'   ,
       \ 'easyalign'     ,
       \ 'expandregion'  ,
       \ 'foldtext'      ,
+      \ 'goyo'          ,
       \ 'indentline'    ,
       \ 'join'          ,
       \ 'mattn_calendar',
