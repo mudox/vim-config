@@ -3,7 +3,7 @@
 let g:this_meta.site = 'https://github.com/airblade/vim-gitgutter.git'
 
 function g:this_meta.config()
-  nnoremap \gg :<C-U>GitGutterToggle<CR>
+  nnoremap cogg :<C-U>GitGutterToggle<CR>
 
   nnoremap ]g :GitGutterNextHunk<CR>
   nnoremap [g :GitGutterPrevHunk<CR>
@@ -17,4 +17,9 @@ function g:this_meta.config()
   let g:gitgutter_realtime = 0
 
   hi! link SignColumn Normal
+
+  let g:gitgutter_sign_added = 'A'
+  let g:gitgutter_sign_modified = 'M'
+  let g:gitgutter_sign_removed = 'R'
+  let g:gitgutter_sign_modified_removed = 'MR'
 endfunction
