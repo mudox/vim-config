@@ -215,8 +215,9 @@ nmap gj <Nop>
 
 " <C-H/J/K/L> to jump among windows                                                       {{{2
 nnoremap <C-H>	   <C-W>h
-nnoremap <C-J>	   <C-W>j
 nnoremap <C-L>	   <C-W>l
+nnoremap <C-K>	   <C-W>k
+nnoremap <C-J>	   <C-W>j
 "}}}2
 
 " <A-H/L> to switch among tabs                                                            {{{2
