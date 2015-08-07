@@ -1,6 +1,6 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-let g:this_meta.site = 'https://github.com/kien/ctrlp.vim.git'
+let g:this_meta.site = 'https://github.com/ctrlpvim/ctrlp.vim.git'
 
 function g:this_meta.config()
   let g:ctrlp_extensions = ['tag', 'mixed', 'funky',  'rtscript']
