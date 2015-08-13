@@ -7,7 +7,7 @@ let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
 " BUNDLE LOADING                                                                       {{{1
 
 if has('vim_starting')
-  exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/neobundle/chameleon'
+  exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/plugged/chameleon'
 endif
 
 call mudox#chameleon#Init()
