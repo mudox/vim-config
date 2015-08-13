@@ -56,6 +56,7 @@ let s:bundle_list = [
       \ 'yank_ring'     ,
       \ 'zoomwintab'    ,
       \ 'nerdtree_git'  ,
+      \ 'devicons'      ,
       \ ]
 
 
