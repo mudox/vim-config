@@ -7,13 +7,45 @@ let g:this_meta.site = 'https://github.com/scrooloose/nerdtree.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-    let NERDTreeMinimalUI = 1 " No ? tips line, no bookmark headline.
-    let NERDTreeIgnore=['\.pyc$', '\~$']
-    " let NERDTreeSortOrder = ['\.vim$', '\.c$', '\.h$', '*', 'foobar']
 
-    " close vim if the only window left open is a NERDTree
-    autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+  let NERDTreeMinimalUI = 1 " Hide ? tips line & bookmark headline.
+  let NERDTreeIgnore=['\.pyc$', '\~$']
+  " let NERDTreeSortOrder = ['\.vim$', '\.c$', '\.h$', '*', 'foobar']
 
-    nnoremap <BS>e :NERDTree<Space>
-    nnoremap coe <Esc><Esc>:NERDTreeToggle<Cr>
+  " close vim if the only window left open is a NERDTree
+  autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+  nnoremap <BS>e :NERDTree<Space>
+  nnoremap coe <Esc><Esc>:NERDTreeToggle<Cr>
+
+  function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg) " {{{2
+    exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg=' .
+          \ a:bg .' ctermfg=' . a:fg .' guibg=' . a:guibg .' guifg='. a:guifg
+    exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*\.' .
+          \ a:extension .'\>#'
+  endfunction "  }}}2
+
+  " NERDTress File highlighting
+  call NERDTreeHighlightFile('vim'        , 'green'  , 'none', 'green'  , 'none')
+  call NERDTreeHighlightFile('vimrc'      , 'green'  , 'none', 'green'  , 'none')
+  call NERDTreeHighlightFile('nvimrc'     , 'green'  , 'none', 'green'  , 'none')
+  call NERDTreeHighlightFile('ini'        , 'yellow' , 'none', 'yellow' , 'none')
+  call NERDTreeHighlightFile('md'         , 'blue'   , 'none', '#3366FF', 'none')
+  call NERDTreeHighlightFile('m'          , 'yellow' , 'none', 'yellow' , 'none')
+  call NERDTreeHighlightFile('h'          , 'cyan'   , 'none', 'cyan'   , 'none')
+  call NERDTreeHighlightFile('plist'      , 'white'  , 'none', 'white'  , 'none')
+  call NERDTreeHighlightFile('conf'       , 'yellow' , 'none', 'yellow' , 'none')
+  call NERDTreeHighlightFile('json'       , 'yellow' , 'none', 'yellow' , 'none')
+  call NERDTreeHighlightFile('html'       , 'yellow' , 'none', 'yellow' , 'none')
+  call NERDTreeHighlightFile('py'         , 'cyan'   , 'none', 'cyan'   , 'none')
+  call NERDTreeHighlightFile('css'        , 'cyan'   , 'none', 'cyan'   , 'none')
+  call NERDTreeHighlightFile('coffee'     , 'Red'    , 'none', 'red'    , 'none')
+  call NERDTreeHighlightFile('js'         , 'Red'    , 'none', '#ffa500', 'none')
+  call NERDTreeHighlightFile('swift'      , 'Magenta', 'none', '#ff00ff', 'none')
+  call NERDTreeHighlightFile('ds_store'   , 'Gray'   , 'none', '#686868', 'none')
+  call NERDTreeHighlightFile('gitconfig'  , 'Gray'   , 'none', '#686868', 'none')
+  call NERDTreeHighlightFile('gitignore'  , 'Gray'   , 'none', '#686868', 'none')
+  call NERDTreeHighlightFile('bashrc'     , 'Gray'   , 'none', '#686868', 'none')
+  call NERDTreeHighlightFile('bashprofile', 'Gray'   , 'none', '#686868', 'none')
+
 endfunction
