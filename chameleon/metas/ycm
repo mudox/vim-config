@@ -4,7 +4,16 @@ let g:this_meta.site = 'https://github.com/Valloric/YouCompleteMe.git'
 
 " NOTE: the dict bellow will be passed to command 'PlugInstall'
 " as the 2nd argument to install this plugin.
-let g:this_meta.vimplug_cmd_dict = {}
+let g:this_meta.vimplug_cmd_dict = {
+      \ 'on': '',
+      \ }
+
+augroup lazily_load_ultisnips
+autocmd InsertEnter * call plug#load('YouCompleteMe')
+      \| echohl WarningMsg | echo 'loading [YouCompleteMe]...' | echohl None
+      \| call youcompleteme#Enable()
+      \| autocmd! lazily_load_ultisnips
+augroup END
 
 function g:this_meta.config()
   " white or black list
