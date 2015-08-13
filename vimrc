@@ -188,9 +188,7 @@ set nobackup
 set noswapfile
 set nowritebackup
 
-" multiple windows                                                                        {{{2
-"set hidden " don't unload a buffer when no longer shown in a window.
-"}}}2
+set hidden "ctrlspace need this setting
 
 set regexpengine=1
 "}}}1
@@ -323,7 +321,6 @@ nnoremap <s [sz=1<Cr><Cr>''
 
 " ABBREVIATES                                                                          {{{1
 "}}}1
-
 
 call mudox#chameleon#InitBundles()
 
