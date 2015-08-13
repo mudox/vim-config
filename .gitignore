@@ -4,6 +4,7 @@
 /neobundle
 /spell
 /chameleon/cur_mode
+/plugged
 *.pyc
 /nvimrc
 
