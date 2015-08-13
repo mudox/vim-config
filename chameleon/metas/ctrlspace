@@ -7,8 +7,10 @@ let g:this_meta.site = 'https://github.com/szw/vim-ctrlspace.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-  let g:ctrlspace_use_tabline = 1
-  let g:ctrlspace_default_mapping_key = '<Space>w'
-  let g:ctrlspace_unicode_font = 0
+  let g:CtrlSpaceDefaultMappingKey = "<Space>w"
+    let g:CtrlSpaceUseTabline = 1
 
+  if executable("ag")
+    let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+  endif
 endfunction
