@@ -1,13 +1,8 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-" Set Tile & Bundle Manager {{{1
-
-call SetBundleManager('NeoBundle')
-
-" }}}1
-
-
 let s:metas = g:mdx_chameleon.metasAvail()
+
+" Bundles in Current Config {{{1
 
 if !has('unix')
     call filter(s:metas, 'v:val != "ycm"')
@@ -16,3 +11,5 @@ endif
 
 
 call AddBundles(s:metas)
+
+" }}}1

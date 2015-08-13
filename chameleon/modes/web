@@ -1,13 +1,5 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-" Set Tile & Bundle Manager {{{1
-
-call SetTitle('web dev') " TODO: give you mode a title
-
-call SetBundleManager('NeoBundle') " TODO: specify you preferred bndle manager.
-
-" }}}1
-
 " Merge Configs {{{1
 
 " TODO: put every sub-mode names you need into the list.

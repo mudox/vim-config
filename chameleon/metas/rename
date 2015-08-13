@@ -1,12 +1,10 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-" name and site
 let g:this_meta.site = 'https://github.com/henrik/rename.vim.git'
 
-" extra settings for neobundle
-
-let g:this_meta.neodict.lazy = 1
-let g:this_meta.neodict.autoload = { 'commands' : [ 'Rename' ] }
+" NOTE: the dict bellow will be passed to command 'PlugInstall'
+" as the 2nd argument to install this plugin.
+let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
     " TODO: your plugin configuration goes here.

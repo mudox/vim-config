@@ -1,11 +1,12 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
-" name and site
 let g:this_meta.site = 'git@github.com:Mudox/vim-chameleon.git'
 
-" extra settings for neobundle
+" NOTE: the dict bellow will be passed to command 'PlugInstall'
+" as the 2nd argument to install this plugin.
+let g:this_meta.vimplug_cmd_dict = {}
 
-function g:this_meta.config() dict
+function g:this_meta.config()
   nmap <silent> <BS>b <Plug>(Chameleon_Edit_Meta_OmniMenu)
   nmap <silent> <BS>c <Plug>(Chameleon_Edit_Mode_OmniMenu)
   nmap <silent> <Space>x <Plug>(OmniMenu_ChamNewInstance)

@@ -2,6 +2,10 @@
 
 let g:this_meta.site = 'https://github.com/scrooloose/nerdtree.git'
 
+" NOTE: the dict bellow will be passed to command 'PlugInstall'
+" as the 2nd argument to install this plugin.
+let g:this_meta.vimplug_cmd_dict = {}
+
 function g:this_meta.config()
     let NERDTreeMinimalUI = 1 " No ? tips line, no bookmark headline.
     let NERDTreeIgnore=['\.pyc$', '\~$']

@@ -2,6 +2,10 @@
 
 let g:this_meta.site = 'https://github.com/terryma/vim-expand-region.git'
 
+" NOTE: the dict bellow will be passed to command 'PlugInstall'
+" as the 2nd argument to install this plugin.
+let g:this_meta.vimplug_cmd_dict = {}
+
 function g:this_meta.config()
   vmap v <Plug>(expand_region_expand)
   vmap V <Plug>(expand_region_shrink)

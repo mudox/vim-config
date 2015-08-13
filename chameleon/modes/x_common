@@ -49,13 +49,13 @@ let s:bundle_list = [
       \ 'switch'        ,
       \ 'tagbar'        ,
       \ 'textmanip'     ,
-      \ 'tinykeymap'    ,
       \ 'tlib'          ,
       \ 'trailertrash'  ,
       \ 'unimpaired'    ,
       \ 'vimproc'       ,
       \ 'yank_ring'     ,
       \ 'zoomwintab'    ,
+      \ 'nerdtree_git'  ,
       \ ]
 
 

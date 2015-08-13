@@ -1,5 +1,7 @@
 " vim: filetype=vim foldmethod=marker fileformat=unix
 
+" Bundles in Current Config {{{1
+
 let s:bundle_list = [
       \ 'fugitive',
       \ 'gitgutter',
@@ -7,3 +9,5 @@ let s:bundle_list = [
       \ ]
 
 call AddBundles(s:bundle_list)
+
+" }}}1
