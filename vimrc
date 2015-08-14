@@ -197,7 +197,7 @@ set regexpengine=1
 " MAPPINGS                                                                             {{{1
 
 " Toggle syntax feature.
-nnoremap \x :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR>
+nnoremap coX :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR>
 
 " Default leader key for <leader> mappings
 let g:mapleader = ','
