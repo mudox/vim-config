@@ -8,11 +8,11 @@ let g:this_meta.vimplug_cmd_dict = {
       \ 'on': '',
       \ }
 
-augroup lazily_load_ultisnips
+augroup lazily_load_ycm
 autocmd InsertEnter * call plug#load('YouCompleteMe')
       \| echohl WarningMsg | echo 'loading [YouCompleteMe]...' | echohl None
       \| call youcompleteme#Enable()
-      \| autocmd! lazily_load_ultisnips
+      \| autocmd! lazily_load_ycm
 augroup END
 
 function g:this_meta.config()
