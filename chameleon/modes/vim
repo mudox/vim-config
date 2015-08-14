@@ -3,6 +3,8 @@
 
 " Merge Configs {{{1
 
+let g:mode_description = "For editting vim scripts"
+
 let s:sub_configs = [
       \ 'x_common'   ,
       \ 'x_git'      ,
@@ -18,6 +20,7 @@ let s:bundle_list = [
       \ 'syntastic',
       \ 'vimparser',
       \ 'vimlint'  ,
+      \ 'deoplete' ,
       \ ]
 
 call AddBundles(s:bundle_list)
