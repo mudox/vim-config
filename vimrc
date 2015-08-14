@@ -26,8 +26,7 @@ let g:ftplugin_sql_omni_key_left  = '<C-h>'
 " }}}2
 
 " [dot_vim]                                                                               {{{2
-nnoremap \sm  :<C-U>call mudox#scripts_man#LoadingStatus()<CR>
-nnoremap ,`  :<C-U>call mudox#max_restore_win#Main()<CR>
+nnoremap ,`  :<C-U>call mudox#max_restore_win#Main()<Cr>
 " }}}2
 
 "}}}1
@@ -197,7 +196,7 @@ set regexpengine=1
 " MAPPINGS                                                                             {{{1
 
 " Toggle syntax feature.
-nnoremap coX :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<CR>
+nnoremap coX :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<Cr>
 
 " Default leader key for <leader> mappings
 let g:mapleader = ','
@@ -220,19 +219,19 @@ nnoremap <C-J>	   <C-W>j
 "}}}2
 
 " <A-H/L> to switch among tabs                                                            {{{2
-  nnoremap <silent> <M-l> gt
-  nnoremap <silent> <M-h> gT
-  nnoremap <silent> <M-L> gt
-  nnoremap <silent> <M-H> gT
-  nnoremap <silent> Ó gt
-  nnoremap <silent> Ò gT
-  nnoremap <silent> ˙ gt
-  nnoremap <silent> ¬ gT
+nnoremap <silent> <M-l> gt
+nnoremap <silent> <M-h> gT
+nnoremap <silent> <M-L> gt
+nnoremap <silent> <M-H> gT
+nnoremap <silent> Ó gt
+nnoremap <silent> Ò gT
+nnoremap <silent> ˙ gt
+nnoremap <silent> ¬ gT
 "}}}2
 
 " In case you leave CapLock key pressed inadvertently, which will mess you up.
-noremap <silent> J @='8gj'<CR>
-noremap <silent> K @='8gk'<CR>
+noremap <silent> J @='8gj'<Cr>
+noremap <silent> K @='8gk'<Cr>
 noremap L 
 noremap H 
 "}}}2
@@ -252,7 +251,28 @@ inoremap <M-O><M-K> <C-X><C-O>
 " }}}2
 
 " Toggle tab line
-nnoremap cot :exe "set showtabline=" . (&showtabline+1)%2<CR>
+nnoremap cot :exe "set showtabline=" . (&showtabline+1)%2<Cr>
+
+" Dump scriptnames into a buffer opened in new tab.
+function! <SID>DumpExCmdOutput()
+  let cmd = input('command: ')
+  if len(cmd) == 0
+    return
+  endif
+
+  try
+    redi @"
+    silent execute cmd
+    redi END
+    tabnew
+    call append(0, split(@", '\n'))
+    delete _
+  catch /.*/
+    echohl ErrorMsg | echo v:exception | echohl None
+  endtry
+endfunction
+
+nnoremap \cmd :call <SID>DumpExCmdOutput()<Cr>
 
 " key q is too easy to touch, but is needed infrequently
 nnoremap q <Nop>
@@ -271,7 +291,7 @@ inoremap <C-L> <Right>
 " }}}2
 
 " change cwd to current file path.
-nnoremap <leader>cd :<C-U>lcd %:p:h<CR>:pwd<CR>
+nnoremap <leader>cd :<C-U>lcd %:p:h<Cr>:pwd<Cr>
 
 " like UltisniptEdit command, edit main ftplugin config file
 " for current file type.
