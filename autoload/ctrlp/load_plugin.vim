@@ -55,7 +55,7 @@ let g:loaded_ctrlp_load_plugin = 1
 "
 call add(g:ctrlp_ext_vars, {
 	\ 'lname': "Get up, you lazy ass!",
-	\ 'sname': 'Load Plugins',
+	\ 'sname': 'awake',
 	\ 'type': 'line',
 	\ 'init': 'ctrlp#load_plugin#init()',
 	\ 'accept': 'ctrlp#load_plugin#accept',
@@ -99,11 +99,12 @@ endfunction
 "  a:str    the selected string
 "
 function! ctrlp#load_plugin#accept(mode, str)
-	" For this example, just exit ctrlp and run help
-	call ctrlp#exit()
-	let do = g:ctrlp_vim_plug_lazily_load_plugins[a:str].do
-  execute do
-  let g:ctrlp_vim_plug_lazily_load_plugins[a:str].loaded = 1
+  call ctrlp#exit()
+  if a:str !=# '** all sleeping plugin are awaken **'
+    let do = g:ctrlp_vim_plug_lazily_load_plugins[a:str].do
+    execute do
+    let g:ctrlp_vim_plug_lazily_load_plugins[a:str].loaded = 1
+  endif
 endfunction
 
 
