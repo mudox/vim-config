@@ -7,7 +7,7 @@ let g:this_meta.site = 'https://github.com/ctrlpvim/ctrlp.vim.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-  let g:ctrlp_extensions = ['tag', 'mixed', 'funky',  'rtscript']
+  let g:ctrlp_extensions = ['tag', 'mixed', 'funky']
 
   " mappings
   let g:ctrlp_map = ''
