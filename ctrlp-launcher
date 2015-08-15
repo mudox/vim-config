@@ -1,0 +1,5 @@
+# vim: noexpandtab list
+# NOTE: tab characters to separate title and command.
+# leading sharp mean comment. empty line is ignored.
+
+Dump :scriptnames		:call MdxDumpExCmdOutput('scriptnames')
