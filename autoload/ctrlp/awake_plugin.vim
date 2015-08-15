@@ -101,6 +101,7 @@ endfunction
 function! ctrlp#awake_plugin#accept(mode, str)
   call ctrlp#exit()
   if a:str !=# '** all sleeping plugin are awaken **'
+    echohl WarningMsg | echo printf("loading [%s]...", a:str) | echohl None
     let do = g:ctrlp_vim_plug_lazily_awake_plugins[a:str].do
     execute do
     let g:ctrlp_vim_plug_lazily_awake_plugins[a:str].loaded = 1
