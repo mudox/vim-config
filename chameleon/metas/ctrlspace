@@ -23,4 +23,6 @@ function g:this_meta.config()
   if executable("ag")
     let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
   endif
+
+  let g:CtrlSpaceUseTabline = 0
 endfunction
