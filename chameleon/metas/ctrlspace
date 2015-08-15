@@ -7,7 +7,8 @@ let g:this_meta.site = 'https://github.com/szw/vim-ctrlspace.git'
 let g:this_meta.vimplug_cmd_dict = {'on': ''}
 
 function g:this_meta.config()
-  " lazy load it
+
+  " lazy awake it {{{1
   function <SID>awake_ctrlspace()
     echohl WarningMsg | echo 'loading [ctrlpspace] ...' | echohl NONE
     nunmap <Space>w
@@ -16,6 +17,7 @@ function g:this_meta.config()
   endfunction
 
   nnoremap <silent> <Space>w :call <SID>awake_ctrlspace()<Cr>
+  " }}}1
 
   let g:CtrlSpaceDefaultMappingKey = "<Space>w"
   let g:CtrlSpaceUseTabline = 1
@@ -25,4 +27,6 @@ function g:this_meta.config()
   endif
 
   let g:CtrlSpaceUseTabline = 0
+  let g:CtrlSpaceSearchTiming = 50
+  let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp)[\/]'
 endfunction
