@@ -7,6 +7,11 @@ let g:this_meta.site = 'https://github.com/pelodelfuego/vim-swoop.git'
 let g:this_meta.vimplug_cmd_dict = {'on': ''}
 
 function g:this_meta.config()
+
+  call ctrlp#vim_plug_lazy_plugins#register(
+        \   'swoop',
+        \   'call plug#load("vim-swoop")'
+        \ )
   "let g:swoopUseDefaultKeyMap = 0
 
   "nmap ,l :call Swoop()<CR>
@@ -15,8 +20,4 @@ function g:this_meta.config()
   "nmap ,ml :call SwoopMulti()<CR>
   "vmap ,ml :call SwoopMultiSelection()<CR>
 
-  call ctrlp#vim_plug_lazy_plugins#register(
-        \   'swoop',
-        \   'call plug#load("vim-swoop")'
-        \ )
 endfunction
