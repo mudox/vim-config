@@ -10,6 +10,8 @@ let s:bundle_list = [
       \ 'ctrlp'      ,
       \ 'ctrlp_cmd'  ,
       \ 'ctrlp_funky',
+      \ 'ctrlp_extensions',
+      \ 'ctrlp_launcher',
       \ ]
 
 if has('win32') || has('win64')

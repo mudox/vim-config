@@ -1,0 +1,13 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:this_meta.site = 'https://github.com/sgur/ctrlp-extensions.vim.git'
+
+" NOTE: the dict bellow will be passed to command 'PlugInstall'
+" as the 2nd argument to install this plugin.
+let g:this_meta.vimplug_cmd_dict = {}
+
+function g:this_meta.config()
+  let g:ctrlp_yankring_disable = 1
+
+  nnoremap <Space>p :<C-U>CtrlPMenu<Cr>
+endfunction
