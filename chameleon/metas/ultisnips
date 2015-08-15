@@ -8,13 +8,12 @@ let g:this_meta.vimplug_cmd_dict = {
       \ 'on': '',
       \ }
 
-augroup lazily_load_ultisnips
-autocmd InsertEnter * call plug#load('ultisnips')
-      \| echohl WarningMsg | echo 'loading [ultisnips]...' | echohl None
-      \| autocmd! lazily_load_ultisnips
-augroup END
-
 function g:this_meta.config()
+  call ctrlp#vim_plug_lazy_plugins#register(
+        \   'ultisnips',
+        \   'call plug#load("ultisnips")'
+        \ )
+
   let g:UltiSnipsEditSplit           = "horizontal"
   let g:UltiSnipsExpandTrigger       = "<Tab>"
   let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
