@@ -1,13 +1,13 @@
 " =============================================================================
-" File:          autoload/ctrlp/load_plugin.vim
+" File:          autoload/ctrlp/awake_plugin.vim
 " Description:   Example extension for ctrlp.vim
 " =============================================================================
 
 " To load this extension into ctrlp, add this to your vimrc:
 "
-"     let g:ctrlp_extensions = ['load_plugin']
+"     let g:ctrlp_extensions = ['awake_plugin']
 "
-" Where 'load_plugin' is the name of the file 'load_plugin.vim'
+" Where 'awake_plugin' is the name of the file 'awake_plugin.vim'
 "
 " For multiple extensions:
 "
@@ -17,11 +17,11 @@
 "         \ ]
 
 " Load guard
-if ( exists('g:loaded_ctrlp_load_plugin') && g:loaded_ctrlp_load_plugin )
+if ( exists('g:loaded_ctrlp_awake_plugin') && g:loaded_ctrlp_awake_plugin )
 	\ || v:version < 700 || &cp
 	finish
 endif
-let g:loaded_ctrlp_load_plugin = 1
+let g:loaded_ctrlp_awake_plugin = 1
 
 
 " Add this extension's settings to g:ctrlp_ext_vars
@@ -57,8 +57,8 @@ call add(g:ctrlp_ext_vars, {
 	\ 'lname': "Get up, you lazy ass!",
 	\ 'sname': 'awake',
 	\ 'type': 'line',
-	\ 'init': 'ctrlp#load_plugin#init()',
-	\ 'accept': 'ctrlp#load_plugin#accept',
+	\ 'init': 'ctrlp#awake_plugin#init()',
+	\ 'accept': 'ctrlp#awake_plugin#accept',
 	\ 'specinput': 0,
 	\ })
 
@@ -67,10 +67,10 @@ call add(g:ctrlp_ext_vars, {
 "
 " Return: a Vim's List
 "
-" NOTE: g:ctrlp_vim_plug_lazily_load_plugins here is used for plugin setting
+" NOTE: g:ctrlp_vim_plug_lazily_awake_plugins here is used for plugin setting
 " lines to register their plugins as lazily loaded. it has following
 " structure:
-" g:ctrlp_vim_plug_lazily_load_plugins = {
+" g:ctrlp_vim_plug_lazily_awake_plugins = {
 "   '<plugin names>' : {
 "     'loaded' : <1 or 0 denoting whether it is be loaded> ,
 "     'do' : <command to load the plugin>,
@@ -79,9 +79,9 @@ call add(g:ctrlp_ext_vars, {
 " }
 " call ctrlp#vim_plug_lazy_plugins#register(name, do) to register plugins into
 " them.
-function! ctrlp#load_plugin#init()
+function! ctrlp#awake_plugin#init()
 	let plugins_to_load = keys(filter(
-        \ copy(g:ctrlp_vim_plug_lazily_load_plugins), 'v:val["loaded"] != 1'))
+        \ copy(g:ctrlp_vim_plug_lazily_awake_plugins), 'v:val["loaded"] != 1'))
 
   if empty(plugins_to_load)
     return ['** all sleeping plugin are awaken **']
@@ -98,28 +98,28 @@ endfunction
 "           the values are 'e', 'v', 't' and 'h', respectively
 "  a:str    the selected string
 "
-function! ctrlp#load_plugin#accept(mode, str)
+function! ctrlp#awake_plugin#accept(mode, str)
   call ctrlp#exit()
   if a:str !=# '** all sleeping plugin are awaken **'
-    let do = g:ctrlp_vim_plug_lazily_load_plugins[a:str].do
+    let do = g:ctrlp_vim_plug_lazily_awake_plugins[a:str].do
     execute do
-    let g:ctrlp_vim_plug_lazily_load_plugins[a:str].loaded = 1
+    let g:ctrlp_vim_plug_lazily_awake_plugins[a:str].loaded = 1
   endif
 endfunction
 
 
 " (optional) Do something before enterting ctrlp
-"function! ctrlp#load_plugin#enter()
+"function! ctrlp#awake_plugin#enter()
 "endfunction
 
 
 " (optional) Do something after exiting ctrlp
-"function! ctrlp#load_plugin#exit()
+"function! ctrlp#awake_plugin#exit()
 "endfunction
 
 
 " (optional) Set or check for user options specific to this extension
-"function! ctrlp#load_plugin#opts()
+"function! ctrlp#awake_plugin#opts()
 "endfunction
 
 
@@ -127,14 +127,14 @@ endfunction
 let s:id = g:ctrlp_builtins + len(g:ctrlp_ext_vars)
 
 " Allow it to be called later
-function! ctrlp#load_plugin#id()
+function! ctrlp#awake_plugin#id()
 	return s:id
 endfunction
 
 
 " Create a command to directly call the new search type
 "
-" Put this in vimrc or plugin/load_plugin.vim
-" command! CtrlPLoadPlugin call ctrlp#init(ctrlp#load_plugin#id())
+" Put this in vimrc or plugin/awake_plugin.vim
+" command! CtrlPAwakePlugin call ctrlp#init(ctrlp#awake_plugin#id())
 
 " vim:nofen:fdl=0:ts=2:sw=2:sts=2
