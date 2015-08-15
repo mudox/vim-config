@@ -26,7 +26,7 @@ function g:this_meta.config()
 
   function! s:awake_plugins_source()
     let plugins_to_load = keys(filter(
-          \ copy(g:ctrlp_vim_plug_lazily_load_plugins), 'v:val["loaded"] != 1'))
+          \ copy(g:ctrlp_vim_plug_lazily_awake_plugins), 'v:val["loaded"] != 1'))
 
     if empty(plugins_to_load)
       return ['** all sleeping plugin are awaken **']
@@ -37,9 +37,9 @@ function g:this_meta.config()
 
   function! <SID>awake_plugins_sink(what)
     if a:what !=# '** all sleeping plugin are awaken **'
-      let do = g:ctrlp_vim_plug_lazily_load_plugins[a:what].do
+      let do = g:ctrlp_vim_plug_lazily_awake_plugins[a:what].do
       execute do
-      let g:ctrlp_vim_plug_lazily_load_plugins[a:what].loaded = 1
+      let g:ctrlp_vim_plug_lazily_awake_plugins[a:what].loaded = 1
 
       echohl WarningMsg | echo printf("loading [%s]...", a:what) | echohl None
     endif
