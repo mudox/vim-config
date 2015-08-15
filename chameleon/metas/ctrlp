@@ -10,7 +10,7 @@ function g:this_meta.config()
   let g:ctrlp_extensions = ['tag', 'mixed', 'funky',  'rtscript']
 
   " mappings
-  let g:ctrlp_map = '<Space>p'
+  let g:ctrlp_map = ''
   nnoremap <Space>r :silent CtrlPMRUFiles<Cr>
   nnoremap <Space>s :silent CtrlPRTS<Cr>
   nnoremap <Space>m :silent CtrlPMixed<Cr>
