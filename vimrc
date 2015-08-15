@@ -253,16 +253,11 @@ inoremap <M-O><M-K> <C-X><C-O>
 " Toggle tab line
 nnoremap cot :exe "set showtabline=" . (&showtabline+1)%2<Cr>
 
-" Dump scriptnames into a buffer opened in new tab.
-function! <SID>DumpExCmdOutput()
-  let cmd = input('command: ')
-  if len(cmd) == 0
-    return
-  endif
-
+" Dump output of an ex-command into a buffer opened in new tab. {{{2
+function! g:MdxDumpExCmdOutput(cmd)
   try
     redi @"
-    silent execute cmd
+    silent execute a:cmd
     redi END
     tabnew
     call append(0, split(@", '\n'))
@@ -272,7 +267,17 @@ function! <SID>DumpExCmdOutput()
   endtry
 endfunction
 
-nnoremap \cmd :call <SID>DumpExCmdOutput()<Cr>
+function g:MdxDumpExCmdOutputFromInput()
+  let cmd = input('command: ')
+  if len(cmd) == 0
+    return
+  endif
+
+  call MdxDumpExCmdOutput(cmd)
+endfunction
+
+nnoremap \cmd :call MdxDumpExCmdOutputFromInput()<Cr>
+" }}}2
 
 " key q is too easy to touch, but is needed infrequently
 nnoremap q <Nop>
