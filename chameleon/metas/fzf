@@ -4,8 +4,53 @@ let g:this_meta.site = 'https://github.com/junegunn/fzf.git'
 
 " NOTE: the dict bellow will be passed to command 'PlugInstall'
 " as the 2nd argument to install this plugin.
-let g:this_meta.vimplug_cmd_dict = {}
+let g:this_meta.vimplug_cmd_dict = {
+      \   'do': 'yes \| ./install',
+      \ }
 
 function g:this_meta.config()
+
+  " \cf - :colo with fzf enhancement. {{{1
+  nnoremap <silent> \cf :call fzf#run({
+        \   'source':
+        \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+        \         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+        \   'sink':     'colo',
+        \   'options':  '+m',
+        \   'left':     30,
+        \   'launcher': 'xterm -geometry 20x30 -e bash -ic %s'
+        \ })<CR>
+  " }}}1
+
+  " <Space>a - awake sleeping plugins {{{1
+
+  function! s:awake_plugins_source()
+    let plugins_to_load = keys(filter(
+          \ copy(g:ctrlp_vim_plug_lazily_load_plugins), 'v:val["loaded"] != 1'))
+
+    if empty(plugins_to_load)
+      return ['** all sleeping plugin are awaken **']
+    endif
+
+    return plugins_to_load
+  endfunction
+
+  function! <SID>awake_plugins_sink(what)
+    if a:what !=# '** all sleeping plugin are awaken **'
+      let do = g:ctrlp_vim_plug_lazily_load_plugins[a:what].do
+      execute do
+      let g:ctrlp_vim_plug_lazily_load_plugins[a:what].loaded = 1
+
+      echohl WarningMsg | echo printf("loading [%s]...", a:what) | echohl None
+    endif
+  endfunction
+
+  nnoremap <silent> <Space>a :call fzf#run({
+        \   'source':  <SID>awake_plugins_source(),
+        \   'sink':    function('<SID>awake_plugins_sink'),
+        \   'options': '+m',
+        \   'left':    20,
+        \ })<CR>
+  " }}}1
 
 endfunction
