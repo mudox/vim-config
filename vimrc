@@ -1,4 +1,3 @@
-
 scriptencoding utf-8
 
 " get the full path of .vim or vimfiles.
@@ -202,6 +201,7 @@ nnoremap coX :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<C
 let g:mapleader = ','
 
 " quick save.
+nnoremap <BS>W :w<Cr>:e!<Cr>
 nnoremap <BS>w :w<Cr>
 
 " j, k to easily move around in wrapped long line.                                        {{{2
@@ -251,7 +251,7 @@ inoremap <M-O><M-K> <C-X><C-O>
 " }}}2
 
 " Toggle tab line
-nnoremap cot :exe "set showtabline=" . (&showtabline+1)%2<Cr>
+nnoremap cotab :exe "set showtabline=" . (&showtabline+1)%2<Cr>
 
 " Dump output of an ex-command into a buffer opened in new tab. {{{2
 function! g:MdxDumpExCmdOutput(cmd)
