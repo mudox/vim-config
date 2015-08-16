@@ -29,4 +29,13 @@ function g:this_meta.config()
   let g:CtrlSpaceUseTabline = 0
   let g:CtrlSpaceSearchTiming = 50
   let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp)[\/]'
+
+  let g:CtrlSpaceSymbols = {
+        \   "CS": "CtrlSpace",
+        \   "FILE": "File",
+        \   "ALL": "ALL",
+        \   "Vis": "Visual",
+        \   "Help": "Help",
+        \   "BM": "Bookmark"
+        \ }
 endfunction
