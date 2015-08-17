@@ -1,7 +1,0 @@
-# vim: noexpandtab list
-# NOTE: tab characters to separate title and command.
-# leading sharp mean comment. empty line is ignored.
-
-Inspect :scriptnames in a new tab		:call MdxDumpExCmdOutput('scriptnames')
-Update plugins					:PlugUpdate
-UPgrade vim-plug				:PlugUpgrade
