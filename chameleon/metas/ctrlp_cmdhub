@@ -8,5 +8,5 @@ let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
   nnoremap <Space>q :<C-U>CtrlPCmdHub<Cr>
-
+  inoremap <C-Q> <C-O>:CtrlPCmdHub<Cr>i
 endfunction
