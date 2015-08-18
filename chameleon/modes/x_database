@@ -15,7 +15,8 @@ call MergeConfigs(s:sub_configs)
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
       \ 'dbext'       ,
-      \ 'sqlutilities',
+      \ 'sql_utilities',
+      \ 'sql_workbench',
       \ ]
 
 call AddBundles(s:bundle_list)
