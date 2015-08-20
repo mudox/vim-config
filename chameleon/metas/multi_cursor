@@ -8,16 +8,16 @@ let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
     " default mapping conflicts with yank_ring.
-    if has('mac') || has('macunix')
-      let g:multi_cursor_start_key = 'ê'
-      let g:multi_cursor_next_key  = 'ê'
-      let g:multi_cursor_prev_key  = 'ë'
-      let g:multi_cursor_skip_key  = 'ì'
-    else
-      let g:multi_cursor_start_key = '<M-j>'
-      let g:multi_cursor_next_key  = '<M-j>'
-      let g:multi_cursor_prev_key  = '<M-k>'
-      let g:multi_cursor_skip_key  = '<M-l>'
-    endif
+    "if has('mac') || has('macunix')
+      "let g:multi_cursor_start_key = 'ê'
+      "let g:multi_cursor_next_key  = 'ê'
+      "let g:multi_cursor_prev_key  = 'ë'
+      "let g:multi_cursor_skip_key  = 'ì'
+    "else
+      "let g:multi_cursor_start_key = '<M-j>'
+      "let g:multi_cursor_next_key  = '<M-j>'
+      "let g:multi_cursor_prev_key  = '<M-k>'
+      "let g:multi_cursor_skip_key  = '<M-l>'
+    "endif
 
 endfunction
