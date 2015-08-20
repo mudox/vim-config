@@ -4,7 +4,13 @@ let g:this_meta.site = 'https://github.com/rking/ag.vim.git'
 
 " NOTE: the dict bellow will be passed to command 'PlugInstall'
 " as the 2nd argument to install this plugin.
-let g:this_meta.vimplug_cmd_dict = {}
+let g:this_meta.vimplug_cmd_dict = {
+      \ 'on': [
+      \   'Ag', 'AgBuffer', 'AgAdd', 'AgFromSearch',
+      \   'LAg', 'LAgBuffer', 'LAgAdd',
+      \   'AgFile', 'AgHelp',
+      \   ]
+      \ }
 
 function g:this_meta.config()
     " TODO: your plugin configuration goes here.
