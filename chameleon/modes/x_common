@@ -31,7 +31,6 @@ let s:bundle_list = [
       \ 'foldtext'        ,
       \ 'goyo'            ,
       \ 'indentline'      ,
-      \ 'startify'        ,
       \ 'join'            ,
       \ 'itchyny_calendar',
       \ 'multi_cursor'    ,
@@ -57,8 +56,9 @@ let s:bundle_list = [
       \ 'yank_ring'       ,
       \ 'zoomwintab'      ,
       \ 'nerdtree_git'    ,
-      \ 'devicons'        ,
       \ 'ctrlsf'          ,
+      \ 'startify'        ,
+      \ 'devicons'        ,
       \ ]
 
 

@@ -19,8 +19,11 @@ function g:this_meta.config()
   function! s:filter_header(lines) abort
     let longest_line   = max(map(copy(a:lines), 'len(v:val)'))
     let centered_lines = map(copy(a:lines),
-          \ 'repeat(" ", (&columns / 2) - (longest_line / 2) + 5) . v:val')
+          \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
     let centered_lines = map(centered_lines, "substitute(v:val, '^\\s\\+$', '', '')")
+
+    " 2 more trailing separating line.
+    let centered_lines += ['', '']
     return centered_lines
   endfunction
 
