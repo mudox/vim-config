@@ -68,4 +68,6 @@ function g:this_meta.config()
         \ 'fallback': fallback_command,
         \ }
 
+  let g:ctrlp_reuse_window = 'startify'
+
 endfunction
