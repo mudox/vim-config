@@ -27,6 +27,8 @@ function g:this_meta.config()
     return centered_lines
   endfunction
 
+  autocmd User Startified setlocal buftype=
+
   " randomly pick an art on every startup
   let mudox_ascii_arts = [
         \ [
@@ -138,5 +140,4 @@ function g:this_meta.config()
 
   let selected_art = mudox_ascii_arts[localtime() % len(mudox_ascii_arts)]
   let g:startify_custom_header = s:filter_header(selected_art)
-
 endfunction
