@@ -6,14 +6,14 @@ let g:this_meta.site = 'https://github.com/Valloric/YouCompleteMe.git'
 " as the 2nd argument to install this plugin.
 let g:this_meta.vimplug_cmd_dict = {
       \ 'on': '',
-      \ 'do': 'PATH=\"/usr/bin:$PATH\" ./install.sh --system-libclang --clang-completer --gocode-completer'
+      \ 'do': 'PATH=\"/usr/bin:$PATH\" ./install.sh --system-libclang --clang-completer --gocode-completer',
       \ }
 
 augroup lazily_load_ycm
-autocmd InsertEnter * call plug#load('YouCompleteMe')
-      \| echohl WarningMsg | echo 'loading [YouCompleteMe]...' | echohl None
-      \| call youcompleteme#Enable()
-      \| autocmd! lazily_load_ycm
+  autocmd InsertEnter * call plug#load('YouCompleteMe')
+        \| echohl WarningMsg | echo 'loading [YouCompleteMe]...' | echohl None
+        \| call youcompleteme#Enable()
+        \| autocmd! lazily_load_ycm
 augroup END
 
 function g:this_meta.config()
