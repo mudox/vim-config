@@ -1,3 +1,4 @@
+" vim: foldmethod=marker
 " =============================================================================
 " File:          autoload/ctrlp/awake_plugin.vim
 " Description:   Example extension for ctrlp.vim
@@ -17,11 +18,13 @@
 "         \ ]
 
 " Load guard
-if ( exists('g:loaded_ctrlp_awake_plugin') && g:loaded_ctrlp_awake_plugin )
-	\ || v:version < 700 || &cp
-	finish
+
+" GUARD {{{1
+if exists("s:loaded") || &cp || version < 700
+  finish
 endif
-let g:loaded_ctrlp_awake_plugin = 1
+let s:loaded = 1
+" }}}1
 
 
 " Add this extension's settings to g:ctrlp_ext_vars

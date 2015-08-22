@@ -1,7 +1,11 @@
-if exists('did_vim_plug_lazy_plugins_vim') || &cp || version < 700
+" vim: foldmethod=marker
+
+" GUARD {{{1
+if exists("s:loaded") || &cp || version < 700
   finish
 endif
-let did_vim_plug_lazy_plugins_vim = 1
+let s:loaded = 1
+" }}}1
 
 let g:ctrlp_vim_plug_lazily_awake_plugins = {}
 
