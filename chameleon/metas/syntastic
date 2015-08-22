@@ -46,7 +46,7 @@ function g:this_meta.config()
 
   let g:syntastic_javascript_checkers = ['jslint', 'jshint', 'eshint']
 
-  let g:syntastic_python_checkers     = ['flake8', 'python']
+  let g:syntastic_python_checkers     = ['flake8', 'pylint', 'python']
   let g:syntastic_python_flake8_args  = '--ignore E111'
 
   let g:syntastic_go_checkers         = ['gofmt', 'govet', 'go', 'golint']
