@@ -18,8 +18,6 @@ call MergeConfigs(s:sub_configs)
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
       \ 'vdebug'         ,
-      \ 'py_fold'        ,
-      \ 'py_pep8_indent' ,
       \ 'py_syntax'      ,
       \ 'rainbow_oblitum',
       \ 'syntastic'      ,
