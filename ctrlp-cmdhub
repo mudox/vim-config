@@ -8,3 +8,4 @@ Edit ctrlp-cmdhub data file in a tab		EditCmdHubDataFile
 Open the remote website of current repo		!open $(git remote -v | awk '{print $2}' | head -n1 | sed -e 's/git@github.com:/http:\/\/github.com\//')
 Inspect :scriptnames output in new tab		call MdxDumpExCmdOutput('scriptnames')
 Inspect :hi output in new tab			call MdxDumpExCmdOutput('hi')
+Chameleon info					ChamInfo
