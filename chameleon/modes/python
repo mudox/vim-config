@@ -18,11 +18,7 @@ call MergeConfigs(s:sub_configs)
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
       \ 'dbgp'          ,
-      \ 'indentguides'  ,
-      \ 'indentline'    ,
-      \ 'py_flake8'     ,
       \ 'py_fold'       ,
-      \ 'py_interactive',
       \ 'py_pep8_indent',
       \ 'py_syntax'     ,
       \ 'rainbow_oblitum',
