@@ -2,9 +2,7 @@
 
 setlocal colorcolumn=80 " PEP8 put a limit a 79
 
-" tab setting according to PEP8 {{{ 1
 setlocal foldmethod=syntax
-" }}}1
 
 " run buffer {{{1
 function! s:RunBuffer( args ) " {{{2
@@ -44,6 +42,5 @@ function! <SID>Autopep8() " {{{2
 
 endfunction "  }}}2
 
-nnoremap <buffer> \fa :call <SID>Autopep8()<Cr>
 nnoremap <buffer> \af :call <SID>Autopep8()<Cr>
 "}}}1
