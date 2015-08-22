@@ -138,6 +138,14 @@ function g:this_meta.config()
         \ ],
         \ ]
 
-  let selected_art = mudox_ascii_arts[localtime() % len(mudox_ascii_arts)]
-  let g:startify_custom_header = s:filter_header(selected_art)
+  let header_lines = mudox_ascii_arts[localtime() % len(mudox_ascii_arts)]
+  let chameleon_info_line = printf(
+        \ 'Chameleon Mode: [%s] set by %s',
+        \ g:mdx_chameleon_mode_name,
+        \ exists('$MDX_CHAMELEON_MODE') ?
+        \   '$MDX_CHAMELEON_MODE' : g:mdx_chameleon_mode_file_path)
+  call add(header_lines, '')
+  call add(header_lines, chameleon_info_line)
+  let g:startify_custom_header = s:filter_header(header_lines)
+
 endfunction
