@@ -17,17 +17,17 @@ call MergeConfigs(s:sub_configs)
 
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
-      \ 'dbgp'          ,
-      \ 'py_fold'       ,
-      \ 'py_pep8_indent',
-      \ 'py_syntax'     ,
+      \ 'vdebug'         ,
+      \ 'py_fold'        ,
+      \ 'py_pep8_indent' ,
+      \ 'py_syntax'      ,
       \ 'rainbow_oblitum',
-      \ 'syntastic'     ,
+      \ 'syntastic'      ,
       \ ]
 
 if has('unix')
   call add(s:bundle_list, 'ycm')
-  call add(s:bundle_list, 'autoformat')
+  call add(s:bundle_list, 'py_jedi@with_ycm')
 endif
 
 call AddBundles(s:bundle_list)
