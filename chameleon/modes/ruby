@@ -16,7 +16,7 @@ call MergeConfigs(s:sub_configs)
 
 let s:common_bundle = [
       \ 'syntastic',
-      \ 'dbgp',
+      \ 'vdebug',
       \ ]
 
 let s:bundle_list = s:common_bundle
