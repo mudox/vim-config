@@ -38,7 +38,6 @@ call extend(s:bundle_list, [
       \ 'rt_coffeescript',
       \ ])
 
-
 if has('unix')
   call add(s:bundle_list, 'ycm')
 endif

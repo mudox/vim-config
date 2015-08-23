@@ -9,7 +9,6 @@ if !has('unix')
     call filter(s:metas, 'v:val != "autoforamt"')
 endif
 
-
 call AddBundles(s:metas)
 
 " }}}1
