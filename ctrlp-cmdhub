@@ -10,6 +10,7 @@
 Edit data file behind this list			call EditCmdHubDataFile()
 Edit or create ctrlp-cmdhub command file	call CmdHubEditCommandFile()
 Open the remote website of current repo		#open_origin_remote_site
+Test nerd-fonts glyphs availability		#test_nerd_fonts_glyph
 Inspect :scriptnames output in new tab		call MdxDumpExCmdOutput('scriptnames')
 Inspect :hi output in new tab			call MdxDumpExCmdOutput('hi')
 Chameleon info					ChamInfo
