@@ -4,8 +4,9 @@
 # - Use TAB characters to separate titles and commands.
 # - Comment lines (start with a '#') and empty lines are ignored
 
-Edit ctrlp-cmdhub data file in a tab		EditCmdHubDataFile
-Open the remote website of current repo		!open $(git remote -v | awk '{print $2}' | head -n1 | sed -e 's/git@github.com:/http:\/\/github.com\//')
+Edit data file behind this list			call EditCmdHubDataFile()
+Edit or create ctrlp-cmdhub command file	call CmdHubEditCommandFile()
+Open the remote website of current repo		exe 'source ' . g:rc_root . '/ctrlp-cmdhub-cmds/open_origin_remote_site.vim'
 Inspect :scriptnames output in new tab		call MdxDumpExCmdOutput('scriptnames')
 Inspect :hi output in new tab			call MdxDumpExCmdOutput('hi')
 Chameleon info					ChamInfo
