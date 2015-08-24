@@ -11,7 +11,7 @@ let g:this_meta.vimplug_cmd_dict = {
 
 augroup lazily_load_ycm
   autocmd InsertEnter *
-        \| call plug#load('YouCompleteMe')
+        \ call plug#load('YouCompleteMe')
         \| echohl WarningMsg | echo 'loading [YouCompleteMe]...' | echohl None
         \| call youcompleteme#Enable()
         \| autocmd! lazily_load_ycm
