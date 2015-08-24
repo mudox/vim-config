@@ -27,7 +27,7 @@ setlocal expandtab
 "}}}1
 
 " beautifier                                                                           {{{1
-nnoremap <buffer> \ff :call <SID>Beautify()<Cr>
+nnoremap <silent> <buffer> \ff :call <SID>Beautify()<Cr>
 
 function! <SID>Beautify()                                                               " {{{2
   if !executable('uncrustify')
@@ -42,6 +42,7 @@ function! <SID>Beautify()                                                       
         \ '/uncrustify.cfg', 1)
 
   call winrestview(view)
+  echo 'prettified by uncrustify'
 endfunction "  }}}2
 " }}}1
 
