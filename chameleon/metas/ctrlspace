@@ -20,22 +20,26 @@ function g:this_meta.config()
   " }}}1
 
   let g:CtrlSpaceDefaultMappingKey = "<Space>w"
-  let g:CtrlSpaceUseTabline = 1
+  let g:CtrlSpaceUseTabline = 0
 
+  " glob
   if executable("ag")
     let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
   endif
 
   let g:CtrlSpaceUseTabline = 0
-  let g:CtrlSpaceSearchTiming = 50
+  let g:CtrlSpaceSearchTiming = 20
   let g:CtrlSpaceIgnoredFiles = '\v(tmp|temp)[\/]'
 
   let g:CtrlSpaceSymbols = {
-        \   "CS": "CtrlSpace",
-        \   "FILE": "File",
-        \   "ALL": "ALL",
-        \   "Vis": "Visual",
-        \   "Help": "Help",
-        \   "BM": "Bookmark"
+        \   "Help" : "Help",
+        \   "FILE" : "File List [oO]",
+        \   "BM"   : "Bookmark List [bB]",
+        \   "CS"   : "Buffer List [hH]",
+        \   "Sin"  : "-> single mode",
+        \   "All"  : "-> all mode",
+        \   "Vis"  : "-> visual mode",
+        \   "WLoad": "-> load mdoe",
+        \   "WSave": "-> save mdoe",
         \ }
 endfunction
