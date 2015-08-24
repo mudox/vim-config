@@ -354,4 +354,4 @@ nnoremap <s [sz=1<Cr><Cr>''
 
 call mudox#chameleon#InitBundles()
 
-" vim: foldmethod=marker fileformat=unix foldmethod=marker
+" vim: foldmethod=marker fileformat=unix foldmethod=marker foldcolumn=2
