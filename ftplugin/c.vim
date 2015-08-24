@@ -46,5 +46,4 @@ function! <SID>Beautify()                                                       
 endfunction "  }}}2
 " }}}1
 
-inoremap <buffer> <M-.> ->
 inoremap <buffer> ;; <C-O>A;
