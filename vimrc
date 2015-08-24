@@ -255,7 +255,7 @@ inoremap <M-O><M-K> <C-X><C-O>
 " }}}2
 
 " Toggle tab line
-nnoremap cotab :exe "set showtabline=" . (&showtabline+1)%2<Cr>
+nnoremap cotab :let &showtabline = ( &showtabline == 0 ? 2 : 0 )<Cr>
 
 " Dump output of an ex-command into a buffer opened in new tab.                        {{{2
 function! g:MdxDumpExCmdOutput(cmd)
