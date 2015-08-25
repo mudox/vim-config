@@ -1,7 +1,8 @@
 scriptencoding utf-8
 
-" get the full path of .vim or vimfiles.
-let g:rc_root = expand('<sfile>:p:h') " use this to replace the one above.
+" get the full path of .vim/vimfiles path
+" in my configuration, vimrc must be put under .vim/vimfiles.
+let g:rc_root = expand('<sfile>:p:h')
 
 " BUNDLE LOADING by VIM-PLUG                                                        {{{1
 
