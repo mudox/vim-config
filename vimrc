@@ -129,6 +129,7 @@ endif
 set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
+set showtabline=1
 
 set noshowcmd
 if index(g:mdx_chameleon.meta_set, 'airline') == -1
