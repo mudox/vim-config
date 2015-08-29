@@ -20,10 +20,8 @@ function g:this_meta.config()
     " SQLITE3 profiles.
     let s:profile_config_list                 = [
                 \ 'type=SQLITE',
-                \ 'SQLITE_bin=sqlite3',
-                \ "cmd_terminator=';'",
-                \ 'dbname=/home/mudox/Git/GwaMan/Gwa.db'
+                \ "dbname=/Users/mudox/Library/Application\ Support/Firefox/Profiles/erhroxm5.default/places.sqlite"
                 \ ]
-    let g:dbext_default_profile_GwaMan = join(s:profile_config_list, ':')
+    let g:dbext_default_profile_ffbookmarks = join(s:profile_config_list, ':')
 
 endfunction
