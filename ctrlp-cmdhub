@@ -14,3 +14,4 @@ Test nerd-fonts glyphs availability		#test_nerd_fonts_glyph
 Inspect :scriptnames output in new tab		call MdxDumpExCmdOutput('scriptnames')
 Inspect :hi output in new tab			call MdxDumpExCmdOutput('hi')
 Chameleon info					ChamInfo
+Play with jq					#play_with_jq
