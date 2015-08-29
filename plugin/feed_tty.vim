@@ -9,6 +9,10 @@ let s:loaded = 1
 
 function! <SID>feed_tty() " {{{2
   let cmd_line = input('your command: ')
+  call s:feed_tty_with(cmd_line)
+endfunction "  }}}2
+
+function s:feed_tty_with(line) " {{{2
   let sucker_file_path = '/tmp/mdx_tty_sucker'
 
   if !filewritable(sucker_file_path)
@@ -16,7 +20,7 @@ function! <SID>feed_tty() " {{{2
     return
   endif
 
-  call writefile([cmd_line], sucker_file_path)
+  call writefile([a:line], sucker_file_path)
 endfunction "  }}}2
 
 nnoremap <BS>t :<C-U>call <SID>feed_tty()<Cr>
