@@ -13,9 +13,9 @@ endif
 
 call mudox#chameleon#Init()
 
-call cmdhub#cmds#register('Install plugins by vim-plug', 'PlugInstall')
-call cmdhub#cmds#register('Update all plugins by vim-plug', 'PlugUpdate')
-call cmdhub#cmds#register('Upgrade vim-plug itself', 'PlugUpgrade')
+silent! call cmdhub#cmds#register('Install plugins by vim-plug', 'PlugInstall')
+silent! call cmdhub#cmds#register('Update all plugins by vim-plug', 'PlugUpdate')
+silent! call cmdhub#cmds#register('Upgrade vim-plug itself', 'PlugUpgrade')
 "}}}1
 
 " BUNDLE SETTINGS                                                                   {{{1
