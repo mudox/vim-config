@@ -324,7 +324,7 @@ function! EditFileTypeSettings( filetype )
   try
     if ft != ''
       let setting_file = g:rc_root . '/ftplugin/' . ft . '.vim'
-      call mudox#query_open_file#New(setting_file)
+      call Qpen(setting_file)
     else
       echohl ErrorMsg
       echo "* No filetype *"

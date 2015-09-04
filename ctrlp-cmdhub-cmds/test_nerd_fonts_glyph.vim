@@ -15,7 +15,7 @@ function s:test()
   let awesome_code_points = range(0xf000, 0xf23a)
   let powerline_code_points = range(0xe0a0, 0xe0d4)
 
-  call mudox#query_open_file#New('/tmp/nerd-fonts-glyphs.txt')
+  call Qpen('/tmp/nerd-fonts-glyphs.txt')
   set nowrap
   %delete _
   call append(line('$'), s:make_block('SETI-UI', seti_ui_code_points))
