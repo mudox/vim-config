@@ -3,6 +3,7 @@
 *yankring*
 .VimballRecord
 /autoload/plug.vim
+/autoload/plug.vim.old
 /chameleon/cur_mode
 /neobundle
 /nvimrc
