@@ -32,7 +32,6 @@ let s:bundle_list = [
       \ 'easyalign'       ,
       \ 'expandregion'    ,
       \ 'foldtext'        ,
-      \ 'deoplete'        ,
       \ 'goyo'            ,
       \ 'indentline'      ,
       \ 'indentguides'    ,
