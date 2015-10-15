@@ -7,12 +7,7 @@ let g:this_meta.site = 'git@github.com:Mudox/vim-chameleon.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-  " NOTE: to be deprecated
   nmap <silent> <BS>b <Plug>(Chameleon_Edit_Meta_OmniMenu)
   nmap <silent> <BS>c <Plug>(Chameleon_Edit_Mode_OmniMenu)
   nmap <silent> <Space>x <Plug>(OmniMenu_ChamNewInstance)
-
-  " commands
-  command CtrlPChamMetas call ctrlp#init(ctrlp#chameleon_metas#id())
-  command CtrlPChamModes call ctrlp#init(ctrlp#chameleon_modes#id())
 endfunction
