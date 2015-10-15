@@ -1,4 +1,4 @@
-# vim: noexpandtab list listchars=tab\:▸-
+# vim: softtapstop=8 noexpandtab list listchars=tab\:▸-
 
 # NOTE:
 # - Use TAB characters to separate titles and commands.
@@ -7,11 +7,12 @@
 # you can use a shotcut form '#you_comand_file_name' in command field it will
 # be transformed to 'call CmdHubEditCommandFile("you_comand_file_name")
 
-Edit data file behind this list			call EditCmdHubDataFile()
-Edit or create ctrlp-cmdhub command file	call CmdHubEditCommandFile()
-Open the remote website of current repo		#open_origin_remote_site
-Test nerd-fonts glyphs availability		#test_nerd_fonts_glyph
-Inspect :scriptnames output in new tab		call MdxDumpExCmdOutput('scriptnames')
-Inspect :hi output in new tab			call MdxDumpExCmdOutput('hi')
-Chameleon info					ChamInfo
-Play with jq					#play_with_jq
+Edit data file behind this list				call EditCmdHubDataFile()
+Edit or create ctrlp-cmdhub command file		call CmdHubEditCommandFile()
+Open the remote website of current repo			#open_origin_remote_site
+Test nerd-fonts glyphs availability			#test_nerd_fonts_glyph
+Inspect :scriptnames output in new tab			call MdxDumpExCmdOutput('scriptnames')
+Inspect :hi output in new tab				call MdxDumpExCmdOutput('hi')
+Chameleon info						ChamInfo
+Play with jq						#play_with_jq
+Update 'Date' front matter for Hugo content file	#update_date_front_matter
