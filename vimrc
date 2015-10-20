@@ -195,7 +195,6 @@ set nowritebackup
 
 set hidden "ctrlspace need this setting
 
-set regexpengine=1
 "}}}1
 
 " MAPPINGS                                                                          {{{1
