@@ -178,8 +178,8 @@ set completeopt=menu
 set dictionary+=/usr/share/dict/words
 
 " Command line completion
-set history=30
 set wildmenu
+set wildmode=longest:full,full
 
 if has('unix')
   set wildignorecase "
@@ -342,8 +342,6 @@ nnoremap <BS>f :EditFileType<Space>
 " command mode mappings.
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
-cnoremap <C-h> <Left>
-cnoremap <C-l> <Right>
 
 " quickly fix previous spelling error with the first candidate.
 nnoremap <s [sz=1<Cr><Cr>''
