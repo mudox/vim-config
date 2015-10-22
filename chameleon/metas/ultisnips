@@ -12,10 +12,11 @@ function g:this_meta.config()
   let g:UltiSnipsExpandTrigger       = "<Tab>"
   let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
   let g:UltiSnipsJumpBackwardTrigger = "<C-S>"
+  let g:UltiSnipsListSnippets        = "<C-Y>u"
   let g:UltiSnipsNoPythonWarning     = 1
   let g:UltiSnipsSnippetDirectories  = [ "UltiSnips" ]
   let g:UltiSnipsSnippetsDir         = g:rc_root .
-        \ '/plugged/mdxsnippets/UltiSnips'
+        \ '/plugged/mysnippets/UltiSnips'
 
   cabbrev ue UltiSnipsEdit
 endfunction
