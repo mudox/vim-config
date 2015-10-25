@@ -12,6 +12,7 @@ function g:this_meta.config()
     nnoremap ï :ZoomWinTabToggle<CR>
     nnoremap ï :ZoomWinTabToggle<CR>
   elseif has('mac') || has('macunix')
+    " Option + x
     nnoremap ø :ZoomWinTabToggle<CR>
     nnoremap Ø :ZoomWinTabToggle<CR>
   elseif has('unix')
