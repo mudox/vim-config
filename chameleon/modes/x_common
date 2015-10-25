@@ -23,6 +23,7 @@ let s:bundle_list = [
       \ 'ag'              ,
       \ 'airline'         ,
       \ 'argwrap'         ,
+      \ 'quickrun'        ,
       \ 'man'             ,
       \ 'promiscuous'     ,
       \ 'delimitmate'     ,
@@ -43,7 +44,6 @@ let s:bundle_list = [
       \ 'omnimenu'        ,
       \ 'origami'         ,
       \ 'over'            ,
-      \ 'rename'          ,
       \ 'renamer'         ,
       \ 'rengbang'        ,
       \ 'repeat'          ,
@@ -73,11 +73,7 @@ if !has('mac') && !has('macunix')
 end
 
 if has('unix')
-  call add (s:bundle_list, 'sudoedit')
-
-  "if !has('gui_running')
-    "call add(s:bundle_list, 'togglecursor')
-  "endif
+  call add (s:bundle_list, 'eununch')
 endif
 
 call AddBundles(s:bundle_list)
