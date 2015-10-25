@@ -4,6 +4,7 @@
 
 let s:bundle_list = [
       \ 'fugitive',
+      \ 'gitv',
       \ 'gitgutter',
       \ 'signify',
       \ ]
