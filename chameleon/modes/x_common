@@ -19,6 +19,10 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
+      \ 'tmuxline'        ,
+      \ 'rt_tmux'         ,
+      \ 'focus_events'    ,
+      \ 'obsession'       ,
       \ 'qpen'            ,
       \ 'ag'              ,
       \ 'airline'         ,
