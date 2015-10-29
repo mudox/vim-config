@@ -179,7 +179,6 @@ set dictionary+=/usr/share/dict/words
 
 " Command line completion
 set wildmenu
-set wildmode=longest:full,full
 
 if has('unix')
   set wildignorecase "
