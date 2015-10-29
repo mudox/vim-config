@@ -32,6 +32,7 @@ let s:bundle_list = [
       \ 'promiscuous'     ,
       \ 'delimitmate'     ,
       \ 'fzf'             ,
+      \ 'fzf_wrapper'     ,
       \ 'confsyntax'      ,
       \ 'ctrlspace'       ,
       \ 'easyalign'       ,
