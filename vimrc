@@ -30,7 +30,9 @@ let g:ftplugin_sql_omni_key_left  = '<C-h>'
 " }}}2
 
 " [dot_vim]                                                                            {{{2
-nnoremap ,`  :<C-U>call mudox#max_restore_win#Main()<Cr>
+if has('win32') || has('win64')
+  nnoremap ,`  :<C-U>call mudox#max_restore_win#Main()<Cr>
+endif
 " }}}2
 
 "}}}1
