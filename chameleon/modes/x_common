@@ -60,7 +60,6 @@ let s:bundle_list = [
       \ 'trailertrash'    ,
       \ 'unimpaired'      ,
       \ 'vimproc'         ,
-      \ 'yank_ring'       ,
       \ 'zoomwintab'      ,
       \ 'nerdtree_git'    ,
       \ 'ctrlsf'          ,
