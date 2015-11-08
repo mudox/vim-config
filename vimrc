@@ -100,7 +100,11 @@ set encoding=utf8
 
 " color & font
 set background=dark
-colorscheme desert
+if g:mdx_chameleon_mode_name !~ 'update-all\|mini'
+  colorscheme PaperColor
+else
+  colorscheme desert
+endif
 
 if has('win32') || has('win64')                         " windows
   set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
