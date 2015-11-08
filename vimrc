@@ -4,7 +4,7 @@ scriptencoding utf-8
 " in my configuration, vimrc must be put under .vim/vimfiles.
 let g:rc_root = expand('<sfile>:p:h')
 
-" BUNDLE LOADING by VIM-PLUG                                                        {{{1
+" BUNDLE LOADING by VIM-PLUG                                                         {{{1
 
 if has('vim_starting')
   exe 'set runtimepath+=' . escape(g:rc_root, '\ ') . '/bundle/align'
@@ -170,7 +170,6 @@ set smartcase
 set whichwrap=b,s,<,>,[,],h,l
 set backspace=indent,eol,start
 set autochdir
-set sessionoptions=buffers,folds,globals,help,localoptions,options,resize,sesdir,slash,tabpages,unix,winpos,winsize
 set autowriteall
 set viminfo+=!  " save global variables in viminfo files
 set winaltkeys=no " turns of the Alt key bindings to the gui menu
