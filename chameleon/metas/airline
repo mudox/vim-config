@@ -44,5 +44,5 @@ function g:this_meta.config()
   " powerline style
   let g:airline_powerline_fonts    = 1
 
-  nnoremap <BS>a :<C-U>AirlineRefresh<Cr>
+  nnoremap \ar :<C-U>AirlineRefresh<Cr>
 endfunction
