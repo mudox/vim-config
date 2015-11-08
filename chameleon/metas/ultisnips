@@ -8,13 +8,13 @@ let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
 
-  let g:UltiSnipsEditSplit           = "horizontal"
-  let g:UltiSnipsExpandTrigger       = "<Tab>"
-  let g:UltiSnipsJumpForwardTrigger  = "<C-F>"
-  let g:UltiSnipsJumpBackwardTrigger = "<C-S>"
-  let g:UltiSnipsListSnippets        = "<C-Y>u"
+  let g:UltiSnipsEditSplit           = 'horizontal'
+  let g:UltiSnipsExpandTrigger       = '<Tab>'
+  let g:UltiSnipsJumpForwardTrigger  = '<C-F>'
+  let g:UltiSnipsJumpBackwardTrigger = '<C-S>'
+  let g:UltiSnipsListSnippets        = '<C-\>u'
   let g:UltiSnipsNoPythonWarning     = 1
-  let g:UltiSnipsSnippetDirectories  = [ "UltiSnips" ]
+  let g:UltiSnipsSnippetDirectories  = [ 'UltiSnips' ]
   let g:UltiSnipsSnippetsDir         = g:rc_root .
         \ '/plugged/mysnippets/UltiSnips'
 
