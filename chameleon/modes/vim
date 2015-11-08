@@ -18,6 +18,7 @@ call MergeConfigs(s:sub_configs)
 
 let s:bundle_list = [
       \ 'deoplete' ,
+      \ 'rainbow_oblitum' ,
       \ ]
 
 call AddBundles(s:bundle_list)
