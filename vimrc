@@ -85,7 +85,7 @@ augroup Mudox_ff_fix
 augroup END
 "}}}1
 
-" SETTINGS                                                                          {{{1
+" SETTINGS                                                                           {{{1
 
 " Important
 set nocompatible
@@ -96,9 +96,7 @@ set t_Co=256 " 256 color support on some terminals.
 syntax on
 filetype plugin indent on " 'filetype on' implied
 
-
 set encoding=utf8
-set termencoding=gbk
 
 " color & font
 set background=dark
