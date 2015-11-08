@@ -20,7 +20,6 @@ call MergeConfigs(s:sub_configs)
 
 let s:bundle_list = [
       \ 'tmuxline'        ,
-      \ 'vimagit'         ,
       \ 'rt_tmux'         ,
       \ 'focus_events'    ,
       \ 'obsession'       ,
@@ -64,7 +63,6 @@ let s:bundle_list = [
       \ 'zoomwintab'      ,
       \ 'nerdtree_git'    ,
       \ 'ctrlsf'          ,
-      \ 'startify'        ,
       \ 'devicons'        ,
       \ ]
 

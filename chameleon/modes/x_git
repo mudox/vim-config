@@ -4,9 +4,11 @@
 
 let s:bundle_list = [
       \ 'fugitive',
-      \ 'gitv',
+      \ 'gitboard',
       \ 'gitgutter',
+      \ 'gitv',
       \ 'signify',
+      \ 'vimagit',
       \ ]
 
 call AddBundles(s:bundle_list)
