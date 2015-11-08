@@ -1,6 +1,6 @@
 function! s:UppercaseKeywords()
     " sql keywords list sorted.
-    let l:keyword_list = [ 
+    let l:keyword_list = [
                 \ 'create' ,
                 \ 'from'   ,
                 \ 'insert' ,

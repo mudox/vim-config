@@ -1,5 +1,3 @@
-setlocal colorcolumn=80
-
 " Tab
 setlocal foldmethod=syntax
 setlocal tabstop=8
