@@ -18,18 +18,18 @@ silent! call cmdhub#cmds#register('Update all plugins by vim-plug', 'PlugUpdate'
 silent! call cmdhub#cmds#register('Upgrade vim-plug itself', 'PlugUpgrade')
 "}}}1
 
-" BUNDLE SETTINGS                                                                   {{{1
+" BUNDLE SETTINGS                                                                    {{{1
 
-" [ft-sql]                                                                        "    {{{2
+" [ft-sql]                                                                         " {{{2
 let g:ftplugin_sql_omni_key_right = '<C-l>'
 let g:ftplugin_sql_omni_key_left  = '<C-h>'
 "}}}2
 
-" [matchparen]                                                                    "    {{{2
+" [matchparen]                                                                     " {{{2
 "let loaded_matchparen = 1
 " }}}2
 
-" [dot_vim]                                                                            {{{2
+" [dot_vim]                                                                          {{{2
 if has('win32') || has('win64')
   nnoremap ,`  :<C-U>call mudox#max_restore_win#Main()<Cr>
 endif
@@ -37,12 +37,12 @@ endif
 
 "}}}1
 
-" EVENTS                                                                            {{{1
+" EVENTS                                                                             {{{1
 " force vim into recognising all *.md as markdown instead of Modula-2
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " force all files to be of unix format.
-function! Mudox_ff_unix()                                                         "    {{{2
+function! Mudox_ff_unix()                                                          " {{{2
   if !&l:buftype == '' || ! &l:modifiable || &l:readonly ||
         \ &l:fileformat == 'unix'
     return
@@ -199,7 +199,7 @@ set hidden "ctrlspace need this setting
 
 "}}}1
 
-" MAPPINGS                                                                          {{{1
+" MAPPINGS                                                                           {{{1
 
 " Toggle syntax feature.
 nnoremap coX :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<Cr>
@@ -211,21 +211,21 @@ let g:mapleader = ','
 nnoremap <BS>W :w<Cr>:e!<Cr>
 nnoremap <BS>w :w<Cr>
 
-" j, k to easily move around in wrapped long line.                                     {{{2
+" j, k to easily move around in wrapped long line.                                   {{{2
 nnoremap k gk
 nnoremap j gj
 nmap gk <Nop>
 nmap gj <Nop>
 " }}}2
 
-" <C-H/J/K/L> to jump among windows                                                    {{{2
+" <C-H/J/K/L> to jump among windows                                                  {{{2
 nnoremap <C-H>	   <C-W>h
 nnoremap <C-L>	   <C-W>l
 nnoremap <C-K>	   <C-W>k
 nnoremap <C-J>	   <C-W>j
 "}}}2
 
-" <A-H/L> to switch among tabs                                                         {{{2
+" <A-H/L> to switch among tabs                                                       {{{2
 nnoremap <silent> <M-l> gt
 nnoremap <silent> <M-h> gT
 nnoremap <silent> <M-L> gt
@@ -243,7 +243,7 @@ noremap L 
 noremap H 
 "}}}2
 
-" <C-X> system shortcuts                                                               {{{2
+" <C-X> system shortcuts                                                             {{{2
 inoremap <M-j> <C-N>
 inoremap <M-J> <C-N>
 inoremap <M-k> <C-P>
@@ -260,7 +260,7 @@ inoremap <M-O><M-K> <C-X><C-O>
 " Toggle tab line
 nnoremap cotab :let &showtabline = ( &showtabline == 0 ? 2 : 0 )<Cr>
 
-" Dump output of an ex-command into a buffer opened in new tab.                        {{{2
+" Dump output of an ex-command into a buffer opened in new tab.                      {{{2
 function! g:MdxDumpExCmdOutput(cmd)
   try
     redi @"
@@ -296,7 +296,7 @@ nnoremap <C-Q> Q
 
 noremap zi zizz
 
-" insert mode                                                                          {{{2
+" insert mode                                                                        {{{2
 inoremap <C-J> <Down>
 inoremap <C-H> <Left>
 inoremap <C-L> <Right>
@@ -350,7 +350,7 @@ nnoremap <s [sz=1<Cr><Cr>''
 
 " }}}1
 
-" ABBREVIATES                                                                       {{{1
+" ABBREVIATES                                                                        {{{1
 "}}}1
 
 call mudox#chameleon#InitBundles()
