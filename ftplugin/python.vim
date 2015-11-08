@@ -1,7 +1,5 @@
 " vim: foldmethod=marker
 
-setlocal colorcolumn=80 " PEP8 put a limit a 79
-
 setlocal foldmethod=syntax
 
 " run buffer {{{1
