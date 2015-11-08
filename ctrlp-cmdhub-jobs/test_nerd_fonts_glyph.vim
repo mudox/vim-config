@@ -1,3 +1,5 @@
+" cmdhub: Test nerd font
+
 function s:make_block(title, code_points)
 
   let lines = [a:title, '']

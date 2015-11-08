@@ -1,3 +1,5 @@
+" cmdhub: Play with jq
+
 let s:json_file = '/tmp/mdx_input.json'
 let s:jq_file = '/tmp/mdx_filter.jq'
 let s:pipe_file = '/tmp/mdx_tty_sucker'
