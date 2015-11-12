@@ -24,11 +24,11 @@ function g:this_meta.config()
       normal! zO
     endif
   endfunction
-  nnoremap ]g :call <SID>hunk('next')<Cr>
-  nnoremap [g :call <SID>hunk('prev')<Cr>
+  nnoremap <silent> ]g :call <SID>hunk('next')<Cr>
+  nnoremap <silent> [g :call <SID>hunk('prev')<Cr>
 
-  nnoremap [h :GitGutterStageHunk<Cr>
-  nnoremap ]h :GitGutterRevertHunk<Cr>
+  nnoremap <silent> [h :GitGutterStageHunk<Cr>
+  nnoremap <silent> ]h :GitGutterRevertHunk<Cr>
 
   nnoremap cogh :GitGutterLineHighlightsToggle<Cr>
 
