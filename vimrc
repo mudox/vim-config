@@ -169,7 +169,7 @@ set smartcase
 " Editor behaviour
 set whichwrap=b,s,<,>,[,],h,l
 set backspace=indent,eol,start
-set autochdir
+"set autochdir
 set autowriteall
 set viminfo+=!  " save global variables in viminfo files
 set winaltkeys=no " turns of the Alt key bindings to the gui menu
