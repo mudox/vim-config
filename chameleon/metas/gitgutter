@@ -35,7 +35,12 @@ function g:this_meta.config()
   let g:gitgutter_enabled = 0
   let g:gitgutter_realtime = 0
 
-  hi! link SignColumn Normal
+  " sign colors
+  "let g:gitgutter_override_sign_column_highlight = 0
+  "highlight GitGutterAdd          guifg=<whatever>
+  "highlight GitGutterChange       guifg=<whatever>
+  "highlight GitGutterDelete       guifg=<whatever>
+  "highlight GitGutterChangeDelete guifg=<whatever>
 
   let g:gitgutter_sign_added            = ' '
   let g:gitgutter_sign_modified         = ' '
