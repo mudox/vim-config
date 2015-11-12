@@ -7,4 +7,33 @@ let g:this_meta.site = 'https://github.com/ryanoasis/vim-devicons.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
+  " change the default character when no match found
+  "let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = 'ƛ'
+
+  " enable folder/directory glyph flag (disabled by default with 0)
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+
+  " enable open and close folder/directory glyph flags (disabled by default with 0)
+  let g:DevIconsEnableFoldersOpenClose = 1
+
+  " enable custom folder/directory glyph exact matching
+  let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
+
+  " change the default folder/directory glyph/icon
+  "let g:WebDevIconsUnicodeDecorateFolderNodeDefaultSymbol = 'ƛ'"
+
+  " change the default open folder/directory glyph/icon (default is '') "vim
+  "let g:DevIconsDefaultFolderOpenSymbol = 'ƛ'"
+
+  " change the default dictionary mappings for file extension matches
+  "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+  "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = 'ƛ'"
+
+  " change the default dictionary mappings for exact file node matches
+  "let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
+  "let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['MyReallyCoolFile.okay'] = 'ƛ'"
+
+  " add or override individual additional filetypes
+  "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed let
+  "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['myext'] = 'ƛ'"
 endfunction
