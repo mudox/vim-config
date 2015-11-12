@@ -211,6 +211,9 @@ let g:mapleader = ','
 nnoremap <BS>W :w<Cr>:e!<Cr>
 nnoremap <BS>w :w<Cr>
 
+nmap n nzz
+nmap N Nzz
+
 " j, k to easily move around in wrapped long line.                                   {{{2
 nnoremap k gk
 nnoremap j gj
