@@ -19,6 +19,9 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
+      \ 'promptline'      ,
+      \ 'capslock'        ,
+      \ 'startify'        ,
       \ 'tmuxline'        ,
       \ 'rt_tmux'         ,
       \ 'focus_events'    ,
