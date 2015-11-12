@@ -12,23 +12,33 @@ let g:this_meta.vimplug_cmd_dict = {
       \ }
 
 function g:this_meta.config()
-  nnoremap cogg :<C-U>GitGutterToggle<CR>
+  nnoremap cogg :<C-U>GitGutterToggle<Cr>
 
-  nnoremap ]g :GitGutterNextHunk<CR>
-  nnoremap [g :GitGutterPrevHunk<CR>
+  function! s:hunk(dir)
+    if a:dir == 'next'
+      GitGutterNextHunk
+    else
+      GitGutterPrevHunk
+    endif
+    if foldclosed(line('.')) != -1
+      normal! zO
+    endif
+  endfunction
+  nnoremap ]g :call <SID>hunk('next')<Cr>
+  nnoremap [g :call <SID>hunk('prev')<Cr>
 
-  nnoremap [h :GitGutterStageHunk<CR>
-  nnoremap ]h :GitGutterRevertHunk<CR>
+  nnoremap [h :GitGutterStageHunk<Cr>
+  nnoremap ]h :GitGutterRevertHunk<Cr>
 
-  nnoremap cogh :GitGutterLineHighlightsToggle<CR>
+  nnoremap cogh :GitGutterLineHighlightsToggle<Cr>
 
   let g:gitgutter_enabled = 0
   let g:gitgutter_realtime = 0
 
   hi! link SignColumn Normal
 
-  let g:gitgutter_sign_added = 'A'
-  let g:gitgutter_sign_modified = 'M'
-  let g:gitgutter_sign_removed = 'R'
-  let g:gitgutter_sign_modified_removed = 'MR'
+  let g:gitgutter_sign_added            = ' '
+  let g:gitgutter_sign_modified         = ' '
+  let g:gitgutter_sign_removed          = ' '
+  let g:gitgutter_sign_modified_removed = ' '
 endfunction
