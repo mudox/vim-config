@@ -36,4 +36,5 @@ function g:this_meta.config()
   " add or override individual additional filetypes
   "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed let
   "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['myext'] = 'ƛ'"
+
 endfunction
