@@ -8,6 +8,7 @@ let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
   set updatetime=4000
+  let g:easytags_async = 1
 
   let g:easytags_updatetime_autodisable = 1
   let g:easytags_include_members = 1
