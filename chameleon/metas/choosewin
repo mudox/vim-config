@@ -7,8 +7,9 @@ let g:this_meta.site = 'https://github.com/t9md/vim-choosewin.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-  nmap  <A-w> <Plug>(choosewin)
+  nmap <Space><Space> <Plug>(choosewin)
 
-  let g:choosewin_overlay_enable          = 1
-  let g:choosewin_overlay_clear_multibyte = 1
+  "let g:choosewin_overlay_enable          = 1
+  let g:choosewin_overlay_shade  = 1
+  let g:choosewin_return_on_single_win = 1
 endfunction
