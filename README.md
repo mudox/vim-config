@@ -9,7 +9,7 @@ Since I started learning & using Vim/Neovim 3 years ago, my configuration has gr
 - several other plugins I written (but not plublished yet)
 - 160+ plugins for verious situations
 
-currently it is not portable (out of box), due to
+Currently it is not portable (out of box), due to
 
-- NeoVim's key features & artchitecture are not stable
-- I lack of repo maintaining experience & energy
+- Neovim's key features & artchitecture are not stable
+- My lack of repo maintaining experience & energy
