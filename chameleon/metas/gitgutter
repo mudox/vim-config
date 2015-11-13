@@ -12,8 +12,8 @@ let g:this_meta.vimplug_cmd_dict = {
       \ }
 
 function g:this_meta.config()
-  nnoremap cogg :<C-U>GitGutterToggle<Cr>
-  nnoremap \gg :<C-U>GitGutter<Cr>
+  nnoremap <silent> cogg :<C-U>GitGutterToggle<Cr>
+  nnoremap <silent> \gg :<C-U>GitGutter<Cr>
 
 
   " navigate through hunks                            {{{1
