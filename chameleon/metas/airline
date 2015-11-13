@@ -68,7 +68,7 @@ function g:this_meta.config()
 
   " trailing space
   let g:airline#extensions#whitespace#enabled             = 1
-  let g:airline#extensions#whitespace#checks              = [ 'indent', 'trailing', 'long' ]
+  let g:airline#extensions#whitespace#checks              = [ 'indent', 'trailing' ]
   let g:airline#extensions#whitespace#mixed_indent_algo   = 2
   let g:airline_whitespace_symbol                         = '!'
   let g:airline#extensions#whitespace#trailing_format     = 'T[%s]'
