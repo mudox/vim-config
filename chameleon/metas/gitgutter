@@ -13,6 +13,10 @@ let g:this_meta.vimplug_cmd_dict = {
 
 function g:this_meta.config()
   nnoremap cogg :<C-U>GitGutterToggle<Cr>
+  nnoremap \gg :<C-U>GitGutter<Cr>
+
+
+  " navigate through hunks                            {{{1
 
   function! s:hunk(dir)
     if a:dir == 'next'
@@ -24,8 +28,10 @@ function g:this_meta.config()
       normal! zO
     endif
   endfunction
+
   nnoremap <silent> ]g :call <SID>hunk('next')<Cr>
   nnoremap <silent> [g :call <SID>hunk('prev')<Cr>
+  " }}}1
 
   nnoremap <silent> [h :GitGutterStageHunk<Cr>
   nnoremap <silent> ]h :GitGutterRevertHunk<Cr>
