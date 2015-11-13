@@ -7,5 +7,5 @@ let g:this_meta.site = 'git@github.com:Mudox/vim-omnimenu.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-  nmap <C-Space> <Plug>(OmniMenu_TopMenu)
+  "nmap <C-Space> <Plug>(OmniMenu_TopMenu)
 endfunction
