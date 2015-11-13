@@ -1,7 +1,7 @@
 # MY Neovim's Configuration
 ======
 
-[snapshot](https://github.com/mudox/vim-config/raw/master/snapshots/1.png)
+![snapshot](https://github.com/mudox/vim-config/raw/master/snapshots/1.png)
 
 Since I started learning & using Vim/Neovim 3 years ago, my configuration has grown to be
 
