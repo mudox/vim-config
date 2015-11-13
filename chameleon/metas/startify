@@ -9,9 +9,8 @@ let g:this_meta.vimplug_cmd_dict = {}
 function g:this_meta.config()
   " indices
   let numbers = map(range(10), 'string(v:val)')
-  let letters = ['A', 'C', 'D', 'F', 'G', 'H', 'M', 'L', 'O', 'P', 'Q', 'R',
-        \ 'U', 'V', 'W', 'X', 'Y', 'Z']
-  let letters += map(letters, 'tolower(v:val)')
+  let letters = ['A', 'G', 'H', 'M', 'L', 'O', 'P', 'Q', 'R',
+        \ 'U', 'V', 'W', 'X', 'Y']
   let indices = numbers + letters
   let g:startify_custom_indices = indices
 
