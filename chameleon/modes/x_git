@@ -7,7 +7,6 @@ let s:bundle_list = [
       \ 'gitboard',
       \ 'gitgutter',
       \ 'gitv',
-      \ 'signify',
       \ 'vimagit',
       \ ]
 
