@@ -13,9 +13,6 @@ endif
 
 call mudox#chameleon#Init()
 
-silent! call cmdhub#cmds#register('Install plugins by vim-plug', 'PlugInstall')
-silent! call cmdhub#cmds#register('Update all plugins by vim-plug', 'PlugUpdate')
-silent! call cmdhub#cmds#register('Upgrade vim-plug itself', 'PlugUpgrade')
 "}}}1
 
 " BUNDLE SETTINGS                                                                    {{{1
@@ -188,7 +185,7 @@ if has('unix')
 endif
 
 " displaying text
-set nolazyredraw
+set lazyredraw
 
 " backup
 set nobackup
