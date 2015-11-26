@@ -13,11 +13,10 @@
 
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
-      \ 'syntastic'     ,
-      \ 'vim_lint'      ,
-      \ 'vim_parser'    ,
-      \ 'vim_vspec'     ,
       \ 'vim_scriptease',
+      \ 'vim_vader'     ,
+      \ 'vim_test'      ,
+      \ 'neomake'       ,
       \ ]
 
 call AddBundles(s:bundle_list)
