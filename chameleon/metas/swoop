@@ -4,15 +4,13 @@ let g:this_meta.site = 'https://github.com/pelodelfuego/vim-swoop.git'
 
 " NOTE: the dict bellow will be passed to command 'PlugInstall'
 " as the 2nd argument to install this plugin.
-let g:this_meta.vimplug_cmd_dict = {'on': ''}
+let g:this_meta.vimplug_cmd_dict = {
+      \ 'on': ['Swoop', 'SwoopSelection', 'SwoopMulti', 'SwoopMultiSelection']
+      \ }
 
 function g:this_meta.config()
 
-  call ctrlp#vim_plug_lazy_plugins#register(
-        \   'swoop',
-        \   'call plug#load("vim-swoop")'
-        \ )
-  "let g:swoopUseDefaultKeyMap = 0
+  let g:swoopUseDefaultKeyMap = 0
 
   "nmap ,l :call Swoop()<CR>
   "vmap ,l :call SwoopSelection()<CR>
