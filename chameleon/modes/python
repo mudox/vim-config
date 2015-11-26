@@ -19,7 +19,7 @@ let s:bundle_list = [
       \ 'vdebug'         ,
       \ 'py_syntax'      ,
       \ 'rainbow_oblitum',
-      \ 'syntastic'      ,
+      \ 'neomake'        ,
       \ ]
 
 if has('unix')
