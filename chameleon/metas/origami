@@ -9,6 +9,6 @@ let g:this_meta.vimplug_cmd_dict = {}
 function g:this_meta.config()
     let g:OrigamiPadding          = 1
     "let g:OrigamiStaggeredSpacing = 3
-    let g:OrigamiIncAllLines      = 1
-    "let g:OrigamiFoldAtCol        = 85
+    "let g:OrigamiIncAllLines      = 1
+    let g:OrigamiFoldAtCol        = 85
 endfunction
