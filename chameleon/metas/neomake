@@ -7,6 +7,9 @@ let g:this_meta.site = 'https://github.com/benekastah/neomake.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-    " TODO: your plugin configuration goes here.
+  nnoremap <silent> <Bs>x :<C-U>update <Bar> Neomake<Cr>
+  nnoremap <silent> <Bs>X :<C-U>update <Bar> Neomake!<Cr>
 
+  " suppress style problem panic, seems too strict
+  let g:neomake_vim_vint_args = ['--warning']
 endfunction
