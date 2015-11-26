@@ -4,20 +4,9 @@ let g:this_meta.site = 'https://github.com/szw/vim-ctrlspace.git'
 
 " NOTE: the dict bellow will be passed to command 'PlugInstall'
 " as the 2nd argument to install this plugin.
-let g:this_meta.vimplug_cmd_dict = {'on': ''}
+let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-
-  " lazy awake it {{{1
-  function <SID>awake_ctrlspace()
-    echohl WarningMsg | echo 'loading [ctrlpspace] ...' | echohl NONE
-    nunmap <Space>w
-    call plug#load('vim-ctrlspace')
-    CtrlSpace
-  endfunction
-
-  nnoremap <silent> <Space>w :call <SID>awake_ctrlspace()<Cr>
-  " }}}1
 
   let g:CtrlSpaceDefaultMappingKey = "<Space>w"
   let g:CtrlSpaceUseTabline = 0
