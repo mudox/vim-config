@@ -7,5 +7,5 @@ let g:this_meta.site = 'https://github.com/sheerun/vim-polyglot.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-  let g:polyglot_disabled = ['go']
+  let g:polyglot_disabled = ['go', 'python']
 endfunction
