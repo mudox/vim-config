@@ -8,15 +8,18 @@ let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
   " let ycm do this job
-  let g:jedi#completions_enabled = 0
+  let g:jedi#completions_enabled   = 0
 
   let g:jedi#documentation_command = ",k"
-  let g:jedi#rename_command = ",rn"
-  let g:jedi#completions_command = '<C-J>'
-  let g:jedi#usages_command = ',usg'
+  let g:jedi#rename_command        = ",rn"
+  let g:jedi#completions_command   = '<C-J>'
+  let g:jedi#usages_command        = ',usg'
 
   " show function signature in command line
   set noshowcmd
+  set noshowmode
   let g:jedi#show_call_signatures = 2
 
+  let g:ycm_autoclose_preview_window_after_completion = 1
+  let g:ycm_autoclose_preview_window_after_insertion = 1
 endfunction
