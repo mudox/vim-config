@@ -14,7 +14,7 @@
 
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
-      \ 'airline'     ,
+      \ 'todo',
       \ ]
 
 call AddBundles(s:bundle_list)
