@@ -35,7 +35,6 @@ let s:bundle_list = [
       \ 'quickrun'        ,
       \ 'man'             ,
       \ 'promiscuous'     ,
-      \ 'delimitmate'     ,
       \ 'fzf'             ,
       \ 'confsyntax'      ,
       \ 'ctrlspace'       ,
