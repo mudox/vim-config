@@ -3,13 +3,13 @@
 " Merge Configs {{{1
 
 let s:sub_configs = [
-      \ 'x_ultisnips',
       \ 'x_ctrlp'    ,
       \ 'x_xolox'    ,
       \ 'x_motion'   ,
       \ 'x_database' ,
       \ 'x_color'    ,
       \ 'x_textobj'  ,
+      \ 'x_ultisnips',
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -23,7 +23,6 @@ let s:bundle_list = [
       \ 'polyglot'        ,
       \ 'todo'            ,
       \ 'capslock'        ,
-      \ 'startify'        ,
       \ 'tmuxline'        ,
       \ 'rt_tmux'         ,
       \ 'focus_events'    ,
