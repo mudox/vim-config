@@ -7,6 +7,7 @@ let g:this_meta.site = 'https://github.com/mhinz/vim-startify.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
+
   " indices
   let numbers = map(range(10), 'string(v:val)')
   let letters = ['A', 'G', 'H', 'M', 'L', 'O', 'P', 'Q', 'R',
@@ -25,6 +26,19 @@ function g:this_meta.config()
     let centered_lines += ['', '']
     return centered_lines
   endfunction
+
+  " use Goyo to center Startify buffer
+  function! s:on_vimenter() abort
+    if !argc()
+      Startify
+      if exists(':Goyo')
+        Goyo 100
+        normal! zz
+      endif
+    endif
+  endfunction
+
+  autocmd VimEnter * call <SID>on_vimenter()
 
   autocmd User Startified setlocal buftype=
 
