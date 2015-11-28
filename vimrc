@@ -97,7 +97,7 @@ set encoding=utf8
 
 " color & font
 set background=dark
-if g:mdx_chameleon_mode_name !~ 'update-all\|mini'
+if ! empty(globpath(&rtp, 'colors/PaperColor.vim'))
   colorscheme PaperColor
 else
   colorscheme desert
