@@ -1,0 +1,12 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:this_meta.site = 'https://github.com/jiangmiao/auto-pairs.git'
+
+" NOTE: the dict bellow will be passed to command 'PlugInstall'
+" as the 2nd argument to install this plugin.
+let g:this_meta.vimplug_cmd_dict = {}
+
+function g:this_meta.config()
+    " TODO: your plugin configuration goes here.
+
+endfunction
