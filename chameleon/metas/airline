@@ -27,13 +27,13 @@ function g:this_meta.config()
         \ }
 
   " airline-tagbar
-  let g:airline#extensions#tagbar#enabled       = 1
+  let g:airline#extensions#tagbar#enabled       = 0
 
   " airline-syntastic
-  let g:airline#extensions#syntastic#enabled    = 1
+  let g:airline#extensions#syntastic#enabled    = 0
 
   " airline-branch
-  let g:airline#extensions#branch#empty_message = 'Mudox'
+  let g:airline#extensions#branch#empty_message = g:mdx_chameleon_mode_name
   let g:airline#extensions#branch#enabled       = 1
 
   " airline-tabline
@@ -61,10 +61,10 @@ function g:this_meta.config()
   let airline#extensions#tmuxline#snapshot_file = "~/Git/dot-files/tmuxline"
 
   " nrrwrgn
-  let g:airline#extensions#nrrwrgn#enabled = 1
+  let g:airline#extensions#nrrwrgn#enabled = 0
 
   " ctrlspace
-  let g:airline#extensions#ctrlspace#enabled = 1
+  let g:airline#extensions#ctrlspace#enabled = 0
 
   " trailing space
   let g:airline#extensions#whitespace#enabled             = 1
@@ -75,6 +75,4 @@ function g:this_meta.config()
   let g:airline#extensions#whitespace#mixed_indent_format = 'MI[%s]'
   let g:airline#extensions#whitespace#long_format         = 'L[%s]'
 
-
-  nnoremap \ar :<C-U>AirlineRefresh<Cr>
 endfunction
