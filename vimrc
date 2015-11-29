@@ -23,7 +23,8 @@ let g:ftplugin_sql_omni_key_left  = '<C-h>'
 "}}}2
 
 " [matchparen]                                                                     " {{{2
-"let loaded_matchparen = 1
+" disable it
+let loaded_matchparen = 1
 " }}}2
 
 " [dot_vim]                                                                          {{{2
@@ -355,6 +356,8 @@ cnoremap <C-N> <Down>
 " quickly fix previous spelling error with the first candidate.
 nnoremap <s [sz=1<Cr><Cr>''
 
+" coz replace zoomwintab plugin
+nnoremap <silent> coz :<C-U>tabnew %<Cr>
 " }}}1
 
 " ABBREVIATES                                                                        {{{1
