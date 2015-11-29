@@ -38,7 +38,7 @@ function g:this_meta.config()
     endif
   endfunction
 
-  autocmd VimEnter * call <SID>on_vimenter()
+  "autocmd VimEnter * call <SID>on_vimenter()
 
   autocmd User Startified setlocal buftype=
 
