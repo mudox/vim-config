@@ -3,11 +3,11 @@
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-      \ 'fugitive',
-      \ 'gitboard',
+      \ 'fugitive' ,
       \ 'gitgutter',
-      \ 'gitv',
-      \ 'vimagit',
+      \ 'gitv'     ,
+      \ 'vimagit'  ,
+      \ 'rhubarb'  ,
       \ ]
 
 call AddBundles(s:bundle_list)
