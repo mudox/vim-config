@@ -7,9 +7,10 @@
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-            \ 'endwise'  ,
-            \ 'rvm'      ,
-            \ 'splitjoin',
+            \ 'rb_endwise'  ,
+            \ 'rb_rvm'      ,
+            \ 'rb_splitjoin',
+            \ 'rt_ruby'     ,
             \ ]
 
 call AddBundles(s:bundle_list)
