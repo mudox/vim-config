@@ -4,7 +4,8 @@
 
 let s:sub_configs = [
       \ 'x_common',
-      \ 'x_ruby',
+      \ 'x_ruby'  ,
+      \ 'x_git'   ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -14,7 +15,7 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:common_bundle = [
-      \ 'syntastic',
+      \ 'neomake',
       \ 'vdebug',
       \ ]
 
