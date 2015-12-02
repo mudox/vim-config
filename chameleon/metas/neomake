@@ -10,6 +10,17 @@ function g:this_meta.config()
   nnoremap <silent> <Bs>x :<C-U>update <Bar> Neomake<Cr>
   nnoremap <silent> <Bs>X :<C-U>update <Bar> Neomake!<Cr>
 
-  " suppress style problem panic, seems too strict
-  let g:neomake_vim_vint_args = ['--warning']
+  let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
+  let g:neomake_python_enabled_makers = ['pep8', 'pylint']
+
+  let g:neomake_open_list = 1
+
+  let g:neomake_error_sign = {
+        \ 'text': '',
+        \ 'texthl': 'ErrorMsg',
+        \ }
+  let g:neomake_warning_sign = {
+        \ 'text': '',
+        \ 'texthl': 'WarningMsg',
+        \ }
 endfunction
