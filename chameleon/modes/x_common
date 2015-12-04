@@ -19,9 +19,10 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
+      \ 'rsi'             ,
+      \ 'dim'             ,
       \ 'autopairs'       ,
       \ 'neoterm'         ,
-      \ 'polyglot'        ,
       \ 'todo'            ,
       \ 'capslock'        ,
       \ 'tmuxline'        ,
