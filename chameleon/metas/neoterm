@@ -7,6 +7,7 @@ let g:this_meta.site = 'https://github.com/kassio/neoterm.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-    " TODO: your plugin configuration goes here.
-
+ let g:neoterm_automap_keys = '<BS>t'
+ let g:neoterm_position = 'vertical'
+ let g:neoterm_keep_term_open = 1
 endfunction
