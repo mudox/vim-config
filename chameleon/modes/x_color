@@ -12,6 +12,7 @@ let s:all_colors = map(s:all_colors, 'fnamemodify(v:val, ":t:r")')
 "let s:bundle_list = add(s:all_colors, 'kaleidoscope')
 let s:bundle_list = add(s:all_colors, 'colorv')
 let s:bundle_list = add(s:all_colors, 'webapi')
+let s:bundle_list = add(s:all_colors, 'color_switcher')
 
 call AddBundles(s:bundle_list)
 " }}}1

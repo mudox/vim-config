@@ -1,0 +1,21 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:this_meta.site = 'https://github.com/xolox/vim-colorscheme-switcher.git'
+
+" NOTE: the dict bellow will be passed to command 'PlugInstall'
+" as the 2nd argument to install this plugin.
+let g:this_meta.vimplug_cmd_dict = {}
+
+function g:this_meta.config()
+
+    let g:colorscheme_switcher_define_mappings  = 0
+    let g:colorscheme_switcher_exclude_builtins = 1
+    let g:colorscheme_switcher_keep_background  = 1
+    let g:colorscheme_switcher_exclude          = [
+          \ 'base16-greenscreen',
+          \ 'marslo',
+          \ ]
+
+    nnoremap <silent> >c :<C-U>NextColorScheme<Cr>
+
+endfunction
