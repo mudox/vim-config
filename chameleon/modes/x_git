@@ -8,6 +8,7 @@ let s:bundle_list = [
       \ 'gitv'     ,
       \ 'vimagit'  ,
       \ 'rhubarb'  ,
+      \ 'gist'     ,
       \ ]
 
 call AddBundles(s:bundle_list)

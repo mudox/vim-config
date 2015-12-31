@@ -1,0 +1,23 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+let g:this_meta.site = 'https://github.com/mattn/gist-vim.git'
+
+" NOTE: the dict bellow will be passed to command 'PlugInstall'
+" as the 2nd argument to install this plugin.
+let g:this_meta.vimplug_cmd_dict = {}
+
+function g:this_meta.config()
+
+  " clipboard provider for `Gist -c`
+  if has('mac') || has('macunix')
+    let g:gist_clip_command = 'pbcopy'
+  elseif has('unix')
+    let g:gist_clip_command = 'xclip -selection clipboard'
+  endif
+
+  let g:gist_detect_filetype = 1
+  let g:gist_open_browser_after_post = 1
+  "let g:gist_browser_command = ''
+  let g:gist_show_privates = 1
+  let g:gist_get_multiplefile = 1
+endfunction
