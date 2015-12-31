@@ -20,12 +20,13 @@ augroup END
 function g:this_meta.config()
   " white or black list
   let g:ycm_filetype_whitelist                            = {
-        \ 'cpp'    : 1,
         \ 'c'      : 1,
-        \ 'python' : 1,
-        \ 'go'     : 1,
+        \ 'cpp'    : 1,
         \ 'css'    : 1,
+        \ 'go'     : 1,
         \ 'html'   : 1,
+        \ 'python' : 1,
+        \ 'ruby'   : 1,
         \ 'vim'    : 1,
         \ }
 
