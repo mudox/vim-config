@@ -1,0 +1,63 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" Merge Configs {{{1
+
+let s:sub_configs = [
+      \ 'x_ctrlp'    ,
+      \ 'x_motion'   ,
+      \ 'x_textobj'  ,
+      \ 'x_ultisnips',
+      \ ]
+
+call MergeConfigs(s:sub_configs)
+
+" }}}1
+
+" Bundles in Current Config {{{1
+
+let s:bundle_list = [
+      \ 'rsi'             ,
+      \ 'autopairs'       ,
+      \ 'capslock'        ,
+      \ 'focus_events'    ,
+      \ 'argwrap'         ,
+      \ 'quickrun'        ,
+      \ 'man'             ,
+      \ 'easyalign'       ,
+      \ 'expandregion'    ,
+      \ 'goyo'            ,
+      \ 'join'            ,
+      \ 'multi_cursor'    ,
+      \ 'nerdcommenter'   ,
+      \ 'nerdtree'        ,
+      \ 'nrrwrgn'         ,
+      \ 'origami'         ,
+      \ 'over'            ,
+      \ 'rengbang'        ,
+      \ 'repeat'          ,
+      \ 'surround'        ,
+      \ 'switch'          ,
+      \ 'swoop'           ,
+      \ 'tagbar'          ,
+      \ 'tlib'            ,
+      \ 'trailertrash'    ,
+      \ 'unimpaired'      ,
+      \ 'vimproc'         ,
+      \ 'ctrlsf'          ,
+      \ ]
+
+
+if !has('win32') || has('win64')
+  call add(s:bundle_list, 'autoformat')
+endif
+
+if !has('mac') && !has('macunix')
+  call add(s:bundle_list, 'vimcaps')
+end
+
+if has('unix')
+  call add (s:bundle_list, 'eununch')
+endif
+
+call AddBundles(s:bundle_list)
+" }}}1
