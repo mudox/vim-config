@@ -47,12 +47,12 @@ function g:this_meta.config()
     endif
   endfunction
 
-  nnoremap <silent> <Space>a :call fzf#run({
-        \   'source':  <SID>awake_plugins_source(),
-        \   'sink':    function('<SID>awake_plugins_sink'),
-        \   'options': '+m',
-        \   'left':    20,
-        \ })<CR>
+  "nnoremap <silent> <Space>a :call fzf#run({
+        "\   'source':  <SID>awake_plugins_source(),
+        "\   'sink':    function('<SID>awake_plugins_sink'),
+        "\   'options': '+m',
+        "\   'left':    20,
+        "\ })<CR>
   " }}}1
 
 endfunction
