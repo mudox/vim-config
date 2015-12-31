@@ -7,10 +7,14 @@
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-            \ 'rb_endwise'  ,
-            \ 'rb_rvm'      ,
-            \ 'rb_splitjoin',
-            \ 'rt_ruby'     ,
+            \ 'rb_endwise'     ,
+            \ 'rb_rvm'         ,
+            \ 'rb_splitjoin'   ,
+            \ 'rt_ruby'        ,
+            \ 'rb_rspec_syntax',
+            \ 'vim_test'       ,
+            \ 'rb_monster'     ,
+            \ 'ycm'            ,
             \ ]
 
 call AddBundles(s:bundle_list)
