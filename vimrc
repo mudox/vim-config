@@ -360,9 +360,6 @@ nnoremap <s [sz=1<Cr><Cr>''
 nnoremap <silent> coz :<C-U>tabnew %<Cr>
 " }}}1
 
-" ABBREVIATES                                                                        {{{1
-"}}}1
-
 call mudox#chameleon#InitBundles()
 
 " vim: fdm=marker
