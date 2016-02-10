@@ -195,6 +195,8 @@ set nowritebackup
 
 set hidden "ctrlspace need this setting
 
+" try to improve syntax performance
+set synmaxcol=200
 "}}}1
 
 " MAPPINGS                                                                           {{{1
