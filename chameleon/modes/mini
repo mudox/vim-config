@@ -17,7 +17,6 @@ let s:bundle_list = [
       \ 'surround'    ,
       \ 'ctrlp_cmdhub',
       \ 'ctrlp'       ,
-      \ 'airline'     ,
       \ ]
 
 call AddBundles(s:bundle_list)
