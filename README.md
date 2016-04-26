@@ -5,9 +5,9 @@
 Since I started learning & using Vim/Neovim 3 years ago, my configuration has grown to be
 
 - have 4K+ lines of configuring code managed & distributed in 160+ small files,
-- a configuration mamager plugin written by myself (but not published yet)
+- a configuration manager plugin written by myself (but not published yet)
 - several other plugins I written (but not plublished yet)
-- 160+ plugins for verious situations
+- 160+ plugins for various situations
 
 Currently it is not portable (out of box), due to
 
