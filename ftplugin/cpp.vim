@@ -16,4 +16,3 @@ setlocal tags+=~/.ctags/cpp/libstdc++        " C++ Standard Library
 " Recursively travel through the entire tree rooted on current directory.
 nnoremap <buffer> \tag :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "}}}1
-
