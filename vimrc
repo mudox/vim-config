@@ -89,7 +89,8 @@ augroup END
 set nocompatible
 
 set guioptions=fcaM
-set t_Co=256 " 256 color support on some terminals.
+"set t_Co=256 " 256 color support on some terminals.
+set notermguicolors
 
 syntax on
 filetype plugin indent on " 'filetype on' implied
@@ -133,6 +134,7 @@ set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 set showtabline=1
 
+" showcmd may incur screen flickering in tmux
 set noshowcmd
 if index(g:mdx_chameleon.meta_set, 'airline') == -1
   set laststatus=1 " never show statusline.
