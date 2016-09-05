@@ -75,4 +75,5 @@ function g:this_meta.config()
   let g:airline#extensions#whitespace#mixed_indent_format = 'MI[%s]'
   let g:airline#extensions#whitespace#long_format         = 'L[%s]'
 
+  nnoremap coa :<C-U>AirlineToggle<Cr>
 endfunction
