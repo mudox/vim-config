@@ -22,6 +22,7 @@ function g:this_meta.config()
   let g:ycm_filetype_whitelist                            = {
         \ 'c'      : 1,
         \ 'cpp'    : 1,
+        \ 'objc'   : 1,
         \ 'css'    : 1,
         \ 'go'     : 1,
         \ 'html'   : 1,
@@ -36,9 +37,6 @@ function g:this_meta.config()
   let g:ycm_seed_identifiers_with_syntax                  = 1
 
   let g:ycm_always_populate_location_list                 = 1
-
-  let g:ycm_complete_in_strings                           = 1
-  let g:ycm_complete_in_comments                          = 1
 
   let g:ycm_max_diagnostics_to_display                    = 15
 
@@ -60,4 +58,6 @@ function g:this_meta.config()
   "let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 
   "let g:ycm_goto_buffer_command = 'same-buffer'
+
+  let g:ycm_confirm_extra_conf = 0
 endfunction
