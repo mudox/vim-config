@@ -7,27 +7,6 @@ setlocal shiftwidth=2
 setlocal smarttab
 setlocal expandtab
 
-" beautify js files {{{1
-nnoremap <buffer> \ff :call <SID>Beautify()<Cr>
-
-function! <SID>Beautify() " {{{2
-  if !executable('js-beautify')
-    echoerr 'can not find executable js-beautify.'
-  endif
-
-  let view = winsaveview()
-  %!js-beautify --file -
-        \ --indent-size=2
-        \ --brace-style=collapse
-        \ --keep-array-indentation
-        \ --break-chained-methods
-        \ --space-in-paren
-        \ --jslint-happy
-        \ --good-stuff
-  call winrestview(view)
-endfunction "  }}}2
-" }}}1
-
 " run buffer {{{1
 
 function! <SID>RunBuffer( args ) " {{{2
