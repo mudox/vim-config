@@ -11,7 +11,7 @@ function g:this_meta.config()
   nnoremap <silent> <Bs>X :<C-U>update <Bar> Neomake!<Cr>
 
   let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
-  let g:neomake_python_enabled_makers = ['pep8', 'pylint']
+  let g:neomake_python_enabled_makers = ['flake8']
 
   let g:neomake_open_list = 1
 
