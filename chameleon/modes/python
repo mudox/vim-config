@@ -6,7 +6,6 @@
 let s:sub_configs = [
       \ 'x_common',
       \ 'x_git',
-      \ 'x_airline',
       \ ]
 
 call MergeConfigs(s:sub_configs)
