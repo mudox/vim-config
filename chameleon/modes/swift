@@ -14,7 +14,7 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-      \ 'ycm'            ,
+      \ 'deoplete'       ,
       \ 'rt_swift'       ,
       \ 'rainbow_oblitum',
       \ ]
