@@ -7,15 +7,15 @@ let g:this_meta.site = 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-  let g:NERDTreeIndicatorMapCustom = {
-        \ "Modified"  : "",
-        \ "Staged"    : "",
-        \ "Untracked" : "",
-        \ "Renamed"   : "",
-        \ "Unmerged"  : "═",
-        \ "Deleted"   : "",
-        \ "Dirty"     : "",
-        \ "Clean"     : "",
-        \ "Unknown"   : ""
-        \ }
+  "let g:NERDTreeIndicatorMapCustom = {
+        "\ "Modified"  : "",
+        "\ "Staged"    : "",
+        "\ "Untracked" : "",
+        "\ "Renamed"   : "",
+        "\ "Unmerged"  : "═",
+        "\ "Deleted"   : "",
+        "\ "Dirty"     : "",
+        "\ "Clean"     : "",
+        "\ "Unknown"   : ""
+        "\ }
 endfunction

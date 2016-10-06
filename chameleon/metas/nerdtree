@@ -25,6 +25,10 @@ function g:this_meta.config()
           \ a:extension .'\>#'
   endfunction "  }}}2
 
+  " symbols
+  let g:NERDTreeDirArrowExpandable = ''
+  let g:NERDTreeDirArrowCollapsible = ''
+
   " NERDTress File highlighting
   call NERDTreeHighlightFile('vim'        , 'cyan'   , 'none', 'cyan'   , 'none')
   call NERDTreeHighlightFile('vimrc'      , 'yellow' , 'none', 'yellow' , 'none')
