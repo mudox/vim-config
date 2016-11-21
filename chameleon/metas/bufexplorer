@@ -7,6 +7,7 @@ let g:this_meta.site = 'https://github.com/jlanzarotta/bufexplorer.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-    " TODO: your plugin configuration goes here.
+  " TODO: your plugin configuration goes here.
+  nnoremap <C-O>e :<C-U>BufExplorer<Cr>
 
 endfunction
