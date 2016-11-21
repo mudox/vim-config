@@ -7,6 +7,9 @@ let g:this_meta.site = 'https://github.com/junegunn/fzf.vim.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-    " TODO: your plugin configuration goes here.
+  nnoremap <C-O>b :<C-U>Buffers<Cr>
+
+  nnoremap <C-O>o :<C-U>Files<Cr>
+  nnoremap <C-O><C-O> :<C-U>Files<Cr>
 
 endfunction

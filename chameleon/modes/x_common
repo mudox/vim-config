@@ -38,6 +38,7 @@ let s:bundle_list = [
       \ 'man'                    ,
       \ 'promiscuous'            ,
       \ 'fzf'                    ,
+      \ 'fzf_wrapper'            ,
       \ 'confsyntax'             ,
       \ 'ctrlspace'              ,
       \ 'easyalign'              ,
