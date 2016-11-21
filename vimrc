@@ -89,8 +89,8 @@ augroup END
 set nocompatible
 
 set guioptions=fcaM
-"set t_Co=256 " 256 color support on some terminals.
-set notermguicolors
+set t_Co=256 " 256 color support on some terminals.
+set termguicolors
 
 syntax on
 filetype plugin indent on " 'filetype on' implied
@@ -98,11 +98,12 @@ filetype plugin indent on " 'filetype on' implied
 set encoding=utf8
 
 " color & font
-set background=dark
 if ! empty(globpath(&rtp, 'colors/PaperColor.vim'))
   colorscheme PaperColor
+  set background=dark
 else
   colorscheme desert
+  set background=dark
 endif
 
 if has('win32') || has('win64')                         " windows
@@ -133,6 +134,7 @@ set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 set showtabline=1
+"set inccommand=split
 
 " showcmd may incur screen flickering in tmux
 set noshowcmd
@@ -210,8 +212,13 @@ nnoremap coX :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<C
 let g:mapleader = ','
 
 " quick save.
-nnoremap <BS>W :w<Cr>:e!<Cr>
-nnoremap <BS>w :w<Cr>
+nnoremap <BS>W :<C-U>w<Cr>:e!<Cr>
+
+nnoremap <BS>w :<C-U>w<Cr>
+nnoremap <M-s> :<C-U>w<Cr>
+
+" sensible Y
+nnoremap Y y$
 
 " j, k to easily move around in wrapped long line.                                   {{{2
 nnoremap k gk
@@ -221,10 +228,10 @@ nmap gj <Nop>
 " }}}2
 
 " <C-H/J/K/L> to jump among windows                                                  {{{2
-nnoremap <C-H>	   <C-W>h
-nnoremap <C-L>	   <C-W>l
-nnoremap <C-K>	   <C-W>k
-nnoremap <C-J>	   <C-W>j
+"nnoremap <C-H>	   <C-W>h
+"nnoremap <C-L>	   <C-W>l
+"nnoremap <C-K>	   <C-W>k
+"nnoremap <C-J>	   <C-W>j
 "}}}2
 
 " <A-H/L> to switch among tabs                                                       {{{2
@@ -298,7 +305,7 @@ endfunction
 nnoremap \cmd :call MdxDumpExCmdOutputFromInput()<Cr>
 " }}}2
 
-" key q is too easy to touch, but is needed infrequently
+" key q is too easy to touch, but is used scarcely
 nnoremap q <Nop>
 nnoremap _q q
 
