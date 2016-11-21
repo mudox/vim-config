@@ -11,10 +11,10 @@ setlocal expandtab
 
 setlocal synmaxcol=300
 
-function! <SID>formatSwiftFile() abort
-  let nr = line('.')
-  silent %!swiftformat --indent 2
-  execute nr
-endfunction
+"function! <SID>formatSwiftFile() abort
+  "let nr = line('.')
+  "silent %!swiftformat --indent 2
+  "execute nr
+"endfunction
 
-autocmd BufWritePre *.swift call <SID>formatSwiftFile()
+"autocmd BufWritePre *.swift call <SID>formatSwiftFile()
