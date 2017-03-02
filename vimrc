@@ -88,6 +88,8 @@ augroup END
 " Important
 set nocompatible
 
+set mouse=a
+
 set guioptions=fcaM
 set t_Co=256 " 256 color support on some terminals.
 set termguicolors
@@ -134,7 +136,6 @@ set noruler      " powerline does better
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 set showtabline=1
-"set inccommand=split
 
 " showcmd may incur screen flickering in tmux
 set noshowcmd
@@ -147,6 +148,10 @@ else
   set laststatus=2
   set cmdheight=2
 endif
+
+" saner behavior of n/N
+nnoremap <expr> n  'Nn'[v:searchforward]
+nnoremap <expr> N  'nN'[v:searchforward]
 
 " Brace match
 set noshowmatch
@@ -360,7 +365,7 @@ command  -nargs=? -complete=custom,<SID>FileTypesAvail EditFileType
       \ call EditFileTypeSettings(<q-args>)
 nnoremap <BS>f :EditFileType<Space>
 
-" command mode mappings.
+" saner command-line history
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
