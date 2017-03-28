@@ -14,9 +14,9 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config {{{1
 
 let s:bundle_list = [
-      \ 'deoplete'       ,
-      \ 'rt_swift'       ,
-      \ 'rainbow_oblitum',
+      \ 'deoplete'           ,
+      \ 'swift_autocomplete' ,
+      \ 'rainbow_oblitum'    ,
       \ ]
 
 call AddBundles(s:bundle_list)
