@@ -195,7 +195,7 @@ if has('unix')
 endif
 
 " displaying text
-set lazyredraw
+set nolazyredraw
 
 " backup
 set nobackup
@@ -266,6 +266,16 @@ nnoremap <silent> ,,6 :<C-U>6wincmd w<Cr>
 nnoremap <silent> ,,7 :<C-U>7wincmd w<Cr>
 nnoremap <silent> ,,8 :<C-U>8wincmd w<Cr>
 nnoremap <silent> ,,9 :<C-U>9wincmd w<Cr>
+
+nnoremap <silent> <Space>1 :<C-U>1wincmd w<Cr>
+nnoremap <silent> <Space>2 :<C-U>2wincmd w<Cr>
+nnoremap <silent> <Space>3 :<C-U>3wincmd w<Cr>
+nnoremap <silent> <Space>4 :<C-U>4wincmd w<Cr>
+nnoremap <silent> <Space>5 :<C-U>5wincmd w<Cr>
+nnoremap <silent> <Space>6 :<C-U>6wincmd w<Cr>
+nnoremap <silent> <Space>7 :<C-U>7wincmd w<Cr>
+nnoremap <silent> <Space>8 :<C-U>8wincmd w<Cr>
+nnoremap <silent> <Space>9 :<C-U>9wincmd w<Cr>
 
 " <C-X> system shortcuts                                                             {{{2
 inoremap <M-j> <C-N>
