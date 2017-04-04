@@ -1,6 +1,13 @@
 " vim: foldmethod=marker
 
-setlocal foldmethod=syntax
+setlocal foldmethod=marker
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal smarttab
+setlocal expandtab
+
+setlocal foldmethod=marker
 
 " run buffer {{{1
 function! s:RunBuffer( args ) " {{{2
@@ -40,5 +47,23 @@ function! <SID>Autopep8() " {{{2
 
 endfunction "  }}}2
 
-nnoremap <buffer> \af :call <SID>Autopep8()<Cr>
+function! <SID>Autopep8() " {{{2
+  if !executable('autopep8')
+    echoerr "need <autopep8>, try 'sudo pip install autopep8' to get it."
+  endif
+
+  let view = winsaveview()
+  %!autopep8
+        \ --aggressive
+        \ --aggressive
+        \ --experimental
+        \ --max-line-length 79
+        \ --indent-size 4
+        \ -
+  call winrestview(view)
+
+
+endfunction "  }}}2
+
+"nnoremap <buffer> \af :call <SID>Autopep8()<Cr>
 "}}}1
