@@ -12,4 +12,5 @@ function g:this_meta.config()
   nnoremap <C-O>o :<C-U>Files<Cr>
   nnoremap <C-O><C-O> :<C-U>Files<Cr>
 
+  let g:fzf_files_options = '--margin=0 --color=bg:-1,bg+:-1 --tiebreak=end,length --height=20% --min-height=12'
 endfunction
