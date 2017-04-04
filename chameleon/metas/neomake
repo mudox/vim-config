@@ -10,17 +10,43 @@ function g:this_meta.config()
   nnoremap <silent> <Bs>x :<C-U>update <Bar> Neomake<Cr>
   nnoremap <silent> <Bs>X :<C-U>update <Bar> Neomake!<Cr>
 
+  " ruby
   let g:neomake_ruby_enabled_makers = ['mri', 'rubocop', 'reek']
+
+  " python
   let g:neomake_python_enabled_makers = ['flake8']
+  let g:neomake_python_flake8_args = '--ignore E111,E121'
 
   let g:neomake_open_list = 1
 
+  function s:set_colors()
+    hi NeomakeErrorSign    guifg=red    guibg=None ctermfg=red    ctermbg=None
+    hi NeomakeWarningSign  guifg=cyan   guibg=None ctermfg=cyan   ctermbg=None
+    hi NeomakeInfoSign     guifg=yellow guibg=None ctermfg=yellow ctermbg=None
+    hi NeomakeMessagerSign guifg=white  guibg=None ctermfg=white  ctermbg=None
+    hi NeomakeError        guifg=red    guibg=None ctermfg=red    ctermbg=None
+    hi NeomakeWarning      guifg=cyan   guibg=None ctermfg=cyan   ctermbg=None
+    hi NeomakeInfo         guifg=yellow guibg=None ctermfg=yellow ctermbg=None
+    hi NeomakeMessage      guifg=white  guibg=None ctermfg=white  ctermbg=None
+  endfunction
+
+  augroup my_neomake_highlights
+    au!
+    autocmd ColorScheme * call s:set_colors()
+    autocmd VimEnter    * call s:set_colors()
+  augroup END
+
+
   let g:neomake_error_sign = {
         \ 'text': '',
-        \ 'texthl': 'ErrorMsg',
         \ }
   let g:neomake_warning_sign = {
+        \ 'text': '',
+        \ }
+  let g:neomake_info_sign = {
         \ 'text': '',
-        \ 'texthl': 'WarningMsg',
+        \ }
+  let g:neomake_message_sign = {
+        \ 'text': '',
         \ }
 endfunction
