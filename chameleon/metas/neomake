@@ -15,19 +15,19 @@ function g:this_meta.config()
 
   " python
   let g:neomake_python_enabled_makers = ['flake8']
-  let g:neomake_python_flake8_args = '--ignore E111,E121'
+  let g:neomake_python_flake8_args = '--ignore E111,E121,E114'
 
   let g:neomake_open_list = 1
 
   function s:set_colors()
-    hi NeomakeErrorSign    guifg=red    guibg=None ctermfg=red    ctermbg=None
-    hi NeomakeWarningSign  guifg=cyan   guibg=None ctermfg=cyan   ctermbg=None
-    hi NeomakeInfoSign     guifg=yellow guibg=None ctermfg=yellow ctermbg=None
-    hi NeomakeMessagerSign guifg=white  guibg=None ctermfg=white  ctermbg=None
-    hi NeomakeError        guifg=red    guibg=None ctermfg=red    ctermbg=None
-    hi NeomakeWarning      guifg=cyan   guibg=None ctermfg=cyan   ctermbg=None
-    hi NeomakeInfo         guifg=yellow guibg=None ctermfg=yellow ctermbg=None
-    hi NeomakeMessage      guifg=white  guibg=None ctermfg=white  ctermbg=None
+    hi NeomakeErrorSign    guifg=red     guibg=None ctermfg=red     ctermbg=None
+    hi NeomakeWarningSign  guifg=#FD9435 guibg=None ctermfg=magenta ctermbg=None
+    hi NeomakeInfoSign     guifg=yellow  guibg=None ctermfg=yellow  ctermbg=None
+    hi NeomakeMessagerSign guifg=white   guibg=None ctermfg=white   ctermbg=None
+    hi NeomakeError        guifg=red     guibg=None ctermfg=red     ctermbg=None
+    hi NeomakeWarning      guifg=#FD9435 guibg=None ctermfg=magenta ctermbg=None
+    hi NeomakeInfo         guifg=yellow  guibg=None ctermfg=yellow  ctermbg=None
+    hi NeomakeMessage      guifg=white   guibg=None ctermfg=white   ctermbg=None
   endfunction
 
   augroup my_neomake_highlights
