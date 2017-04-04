@@ -16,11 +16,6 @@ function g:this_meta.config()
   nnoremap <Space>c :silent CtrlPChangeAll<Cr>
   nnoremap <Space>b :silent CtrlPBuffer<Cr>
 
-  " extention loadplugin
-  call add(g:ctrlp_extensions, 'awake_plugin')
-  command! CtrlPAwakePlugin call ctrlp#init(ctrlp#awake_plugin#id())
-  nnoremap <Space>l :silent CtrlPAwakePlugin<Cr>
-
   " cache
   let g:ctrlp_custom_ignore = {
         \ 'dir':  '\v[\/]\.(git|hg|svn)$',
