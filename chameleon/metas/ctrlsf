@@ -7,6 +7,8 @@ let g:this_meta.site = 'https://github.com/dyng/ctrlsf.vim.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-    " TODO: your plugin configuration goes here.
+
+  nmap ,mv <Plug>CtrlSFCCwordPath
+  nmap ,mV <Plug>CtrlSFCwordPath
 
 endfunction
