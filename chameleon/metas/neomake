@@ -15,7 +15,7 @@ function g:this_meta.config()
 
   " python
   let g:neomake_python_enabled_makers = ['flake8']
-  let g:neomake_python_flake8_args = '--ignore E111,E121,E114'
+  let g:neomake_python_flake8_args = '--ignore E111,E121,E114,E501,E127'
 
   let g:neomake_open_list = 1
 
