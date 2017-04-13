@@ -7,6 +7,7 @@ let g:this_meta.site = 'https://github.com/Shougo/deoplete.nvim.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
+  let g:deoplete#enable_at_startup = 1
   nnoremap codp :call deoplete#toggle()<Cr>
 
 endfunction
