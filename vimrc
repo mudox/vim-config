@@ -172,6 +172,7 @@ set wrapscan
 set incsearch
 set ignorecase
 set smartcase
+set inccommand=nosplit
 
 " Editor behaviour
 set whichwrap=b,s,<,>,[,],h,l
@@ -224,6 +225,10 @@ nnoremap <M-s> :<C-U>w<Cr>
 
 " sensible Y
 nnoremap Y y$
+
+" sensible S
+" `S` is duplicate with `cc`
+nnoremap S ciw
 
 " j, k to easily move around in wrapped long line.                                   {{{2
 nnoremap k gk
