@@ -17,5 +17,4 @@ function! <SID>formatSwiftFile() abort
   execute nr
 endfunction
 
-autocmd BufWritePre *.swift call <SID>formatSwiftFile()
 nnoremap \af :<C-U><C-U>call <SID>formatSwiftFile()<Cr>
