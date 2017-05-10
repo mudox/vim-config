@@ -21,6 +21,7 @@ call MergeConfigs(s:sub_configs)
 " Bundles in Current Config                                                         {{{1
 
 let s:bundle_list = [
+      \ 'tmuxvim'                ,
       \ 'denite'                 ,
       \ 'rt_swift'               ,
       \ 'bufexplorer'            ,
