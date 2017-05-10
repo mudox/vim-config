@@ -22,12 +22,12 @@ function g:this_meta.config()
   " Called once right before you start selecting multiple cursors
 
   function! Multiple_cursors_before()
-    call deoplete#disable()
+    silent! call deoplete#disable()
   endfunction
 
   " Called once only when the multiple selection is canceled (default <Esc>)
   function! Multiple_cursors_after()
-    call deoplete#enable()
+    silent! call deoplete#enable()
   endfunction
 
 endfunction
