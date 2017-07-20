@@ -12,7 +12,7 @@ let s:sub_configs = [
       \ 'x_ultisnips',
       \ ]
 
-call add(s:sub_configs, 'x_airline')
+"call add(s:sub_configs, 'x_airline')
 
 call MergeConfigs(s:sub_configs)
 

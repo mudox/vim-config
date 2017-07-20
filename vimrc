@@ -100,12 +100,11 @@ filetype plugin indent on " 'filetype on' implied
 set encoding=utf8
 
 " color & font
+set background=dark
 if ! empty(globpath(&rtp, 'colors/PaperColor.vim'))
   colorscheme PaperColor
-  set background=dark
 else
   colorscheme desert
-  set background=dark
 endif
 
 if has('win32') || has('win64')                         " windows
