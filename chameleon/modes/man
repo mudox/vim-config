@@ -1,0 +1,22 @@
+" vim: filetype=vim foldmethod=marker fileformat=unix
+
+" Merge Configs {{{1
+
+" TODO: put every sub-mode names you need into the list.
+"let s:sub_configs = [
+      "\ ]
+
+"call MergeConfigs(s:sub_configs)
+
+" }}}1
+
+" Bundles in Current Config {{{1
+
+" TODO: put every meta nemas you need into the list.
+let s:bundle_list = [
+      \ 'ctrlp_cmdhub',
+      \ 'ctrlp'       ,
+      \ ]
+
+call AddBundles(s:bundle_list)
+" }}}1
