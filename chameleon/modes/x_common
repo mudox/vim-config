@@ -12,8 +12,6 @@ let s:sub_configs = [
       \ 'x_ultisnips',
       \ ]
 
-"call add(s:sub_configs, 'x_airline')
-
 call MergeConfigs(s:sub_configs)
 
 " }}}1
@@ -25,12 +23,8 @@ let s:bundle_list = [
       \ 'argwrap'                ,
       \ 'autopairs'              ,
       \ 'bufexplorer'            ,
-      \ 'capslock'               ,
-      \ 'codi'                   ,
       \ 'confsyntax'             ,
       \ 'ctrlsf'                 ,
-      \ 'ctrlspace'              ,
-      \ 'denite'                 ,
       \ 'devicons'               ,
       \ 'easyalign'              ,
       \ 'expandregion'           ,
@@ -44,7 +38,6 @@ let s:bundle_list = [
       \ 'indentguides'           ,
       \ 'indentline'             ,
       \ 'join'                   ,
-      \ 'man'                    ,
       \ 'multi_cursor'           ,
       \ 'neoterm'                ,
       \ 'nerdcommenter'          ,
@@ -62,7 +55,6 @@ let s:bundle_list = [
       \ 'rsi'                    ,
       \ 'rt_toml'                ,
       \ 'rt_swift'               ,
-      \ 'rt_tmux'                ,
       \ 'surround'               ,
       \ 'switch'                 ,
       \ 'swoop'                  ,

@@ -6,8 +6,6 @@ let g:mode_description = "For editting vim scripts"
 
 let s:sub_configs = [
       \ 'x_common',
-      \ 'x_git'   ,
-      \ 'x_vim'   ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
@@ -19,8 +17,6 @@ call MergeConfigs(s:sub_configs)
 let s:bundle_list = [
       \ 'airline'         ,
       \ 'airline_themes'  ,
-      \ 'rainbow_oblitum' ,
-      \ 'deoplete'        ,
       \ ]
 
 call AddBundles(s:bundle_list)
