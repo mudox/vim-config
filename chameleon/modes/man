@@ -14,8 +14,10 @@
 
 " TODO: put every meta nemas you need into the list.
 let s:bundle_list = [
-      \ 'ctrlp_cmdhub',
-      \ 'ctrlp'       ,
+      \ 'ctrlp_cmdhub'  ,
+      \ 'ctrlp'         ,
+      \ 'vc_paper_color',
+      \ 'unimpaired'    ,
       \ ]
 
 call AddBundles(s:bundle_list)
