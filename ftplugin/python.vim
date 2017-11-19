@@ -9,61 +9,31 @@ setlocal expandtab
 
 setlocal foldmethod=marker
 
-" run buffer {{{1
-function! s:RunBuffer( args ) " {{{2
-  " save & lcd to current python script file path.
-  silent write
-  lcd %:p:h
-
-  let exeString = 'python ' . escape(expand('%'), ' \') . ' ' . a:args
-
-  echohl Underlined | echo exeString | echohl NONE
-
-  echo vimproc#system2(exeString)
-endfunction  " }}}2
-
-command! -buffer -nargs=* Run call s:RunBuffer(<q-args>)
-command! -buffer -nargs=* RunWithArgs call s:RunBuffer(<q-args>)
-
-nnoremap <buffer> <BS>r :RunWithArgs<Space>
-" }}}1
-
-" remap \af to format current buffer by autopep8. {{{1
-function! <SID>Autopep8() " {{{2
-  if !executable('autopep8')
-    echoerr "need <autopep8>, try 'sudo pip install autopep8' to get it."
+function! <SID>formatCodeByYAPF()
+  if !executable('yapf')
+    echoerr "need `yapf`, try 'pip3 install yapf' to install it."
+    return
   endif
 
   let view = winsaveview()
-  %!autopep8
-        \ --aggressive
-        \ --aggressive
-        \ --experimental
-        \ --max-line-length 79
-        \ --indent-size 4
-        \ -
+  %!yapf
   call winrestview(view)
+endfunction
 
-
-endfunction "  }}}2
-
-function! <SID>Autopep8() " {{{2
+function! <SID>formatCodeByAutopep8()
   if !executable('autopep8')
-    echoerr "need <autopep8>, try 'sudo pip install autopep8' to get it."
+    echoerr "need `autopep8`, try 'sudo pip install autopep8' to install it."
+    return
   endif
 
-  let view = winsaveview()
+  let savedView = winsaveview()
   %!autopep8
-        \ --aggressive
-        \ --aggressive
+        \ -a -a -a
         \ --experimental
-        \ --max-line-length 79
-        \ --indent-size 4
+        \ --indent-size 2
         \ -
-  call winrestview(view)
+  %!isort -
+  call winrestview(savedView)
+endfunction
 
-
-endfunction "  }}}2
-
-"nnoremap <buffer> \af :call <SID>Autopep8()<Cr>
-"}}}1
+nnoremap <buffer> \af :<C-U><C-U>silent! call <SID>formatCodeByAutopep8()<Cr>
