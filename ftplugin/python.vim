@@ -20,7 +20,7 @@ function! <SID>formatCodeByYAPF()
   call winrestview(view)
 endfunction
 
-function! <SID>formatCodeByAutopep8()
+function! <SID>formatCodeByAutopep8AndISort()
   if !executable('autopep8')
     echoerr "need `autopep8`, try 'sudo pip install autopep8' to install it."
     return
@@ -36,4 +36,4 @@ function! <SID>formatCodeByAutopep8()
   call winrestview(savedView)
 endfunction
 
-nnoremap <buffer> \af :<C-U><C-U>silent! call <SID>formatCodeByAutopep8()<Cr>
+nnoremap <buffer> \af :<C-U><C-U>silent! call <SID>formatCodeByAutopep8AndISort()<Cr>
