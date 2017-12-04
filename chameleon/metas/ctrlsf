@@ -8,7 +8,26 @@ let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
 
-  nmap ,mv <Plug>CtrlSFCCwordPath
-  nmap ,mV <Plug>CtrlSFCwordPath
+  cabbrev sf CtrlSF
 
+  " search immediately
+  nmap ,sf <Plug>CtrlSFCwordExec
+  vmap ,sf <Plug>CtrlSFVwordExec
+  nmap ,ss <Plug>CtrlSFCCwordExec
+
+  " put on command line
+  vmap ,s: <Plug>CtrlSFVwordPath
+  nmap ,s: <Plug>CtrlSFCwordPath
+
+  "nmap ,s< <Plug>CtrlSFCCwordPath
+
+  " first try locating project root, starting from current file path
+  " if not found, fallback to current file path
+  let g:ctrlsf_default_root = 'project+ff'
+
+  " more compat layout
+  let g:ctrlsf_indent = 2
+
+  " enable regex search by defaults
+  let g:ctrlsf_regex_pattern = 1
 endfunction
