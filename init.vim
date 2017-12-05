@@ -368,6 +368,10 @@ nnoremap <s [sz=1<Cr><Cr>''
 
 " coz replace zoomwintab plugin
 nnoremap <silent> coz :<C-U>tabnew %<Cr>
+
+" auto load project local .exrc file
+set exrc
+set secure
 " }}}1
 
 call mudox#chameleon#InitBundles()
