@@ -372,6 +372,9 @@ nnoremap <silent> coz :<C-U>tabnew %<Cr>
 " auto load project local .exrc file
 set exrc
 set secure
+
+" disable python tab resetting
+let g:python_recommended_style = 0
 " }}}1
 
 call mudox#chameleon#InitBundles()
