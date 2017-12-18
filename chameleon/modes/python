@@ -24,7 +24,7 @@ let s:bundle_list = [
 
 if has('unix')
   call add(s:bundle_list, 'ycm')
-  call add(s:bundle_list, 'py_jedi@parameter_hint')
+  "call add(s:bundle_list, 'py_jedi@parameter_hint')
 endif
 
 call AddBundles(s:bundle_list)
