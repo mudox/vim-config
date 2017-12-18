@@ -1,26 +1,64 @@
 " vim: fdm=marker
 
-function! s:testInTmux()
+let g:tit_target = '.2'
 
-  let cmd = get(b:, 'tit_cmd', get(g:, 'tit_cmd', ''))
-  let target = get(b:, 'tit_target', get(g:, 'tit_target', ''))
+function! s:get_target()
+  if has_key(b:, 'get_tit_target')
+    return b:get_tit_target()
+  endif
 
-  if empty(cmd)
+  if has_key(b:, 'tit_target')
+    return b:tit_target
+  endif
+
+  if has_key(g:, 'get_tit_target')
+    return g:get_tit_target()
+  endif
+
+  if has_key(g:, 'tit_target')
+    return g:tit_target
+  endif
+endfunction
+
+function! s:get_keys()
+  if has_key(b:, 'get_tit_keys')
+    return b:get_tit_keys()
+  endif
+
+  if has_key(b:, 'tit_keys')
+    return b:tit_keys
+  endif
+
+  if has_key(g:, 'get_tit_keys')
+    return g:get_tit_keys()
+  endif
+
+  if has_key(g:, 'tit_keys')
+    return g:tit_keys
+  endif
+endfunction
+
+function! s:test_in_tmux()
+
+  let keys = s:get_keys()
+  let target = s:get_target()
+
+  if empty(keys)
     echohl WarningMsg
-    echo 'variable `b:tit_cmd` is missing'
+    echo 'can no determine the keys to send'
     echohl None
     return
   endif
 
   if empty(target)
     echohl WarningMsg
-    echo 'variable `b:tit_target` is missing'
+    echo 'can not determine the target tmux pane'
     echohl None
     return
   endif
 
-  execute('silent !tmux send -t ' . target . ' ' . shellescape(cmd) . ' c-m')
+  execute('silent !tmux send -t ' . target . ' ' . shellescape(keys) . ' c-m')
 
 endfunction
 
-nnoremap <Space><Space> :<C-u><C-u>call <SID>testInTmux()<Cr>
+nnoremap <Space><Space> :<C-u><C-u>call <SID>test_in_tmux()<Cr>
