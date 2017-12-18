@@ -9,17 +9,6 @@ setlocal expandtab
 
 setlocal foldmethod=marker
 
-function! <SID>formatCodeByYAPF()
-  if !executable('yapf')
-    echoerr "need `yapf`, try 'pip3 install yapf' to install it."
-    return
-  endif
-
-  let view = winsaveview()
-  %!yapf
-  call winrestview(view)
-endfunction
-
 function! <SID>formatCodeByAutopep8AndISort()
   if !executable('autopep8')
     echoerr "need `autopep8`, try 'sudo pip install autopep8' to install it."
@@ -32,6 +21,20 @@ function! <SID>formatCodeByAutopep8AndISort()
         \ --experimental
         \ --indent-size 2
         \ -
+  %!isort -
+  call winrestview(savedView)
+endfunction
+
+
+
+function! <SID>formatCodeByYAPFAndISort()
+  if !executable('autopep8')
+    echoerr "need `autopep8`, try 'sudo pip install autopep8' to install it."
+    return
+  endif
+
+  let savedView = winsaveview()
+  %!yapf
   %!isort -
   call winrestview(savedView)
 endfunction
