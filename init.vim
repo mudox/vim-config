@@ -90,7 +90,6 @@ set nocompatible
 
 set mouse=a
 
-set guioptions=fcaM
 set t_Co=256 " 256 color support on some terminals.
 set termguicolors
 
@@ -99,19 +98,22 @@ filetype plugin indent on " 'filetype on' implied
 
 set encoding=utf8
 
-" color & font
 " Cursor {{{2
 set guicursor=n-v-c-sm:block-blinkwait300-blinkon200-blinkoff140
 set guicursor+=i-ci-ve:ver25-blinkwait300-blinkon200-blinkoff140
 set guicursor+=r-cr-o:hor20-blinkwait300-blinkon200-blinkoff140
 " }}}2
+
+" Color {{{2
 set background=dark
 if ! empty(globpath(&rtp, 'colors/PaperColor.vim'))
   colorscheme PaperColor
 else
   colorscheme desert
 endif
+" }}}2
 
+" Font {{{2
 if has('win32') || has('win64')                         " windows
   set guifont=YaHei_Consolas_Hybrid:h10:cGB2312
   set linespace=0
@@ -134,6 +136,7 @@ elseif has('unix')                                      " other *nix
 else
   echohl ErrorMsg | echo "Oops! Unknown sysinfo" | echohl NONE
 endif
+" }}}2
 
 " Editor interface
 set noruler      " powerline does better
@@ -153,7 +156,7 @@ else
   set cmdheight=2
 endif
 
-" saner behavior of n/N
+" Saner behavior of n/N
 nnoremap <expr> n  'Nn'[v:searchforward]
 nnoremap <expr> N  'nN'[v:searchforward]
 
