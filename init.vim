@@ -100,6 +100,11 @@ filetype plugin indent on " 'filetype on' implied
 set encoding=utf8
 
 " color & font
+" Cursor {{{2
+set guicursor=n-v-c-sm:block-blinkwait300-blinkon200-blinkoff140
+set guicursor+=i-ci-ve:ver25-blinkwait300-blinkon200-blinkoff140
+set guicursor+=r-cr-o:hor20-blinkwait300-blinkon200-blinkoff140
+" }}}2
 set background=dark
 if ! empty(globpath(&rtp, 'colors/PaperColor.vim'))
   colorscheme PaperColor
