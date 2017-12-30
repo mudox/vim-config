@@ -57,6 +57,9 @@ function! s:test_in_tmux()
     return
   endif
 
+  update!
+
+  execute('silent !tmux send -t ' . target . ' c-c c-c')
   execute('silent !tmux send -t ' . target . ' ' . shellescape(keys) . ' c-m')
 
 endfunction
