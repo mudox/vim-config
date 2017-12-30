@@ -11,6 +11,8 @@ function g:this_meta.config()
   nnoremap <C-O>r :<C-U>History<Cr>
   nnoremap <C-O>: :<C-U>History:<Cr>
 
+  nnoremap <Space>] :<C-U><C-U>silent Tags<Cr>
+
   nnoremap <C-O>o :<C-U>Files<Cr>
   nnoremap <C-O><C-O> :<C-U>Files<Cr>
 
