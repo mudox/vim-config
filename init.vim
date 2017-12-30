@@ -386,6 +386,7 @@ let g:python_recommended_style = 0
 
 " quick %s/<cword>//gc
 nnoremap ,th :<C-U><C-U>%s/<C-R><C-W>//gc<Left><Left><Left>
+nnoremap ,tH :<C-U><C-U>%s/\<<C-R><C-W>\>//gc<Left><Left><Left>
 
 " }}}1
 
