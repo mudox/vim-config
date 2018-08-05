@@ -25,6 +25,7 @@ let s:bundle_list = [
       \ 'matchtagalways' ,
       \ 'rt_toml'        ,
       \ 'syntastic'      ,
+      \ 'deoplete'       ,
       \ ]
 
 " javascript plugins
