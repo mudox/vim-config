@@ -387,6 +387,9 @@ let g:python_recommended_style = 0
 nnoremap ,th :<C-U><C-U>%s/<C-R><C-W>//gc<Left><Left><Left>
 nnoremap ,tH :<C-U><C-U>%s/\<<C-R><C-W>\>//gc<Left><Left><Left>
 
+" format the paragraph
+nnoremap qp <Esc><Esc>gqap
+
 " }}}1
 
 call mudox#chameleon#InitBundles()
