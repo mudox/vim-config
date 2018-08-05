@@ -225,10 +225,9 @@ nnoremap coX :execute 'setlocal syntax=' . ((&syntax == 'OFF') ? 'ON' : 'OFF')<C
 let g:mapleader = ','
 
 " quick save.
-nnoremap <BS>W :<C-U>w<Cr>:e!<Cr>
-
-nnoremap <BS>w :<C-U>w<Cr>
-nnoremap <M-s> :<C-U>w<Cr>
+nnoremap <F4>  :<C-U><C-U>w<Cr>
+inoremap <F4>  <Esc>:w<Cr>
+nnoremap <BS>w :<C-U><C-U>w<Cr>
 
 " sensible Y
 nnoremap Y y$
