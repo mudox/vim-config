@@ -7,6 +7,8 @@ setlocal shiftwidth=2
 setlocal smarttab
 setlocal expandtab
 
+setlocal foldmethod=marker
+
 " run buffer {{{1
 
 function! <SID>RunBuffer( args ) " {{{2
