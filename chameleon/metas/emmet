@@ -7,8 +7,10 @@ let g:this_meta.site = 'https://github.com/mattn/emmet-vim.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-    let g:user_emmet_next_key       = '<C-Y>l'
-    let g:user_emmet_prev_key       = '<C-Y>h'
+
+  let g:user_emmet_leader_key     = '<C-e>'
+  let g:user_emmet_next_key       = '<C-e>k'
+  let g:user_emmet_prev_key       = '<C-e>j'
 
   let g:user_emmet_settings = {
         \ 'indentation' : ' '
