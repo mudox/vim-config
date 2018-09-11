@@ -314,6 +314,8 @@ nnoremap \cmd :call MdxDumpExCmdOutputFromInput()<Cr>
 " key q is too easy to touch, but is used scarcely
 nnoremap q <Nop>
 nnoremap _q q
+nnoremap q: q:
+nnoremap q/ q/
 
 " key Q is too easy to touch, but is needed infrequently
 nnoremap Q <Nop>
