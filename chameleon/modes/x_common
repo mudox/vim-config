@@ -10,6 +10,7 @@ let s:sub_configs = [
       \ 'x_color'    ,
       \ 'x_textobj'  ,
       \ 'x_ultisnips',
+      \ 'x_airline'  ,
       \ ]
 
 call MergeConfigs(s:sub_configs)
