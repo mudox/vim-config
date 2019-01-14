@@ -8,5 +8,5 @@ let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
   cabbrev git Git
-  nnoremap gst :Gstatus<CR>
+  nnoremap ,gst :Gstatus<CR>
 endfunction
