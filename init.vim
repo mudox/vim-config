@@ -4,6 +4,9 @@ scriptencoding utf-8
 " in my configuration, vimrc must be put under .vim/vimfiles.
 let g:rc_root = expand('<sfile>:p:h')
 
+let g:loaded_python_provider=1
+let g:python3_host_prog='/usr/local/bin/python3'
+
 " BUNDLE LOADING by VIM-PLUG                                                         {{{1
 
 if has('vim_starting')
@@ -140,6 +143,7 @@ endif
 
 " Editor interface
 set noruler      " powerline does better
+set nonumber
 set shortmess+=I " no intro text when start with an empty buffer.
 set nocursorline
 set showtabline=1
@@ -232,9 +236,7 @@ nnoremap <BS>w :<C-U><C-U>w<Cr>
 " sensible Y
 nnoremap Y y$
 
-" sensible S
-" `S` is duplicate with `cc`
-nnoremap S ciw
+nnoremap gs ciw
 
 " j, k to easily move around in wrapped long line.                                   {{{2
 nnoremap k gk
