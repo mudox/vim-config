@@ -7,7 +7,7 @@ let g:this_meta.site = 'https://github.com/AndrewRadev/switch.vim.git'
 let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
-  nnoremap - :Switch<Cr>
+  let g:switch_mapping = "-"
 
   " all nameing convention below consist of
   " [head] + [body]
