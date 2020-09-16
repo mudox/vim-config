@@ -1,0 +1,67 @@
+# #ig -> IG section controller & cell {{{1
+snippet #ig "IG section controller & cell" b
+typealias ${1:Name}Cell = CollectionWrapperCell<$1View>
+
+class $1SectionController: SingleItemSectionController<${2:Model}, $1Cell> {
+	override func sizeForItem(_ item: ResearchListSection) -> CGSize {
+			$0
+	}
+
+	override func configure(cell: $1, with item: $2) {
+		cell.view.update(with: item)
+	}
+}
+endsnippet
+# }}}1
+
+# #lb -> Setup a UILabel {{{1
+snippet #lb "Setup a UILabel" b
+${1:\$0}.font = ${2:regular(ofSize: 11)}
+${1:\$0}.textColor = ${3:.c333333}$0
+endsnippet
+# }}}1
+
+# #lb -> Setup a UILabel (Regex) {{{1
+snippet  "#lb([rms])(\d+)" "Setup a UILabel (Regex)" br
+${1:\$0}.font = `!p
+font = {
+  "r": "regular",
+	"m": "medium",
+	"s": "stock"
+}[match.group(1)]
+size = match.group(2)
+snip.rv = f".{font}(ofSize: {size})"
+`
+${1:\$0}.textColor = ${3:.c333333}$0
+endsnippet
+# }}}1
+
+# reset -> Reset Subviews {{{1
+snippet #reset "Reset Subviews" b
+contentView.subviews.forEach {
+    (\$0 as? UILabel)?.text = nil
+    (\$0 as? UIImageView)?.image = nil
+}
+
+endsnippet
+# }}}1
+
+# #xt -> NSAttributedString starts with font, color, paragraphStyle {{{1
+snippet #xffp "NSAttributedString with font, color, paragraphStyle" b
+[
+	.font: ,
+	.foregroundColor: UIColor.c999999,
+	.paragraphStyle: NSMutableParagraphStyle().then {
+		$0.lineSpacing = 20 - font.lineHeight
+	},
+]
+endsnippet
+# }}}1
+
+# #cor -> UIView 4 corner radius {{{1
+snippet #cor "UIView 4 corner radius" b
+\$0.layer.cornerRadius = ${1:5}
+\$0.layer.masksToBounds = true$0
+endsnippet
+# }}}1
+

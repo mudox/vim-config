@@ -8,4 +8,7 @@ let g:this_meta.vimplug_cmd_dict = {}
 
 function g:this_meta.config()
   nnoremap \af :<C-U>Autoformat<CR>
+
+  let g:formatdef_swiftformat = '"swiftformat --quiet --config ~/OneDrive/AppData/swiftformat"'
+  let g:formatters_swift = ['swiftformat']
 endfunction
